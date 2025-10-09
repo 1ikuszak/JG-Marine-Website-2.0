@@ -18,7 +18,7 @@ export default function AboutCTA() {
               "radial-gradient(circle, currentColor 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
-          className="text-accent"
+          // className="text-accent"
         />
       </div>
 

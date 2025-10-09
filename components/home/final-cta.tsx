@@ -7,7 +7,7 @@ import { z } from "zod";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { contactFormSchema } from "@/lib/schemas"; // Poprawiony import
-import { sendContactEmail } from "@/app/actions";
+// import { sendContactEmail } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -74,15 +74,15 @@ export default function FinalCtaWithForm() {
 
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
-    const result = await sendContactEmail(data);
+    // const result = await sendContactEmail(data);
     setIsSubmitting(false);
 
-    if (result.success) {
-      toast.success(result.message);
-      form.reset();
-    } else {
-      toast.error(result.message);
-    }
+    // if (result.success) {
+    //   toast.success(result.message);
+    //   form.reset();
+    // } else {
+    //   toast.error(result.message);
+    // }
   }
 
   return (

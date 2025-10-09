@@ -46,14 +46,23 @@ export function Hero({
   }, []);
 
   // Carousel auto-advance
+  // Carousel auto-advance
   React.useEffect(() => {
-    if (reduced) return;
-    timer.current && clearInterval(timer.current);
+    if (reduced) {
+      return;
+    }
+
     timer.current = setInterval(
       () => setIndex((i) => (i + 1) % slides.length),
-      8000 // CHANGE: Slowed down from 5000ms to 8000ms
+      8000
     );
-    return () => timer.current && clearInterval(timer.current);
+
+    // The corrected cleanup function
+    return () => {
+      if (timer.current) {
+        clearInterval(timer.current);
+      }
+    };
   }, [slides.length, reduced]);
 
   return (

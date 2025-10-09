@@ -41,14 +41,23 @@ export function Hero({
     return () => m.removeEventListener?.("change", onChange);
   }, []);
 
+  // After
   React.useEffect(() => {
-    if (reduced) return;
-    timer.current && clearInterval(timer.current);
+    if (reduced) {
+      return;
+    }
+    // No need to clear here first, the cleanup function handles it
     timer.current = setInterval(
       () => setIndex((i) => (i + 1) % slides.length),
       5000
     );
-    return () => timer.current && clearInterval(timer.current);
+
+    // The corrected cleanup function
+    return () => {
+      if (timer.current) {
+        clearInterval(timer.current);
+      }
+    };
   }, [slides.length, reduced]);
 
   return (
