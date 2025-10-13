@@ -10,27 +10,11 @@ import { AlarmClock, ShieldCheck, ArrowRight } from "lucide-react";
 type Slide = { src: string; alt: string };
 
 interface HeroProps {
-  slides?: Slide[];
-  emergencyTel?: string;
+  slides: Slide[];
+  emergencyTel: string;
 }
 
-export function Hero({
-  slides = [
-    {
-      src: "/hero/inspection-bridge.jpg",
-      alt: "Surveyor JG-Marine podczas inspekcji na moście kapitańskim",
-    },
-    {
-      src: "/hero/drydock-hull.jpg",
-      alt: "Ekspertyza kadłuba w suchym doku",
-    },
-    {
-      src: "/hero/offshore-wind.jpg",
-      alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
-    },
-  ],
-  emergencyTel = "+48 XXX XXX XXX",
-}: HeroProps) {
+export function Hero({ slides, emergencyTel }: HeroProps) {
   const [index, setIndex] = React.useState(0);
   const [reduced, setReduced] = React.useState(false);
   const timer = React.useRef<NodeJS.Timeout | null>(null);
@@ -46,7 +30,6 @@ export function Hero({
   }, []);
 
   // Carousel auto-advance
-  // Carousel auto-advance
   React.useEffect(() => {
     if (reduced) {
       return;
@@ -57,7 +40,6 @@ export function Hero({
       8000
     );
 
-    // The corrected cleanup function
     return () => {
       if (timer.current) {
         clearInterval(timer.current);
@@ -68,7 +50,8 @@ export function Hero({
   return (
     <section
       className="relative isolate overflow-hidden border-b"
-      aria-label="Niezależni surveyorzy morscy od 1959"
+      // TRANSLATED: Aria-label updated for clarity.
+      aria-label="Hero section showcasing JG Marine's independent survey services"
     >
       {/* Background Slideshow */}
       <div className="absolute inset-0 -z-10">
@@ -77,7 +60,6 @@ export function Hero({
             i === index ? (
               <motion.div
                 key={s.src}
-                // CHANGE: Added alternating scale for a Ken Burns (zoom) effect
                 initial={{
                   opacity: 0,
                   scale: i % 2 === 0 ? 1 : 1.05,
@@ -87,7 +69,6 @@ export function Hero({
                   scale: i % 2 === 0 ? 1.05 : 1,
                 }}
                 exit={{ opacity: 0 }}
-                // CHANGE: Set different durations for opacity and scale animations
                 transition={{
                   opacity: { duration: 0.8 },
                   scale: { duration: 8, ease: "linear" },
@@ -111,7 +92,8 @@ export function Hero({
           <div className="absolute inset-0">
             <Image
               src={slides[0]?.src || "/hero/inspection-bridge.jpg"}
-              alt={slides[0]?.alt || "Surveyor JG-Marine podczas inspekcji"}
+              // TRANSLATED: Alt text updated to English.
+              alt={slides[0]?.alt || "JG-Marine surveyor during an inspection"}
               fill
               priority
               sizes="100vw"
@@ -126,16 +108,17 @@ export function Hero({
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
         <div className="min-h-[68vh] md:min-h-[78vh] flex items-center py-12 md:py-20">
           <div className="max-w-2xl text-white">
-            {/* Main Headline */}
+            {/* Main Headline (Already in English) */}
             <h1 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
-              Chroń Aktywa Morskie Przed Stratami Milionowymi
+              Protect Maritime Assets from Million-Euro Losses with Independent
+              DNV Marine Surveys
             </h1>
 
-            {/* Subheadline */}
+            {/* Subheadline (Already in English) */}
             <p className="mt-3 text-base md:text-lg text-white/90 max-w-prose">
-              64 lata dziedzictwa morskiego + certyfikaty DNV = zero sporów
-              ubezpieczeniowych. Zaufali nam P&I Clubs, ubezpieczyciele i
-              armatorzy w 11+ krajach.
+              Independent hull, cargo, and offshore project surveys for
+              insurers, shipowners, and logistics operators across the Baltic
+              Sea and Central Europe
             </p>
 
             {/* CTA Buttons */}
@@ -146,18 +129,22 @@ export function Hero({
                 asChild
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
-                <a href="/contact" aria-label="Zamów ekspertyzę">
-                  Zamów Ekspertyzę
+                {/* TRANSLATED: Href and aria-label updated. */}
+                <a href="/contact" aria-label="Request an urgent survey">
+                  {/* TRANSLATED: Button text updated. */}
+                  Request Survey
                 </a>
               </Button>
 
               <Button size="lg" variant="secondary" asChild>
                 <a
                   href={`tel:${emergencyTel.replace(/\s/g, "")}`}
-                  aria-label="Zadzwoń na linię alarmową"
+                  // TRANSLATED: Aria-label updated.
+                  aria-label="Call the emergency hotline"
                 >
                   <AlarmClock className="mr-2 h-4 w-4" />
-                  Reakcja 24/7
+                  {/* TRANSLATED: Button text updated. */}
+                  24/7 Response
                 </a>
               </Button>
             </div>
@@ -168,28 +155,32 @@ export function Hero({
                 <div className="grid grid-cols-3 gap-6 text-center md:text-left">
                   <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-semibold">120+</span>
+                    {/* TRANSLATED: Label updated to English. */}
                     <span className="text-xs font-light text-white/70 tracking-wider">
-                      PROJEKTÓW
+                      PROJECTS
                     </span>
                   </div>
                   <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-semibold">64</span>
+                    {/* TRANSLATED: Label updated to English. */}
                     <span className="text-xs font-light text-white/70 tracking-wider">
-                      LATA
+                      YEARS
                     </span>
                   </div>
                   <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-semibold">11+</span>
+                    {/* TRANSLATED: Label updated to English. */}
                     <span className="text-xs font-light text-white/70 tracking-wider">
-                      KRAJÓW
+                      COUNTRIES
                     </span>
                   </div>
                 </div>
 
                 {/* Certifications */}
                 <div className="flex flex-col items-center md:items-start">
+                  {/* TRANSLATED: Label updated to English. */}
                   <span className="text-xs font-light text-white/70 tracking-wider mb-2">
-                    CERTYFIKACJE
+                    CERTIFICATIONS
                   </span>
                   <div className="flex flex-wrap gap-2">
                     <Badge
@@ -224,7 +215,8 @@ export function Hero({
                       <button
                         key={i}
                         onClick={() => setIndex(i)}
-                        aria-label={`Przejdź do slajdu ${i + 1}`}
+                        // TRANSLATED: Aria-label updated.
+                        aria-label={`Go to slide ${i + 1}`}
                         className={`h-1.5 rounded-full transition-all ${
                           i === index
                             ? "w-6 bg-white"
@@ -240,14 +232,16 @@ export function Hero({
         </div>
       </div>
 
-      {/* Reassurance Ribbon (Desktop Only) - using success color */}
+      {/* Reassurance Ribbon (Desktop Only) */}
       <div className="hidden md:block absolute bottom-6 right-4 md:right-6">
         <div className="container mx-auto max-w-screen-xl px-0">
           <div className="inline-flex items-center gap-3 rounded-full bg-success/10 px-4 py-2 text-white backdrop-blur border border-success/20">
             <ShieldCheck className="h-4 w-4 text-success" />
-            <span className="text-sm">Gwarancja niezależności raportów</span>
+            {/* TRANSLATED: Text updated. */}
+            <span className="text-sm">Guaranteed report independence</span>
             <span className="text-white/40">•</span>
-            <span className="text-sm">Reakcja w 4 godziny</span>
+            {/* TRANSLATED AND CORRECTED: Aligned with strategy doc. */}
+            <span className="text-sm">Surveyor assigned in &lt;2 hours</span>
             <ArrowRight className="h-4 w-4 opacity-80" />
           </div>
         </div>

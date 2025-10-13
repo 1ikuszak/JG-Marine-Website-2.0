@@ -26,6 +26,18 @@ export default function HomePage() {
             src: "/hero/3.jpg",
             alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
           },
+          {
+            src: "/hero/4.jpg",
+            alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
+          },
+          {
+            src: "/hero/5.jpg",
+            alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
+          },
+          {
+            src: "/hero/6.jpg",
+            alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
+          },
         ]}
         emergencyTel="+48 XXX XXX XXX"
       />
@@ -46,14 +58,8 @@ export default function HomePage() {
 
         <TeamSection />
 
-        {/* G. Competitive Differentiation */}
-        <DifferentiationSection />
-
         {/* H. Final CTA Section */}
         <FinalCTA />
-
-        {/* I. Resources Preview */}
-        <ResourcesPreview />
       </main>
     </>
   );

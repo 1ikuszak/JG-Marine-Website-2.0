@@ -1,7 +1,8 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Mail, Phone, Award, Anchor } from "lucide-react";
+"use client";
+
+import * as React from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, Award } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -10,7 +11,7 @@ interface TeamMember {
   email?: string;
   phone?: string;
   certifications?: string[];
-  featured?: boolean;
+  imageUrl?: string; // TODO: Add actual profile images
 }
 
 const teamMembers: TeamMember[] = [
@@ -18,7 +19,7 @@ const teamMembers: TeamMember[] = [
     name: "Jacek Goszczyński",
     role: "Founder & CEO",
     description:
-      "Seasoned Master Mariner and certified auditor across multiple maritime disciplines. Accredited expert in commercial courts in Szczecin and Warsaw, bringing decades of hands-on maritime experience.",
+      "Seasoned Master Mariner and certified auditor across multiple maritime disciplines. Accredited expert in commercial courts.",
     email: "jack@jg-marine.com",
     phone: "48 602 222 477",
     certifications: [
@@ -26,23 +27,23 @@ const teamMembers: TeamMember[] = [
       "Court Expert",
       "Multi-Discipline Auditor",
     ],
-    featured: true,
+    imageUrl: "/team/jacek.jpg", // TODO: Replace with actual image
   },
   {
     name: "Mariusz Łapiński",
     role: "Lead Auditor",
     description:
-      "ISO/ISM/ISPS Lead Auditor specializing in maritime operations and risk assessment. Dangerous Goods Safety Advisor (ADR/RID) with fluency in English and Russian for international operations.",
+      "ISO/ISM/ISPS Lead Auditor specializing in maritime operations and risk assessment. Fluent in English and Russian.",
     email: "mariusz@jg-marine.com",
     phone: "+48 501 505 797",
     certifications: ["ISO/ISM/ISPS Lead Auditor", "ADR/RID Advisor"],
-    featured: true,
+    imageUrl: "/team/mariusz.jpg",
   },
   {
     name: "Jerzy Barszczewski",
     role: "Chief Engineer",
     description:
-      "M.Sc. in Mechanical Engineering with expertise in shipbuilding, reefer equipment, and fuel handling systems. Specializes in comprehensive Hull & Machinery Surveys for commercial vessels.",
+      "M.Sc. in Mechanical Engineering with expertise in shipbuilding, reefer equipment, and fuel handling systems.",
     email: "jerzy@jg-marine.com",
     phone: "48 501 386 133",
     certifications: [
@@ -50,180 +51,173 @@ const teamMembers: TeamMember[] = [
       "Chief Engineer",
       "H&M Specialist",
     ],
-    featured: true,
+    imageUrl: "/team/jerzy.jpg",
   },
   {
     name: "Joanna Adamczak",
     role: "Operations Manager",
     description:
-      "MA in Economics. Manages international survey coordination, client relations across 11+ countries, and operational logistics. Ensures seamless project execution and client communication.",
+      "MA in Economics. Manages international survey coordination and client relations across 11+ countries.",
     email: "joanna@jg-marine.com",
     phone: "48 604 643 200",
     certifications: ["MA Economics", "Operations Management"],
+    imageUrl: "/team/joanna.jpg",
   },
   {
     name: "Dominik Kowalewski",
     role: "Senior Cargo Surveyor",
     description:
-      "Experienced surveyor in general commodities and containerized cargo. Conducts loading supervision, on/off-hire surveys, draft surveys, and agricultural product assessments.",
+      "Experienced surveyor in general commodities and containerized cargo. Conducts loading supervision and draft surveys.",
     email: "dominik@jg-marine.com",
     phone: "48 509 682 700",
     certifications: ["Cargo Surveyor", "Agricultural Certified"],
+    imageUrl: "/team/dominik.jpg",
   },
   {
     name: "Bartłomiej Bączek",
     role: "Cargo Surveyor",
     description:
-      "Maritime Academy graduate specializing in general commodities and container cargo surveys. Proficient in loading supervision and AutoCAD technical documentation.",
+      "Maritime Academy graduate specializing in general commodities and container cargo surveys. AutoCAD proficient.",
     email: "baczek@jg-marine.com",
     phone: "48 509 682 701",
     certifications: ["Maritime Academy", "AutoCAD"],
+    imageUrl: "/team/bartlomiej-b.jpg",
   },
   {
     name: "Marek Borowski",
     role: "Regional Surveyor",
     description:
-      "Certified agricultural products expert conducting surveys throughout Silesian Region and Germany. Extensive experience in cross-border cargo inspections and quality assessments.",
+      "Certified agricultural products expert conducting surveys throughout Silesian Region and Germany.",
     email: "marek@jg-marine.com",
     phone: "+48 509 682 700",
     certifications: ["Agricultural Expert", "Cross-Border Operations"],
+    imageUrl: "/team/marek.jpg",
   },
   {
     name: "Bartłomiej Jaworski",
     role: "Warsaw Office Manager",
     description:
-      "ISO 9001:2008 Lead Auditor with HAZMAT certification from Antwerp's International Institute of Container Lessors. Oversees Warsaw office operations and container survey projects.",
+      "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
     email: "bartek@jg-marine.com",
     phone: "48 602 752 200",
     certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
+    imageUrl: "/team/bartlomiej-j.jpg",
   },
   {
     name: "Beata Fredrich",
     role: "Office Coordinator",
     description:
-      "MA in Environmental Protection from Gdańsk University. Coordinates office operations, accounting support, and administrative logistics across multiple locations.",
+      "MA in Environmental Protection from Gdańsk University. Coordinates office operations and administrative logistics.",
     certifications: ["MA Environmental Protection", "Operations"],
+    imageUrl: "/team/beata.jpg",
   },
 ];
 
-export default function TeamSection() {
-  const featuredMembers = teamMembers.filter((m) => m.featured);
-  const otherMembers = teamMembers.filter((m) => !m.featured);
-
+export default function TeamSectionWhiteUniform() {
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Anchor className="h-5 w-5 text-accent" />
-            <span className="text-sm font-semibold text-accent uppercase tracking-wider">
-              Nasz Zespół
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Eksperci z Dekadami Doświadczenia
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Certyfikowani surveyorzy i audytorzy maritime z międzynarodowym
-            doświadczeniem
-          </p>
+    <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+      {/* MARITIME Ocean Gradients - Deep Sea Blues & Teals */}
+      <div className="absolute inset-0">
+        {/* Deep Ocean Blue - Top Right */}
+        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-blue-400/20 rounded-full blur-[160px]" />
+
+        {/* Teal/Turquoise - Bottom Left */}
+        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-teal-300/25 rounded-full blur-[150px]" />
+
+        {/* Cyan/Sea Blue - Center */}
+        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] bg-cyan-300/20 rounded-full blur-[140px]" />
+
+        {/* Aquamarine - Bottom Right */}
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-sky-300/15 rounded-full blur-[130px]" />
+
+        {/* Subtle Wave Pattern Overlay */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="waves"
+                x="0"
+                y="0"
+                width="100"
+                height="50"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M0 25 Q 25 15, 50 25 T 100 25"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                  fill="none"
+                  className="text-blue-500/30"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#waves)" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
+        {/* Header with Maritime Touch */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-3 mb-6"
+          >
+            {/* Wave decorations */}
+            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-blue-400" />
+            <p className="font-mono text-xs font-bold text-blue-600 tracking-[0.3em] uppercase">
+              THE MARITIME EXPERTS
+            </p>
+            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-blue-400" />
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold text-primary mb-6 leading-tight tracking-tight"
+          >
+            Meet The Team
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+          >
+            Decades of maritime expertise, certified to international standards.
+          </motion.p>
         </div>
 
-        {/* Featured Team Members (Leadership) - LARGER */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {featuredMembers.map((member, index) => (
-            <Card
+        {/* UNIFORM GRID - All Same Size */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teamMembers.map((member, index) => (
+            <motion.div
               key={index}
-              className="hover:shadow-2xl transition-all duration-300 border-2 hover:border-accent/50 group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.05 }}
+              className="group"
             >
-              <CardHeader className="pb-6">
-                {/* LARGER Avatar */}
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-accent via-accent/80 to-accent/60 flex items-center justify-center mb-6 mx-auto group-hover:scale-105 transition-transform shadow-lg">
-                  <span className="text-4xl font-bold text-white">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                </div>
+              {/* Card - Uniform Size with Maritime Border */}
+              <div className="relative h-full bg-card border-2 border-border hover:border-blue-400 hover:shadow-lg hover:shadow-blue-400/10 transition-all duration-500 overflow-hidden flex flex-col">
+                {/* BIG Profile Image Area - Ocean Gradient */}
+                <div className="relative h-80 overflow-hidden bg-gradient-to-br from-blue-400/20 via-teal-300/15 to-cyan-300/10">
+                  {/* TODO: Replace with actual image */}
+                  {/* <img 
+                    src={member.imageUrl} 
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  /> */}
 
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-primary mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-base font-semibold text-accent mb-4">
-                    {member.role}
-                  </p>
-                </div>
-
-                {/* Certifications */}
-                {member.certifications && (
-                  <div className="flex flex-wrap gap-2 justify-center mb-4">
-                    {member.certifications.map((cert, i) => (
-                      <Badge
-                        key={i}
-                        variant="secondary"
-                        className="bg-success/10 text-success-foreground border-success/20 text-xs px-2 py-1"
-                      >
-                        <Award className="h-3 w-3 mr-1" />
-                        {cert}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-              </CardHeader>
-
-              <CardContent className="space-y-4">
-                {/* Description */}
-                <p className="text-sm text-muted-foreground leading-relaxed text-center">
-                  {member.description}
-                </p>
-
-                {/* Contact Info */}
-                {(member.email || member.phone) && (
-                  <div className="space-y-2 pt-4 border-t">
-                    {member.email && (
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors group/link"
-                      >
-                        <Mail className="h-4 w-4 shrink-0" />
-                        <span className="group-hover/link:underline">
-                          {member.email}
-                        </span>
-                      </a>
-                    )}
-                    {member.phone && (
-                      <a
-                        href={`tel:+${member.phone.replace(/\s/g, "")}`}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors group/link"
-                      >
-                        <Phone className="h-4 w-4 shrink-0" />
-                        <span className="group-hover/link:underline">
-                          +{member.phone}
-                        </span>
-                      </a>
-                    )}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Other Team Members - LARGER avatars */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherMembers.map((member, index) => (
-            <Card
-              key={index}
-              className="hover:shadow-lg transition-all hover:border-accent/30"
-            >
-              <CardHeader className="pb-4">
-                <div className="flex items-start gap-4">
-                  {/* LARGER Avatar */}
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-muted to-muted/60 flex items-center justify-center shrink-0 border-2 border-border">
-                    <span className="text-lg font-bold text-accent">
+                  {/* Placeholder with initials */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-8xl font-bold text-blue-500/30">
                       {member.name
                         .split(" ")
                         .map((n) => n[0])
@@ -231,98 +225,82 @@ export default function TeamSection() {
                     </span>
                   </div>
 
-                  <div className="flex-grow min-w-0">
-                    <h3 className="text-lg font-bold text-primary mb-1 leading-tight">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-semibold text-accent mb-2">
-                      {member.role}
-                    </p>
+                  {/* Ocean Wave Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/40 to-transparent" />
 
-                    {/* Certifications */}
-                    {member.certifications && (
-                      <div className="flex flex-wrap gap-1">
-                        {member.certifications.map((cert, i) => (
-                          <Badge
-                            key={i}
-                            variant="secondary"
-                            className="text-[10px] px-1.5 py-0.5 bg-success/5 border-success/10"
-                          >
-                            {cert}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
+                  {/* Number Badge - Maritime Blue */}
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-card/95 backdrop-blur-sm px-3 py-1.5 border-2 border-blue-500/30">
+                      <span className="font-mono text-sm font-bold text-blue-600">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </CardHeader>
 
-              <CardContent className="space-y-3">
-                {/* Description - More prominent */}
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {member.description}
-                </p>
-
-                {/* Contact Info */}
-                {(member.email || member.phone) && (
-                  <div className="flex flex-col gap-2 pt-3 border-t text-xs">
-                    {member.email && (
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
-                      >
-                        <Mail className="h-3.5 w-3.5 shrink-0" />
-                        <span className="truncate">{member.email}</span>
-                      </a>
-                    )}
-                    {member.phone && (
-                      <a
-                        href={`tel:+${member.phone.replace(/\s/g, "")}`}
-                        className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
-                      >
-                        <Phone className="h-3.5 w-3.5 shrink-0" />
-                        <span>+{member.phone}</span>
-                      </a>
-                    )}
+                {/* Content Area */}
+                <div className="flex-1 p-6 flex flex-col">
+                  {/* Name & Role - Ocean Colors */}
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold text-primary mb-2 leading-tight group-hover:text-blue-600 transition-colors">
+                      {member.name}
+                    </h3>
+                    <p className="text-base font-semibold text-blue-600">
+                      {member.role}
+                    </p>
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <Card className="max-w-2xl mx-auto bg-gradient-to-br from-muted/50 to-muted/30 border-accent/20">
-            <CardContent className="p-8 md:p-10">
-              <h3 className="text-2xl font-bold text-primary mb-3">
-                Potrzebujesz Ekspertyzy Surveyora?
-              </h3>
-              <p className="text-muted-foreground mb-6 text-lg">
-                Nasz zespół jest dostępny 24/7 w całym regionie Bałtyku
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground"
-                >
-                  <a href="/contact">
-                    <Mail className="mr-2 h-5 w-5" />
-                    Skontaktuj się z Zespołem
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-accent/30 hover:bg-accent/5"
-                >
-                  <a href="/about">Dowiedz się Więcej o Nas</a>
-                </Button>
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    {member.description}
+                  </p>
+
+                  {/* Certifications - Ocean Theme */}
+                  {member.certifications && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {member.certifications.map((cert, i) => (
+                        <div
+                          key={i}
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-blue-50 border border-blue-200 text-[10px] font-mono text-blue-700"
+                        >
+                          <Award className="h-3 w-3" />
+                          {cert}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Contact Info - Maritime Hover */}
+                  {(member.email || member.phone) && (
+                    <div className="space-y-2 pt-4 border-t border-border">
+                      {member.email && (
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="flex items-center gap-2 text-xs text-muted-foreground hover:text-blue-600 transition-colors group/link"
+                        >
+                          <Mail className="h-3.5 w-3.5" />
+                          <span className="group-hover/link:underline truncate">
+                            {member.email}
+                          </span>
+                        </a>
+                      )}
+                      {member.phone && (
+                        <a
+                          href={`tel:+${member.phone.replace(/\s/g, "")}`}
+                          className="flex items-center gap-2 text-xs text-muted-foreground hover:text-blue-600 transition-colors group/link"
+                        >
+                          <Phone className="h-3.5 w-3.5" />
+                          <span className="group-hover/link:underline">
+                            +{member.phone}
+                          </span>
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            </CardContent>
-          </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

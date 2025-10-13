@@ -9,18 +9,19 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 type NavItem = { href: string; label: string };
 
+// TRANSLATED: Navigation items updated to English.
 const NAV: NavItem[] = [
-  { href: "/services", label: "Usługi" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/about", label: "O Nas" },
-  { href: "/certifications", label: "Certyfikacje" },
-  { href: "/contact", label: "Kontakt" },
+  { href: "/services", label: "Services" }, // [cite: 18]
+  { href: "/case-studies", label: "Case Studies" }, // [cite: 27]
+  { href: "/about", label: "About Us" }, // [cite: 32]
+  { href: "/certifications", label: "Certifications" }, // [cite: 29]
+  { href: "/contact", label: "Contact" }, // [cite: 46]
 ];
 
-// TODO: Replace with actual emergency number
 const EMERGENCY_TEL = "+48 XXX XXX XXX";
 
 export function Header() {
@@ -28,7 +29,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Subtle height reduction on scroll for premium feel
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -36,22 +36,21 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on navigation
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
     <>
-      {/* Emergency Banner - using destructive color */}
-      <div className="bg-destructive text-destructive-foreground">
+      {/* Emergency Banner */}
+      <div className="bg-destructive text-white">
         <div className="mx-auto max-w-screen-2xl px-4 py-2">
           <div className="flex items-center justify-center gap-2 text-sm md:text-[15px]">
             <AlarmClock aria-hidden className="h-4 w-4 shrink-0" />
+            {/* TRANSLATED: Banner text updated. */}
             <span className="font-medium tracking-tight">
-              PILNA EKSPERTYZA? Hotline 24/7:
+              URGENT SURVEY? 24/7 Hotline:
             </span>
-            {/* FIX 1: Corrected the anchor tag below */}
             <a
               href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}
               className="inline-flex items-center underline-offset-2 hover:underline focus-visible:underline"
@@ -82,11 +81,17 @@ export function Header() {
             <Link
               href="/"
               className="group flex items-center gap-3"
-              aria-label="JG-Marine — Strona Główna"
+              // TRANSLATED: Aria-label updated for accessibility.
+              aria-label="JG-Marine — Home Page"
             >
-              {/* Logo with accent color on hover */}
-              <span className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-muted transition group-hover:bg-accent/10 group-hover:border-accent/30">
-                <Anchor className="h-5 w-5 text-foreground group-hover:text-accent transition-colors" />
+              <span className="grid place-items-center">
+                <Image
+                  width={32}
+                  height={32}
+                  alt="logo"
+                  src={"logo.svg"}
+                  className="text-foreground group-hover:text-accent transition-colors"
+                />
               </span>
               <div className="leading-tight">
                 <div className="text-lg font-semibold tracking-tight text-foreground">
@@ -120,16 +125,15 @@ export function Header() {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-2">
-              {/* Primary CTA - using accent color */}
               <Button
                 asChild
                 size="sm"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
-                <Link href="/contact">Zamów Ekspertyzę</Link>
+                {/* TRANSLATED: CTA updated. */}
+                <Link href="/contact">Request Survey</Link>
               </Button>
 
-              {/* Emergency CTA - using destructive variant */}
               <Button
                 variant="destructive"
                 size="sm"
@@ -138,7 +142,8 @@ export function Header() {
               >
                 <a href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}>
                   <Phone className="mr-2 h-4 w-4" />
-                  Pilne 24/7
+                  {/* TRANSLATED: CTA updated. */}
+                  Urgent 24/7
                 </a>
               </Button>
             </div>
@@ -146,14 +151,16 @@ export function Header() {
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" aria-label="Otwórz menu">
+                {/* TRANSLATED: Aria-label updated. */}
+                <Button variant="ghost" size="icon" aria-label="Open menu">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
                 className="w-[92vw] sm:w-[420px] p-0"
-                aria-label="Nawigacja mobilna"
+                // TRANSLATED: Aria-label updated.
+                aria-label="Mobile navigation"
               >
                 <div className="flex items-center justify-between px-4 py-4">
                   <div className="flex items-center gap-2">
@@ -166,7 +173,8 @@ export function Header() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsOpen(false)}
-                    aria-label="Zamknij menu"
+                    // TRANSLATED: Aria-label updated.
+                    aria-label="Close menu"
                   >
                     <X className="h-5 w-5" />
                   </Button>
@@ -178,15 +186,18 @@ export function Header() {
                     variant="destructive"
                     className="w-full"
                     asChild
-                    aria-label="Zadzwoń na hotline"
+                    // TRANSLATED: Aria-label updated.
+                    aria-label="Call the emergency hotline"
                   >
                     <a href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}>
                       <Phone className="mr-2 h-4 w-4" />
-                      Pilne 24/7: {EMERGENCY_TEL}
+                      {/* TRANSLATED: CTA updated. */}
+                      Urgent 24/7: {EMERGENCY_TEL}
                     </a>
                   </Button>
+                  {/* TRANSLATED & CORRECTED: Text aligned with strategy document. */}
                   <p className="mt-2 text-xs text-muted-foreground">
-                    Gwarancja reakcji: ≤ 4 godziny
+                    Response commitment: Surveyor assigned in &lt;2 hours.
                   </p>
                 </div>
                 <Separator />
@@ -211,13 +222,13 @@ export function Header() {
                 </nav>
                 <Separator />
 
-                {/* FIX 2: Restored the missing code block below */}
                 <div className="flex flex-col gap-2 px-4 py-4">
                   <Button
                     asChild
                     className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                   >
-                    <Link href="/contact">Zamów Ekspertyzę</Link>
+                    {/* TRANSLATED: CTA updated. */}
+                    <Link href="/contact">Request Survey</Link>
                   </Button>
                 </div>
 

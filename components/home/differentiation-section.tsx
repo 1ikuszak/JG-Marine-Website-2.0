@@ -12,60 +12,61 @@ interface Advantage {
   details: string;
 }
 
+// Translated and aligned with the strategy document
 const advantages: Advantage[] = [
   {
     icon: Clock,
-    title: "24h Reakcja na Bałtyku",
-    description: "Najszybsza mobilizacja w regionie",
+    title: "24h Baltic Response",
+    description: "The fastest mobilization in the region",
     details:
-      "Podczas gdy globalne sieci potrzebują 5-7 dni na mobilizację, my jesteśmy na miejscu w ciągu 24 godzin. Lokalna obecność w kluczowych portach Bałtyku eliminuje opóźnienia.",
+      "While global networks take 5-7 days to mobilize, we are on-site within 24 hours. Our local presence in key Baltic ports eliminates costly delays.",
   },
   {
     icon: Anchor,
-    title: "Dziedzictwo 3 Pokoleń",
-    description: "Tradycja kapitanów żeglugi wielkiej",
+    title: "3-Generation Heritage",
+    description: "A tradition of Master Mariners",
     details:
-      "64 lata nieprzerwanych operacji. Wiedza przekazywana przez trzy pokolenia Master Mariners - głębia ekspertyzy, której korporacje nie mogą odtworzyć.",
+      "64 years of continuous operation. Knowledge passed down through three generations of Master Mariners provides a depth of expertise corporations cannot replicate.",
   },
   {
     icon: Shield,
-    title: "Niezależność Gwarantowana",
-    description: "Zero konfliktów interesów",
+    title: "Guaranteed Independence",
+    description: "Zero conflicts of interest",
     details:
-      "Niezależna, rodzinna struktura właścicielska. Nie jesteśmy powiązani z ubezpieczycielami czy armatorami. Tylko Twoje interesy są priorytetem.",
+      "Our independent, family-owned structure means we are not tied to insurers or shipowners. Your interests are our only priority, ensuring unbiased reports.",
   },
 ];
 
 const comparisonPoints = {
   them: [
-    "Reakcja: 5-7 dni",
-    "Korporacyjna struktura",
-    "Brak lokalnej wiedzy",
-    "Standardowe podejście",
+    "Response time: 5-7 days",
+    "Corporate structure",
+    "Lack of local knowledge",
+    "Standardized approach",
   ],
   us: [
-    "Reakcja: <24h na Bałtyku",
-    "64 lata dziedzictwa rodzinnego",
-    "Ekspertyza regionalna",
-    "Indywidualne podejście",
+    "Response time: <24h in Baltic",
+    "64 years of family heritage",
+    "Deep regional expertise",
+    "Tailored, individual approach",
   ],
 };
 
-export default function DifferentiationSection() {
+export default function DifferentiationSectionV1() {
   return (
-    <section className="py-16 md:py-24 bg-muted/30 border-y">
+    <section className="py-16 md:py-24 bg-background border-y">
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tight mb-4">
-            Dlaczego Firmy Wybierają JG Marine Zamiast Globalnych Sieci?
+            Why Companies Choose JG Marine Over Global Networks
           </h2>
           <p className="text-lg text-muted-foreground">
-            Trzy kluczowe przewagi, których konkurencja nie może zaoferować.
+            Three key advantages our competition cannot offer.
           </p>
         </div>
 
-        {/* --- Part 1: New Elegant Grid --- */}
+        {/* --- Part 1: Elegant Grid --- */}
         <div className="grid lg:grid-cols-3 gap-8 mb-20">
           {advantages.map((advantage, index) => (
             <motion.div
@@ -75,16 +76,16 @@ export default function DifferentiationSection() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-border">
+              <Card className="h-full bg-card shadow-sm hover:shadow-xl transition-all duration-300 border hover:border-border/80 group">
                 <CardContent className="p-8">
-                  <advantage.icon className="h-7 w-7 text-accent mb-5" />
+                  <advantage.icon className="h-7 w-7 text-accent mb-5 transition-colors group-hover:text-accent/80" />
                   <h3 className="text-xl font-bold text-primary mb-2">
                     {advantage.title}
                   </h3>
                   <p className="font-semibold text-muted-foreground mb-4">
                     {advantage.description}
                   </p>
-                  <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                  <p className="text-sm text-foreground/70 leading-relaxed">
                     {advantage.details}
                   </p>
                 </CardContent>
@@ -93,7 +94,7 @@ export default function DifferentiationSection() {
           ))}
         </div>
 
-        {/* --- Part 2: The Scorecard (Remains the same) --- */}
+        {/* --- Part 2: The Scorecard --- */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,9 +104,9 @@ export default function DifferentiationSection() {
           <Card className="shadow-xl border-2 border-border/50 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Them Column */}
-              <div className="p-8">
+              <div className="p-8 bg-card">
                 <h3 className="text-2xl font-bold text-muted-foreground mb-6">
-                  Globalne Sieci
+                  Global Networks
                 </h3>
                 <ul className="space-y-4">
                   {comparisonPoints.them.map((point, i) => (
@@ -125,7 +126,7 @@ export default function DifferentiationSection() {
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                   JG Marine
                   <span className="text-xs bg-white text-accent px-2 py-0.5 rounded-full font-bold">
-                    PRZEWAGA
+                    ADVANTAGE
                   </span>
                 </h3>
                 <ul className="space-y-4">

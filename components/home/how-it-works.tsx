@@ -2,133 +2,183 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Phone,
-  UserCheck,
-  FileCheck,
-  ShieldCheck,
-  Clock,
-  CheckCircle,
-} from "lucide-react";
+import { Phone, UserCheck, FileCheck, ArrowRight } from "lucide-react";
 
 interface ProcessStep {
+  number: string;
   title: string;
   description: string;
   icon: React.ElementType;
+  timing: string;
 }
 
 const steps: ProcessStep[] = [
   {
-    title: "Krok 1: Twoje Zgłoszenie Alarmowe",
+    number: "01",
+    title: "Emergency Request",
     description:
-      "Nasz telefon alarmowy jest dostępny 24/7. Po otrzymaniu zgłoszenia, w ciągu maksymalnie 2 godzin przypisujemy certyfikowanego surveyora DNV, który jest gotowy do natychmiastowej mobilizacji.",
+      "Call our 24/7 hotline. DNV-certified surveyor assigned within 2 hours.",
     icon: Phone,
+    timing: "Within 2h",
   },
   {
-    title: "Krok 2: Ekspert na Miejscu Zdarzenia",
+    number: "02",
+    title: "Expert On-Site",
     description:
-      "W regionie Morza Bałtyckiego, nasz ekspert dotrze na miejsce w mniej niż 24 godziny. Rozpocznie szczegółową inspekcję, dokumentację fotograficzną HD i analizę, aby precyzyjnie ocenić sytuację.",
+      "Surveyor arrives in under 24 hours. Detailed inspection begins immediately.",
     icon: UserCheck,
+    timing: "Under 24h",
   },
   {
-    title: "Krok 3: Raport i Wsparcie w Zakończeniu Sprawy",
+    number: "03",
+    title: "Report Delivered",
     description:
-      "W ciągu 24-48h otrzymasz raport wstępny. Pełna, zgodna z wymogami P&I Clubs i Flag State dokumentacja końcowa, zostanie dostarczona w 5-7 dni, zapewniając Ci mocne wsparcie w negocjacjach.",
+      "Preliminary report in 24-48h. Final documentation in 5-7 days.",
     icon: FileCheck,
+    timing: "24h-7d",
   },
 ];
 
-export default function HowItWorks() {
+const guarantees = [
+  "24/7/365 Emergency Response",
+  "DNV Certified Surveyors",
+  "100% Independent & Objective",
+  "P&I Club Accepted Reports",
+];
+
+export default function HowItWorksPremium() {
   return (
-    <section className="py-16 md:py-24 bg-background border-y">
+    <section className="relative py-24 md:py-32 bg-white">
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
-        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left Column: The Client's Journey */}
-          <div className="lg:col-span-2">
-            {/* Section Header */}
-            <div className="max-w-xl mb-12">
-              <p className="font-semibold text-accent mb-2">
-                PROCES, KTÓREMU MOŻESZ ZAUFAĆ
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tight">
-                Twoja Droga do Rozwiązania Problemu
-              </h2>
-              <p className="text-lg text-muted-foreground mt-4">
-                Od pierwszego telefonu po finalny raport, nasz proces jest
-                zaprojektowany dla Twojej wygody i maksymalnego bezpieczeństwa.
-              </p>
-            </div>
-
-            {/* Vertical Timeline */}
-            <div className="relative">
-              {/* The connecting line */}
-              <div className="absolute left-6 top-0 h-full w-0.5 bg-border -z-10" />
-
-              <div className="space-y-12">
-                {steps.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-6"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.5, delay: index * 0.2 }}
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-lg font-bold ring-8 ring-background">
-                      {index + 1}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-primary mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Sticky Reassurance Panel */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24">
-              <Card className="shadow-lg border-2 border-accent/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <ShieldCheck className="h-6 w-6 text-accent" />
-                    <span>Twoja Gwarancja Spokoju</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Na każdym etapie procesu zapewniamy:
-                  </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3 text-sm">
-                      <Clock className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                      <strong>Dostępność 24/7/365</strong>
-                    </li>
-                    <li className="flex items-start gap-3 text-sm">
-                      <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                      <strong>Certyfikowanych Ekspertów DNV</strong>
-                    </li>
-                    <li className="flex items-start gap-3 text-sm">
-                      <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                      <strong>100% Niezależność i Obiektywizm</strong>
-                    </li>
-                  </ul>
-                  <Button size="lg" className="w-full mt-6">
-                    Zgłoś Awarię lub Zadaj Pytanie
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+        {/* Premium Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase mb-6"
+          >
+            OUR PROCESS
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold text-primary mb-6 leading-tight tracking-tight"
+          >
+            From Incident to Resolution
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+          >
+            A clear path designed for speed and precision.
+          </motion.p>
         </div>
+
+        {/* Process Steps - Horizontal Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="group relative"
+            >
+              {/* Arrow Connector (not on last item) */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-12 -right-3 z-10">
+                  <ArrowRight className="h-6 w-6 text-accent/40" />
+                </div>
+              )}
+
+              {/* Card */}
+              <div className="relative h-full bg-background border-2 border-border hover:border-accent transition-all duration-300 p-8">
+                {/* Large Number - Monospace */}
+                <div className="mb-6">
+                  <span className="font-mono text-6xl font-bold text-accent/20 leading-none">
+                    {step.number}
+                  </span>
+                </div>
+
+                {/* Icon */}
+                <div className="mb-6">
+                  <step.icon className="h-8 w-8 text-accent" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-primary mb-3 leading-tight">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                  {step.description}
+                </p>
+
+                {/* Timing Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20">
+                  <span className="font-mono text-xs font-bold text-accent tracking-wider">
+                    {step.timing}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Guarantee Bar - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="border-t-2 border-b-2 border-border py-12"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {guarantees.map((guarantee, index) => (
+              <div key={index} className="space-y-2">
+                <div className="h-1 w-12 bg-accent mx-auto mb-4" />
+                <p className="text-sm font-semibold text-primary leading-tight">
+                  {guarantee}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-16"
+        >
+          <p className="text-lg text-muted-foreground mb-6">
+            Need immediate assistance?
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" asChild className="min-w-[200px]">
+              <a href="/contact">Report an Incident</a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="min-w-[200px]"
+            >
+              <a href="tel:+48XXXXXXXXX">Call 24/7 Hotline</a>
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

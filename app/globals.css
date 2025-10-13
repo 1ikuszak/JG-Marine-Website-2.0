@@ -43,7 +43,15 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* ============================================
+     CUSTOM ANIMATIONS - Add your animations here
+     ============================================ */
+
+/* Infinite Scroll Animation for Logo Scroller */
+
 :root {
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+
   --radius: 0.625rem;
 
   /* Background - Subtle blue tint */
@@ -127,6 +135,19 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ============================================
+   KEYFRAMES - Define animation keyframes here
+   ============================================ */
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 @layer base {
