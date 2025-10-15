@@ -55,7 +55,7 @@ export default function EmergencyBanner() {
 
           {/* Call Button */}
           <div className="flex items-center gap-4">
-            <Button asChild variant="secondary" size="sm" className="font-bold">
+            <Button asChild variant="outline" size="sm" className="font-bold">
               <a href={`tel:${emergencyPhone}`}>Zadzwoń: {emergencyPhone}</a>
             </Button>
 

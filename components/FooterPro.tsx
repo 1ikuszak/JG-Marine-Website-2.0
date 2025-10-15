@@ -78,7 +78,7 @@ export function SiteFooter() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <Button asChild variant="secondary">
+            <Button asChild variant="accent">
               <Link href="/contact">
                 Request Survey <ArrowRight className="ml-1 h-4 w-4" />
               </Link>

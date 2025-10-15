@@ -136,7 +136,7 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
                 </a>
               </Button>
 
-              <Button size="lg" variant="secondary" asChild>
+              <Button size="lg" variant="outline" asChild>
                 <a
                   href={`tel:${emergencyTel.replace(/\s/g, "")}`}
                   // TRANSLATED: Aria-label updated.
