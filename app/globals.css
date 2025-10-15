@@ -50,57 +50,41 @@
 /* Infinite Scroll Animation for Logo Scroller */
 
 :root {
-  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
-
-  --radius: 0.625rem;
-
-  /* Background - Subtle blue tint */
-  --background: oklch(0.985 0.002 240); /* Very light blue-white */
-  --foreground: oklch(0.06 0.015 240); /* #04080F */
-
-  /* Card - Pure white on tinted background */
-  --card: oklch(1 0 0); /* Pure white cards */
-  --card-foreground: oklch(0.06 0.015 240);
-
-  /* Popover */
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.06 0.015 240);
-
-  /* Primary - Rich Black */
-  --primary: oklch(0.06 0.015 240); /* #04080F */
-  --primary-foreground: oklch(1 0 0);
-
-  /* Secondary - Light Green */
-  --secondary: oklch(0.92 0.15 150); /* #94FBAB */
-  --secondary-foreground: oklch(0.06 0.015 240);
-
-  /* Muted - Columbia Blue (lighter) */
-  --muted: oklch(0.9 0.015 240); /* Very light Columbia */
+  --radius: 0.65rem;
+  /* Light Theme - Optimized for your main usage */
+  --background: oklch(0.9984 0.0041 121.56);
+  --foreground: oklch(0.1327 0.0184 255.28);
+  --card: oklch(0.9984 0.0041 121.56);
+  --card-foreground: oklch(0.1327 0.0184 255.28);
+  --popover: oklch(0.9984 0.0041 121.56);
+  --popover-foreground: oklch(0.1327 0.0184 255.28);
+  --primary: oklch(0.5856 0.1094 256.98);
+  --primary-foreground: oklch(0.9984 0.0041 121.56);
+  --secondary: oklch(0.8543 0.0417 249.44);
+  --secondary-foreground: oklch(0.1327 0.0184 255.28);
+  --muted: oklch(0.8543 0.0417 249.44);
   --muted-foreground: oklch(0.55 0.065 250);
-
-  /* Accent - Glaucous Blue */
-  --accent: oklch(0.4887 0.0805 242.84); /* #507DBC */
-  --accent-foreground: oklch(1 0 0);
-
-  /* Destructive */
-  --destructive: oklch(0.5385 0.220991 29.2339);
-  --destructive-foreground: oklch(1 0 0);
-
-  /* Success - Light Green (prominent) */
-  --success: oklch(0.92 0.15 150);
-  --success-foreground: oklch(0.06 0.015 240);
-
-  /* Border & Input - Platinum */
-  --border: oklch(0.89 0.008 240);
-  --input: oklch(0.89 0.008 240);
-  --ring: oklch(0.92 0.15 150); /* Green focus ring */
-
-  /* Charts */
-  --chart-1: oklch(0.92 0.15 150); /* Light green */
-  --chart-2: oklch(0.55 0.065 250); /* Glaucous */
-  --chart-3: oklch(0.78 0.045 240); /* Powder blue */
-  --chart-4: oklch(0.84 0.025 240); /* Columbia blue */
-  --chart-5: oklch(0.06 0.015 240); /* Rich black */
+  --accent: oklch(0.656 0.2327 34.42);
+  --accent-foreground: oklch(0.9984 0.0041 121.56);
+  --destructive: oklch(0.5126 0.2081 26.89);
+  --destructive-foreground: oklch(0.9984 0.0041 121.56);
+  --border: oklch(0.8543 0.0417 249.44);
+  --input: oklch(0.8543 0.0417 249.44);
+  --ring: oklch(0.5856 0.1094 256.98);
+  --chart-1: oklch(0.5856 0.1094 256.98);
+  --chart-2: oklch(0.656 0.2327 34.42);
+  --chart-3: oklch(0.5126 0.2081 26.89);
+  --chart-4: oklch(0.8543 0.0417 249.44);
+  --chart-5: oklch(0.1327 0.0184 255.28);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.9984 0.0041 121.56);
+  --sidebar-foreground: oklch(0.1327 0.0184 255.28);
+  --sidebar-primary: oklch(0.5856 0.1094 256.98);
+  --sidebar-primary-foreground: oklch(0.9984 0.0041 121.56);
+  --sidebar-accent: oklch(0.8543 0.0417 249.44);
+  --sidebar-accent-foreground: oklch(0.1327 0.0184 255.28);
+  --sidebar-border: oklch(0.8543 0.0417 249.44);
+  --sidebar-ring: oklch(0.5856 0.1094 256.98);
 }
 
 .dark {

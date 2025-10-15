@@ -74,12 +74,12 @@ export default function PremiumCtaSection() {
   }
 
   return (
-    <section className="relative py-24 md:py-32 bg-[#04080F] overflow-hidden">
-      {/* Premium Ocean Gradients */}
+    <section className="relative py-24 md:py-32 bg-foreground overflow-hidden">
+      {/* Premium Gradients - Theme Colors */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-blue-600/15 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-cyan-500/10 rounded-full blur-[140px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-teal-500/8 rounded-full blur-[160px]" />
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-accent/10 rounded-full blur-[140px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-primary/8 rounded-full blur-[160px]" />
       </div>
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
@@ -95,7 +95,7 @@ export default function PremiumCtaSection() {
           >
             {/* Headline - Emotional Hook */}
             <div>
-              <p className="font-mono text-xs font-bold text-cyan-400 tracking-[0.3em] uppercase mb-6">
+              <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase mb-6">
                 PROTECT YOUR ASSETS
               </p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
@@ -107,18 +107,21 @@ export default function PremiumCtaSection() {
               </p>
             </div>
 
-            {/* Emergency CTA - Red Theme */}
-            <div className="relative bg-gradient-to-br from-red-500/10 via-red-600/5 to-transparent border-2 border-red-500/30 p-8">
+            {/* Emergency CTA - Accent Theme */}
+            <div className="relative bg-gradient-to-br from-accent/10 via-accent/5 to-transparent border-2 border-accent/30 p-8 rounded-lg">
               <div className="absolute top-4 right-4">
-                <div className="flex items-center gap-2 px-3 py-1 bg-red-500/20 border border-red-500/50">
-                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                  <span className="text-xs font-mono font-bold text-red-400 tracking-wider">
+                <div className="flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/50 rounded">
+                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                  <span className="text-xs font-mono font-bold text-accent tracking-wider">
                     LIVE 24/7
                   </span>
                 </div>
               </div>
 
-              <AlertCircle className="h-12 w-12 text-red-400 mb-4" />
+              <AlertCircle
+                className="h-12 w-12 text-accent mb-4"
+                strokeWidth={1.5}
+              />
               <h3 className="text-2xl font-bold text-white mb-3">
                 Emergency Response
               </h3>
@@ -131,7 +134,7 @@ export default function PremiumCtaSection() {
                 <a href="tel:+48XXXXXXXXX" className="block">
                   <Button
                     size="lg"
-                    className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold text-lg h-14 group"
+                    className="w-full bg-accent hover:bg-accent/90 text-white font-semibold text-lg h-14 group"
                   >
                     <Phone className="h-5 w-5 mr-3 group-hover:animate-pulse" />
                     Call Emergency Hotline
@@ -147,18 +150,21 @@ export default function PremiumCtaSection() {
 
             {/* Trust Signals - Compact */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 border border-white/10 p-4">
+              <div className="bg-white/5 border border-white/10 p-4 rounded">
                 <div className="flex items-center gap-2 mb-2">
-                  <Shield className="h-5 w-5 text-cyan-400" />
+                  <Shield className="h-5 w-5 text-primary" strokeWidth={1.5} />
                   <span className="text-sm font-bold text-white">
                     DNV Certified
                   </span>
                 </div>
                 <p className="text-xs text-white/60">International standards</p>
               </div>
-              <div className="bg-white/5 border border-white/10 p-4">
+              <div className="bg-white/5 border border-white/10 p-4 rounded">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="h-5 w-5 text-cyan-400" />
+                  <CheckCircle
+                    className="h-5 w-5 text-primary"
+                    strokeWidth={1.5}
+                  />
                   <span className="text-sm font-bold text-white">64 Years</span>
                 </div>
                 <p className="text-xs text-white/60">Maritime heritage</p>
@@ -170,9 +176,9 @@ export default function PremiumCtaSection() {
               <p className="text-xs font-mono text-white/50 tracking-wider uppercase">
                 Other Contacts
               </p>
-              <a
+              <a // <--- FIX: Added missing <a> tag here
                 href="mailto:office@jg-marine.com"
-                className="flex items-center gap-3 text-white/70 hover:text-cyan-400 transition-colors group"
+                className="flex items-center gap-3 text-white/70 hover:text-primary transition-colors group"
               >
                 <Mail className="h-4 w-4" />
                 <span className="text-sm group-hover:underline">
@@ -191,7 +197,7 @@ export default function PremiumCtaSection() {
             className="lg:col-span-7"
           >
             {/* Form Container */}
-            <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md border-2 border-white/20 p-8 md:p-10">
+            <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md border-2 border-white/20 rounded-lg p-8 md:p-10">
               {/* Form Header */}
               <div className="mb-8">
                 <h3 className="text-3xl font-bold text-white mb-3">
@@ -222,29 +228,31 @@ export default function PremiumCtaSection() {
                             {
                               value: "emergency",
                               label: "Emergency",
-                              color: "red",
                               desc: "<24h",
+                              isEmergency: true,
                             },
                             {
                               value: "urgent",
                               label: "Urgent",
-                              color: "orange",
                               desc: "<72h",
+                              isEmergency: false,
                             },
                             {
                               value: "standard",
                               label: "Standard",
-                              color: "blue",
                               desc: "Planning",
+                              isEmergency: false,
                             },
                           ].map((option) => (
                             <label
                               key={option.value}
                               className={`
-                                relative cursor-pointer border-2 p-4 transition-all duration-300
+                                relative cursor-pointer border-2 p-4 rounded transition-all duration-300
                                 ${
                                   field.value === option.value
-                                    ? `border-${option.color}-500 bg-${option.color}-500/10`
+                                    ? option.isEmergency
+                                      ? "border-accent bg-accent/10"
+                                      : "border-primary bg-primary/10"
                                     : "border-white/20 bg-white/5 hover:border-white/40"
                                 }
                               `}
@@ -270,14 +278,19 @@ export default function PremiumCtaSection() {
                               {field.value === option.value && (
                                 <div className="absolute top-2 right-2">
                                   <CheckCircle
-                                    className={`h-4 w-4 text-${option.color}-400`}
+                                    className={
+                                      option.isEmergency
+                                        ? "text-accent"
+                                        : "text-primary"
+                                    }
+                                    size={16}
                                   />
                                 </div>
                               )}
                             </label>
                           ))}
                         </div>
-                        <FormMessage />
+                        <FormMessage className="text-accent" />
                       </FormItem>
                     )}
                   />
@@ -296,10 +309,10 @@ export default function PremiumCtaSection() {
                             <Input
                               placeholder="John Smith"
                               {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-cyan-400 h-12"
+                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-accent" />
                         </FormItem>
                       )}
                     />
@@ -316,10 +329,10 @@ export default function PremiumCtaSection() {
                               type="email"
                               placeholder="john@company.com"
                               {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-cyan-400 h-12"
+                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-accent" />
                         </FormItem>
                       )}
                     />
@@ -339,10 +352,10 @@ export default function PremiumCtaSection() {
                             <Input
                               placeholder="Baltic Shipping Ltd"
                               {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-cyan-400 h-12"
+                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-accent" />
                         </FormItem>
                       )}
                     />
@@ -359,10 +372,10 @@ export default function PremiumCtaSection() {
                               type="tel"
                               placeholder="+48 XXX XXX XXX"
                               {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-cyan-400 h-12"
+                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-accent" />
                         </FormItem>
                       )}
                     />
@@ -382,7 +395,7 @@ export default function PremiumCtaSection() {
                           defaultValue={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger className="bg-white/10 border-white/30 text-white h-12">
+                            <SelectTrigger className="bg-white/10 border-white/30 text-white focus:border-primary focus:ring-primary h-12 rounded">
                               <SelectValue placeholder="Select the service you need..." />
                             </SelectTrigger>
                           </FormControl>
@@ -405,7 +418,7 @@ export default function PremiumCtaSection() {
                             <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
-                        <FormMessage />
+                        <FormMessage className="text-accent" />
                       </FormItem>
                     )}
                   />
@@ -422,11 +435,11 @@ export default function PremiumCtaSection() {
                         <FormControl>
                           <Textarea
                             placeholder="Please provide details about your vessel, cargo, or situation..."
-                            className="min-h-[120px] bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-cyan-400"
+                            className="min-h-[120px] bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary rounded"
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-accent" />
                       </FormItem>
                     )}
                   />
@@ -435,7 +448,7 @@ export default function PremiumCtaSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold text-lg h-14"
+                    className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg h-14 rounded"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -473,19 +486,19 @@ export default function PremiumCtaSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <p className="text-2xl font-bold text-cyan-400 mb-1">24/7</p>
+              <p className="text-2xl font-bold text-primary mb-1">24/7</p>
               <p className="text-xs text-white/60">Emergency Response</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-cyan-400 mb-1">2h</p>
+              <p className="text-2xl font-bold text-primary mb-1">2h</p>
               <p className="text-xs text-white/60">Response Time</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-cyan-400 mb-1">120+</p>
+              <p className="text-2xl font-bold text-primary mb-1">120+</p>
               <p className="text-xs text-white/60">Annual Projects</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-cyan-400 mb-1">64</p>
+              <p className="text-2xl font-bold text-primary mb-1">64</p>
               <p className="text-xs text-white/60">Years Experience</p>
             </div>
           </div>

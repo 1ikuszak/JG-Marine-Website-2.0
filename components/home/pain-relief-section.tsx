@@ -10,7 +10,6 @@ interface Advantage {
   solution: string;
 }
 
-// SIMPLIFIED: Just title and solution - removed all problem text
 const advantages: Advantage[] = [
   {
     title: "24-Hour Baltic Response",
@@ -42,7 +41,7 @@ const advantages: Advantage[] = [
 
 export default function AdvantagesSectionClean() {
   return (
-    <section className="relative py-20 md:py-28 bg-white">
+    <section className="relative py-20 md:py-28 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Simple Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -50,7 +49,7 @@ export default function AdvantagesSectionClean() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-primary mb-4 tracking-tight"
+            className="text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight"
           >
             The Advantage You Get
           </motion.h2>
@@ -80,11 +79,14 @@ export default function AdvantagesSectionClean() {
               <div className="h-full p-8 bg-card border border-border hover:border-accent hover:shadow-lg transition-all duration-300">
                 {/* Icon */}
                 <div className="mb-6">
-                  <advantage.icon className="h-10 w-10 text-accent" />
+                  <advantage.icon
+                    className="h-10 w-10 text-accent"
+                    strokeWidth={1.5}
+                  />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-primary mb-4 leading-tight">
+                <h3 className="text-xl font-bold text-card-foreground mb-4 leading-tight">
                   {advantage.title}
                 </h3>
 

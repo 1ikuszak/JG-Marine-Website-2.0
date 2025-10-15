@@ -27,7 +27,7 @@ function AnimatedCounter({ to }: { to: number }) {
   return <span ref={ref}>0</span>;
 }
 
-// Premium Logo Scroller with Framer Motion Animation
+// Premium Logo Scroller with Dark Background (Luxury Brand Style)
 const LogoScroller = ({
   logos,
   title,
@@ -37,14 +37,15 @@ const LogoScroller = ({
 }) => {
   return (
     <div className="py-12">
-      <h3 className="text-center text-xs font-bold text-muted-foreground tracking-[0.2em] uppercase mb-12">
+      <h3 className="text-center text-xs font-medium text-foreground/50 tracking-[0.3em] uppercase mb-12">
         {title}
       </h3>
 
-      {/* Rich black background container for logos */}
-      <div className="relative bg-[#04080F] rounded-2xl py-12 overflow-hidden">
-        {/* Subtle gradient overlays for fade effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#04080F] via-transparent to-[#04080F] z-10 pointer-events-none" />
+      {/* Premium dark background container - like Apple, Rolex */}
+      <div className="relative bg-foreground rounded-lg py-16 overflow-hidden">
+        {/* Gradient fade edges for seamless scroll */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-foreground to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-foreground to-transparent z-10 pointer-events-none" />
 
         {/* Infinite scroll container */}
         <div className="relative flex overflow-hidden">
@@ -58,20 +59,20 @@ const LogoScroller = ({
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 25,
+                duration: 30,
                 ease: "linear",
               },
             }}
           >
             {logos.map((logo, index) => (
               <li key={index} className="flex-shrink-0 mx-12">
-                <div className="relative w-32 h-auto flex items-center justify-center">
+                <div className="relative w-32 h-24 flex items-center justify-center group">
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     width={128}
                     height={64}
-                    className="object-contain filter brightness-0 invert opacity-60 hover:opacity-100 transition-all duration-500"
+                    className="object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-500"
                   />
                 </div>
               </li>
@@ -88,7 +89,7 @@ const LogoScroller = ({
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 25,
+                duration: 30,
                 ease: "linear",
               },
             }}
@@ -96,13 +97,13 @@ const LogoScroller = ({
           >
             {logos.map((logo, index) => (
               <li key={`duplicate-${index}`} className="flex-shrink-0 mx-12">
-                <div className="relative w-32 h-16 flex items-center justify-center">
+                <div className="relative w-32 h-16 flex items-center justify-center group">
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     width={128}
                     height={64}
-                    className="object-contain filter brightness-0 invert opacity-60 hover:opacity-100 transition-all duration-500"
+                    className="object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-500"
                   />
                 </div>
               </li>
@@ -157,7 +158,7 @@ export default function TrustAndDifferentiationSection() {
   return (
     <section className="relative py-20 md:py-32 bg-background overflow-hidden">
       {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-background to-background pointer-events-none" />
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Section Header with refined typography */}
@@ -168,10 +169,10 @@ export default function TrustAndDifferentiationSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tight mb-6 leading-[1.1]">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-6 leading-[1.1]">
               Why Companies Choose JG Marine Over Global Networks
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <p className="text-lg md:text-xl text-foreground/60 leading-relaxed">
               Our results are built on three key advantages that our competition
               cannot offer.
             </p>
@@ -206,19 +207,19 @@ export default function TrustAndDifferentiationSection() {
               className="text-center group"
             >
               <div className="relative inline-block mb-4">
-                {/* Gradient background circle */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full blur-2xl scale-150 group-hover:scale-175 transition-transform duration-500" />
+                {/* Subtle gradient background circle */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-xl scale-150 group-hover:scale-[1.6] transition-transform duration-500" />
 
-                <p className="relative text-6xl md:text-7xl font-bold text-accent tracking-tight">
+                <p className="relative text-6xl md:text-7xl font-bold text-primary tracking-tight">
                   <AnimatedCounter to={metric.value} />
                   {index === 0 && "+"}
                 </p>
               </div>
 
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-2">
+              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
                 {metric.label}
               </h3>
-              <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
+              <p className="text-sm text-foreground/60 max-w-xs mx-auto leading-relaxed">
                 {metric.desc}
               </p>
             </motion.div>
@@ -235,26 +236,29 @@ export default function TrustAndDifferentiationSection() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
-              <Card className="relative h-full bg-card shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-border/50 hover:border-accent/30 group overflow-hidden">
+              <Card className="relative h-full bg-card hover:bg-secondary/10 transition-all duration-500 border border-border hover:border-primary/30 group overflow-hidden">
                 {/* Subtle gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <CardContent className="relative p-8 md:p-10">
-                  {/* Icon with gradient background */}
+                  {/* Icon with subtle background */}
                   <div className="relative inline-flex mb-6">
-                    <div className="absolute inset-0 bg-accent/10 rounded-xl blur-xl group-hover:bg-accent/20 transition-colors duration-500" />
-                    <div className="relative bg-accent/10 p-3 rounded-xl group-hover:bg-accent/15 transition-colors duration-500">
-                      <advantage.icon className="h-7 w-7 text-accent" />
+                    <div className="absolute inset-0 bg-primary/5 rounded-lg blur-lg group-hover:bg-primary/10 transition-colors duration-500" />
+                    <div className="relative bg-primary/10 p-3 rounded-lg group-hover:bg-primary/15 transition-colors duration-500">
+                      <advantage.icon
+                        className="h-7 w-7 text-primary"
+                        strokeWidth={1.5}
+                      />
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-primary mb-3 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {advantage.title}
                   </h3>
-                  <p className="font-semibold text-foreground/80 mb-4 text-base">
+                  <p className="font-medium text-foreground/70 mb-4 text-base">
                     {advantage.description}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-foreground/60 leading-relaxed">
                     {advantage.details}
                   </p>
                 </CardContent>
@@ -263,7 +267,7 @@ export default function TrustAndDifferentiationSection() {
           ))}
         </div>
 
-        {/* Part 3: Premium Logo Scroller with Framer Motion */}
+        {/* Part 3: Premium Logo Scroller with Dark Background */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +288,7 @@ export default function TrustAndDifferentiationSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm text-foreground/50 max-w-2xl mx-auto">
             Every survey performed to DNV standards. Reports accepted by P&I
             Clubs worldwide.
           </p>
