@@ -15,7 +15,7 @@ export default function AboutPage() {
           {/* LEFT: Heritage Image - Golden Ratio Width (61.8%) */}
           <div className="relative h-1/2 lg:h-full order-2 lg:order-1">
             <Image
-              src="/about/---_0345.jpg"
+              src="/about/A.jpg"
               alt="JG Marine heritage - Three generations of Master Mariners"
               fill
               className="object-cover grayscale"
@@ -235,7 +235,7 @@ export default function AboutPage() {
           >
             {/* TODO: Replace with 1968 founding era photo - vessel, maritime scene, or founders */}
             <Image
-              src="/about/00170024.jpg"
+              src="/about/B.jpg"
               alt="JG Marine founding in 1968 - Baltic maritime heritage"
               fill
               className="object-cover grayscale"
@@ -262,7 +262,7 @@ export default function AboutPage() {
         >
           {/* TODO: Powerful wide shot - Master Mariner at sea, on bridge, or with vessel */}
           <Image
-            src="/about/00030009.jpg"
+            src="/about/C.jpg"
             alt="First generation Master Mariners - JG Marine founders"
             fill
             className="object-cover grayscale"
@@ -304,7 +304,7 @@ export default function AboutPage() {
               {/* TODO: Image 1 - Maritime operations, surveying work */}
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/about/00010012.jpg"
+                  src="/about/D.jpg"
                   alt="JG Marine maritime survey operations"
                   fill
                   className="object-cover grayscale"
@@ -316,7 +316,7 @@ export default function AboutPage() {
               {/* TODO: Image 2 - Team at work, vessel inspection */}
               <div className="relative aspect-[16/9] lg:ml-12">
                 <Image
-                  src="/about/00010020.jpg"
+                  src="/about/E.jpg"
                   alt="Survey team conducting vessel inspection"
                   fill
                   className="object-cover grayscale"
@@ -476,7 +476,7 @@ export default function AboutPage() {
         <div className="relative h-[60vh] lg:h-[80vh] flex items-center justify-center">
           {/* TODO: Powerful closing image - vessel, sea, or team portrait */}
           <Image
-            src="/about/closing-heritage-image.jpg"
+            src="/about/F.jpg"
             alt="JG Marine - Three generations of maritime excellence"
             fill
             className="object-cover grayscale"
@@ -518,7 +518,7 @@ export default function AboutPage() {
         >
           {/* TODO: Replace with authentic founding generation photo */}
           <Image
-            src="/about/---_0372.jpg"
+            src="/about/G.jpg"
             alt="JG Marine founding generation, Gdańsk 1968"
             fill
             className="object-cover grayscale"
@@ -579,7 +579,7 @@ export default function AboutPage() {
               <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/about/00030003.jpg"
+                    src="/about/H.jpg"
                     alt="1968 - The Beginning"
                     fill
                     className="object-cover grayscale"
@@ -636,7 +636,7 @@ export default function AboutPage() {
               <div className="lg:col-span-6">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/about/---_0363.jpg"
+                    src="/about/J.jpg"
                     alt="1985 - Expansion Era"
                     fill
                     className="object-cover grayscale"
@@ -751,7 +751,7 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/about/---_0374.jpg"
+            src="/about/I.jpg"
             alt="Independence guaranteed"
             fill
             className="object-cover grayscale opacity-20"
