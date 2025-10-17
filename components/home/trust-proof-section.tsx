@@ -162,7 +162,21 @@ export default function TrustAndDifferentiationSection() {
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Section Header with refined typography */}
+
         <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-3 mb-6"
+          >
+            {/* Wave decorations */}
+            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
+            <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
+              THE JG MARINE ADVANTAGE
+            </p>
+            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

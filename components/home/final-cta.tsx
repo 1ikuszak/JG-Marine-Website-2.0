@@ -32,15 +32,15 @@ import {
   Loader2,
   AlertCircle,
 } from "lucide-react";
+import { toast } from "sonner";
 
-// Form Schema
+// Form Schema - NO urgency field
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name required"),
   email: z.string().email("Valid email required"),
   company: z.string().optional(),
   phone: z.string().min(8, "Phone required"),
   service: z.string().min(1, "Please select a service"),
-  urgency: z.enum(["emergency", "urgent", "standard"]),
   message: z
     .string()
     .min(10, "Please describe your situation (min 10 characters)"),
@@ -50,7 +50,7 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function PremiumCtaSection() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [urgencyLevel, setUrgencyLevel] = React.useState<string>("standard");
+  const [submitSuccess, setSubmitSuccess] = React.useState(false);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -60,17 +60,48 @@ export default function PremiumCtaSection() {
       company: "",
       phone: "",
       service: "",
-      urgency: "standard",
       message: "",
     },
   });
 
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
-    // TODO: Implement actual form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    console.log(data);
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      // Success!
+      setSubmitSuccess(true);
+      toast.success("Request Sent Successfully!", {
+        description: "We'll respond within 24-48 hours.",
+      });
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        form.reset();
+        setSubmitSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Failed to Send Request", {
+        description: "Please try again or call our emergency hotline.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -93,11 +124,25 @@ export default function PremiumCtaSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 space-y-8"
           >
-            {/* Headline - Emotional Hook */}
+            {/* FIX 1: The opening <motion.div> tag was missing its closing '>'.
+              The comment below was moved from inside the tag to outside.
+            */}
+
+            {/* Header */}
             <div>
-              <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase mb-6">
-                PROTECT YOUR ASSETS
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-3 mb-6"
+              >
+                {/* Wave decorations */}
+                <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-accent" />
+                <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
+                  PROTECT YOUR ASSETS
+                </p>
+                <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-accent" />
+              </motion.div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
                 Don't Let Delays Cost You Millions
               </h2>
@@ -176,13 +221,16 @@ export default function PremiumCtaSection() {
               <p className="text-xs font-mono text-white/50 tracking-wider uppercase">
                 Other Contacts
               </p>
-              <a // <--- FIX: Added missing <a> tag here
-                href="mailto:office@jg-marine.com"
+
+              {/* FIX 2: Added the opening <a> tag here.
+               */}
+              <a
+                href="mailto:info@jg-marine.com"
                 className="flex items-center gap-3 text-white/70 hover:text-primary transition-colors group"
               >
                 <Mail className="h-4 w-4" />
                 <span className="text-sm group-hover:underline">
-                  office@jg-marine.com
+                  info@jg-marine.com
                 </span>
               </a>
             </div>
@@ -214,87 +262,6 @@ export default function PremiumCtaSection() {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-6"
                 >
-                  {/* Urgency Selector - Visual */}
-                  <FormField
-                    control={form.control}
-                    name="urgency"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-white font-semibold mb-3 block">
-                          How urgent is this?
-                        </FormLabel>
-                        <div className="grid grid-cols-3 gap-3">
-                          {[
-                            {
-                              value: "emergency",
-                              label: "Emergency",
-                              desc: "<24h",
-                              isEmergency: true,
-                            },
-                            {
-                              value: "urgent",
-                              label: "Urgent",
-                              desc: "<72h",
-                              isEmergency: false,
-                            },
-                            {
-                              value: "standard",
-                              label: "Standard",
-                              desc: "Planning",
-                              isEmergency: false,
-                            },
-                          ].map((option) => (
-                            <label
-                              key={option.value}
-                              className={`
-                                relative cursor-pointer border-2 p-4 rounded transition-all duration-300
-                                ${
-                                  field.value === option.value
-                                    ? option.isEmergency
-                                      ? "border-accent bg-accent/10"
-                                      : "border-primary bg-primary/10"
-                                    : "border-white/20 bg-white/5 hover:border-white/40"
-                                }
-                              `}
-                            >
-                              <input
-                                type="radio"
-                                {...field}
-                                value={option.value}
-                                onChange={(e) => {
-                                  field.onChange(e);
-                                  setUrgencyLevel(e.target.value);
-                                }}
-                                className="sr-only"
-                              />
-                              <div className="text-center">
-                                <p className="text-sm font-bold text-white mb-1">
-                                  {option.label}
-                                </p>
-                                <p className="text-xs text-white/60">
-                                  {option.desc}
-                                </p>
-                              </div>
-                              {field.value === option.value && (
-                                <div className="absolute top-2 right-2">
-                                  <CheckCircle
-                                    className={
-                                      option.isEmergency
-                                        ? "text-accent"
-                                        : "text-primary"
-                                    }
-                                    size={16}
-                                  />
-                                </div>
-                              )}
-                            </label>
-                          ))}
-                        </div>
-                        <FormMessage className="text-accent" />
-                      </FormItem>
-                    )}
-                  />
-
                   {/* Name & Email Row */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <FormField
@@ -449,12 +416,17 @@ export default function PremiumCtaSection() {
                     type="submit"
                     size="lg"
                     className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg h-14 rounded"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || submitSuccess}
                   >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                         Sending Request...
+                      </>
+                    ) : submitSuccess ? (
+                      <>
+                        <CheckCircle className="mr-2 h-5 w-5" />
+                        Request Sent!
                       </>
                     ) : (
                       <>
@@ -463,6 +435,22 @@ export default function PremiumCtaSection() {
                       </>
                     )}
                   </Button>
+
+                  {/* Success Message */}
+                  {submitSuccess && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-green-500/10 border border-green-500/30 rounded text-center"
+                    >
+                      <p className="text-green-400 font-semibold">
+                        ✓ Your request has been received!
+                      </p>
+                      <p className="text-white/70 text-sm mt-1">
+                        Check your email for confirmation.
+                      </p>
+                    </motion.div>
+                  )}
 
                   {/* Trust Message */}
                   <p className="text-xs text-center text-white/50">

@@ -26,11 +26,11 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 lg:to-background/40" />
 
             {/* Subtle photo credit/caption */}
-            <div className="absolute bottom-8 left-8 right-8">
+            {/* <div className="absolute bottom-8 left-8 right-8">
               <p className="text-xs text-white/60 tracking-[0.3em] uppercase">
                 Circa 1968 — Baltic Sea
               </p>
-            </div>
+            </div> */}
           </div>
 
           {/* RIGHT: Text Content - Golden Ratio Width (38.2%) */}
@@ -71,10 +71,10 @@ export default function AboutPage() {
                   }}
                   className="mb-8"
                 >
-                  <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight text-primary leading-[0.95] mb-3">
+                  <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95] mb-3">
                     Three
                   </span>
-                  <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight text-primary leading-[0.95]">
+                  <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95]">
                     Generations
                   </span>
                 </motion.h1>
@@ -108,9 +108,6 @@ export default function AboutPage() {
                   <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
                     64 years of Baltic maritime heritage combined with modern
                     DNV certifications and international standards
-                  </p>
-                  <p className="text-xs md:text-sm text-foreground/50 tracking-[0.2em] uppercase font-light">
-                    Baltic Maritime Excellence
                   </p>
                 </motion.div>
 
@@ -178,7 +175,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-primary leading-[1.1] mb-8">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-[1.1] mb-8">
                   Born from the sea,
                   <br />
                   built on trust
@@ -197,7 +194,7 @@ export default function AboutPage() {
                   </p>
                   <p>
                     They understood that the industry needed more than
-                    inspectors—it needed allies who spoke the language of the
+                    inspectors it needed allies who spoke the language of the
                     sea, who had felt the weight of command, who knew that every
                     survey report could mean the difference between a resolved
                     claim and a devastating loss.
@@ -211,13 +208,13 @@ export default function AboutPage() {
                       <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
                         Founded
                       </p>
-                      <p className="text-3xl font-light text-primary">1968</p>
+                      <p className="text-3xl text-primary">1968</p>
                     </div>
                     <div>
                       <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
                         Location
                       </p>
-                      <p className="text-3xl font-light text-primary">Gdańsk</p>
+                      <p className="text-3xl text-primary">Gdańsk</p>
                     </div>
                   </div>
                 </div>
@@ -244,11 +241,11 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
             {/* Image Caption */}
-            <div className="absolute bottom-8 left-8 right-8">
+            {/* <div className="absolute bottom-8 left-8 right-8">
               <p className="text-xs text-white/70 tracking-[0.3em] uppercase">
                 Gdańsk Port, 1968
               </p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 
@@ -391,7 +388,7 @@ export default function AboutPage() {
                 className="space-y-6"
               >
                 <div className="w-12 h-[1px] bg-secondary" />
-                <h3 className="text-3xl md:text-4xl font-light text-primary leading-tight">
+                <h3 className="text-3xl md:text-4xl text-primary leading-tight">
                   Today's Standard,
                   <br />
                   Tomorrow's Legacy
@@ -407,7 +404,7 @@ export default function AboutPage() {
                   <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
                     Annual Projects
                   </p>
-                  <p className="text-5xl font-light text-primary">120+</p>
+                  <p className="text-5xl font-medium text-primary">120+</p>
                   <p className="text-sm text-foreground/60 mt-2">
                     Surveys & Inspections
                   </p>
@@ -451,18 +448,19 @@ export default function AboutPage() {
             {/* Image 3 - Bottom Left */}
             <div className="relative aspect-square">
               <Image
-                src="/about/1.jpg"
+                src="/about/group.jpg"
                 alt="Offshore wind project supervision"
                 fill
                 className="object-cover"
                 quality={100}
+                style={{ objectPosition: "66% 50%" }}
               />
             </div>
 
             {/* Image 4 - Bottom Right */}
             <div className="relative aspect-square">
               <Image
-                src="/about/2.jpg"
+                src="/about/sunset.jpeg"
                 alt="Heavy lift survey operations"
                 fill
                 className="object-cover"
@@ -474,17 +472,21 @@ export default function AboutPage() {
 
         {/* Closing Statement - Full Width with Image */}
         <div className="relative h-[60vh] lg:h-[80vh] flex items-center justify-center">
-          {/* TODO: Powerful closing image - vessel, sea, or team portrait */}
+          {/* Image with darker overlay */}
           <Image
             src="/about/F.jpg"
             alt="JG Marine - Three generations of maritime excellence"
             fill
-            className="object-cover grayscale"
+            className="object-cover"
             quality={100}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background/80" />
+          {/* Stronger dark gradient for contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/75 to-foreground/85" />
 
-          {/* Centered Quote/Statement */}
+          {/* Vignette effect for extra depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+
+          {/* Text with premium treatment */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -493,15 +495,12 @@ export default function AboutPage() {
             className="relative z-10 text-center px-6 max-w-4xl"
           >
             <div className="space-y-8">
-              <div className="h-px w-16 bg-secondary mx-auto" />
-              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-primary leading-relaxed">
-                "Three generations of maritime expertise,
+              <div className="h-px w-16 bg-primary mx-auto" />
+              <blockquote className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-[1.4] tracking-tight">
+                Three generations of maritime expertise,
                 <br className="hidden md:block" />
-                one unwavering mission"
+                one unwavering mission
               </blockquote>
-              <p className="text-sm tracking-[0.3em] text-foreground/60 uppercase">
-                Est. 1968 — Gdańsk, Poland
-              </p>
             </div>
           </motion.div>
         </div>
@@ -558,7 +557,7 @@ export default function AboutPage() {
                 Evolution
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-primary leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
               Six Decades
               <br />
               of Maritime Heritage
@@ -595,7 +594,7 @@ export default function AboutPage() {
                     1968
                   </p>
                   <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font-light text-primary">
+                  <h3 className="text-2xl md:text-3xl font text-primary">
                     The Beginning
                   </h3>
                 </div>
@@ -622,7 +621,7 @@ export default function AboutPage() {
                     1985
                   </p>
                   <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font-light text-primary">
+                  <h3 className="text-2xl md:text-3xl text-primary">
                     Expansion
                   </h3>
                 </div>
@@ -674,7 +673,7 @@ export default function AboutPage() {
                     2004
                   </p>
                   <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font-light text-primary">
+                  <h3 className="text-2xl md:text-3xl font text-primary">
                     European Integration
                   </h3>
                 </div>
@@ -700,7 +699,7 @@ export default function AboutPage() {
                     2024
                   </p>
                   <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font-light text-primary">
+                  <h3 className="text-2xl md:text-3xl font text-primary">
                     Three Generations
                   </h3>
                 </div>
@@ -775,7 +774,7 @@ export default function AboutPage() {
                   className="h-12 w-12 text-primary/60"
                   strokeWidth={1.5}
                 />
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-primary leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
                   Independence guaranteed
                   <br />
                   by family ownership
@@ -801,7 +800,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="border border-border/50 bg-card p-6">
-                <h3 className="text-lg font-medium text-primary mb-2">
+                <h3 className="text-lg text-primary mb-2">
                   Objective Reporting
                 </h3>
                 <p className="text-sm text-foreground/60 leading-relaxed">
@@ -830,7 +829,7 @@ export default function AboutPage() {
                 What We Do
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-primary">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary">
               Comprehensive Maritime
               <br />
               Survey Services
@@ -898,7 +897,7 @@ export default function AboutPage() {
               className="space-y-8"
             >
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-primary leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
                   Local Presence,
                   <br />
                   International Reach
@@ -997,8 +996,8 @@ export default function AboutPage() {
             className="text-center mb-16 lg:mb-20"
           >
             <div className="h-px w-16 bg-accent/30 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-primary mb-6">
-              Certified Excellence
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary mb-6">
+              We are Certified
             </h2>
             <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto">
               Decades of trust earned, not just certifications purchased
@@ -1077,7 +1076,7 @@ export default function AboutPage() {
           >
             {/* Headline */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-primary leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
                 Ready to work together?
               </h2>
               <div className="h-px w-16 bg-secondary mx-auto" />

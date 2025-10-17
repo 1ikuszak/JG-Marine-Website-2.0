@@ -3,6 +3,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, Award } from "lucide-react";
+import Image from "next/image";
 
 interface TeamMember {
   name: string;
@@ -27,7 +28,7 @@ const teamMembers: TeamMember[] = [
       "Court Expert",
       "Multi-Discipline Auditor",
     ],
-    imageUrl: "/team/jacek.jpg",
+    imageUrl: "/team/jacek.png",
   },
   {
     name: "Mariusz Łapiński",
@@ -37,57 +38,7 @@ const teamMembers: TeamMember[] = [
     email: "mariusz@jg-marine.com",
     phone: "+48 501 505 797",
     certifications: ["ISO/ISM/ISPS Lead Auditor", "ADR/RID Advisor"],
-    imageUrl: "/team/mariusz.jpg",
-  },
-  {
-    name: "Joanna Adamczak",
-    role: "Operations Manager",
-    description:
-      "MA in Economics. Manages international survey coordination and client relations across 11+ countries.",
-    email: "joanna@jg-marine.com",
-    phone: "48 604 643 200",
-    certifications: ["MA Economics", "Operations Management"],
-    imageUrl: "/team/joanna.jpg",
-  },
-  {
-    name: "Dominik Kowalewski",
-    role: "Senior Cargo Surveyor",
-    description:
-      "Experienced surveyor in general commodities and containerized cargo. Conducts loading supervision and draft surveys.",
-    email: "dominik@jg-marine.com",
-    phone: "48 509 682 700",
-    certifications: ["Cargo Surveyor", "Agricultural Certified"],
-    imageUrl: "/team/dominik.jpg",
-  },
-  {
-    name: "Tomasz Gołaszewski",
-    role: "Captain & Marine Surveyor",
-    description:
-      "M.Sc. in Engineering with ASOMWS certification. Experienced maritime surveyor conducting vessel inspections and cargo surveys throughout Poland and Europe.",
-    email: "tom@jg-marine.com",
-    phone: "48 880 385 884",
-    certifications: ["Captain", "M.Sc. Engineering", "ASOMWS Certified"],
-    imageUrl: "/team/tomasz.jpg",
-  },
-  {
-    name: "Bartłomiej Bączek",
-    role: "Cargo Surveyor",
-    description:
-      "Maritime Academy graduate specializing in general commodities and container cargo surveys. AutoCAD proficient.",
-    email: "baczek@jg-marine.com",
-    phone: "48 509 682 701",
-    certifications: ["Maritime Academy", "AutoCAD"],
-    imageUrl: "/team/bartlomiej-b.jpg",
-  },
-  {
-    name: "Bartłomiej Jaworski",
-    role: "Warsaw Office Manager",
-    description:
-      "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
-    email: "bartek@jg-marine.com",
-    phone: "48 602 752 200",
-    certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
-    imageUrl: "/team/bartlomiej-j.jpg",
+    imageUrl: "/team/mariusz.png",
   },
   {
     name: "Beata Fredrich",
@@ -97,7 +48,56 @@ const teamMembers: TeamMember[] = [
     email: "beata@jg-marine.com",
     phone: "48-662-225-899",
     certifications: ["MA Environmental Protection", "Operations Management"],
-    imageUrl: "/team/beata.jpg",
+    imageUrl: "/team/beata.png",
+  },
+  {
+    name: "Joanna Adamczak",
+    role: "Operations Manager",
+    description:
+      "MA in Economics. Manages international survey coordination and client relations across 11+ countries.",
+    email: "joanna@jg-marine.com",
+    phone: "48 604 643 200",
+    certifications: ["MA Economics", "Operations Management"],
+    imageUrl: "/team/joanna.png",
+  },
+  {
+    name: "Dominik Kowalewski",
+    role: "Senior Cargo Surveyor",
+    description:
+      "Experienced surveyor in general commodities and containerized cargo. Conducts loading supervision and draft surveys.",
+    email: "dominik@jg-marine.com",
+    phone: "48 509 682 700",
+    certifications: ["Cargo Surveyor", "Agricultural Certified"],
+    imageUrl: "/team/dominik.png",
+  },
+  {
+    name: "Tomasz Gołaszewski",
+    role: "Captain & Marine Surveyor",
+    description:
+      "M.Sc. in Engineering with ASOMWS certification. Experienced maritime surveyor conducting vessel inspections and cargo surveys throughout Poland and Europe.",
+    email: "tom@jg-marine.com",
+    phone: "48 880 385 884",
+    certifications: ["Captain", "M.Sc. Engineering", "ASOMWS Certified"],
+    imageUrl: "/team/tomasz.png",
+  },
+  {
+    name: "Bartłomiej Bączek",
+    role: "Cargo Surveyor",
+    description:
+      "Maritime Academy graduate specializing in general commodities and container cargo surveys. AutoCAD proficient.",
+    email: "baczek@jg-marine.com",
+    phone: "48 509 682 701",
+    certifications: ["Maritime Academy", "AutoCAD"],
+    imageUrl: "/team/bartlomiej.png",
+  },
+  {
+    name: "Bartłomiej Jaworski",
+    role: "Warsaw Office Manager",
+    description:
+      "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
+    email: "bartek@jg-marine.com",
+    phone: "48 602 752 200",
+    certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
   },
 ];
 
@@ -197,33 +197,29 @@ export default function TeamSectionWhiteUniform() {
                 {/* BIG Profile Image Area */}
                 <div className="relative h-80 overflow-hidden bg-gradient-to-br from-primary/15 via-secondary/10 to-primary/5">
                   {/* TODO: Replace with actual image */}
-                  {/* <img  
-                    src={member.imageUrl}  
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  /> */}
-
-                  {/* Placeholder with initials */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-8xl font-bold text-primary/20">
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
-                  </div>
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/40 to-transparent" />
-
-                  {/* Number Badge */}
-                  <div className="absolute top-4 left-4">
-                    <div className="bg-card/95 backdrop-blur-sm px-3 py-1.5 border-2 border-primary/30">
-                      <span className="font-mono text-sm font-bold text-primary">
-                        {String(index + 1).padStart(2, "0")}
+                  {member.imageUrl ? (
+                    // IF IT EXISTS (true), render the Image
+                    <Image
+                      src={member.imageUrl}
+                      alt={member.name}
+                      fill
+                      className="w-full h-full  object-cover group-hover:scale-105 transition-transform duration-700"
+                      style={{ objectPosition: "50% 16%" }}
+                    />
+                  ) : (
+                    // OTHERWISE (false), render the placeholder with initials
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-8xl font-bold text-primary/20">
+                        {member.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
                       </span>
                     </div>
-                  </div>
+                  )}
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/20 via-card/10 to-transparent" />
                 </div>
 
                 {/* Content Area */}

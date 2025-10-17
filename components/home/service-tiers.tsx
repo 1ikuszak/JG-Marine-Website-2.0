@@ -98,14 +98,21 @@ export default function ServiceTiersUltimate() {
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Premium Header */}
         <div className="mb-20 text-center md:text-left">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase mb-6"
-          >
-            COMPLETE MARITIME SOLUTIONS
-          </motion.p>
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-6"
+            >
+              {/* Wave decorations */}
+              <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-accent" />
+              <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
+                COMPLETE MARITIME SOLUTIONS
+              </p>
+              <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-accent" />
+            </motion.div>
+          </div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

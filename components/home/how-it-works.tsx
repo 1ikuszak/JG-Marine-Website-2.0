@@ -64,11 +64,20 @@ export default function HowItWorksPremium() {
               transition={{ duration: 0.8 }}
               className="mb-16"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-px w-12 bg-primary/30" />
-                <span className="text-xs tracking-[0.3em] text-foreground/50 uppercase font-light">
-                  Our Process
-                </span>
+              <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3 mb-6"
+                >
+                  {/* Wave decorations */}
+                  <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
+                  <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
+                    OUR PROCESS
+                  </p>
+                  <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
+                </motion.div>
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] mb-6">

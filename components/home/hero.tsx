@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { AlarmClock, ShieldCheck, ArrowRight } from "lucide-react";
+import { AlarmClock, ShieldCheck, ArrowRight, ChevronDown } from "lucide-react";
 
 type Slide = { src: string; alt: string };
 
@@ -47,10 +47,17 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
     };
   }, [slides.length, reduced]);
 
+  // Smooth scroll handler
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section
       className="relative isolate overflow-hidden border-b"
-      // TRANSLATED: Aria-label updated for clarity.
       aria-label="Hero section showcasing JG Marine's independent survey services"
     >
       {/* Background Slideshow */}
@@ -92,7 +99,6 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
           <div className="absolute inset-0">
             <Image
               src={slides[0]?.src || "/hero/inspection-bridge.jpg"}
-              // TRANSLATED: Alt text updated to English.
               alt={slides[0]?.alt || "JG-Marine surveyor during an inspection"}
               fill
               priority
@@ -106,15 +112,15 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
 
       {/* Hero Content */}
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
-        <div className="min-h-[68vh] md:min-h-[78vh] flex items-center py-12 md:py-20">
+        <div className="min-h-[68vh] md:min-h-[100vh] flex items-center py-12 md:py-20">
           <div className="max-w-2xl text-white">
-            {/* Main Headline (Already in English) */}
+            {/* Main Headline */}
             <h1 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
               Protect Maritime Assets from Million-Euro Losses with Independent
               DNV Marine Surveys
             </h1>
 
-            {/* Subheadline (Already in English) */}
+            {/* Subheadline */}
             <p className="mt-3 text-base md:text-lg text-white/90 max-w-prose">
               Independent hull, cargo, and offshore project surveys for
               insurers, shipowners, and logistics operators across the Baltic
@@ -129,22 +135,8 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
                 asChild
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
-                {/* TRANSLATED: Href and aria-label updated. */}
                 <a href="/contact" aria-label="Request an urgent survey">
-                  {/* TRANSLATED: Button text updated. */}
                   Request Survey
-                </a>
-              </Button>
-
-              <Button size="lg" variant="outline" asChild>
-                <a
-                  href={`tel:${emergencyTel.replace(/\s/g, "")}`}
-                  // TRANSLATED: Aria-label updated.
-                  aria-label="Call the emergency hotline"
-                >
-                  <AlarmClock className="mr-2 h-4 w-4" />
-                  {/* TRANSLATED: Button text updated. */}
-                  24/7 Response
                 </a>
               </Button>
             </div>
@@ -155,21 +147,18 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
                 <div className="grid grid-cols-3 gap-6 text-center md:text-left">
                   <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-semibold">120+</span>
-                    {/* TRANSLATED: Label updated to English. */}
                     <span className="text-xs font-light text-white/70 tracking-wider">
                       PROJECTS
                     </span>
                   </div>
                   <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-semibold">64</span>
-                    {/* TRANSLATED: Label updated to English. */}
                     <span className="text-xs font-light text-white/70 tracking-wider">
                       YEARS
                     </span>
                   </div>
                   <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-semibold">11+</span>
-                    {/* TRANSLATED: Label updated to English. */}
                     <span className="text-xs font-light text-white/70 tracking-wider">
                       COUNTRIES
                     </span>
@@ -178,7 +167,6 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
 
                 {/* Certifications */}
                 <div className="flex flex-col items-center md:items-start">
-                  {/* TRANSLATED: Label updated to English. */}
                   <span className="text-xs font-light text-white/70 tracking-wider mb-2">
                     CERTIFICATIONS
                   </span>
@@ -215,7 +203,6 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
                       <button
                         key={i}
                         onClick={() => setIndex(i)}
-                        // TRANSLATED: Aria-label updated.
                         aria-label={`Go to slide ${i + 1}`}
                         className={`h-1.5 rounded-full transition-all ${
                           i === index
@@ -232,15 +219,62 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
         </div>
       </div>
 
+      {/* Premium Scroll Indicator */}
+      <motion.button
+        onClick={handleScrollDown}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+        aria-label="Scroll down to explore"
+      >
+        {/* Text Label */}
+        <span className="text-xs text-white/60 tracking-[0.2em] uppercase font-medium group-hover:text-white/80 transition-colors">
+          Scroll
+        </span>
+
+        {/* Animated Icon Container */}
+        <div className="relative w-6 h-10 rounded-full border-2 border-white/30 group-hover:border-white/50 transition-colors">
+          {/* Animated Scroll Indicator */}
+          <motion.div
+            animate={{
+              y: [0, 12, 0],
+              opacity: [1, 0.3, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-2 left-1/2 -translate-x-1/2 w-1 h-2 bg-white/70 rounded-full"
+          />
+        </div>
+
+        {/* Chevron Animation */}
+        <motion.div
+          animate={{
+            y: [0, 4, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <ChevronDown
+            className="h-4 w-4 text-white/50 group-hover:text-white/70 transition-colors"
+            strokeWidth={1.5}
+          />
+        </motion.div>
+      </motion.button>
+
       {/* Reassurance Ribbon (Desktop Only) */}
       <div className="hidden md:block absolute bottom-6 right-4 md:right-6">
         <div className="container mx-auto max-w-screen-xl px-0">
           <div className="inline-flex items-center gap-3 rounded-full bg-success/10 px-4 py-2 text-white backdrop-blur border border-success/20">
             <ShieldCheck className="h-4 w-4 text-success" />
-            {/* TRANSLATED: Text updated. */}
             <span className="text-sm">Guaranteed report independence</span>
             <span className="text-white/40">•</span>
-            {/* TRANSLATED AND CORRECTED: Aligned with strategy doc. */}
             <span className="text-sm">Surveyor assigned in &lt;2 hours</span>
             <ArrowRight className="h-4 w-4 opacity-80" />
           </div>

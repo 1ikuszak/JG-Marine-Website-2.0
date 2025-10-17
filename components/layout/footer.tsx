@@ -153,10 +153,10 @@ export function Footer() {
               <li>
                 <div className="text-xs text-muted-foreground mb-1">Email</div>
                 <a
-                  href="mailto:office@jg-marine.com"
+                  href="mailto:info@jg-marine.com"
                   className="hover:text-primary transition-colors"
                 >
-                  office@jg-marine.com
+                  info@jg-marine.com
                 </a>
               </li>
               <li>
