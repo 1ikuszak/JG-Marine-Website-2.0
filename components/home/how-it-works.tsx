@@ -189,7 +189,6 @@ export default function HowItWorksPremium() {
             alt="JG Marine surveyor conducting professional vessel inspection"
             fill
             className="object-cover"
-            quality={100}
             priority
           />
 
