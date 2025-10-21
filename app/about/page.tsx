@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Shield, Globe, Anchor, Clock } from "lucide-react";
+import HeritageCtaSection from "@/components/about/heritage-cta";
 
 export default function AboutPage() {
   return (
@@ -1046,55 +1047,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA - Clean & Direct */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 border-t border-border/30">
-        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-center space-y-8 sm:space-y-12"
-          >
-            {/* Headline */}
-            <div className="space-y-4 sm:space-y-6">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
-                Ready to work together?
-              </h2>
-              <div className="h-px w-12 sm:w-16 bg-secondary mx-auto" />
-              <p className="text-sm sm:text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed px-4">
-                Emergency response or routine surveying—our team of Master
-                Mariners is ready
-              </p>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button
-                size="lg"
-                className="px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base"
-                asChild
-              >
-                <a href="/contact">Request Survey</a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base border-2"
-                asChild
-              >
-                <a href="tel:+48XXXXXXXXX">Emergency: +48 XXX XXX XXX</a>
-              </Button>
-            </div>
-
-            {/* Footer Note */}
-            <p className="text-[10px] sm:text-xs md:text-sm text-foreground/40 tracking-wide">
-              Response within 2 hours • Surveyor on-site &lt;24h Baltic region
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <HeritageCtaSection />
 
       <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
     </div>

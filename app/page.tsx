@@ -49,7 +49,9 @@ export default function HomePage() {
         <PainReliefSection />
 
         {/* D. Service Tiers Overview */}
-        <ServiceTiers />
+        <div id="services">
+          <ServiceTiers />
+        </div>
 
         {/* E. Trust & Proof Section */}
         <TrustProofSection />
@@ -59,7 +61,9 @@ export default function HomePage() {
 
         <OfficeLocationsSection />
 
-        <TeamSection />
+        <div id="team">
+          <TeamSection />
+        </div>
 
         {/* H. Final CTA Section */}
         <FinalCTA />

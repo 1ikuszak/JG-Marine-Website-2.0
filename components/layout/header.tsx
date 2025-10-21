@@ -11,24 +11,28 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
+import { CONTACTS } from "@/config";
+
 type NavItem = { href: string; label: string };
 
 const NAV: NavItem[] = [
-  { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case Studies" },
+  { href: "/#services", label: "Services" },
   { href: "/about", label: "About Us" },
   { href: "/certifications", label: "Certifications" },
   { href: "/contact", label: "Contact" },
 ];
 
-const EMERGENCY_TEL = "+48 XXX XXX XXX";
+const EMERGENCY_TEL = CONTACTS.main.phone;
 const BANNER_HEIGHT_PX = 36;
-const HEADER_HEIGHT_PX = 64; // Approx height for py-4 + logo
+const HEADER_HEIGHT_PX = 64;
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const pathname = usePathname();
+
+  // Check if we're on the home page
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -44,44 +48,53 @@ export function Header() {
   // Calculate opacity progression (0-200px scroll range)
   const scrollProgress = Math.min(scrollY / 200, 1);
   const bgOpacity = 0.1 + scrollProgress * 0.9; // 10% -> 100%
-  const isTransparent = scrollY < 50;
 
-  // Calculate top position: starts at 36px (emergency banner height), transitions to 0
-  const topPosition = Math.max(0, BANNER_HEIGHT_PX - scrollY); // 36px -> 0px
+  // Only transparent on home page at top
+  const isTransparent = isHomePage && scrollY < 50;
+
+  // Calculate top position: only offset for banner on home page
+  const topPosition = isHomePage ? Math.max(0, BANNER_HEIGHT_PX - scrollY) : 0;
 
   return (
     <>
-      {/* Emergency Banner - Scrolls away naturally */}
-      <div
-        className="absolute top-0 w-full z-10 bg-destructive text-white"
-        style={{ height: `${BANNER_HEIGHT_PX}px` }}
-      >
-        <div className="mx-auto max-w-screen-2xl px-4 h-full flex items-center justify-center">
-          <div className="flex items-center justify-center gap-2 text-sm md:text-[15px]">
-            <AlarmClock aria-hidden className="h-4 w-4 shrink-0" />
-            <span className="font-medium tracking-tight">
-              URGENT SURVEY? 24/7 Hotline:
-            </span>
+      {/* Emergency Banner - Only shown on home page */}
+      {isHomePage && (
+        <div
+          className="absolute top-0 w-full z-10 bg-destructive text-white"
+          style={{ height: `${BANNER_HEIGHT_PX}px` }}
+        >
+          <div className="mx-auto max-w-screen-2xl px-4 h-full flex items-center justify-center">
+            <div className="flex items-center justify-center gap-2 text-sm md:text-[15px]">
+              <AlarmClock aria-hidden className="h-4 w-4 shrink-0" />
+              <span className="font-medium tracking-tight">
+                URGENT SURVEY? 24/7 Hotline:
+              </span>
 
-            {/* FIX 1: Added missing <a> tag */}
-            <a
-              href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}
-              className="inline-flex items-center underline-offset-2 hover:underline focus-visible:underline"
-            >
-              {EMERGENCY_TEL}
-            </a>
+              {/* THIS IS THE FIXED LINE */}
+              <a
+                href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}
+                className="inline-flex items-center underline-offset-2 hover:underline focus-visible:underline"
+              >
+                {EMERGENCY_TEL}
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Main Header - Fixed with dynamic top position */}
+      {/* Main Header - Fixed with dynamic styling based on page */}
       <header
-        className="fixed z-50 w-full border-b border-white/10 transition-all duration-300"
+        className="fixed z-50 w-full border-b transition-all duration-300"
         style={{
-          top: `${topPosition}px`, // Dynamic top position
-          backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
+          top: `${topPosition}px`,
+          backgroundColor: isTransparent
+            ? `rgba(255, 255, 255, ${bgOpacity})`
+            : "rgba(255, 255, 255, 0.95)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
+          borderBottomColor: isTransparent
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(0, 0, 0, 0.1)",
         }}
         role="banner"
       >
@@ -90,8 +103,7 @@ export function Header() {
             "mx-auto max-w-screen-2xl px-4 transition-all duration-300",
             isTransparent ? "py-4" : "py-3",
           ].join(" ")}
-          // Give the inner div a predictable height for the spacer
-          style={{ height: isTransparent ? `${HEADER_HEIGHT_PX}px` : `56px` }} // 56px is approx py-3 height
+          style={{ height: isTransparent ? `${HEADER_HEIGHT_PX}px` : `56px` }}
         >
           <div className="flex items-center justify-between gap-3 h-full">
             {/* Logo / Brand */}

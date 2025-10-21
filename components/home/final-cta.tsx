@@ -33,6 +33,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { toast } from "sonner";
+import { CONTACTS, OFFICES } from "@/config";
 
 // Form Schema - NO urgency field
 const contactFormSchema = z.object({
@@ -225,12 +226,12 @@ export default function PremiumCtaSection() {
               {/* FIX 2: Added the opening <a> tag here.
                */}
               <a
-                href="mailto:info@jg-marine.com"
+                href={`mailto:${CONTACTS.main.email}`}
                 className="flex items-center gap-3 text-white/70 hover:text-primary transition-colors group"
               >
                 <Mail className="h-4 w-4" />
                 <span className="text-sm group-hover:underline">
-                  info@jg-marine.com
+                  {CONTACTS.main.email}
                 </span>
               </a>
             </div>

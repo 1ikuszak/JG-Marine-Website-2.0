@@ -6,6 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Ship, Anchor, Building2 } from "lucide-react";
 
+// <-- CHANGED: Import the OFFICES data from your config
+// (Adjust the path if your component is in a different folder)
+import { OFFICES } from "@/config";
+
 interface Office {
   name: string;
   tagline: string;
@@ -19,59 +23,32 @@ interface Office {
   mapPosition: { top: string; left: string };
 }
 
-const offices: Office[] = [
-  {
-    name: "Head Office",
-    tagline: "Sopot Maritime Hub",
-    location: "Sopot",
-    address: "81-824 ul. Armii Krajowej 116/2",
-    coverage: ["Port of Gdynia", "Port of Gdańsk", "Gulf of Gdańsk"],
-    services: [
-      "Hull & Machinery Surveys",
-      "Cargo Surveys",
-      "P&I Condition Surveys",
-      "Pre-Purchase Inspections",
-    ],
-    email: "info@jg-marine.com",
-    phone: "+48 58 760 11 20",
-    icon: Anchor,
-    mapPosition: { top: "15%", left: "78%" }, // Northeast coast - Gdańsk/Sopot
-  },
-  {
-    name: "Szczecin Branch",
-    tagline: "Western Baltic Operations",
-    location: "Szczecin",
-    address: "70-412 ul. Niepodległości 26/26",
-    coverage: ["Port of Szczecin", "Port of Świnoujście", "Oder River"],
-    services: [
-      "Marine Surveys",
-      "Cargo Inspections",
-      "Draft Surveys",
-      "On/Off Hire Surveys",
-    ],
-    email: "info@jg-marine.com",
-    phone: "+48 58 760 11 20",
-    icon: Ship,
-    mapPosition: { top: "18%", left: "22%" }, // Northwest coast - Szczecin
-  },
-  {
-    name: "Warsaw Office",
-    tagline: "Inland Coordination Center",
-    location: "Warsaw",
-    address: "03-289 ul. Szumiących Traw 6a/9",
-    coverage: ["Central Poland", "Inland Waterways", "CMR Territory"],
-    services: [
-      "Non-Marine Surveys",
-      "CMR Surveys",
-      "Inland Survey Coordination",
-      "Logistics Consulting",
-    ],
-    email: "info@jg-marine.com",
-    phone: "+48 58 760 11 20",
-    icon: Building2,
-    mapPosition: { top: "42%", left: "68%" }, // Central-east - Warsaw
-  },
-];
+// <-- CHANGED: Create a mapping from office type to the correct icon
+const officeIcons = {
+  headquarters: Anchor,
+  branch: Ship,
+  office: Building2,
+};
+
+// <-- CHANGED: We now dynamically create the 'offices' array by
+// mapping over the imported 'OFFICES' data.
+const offices: Office[] = OFFICES.map((office) => ({
+  // Data from config:
+  name: office.name,
+  tagline: office.tagline,
+  location: office.address.city,
+  address: `${office.address.postalCode} ${office.address.street}`, // Combine fields
+  coverage: office.coverage, // Use all coverage items from config
+  services: office.services, // Use all services from config
+  email: office.contact.email,
+  phone: office.contact.phone,
+  icon: officeIcons[office.type], // Assign icon based on type
+  mapPosition: office.mapPosition!, // Use the position from config
+  // We use '!' because the component requires mapPosition,
+  // and we trust our config to provide it.
+}));
+
+// <-- DELETED: The old, hard-coded 'offices' array is gone.
 
 export default function OfficeLocationsSection() {
   return (

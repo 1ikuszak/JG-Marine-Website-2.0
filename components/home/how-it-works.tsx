@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, UserCheck, FileCheck, Clock, Shield } from "lucide-react";
 import Image from "next/image";
+import { CONTACTS } from "@/config";
 
 interface ProcessStep {
   number: string;
@@ -13,6 +14,8 @@ interface ProcessStep {
   icon: React.ElementType;
   timing: string;
 }
+
+const TEL = CONTACTS.main.phone;
 
 const steps: ProcessStep[] = [
   {
@@ -158,7 +161,9 @@ export default function HowItWorksPremium() {
                   asChild
                   className="w-full sm:w-auto border-2"
                 >
-                  <a href="tel:+48XXXXXXXXX">Call 24/7 Hotline</a>
+                  <a href={`tel:${TEL.replace(/\s/g, "")}`}>
+                    Call 24/7 Hotline
+                  </a>
                 </Button>
               </div>
 

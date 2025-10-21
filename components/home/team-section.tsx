@@ -4,102 +4,26 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, Award } from "lucide-react";
 import Image from "next/image";
+import { CONTACTS } from "@/config";
 
+// <-- CHANGED: Import CONTACTS from your main config file
+// Adjust this path if your component is in a different folder
+
+// <-- FIX: Define an interface for our team member
+// This tells TypeScript the exact "shape" of the objects we expect
 interface TeamMember {
   name: string;
+  email: string;
+  phone: string;
   role: string;
   description: string;
-  email?: string;
-  phone?: string;
-  certifications?: string[];
-  imageUrl?: string;
+  certifications: readonly string[]; // 'readonly' matches 'as const'
+  imageUrl: string | undefined; // some members may not have an image
 }
 
-const teamMembers: TeamMember[] = [
-  {
-    name: "Jacek Goszczyński",
-    role: "Founder & CEO",
-    description:
-      "Seasoned Master Mariner and certified auditor across multiple maritime disciplines. Accredited expert in commercial courts.",
-    email: "jack@jg-marine.com",
-    phone: "48 602 222 477",
-    certifications: [
-      "Master Mariner",
-      "Court Expert",
-      "Multi-Discipline Auditor",
-    ],
-    imageUrl: "/team/jacek.png",
-  },
-  {
-    name: "Mariusz Łapiński",
-    role: "Lead Auditor",
-    description:
-      "ISO/ISM/ISPS Lead Auditor specializing in maritime operations and risk assessment. Fluent in English and Russian.",
-    email: "mariusz@jg-marine.com",
-    phone: "+48 501 505 797",
-    certifications: ["ISO/ISM/ISPS Lead Auditor", "ADR/RID Advisor"],
-    imageUrl: "/team/mariusz.png",
-  },
-  {
-    name: "Beata Fredrich",
-    role: "Operations Manager",
-    description:
-      "MA of Science from Gdańsk University. Coordinates office operations and administrative logistics.",
-    email: "beata@jg-marine.com",
-    phone: "48-662-225-899",
-    certifications: ["MA Environmental Protection", "Operations Management"],
-    imageUrl: "/team/beata.png",
-  },
-  {
-    name: "Joanna Adamczak",
-    role: "Operations Manager",
-    description:
-      "MA in Economics. Manages international survey coordination and client relations across 11+ countries.",
-    email: "joanna@jg-marine.com",
-    phone: "48 604 643 200",
-    certifications: ["MA Economics", "Operations Management"],
-    imageUrl: "/team/joanna.png",
-  },
-  {
-    name: "Dominik Kowalewski",
-    role: "Senior Cargo Surveyor",
-    description:
-      "Experienced surveyor in general commodities and containerized cargo. Conducts loading supervision and draft surveys.",
-    email: "dominik@jg-marine.com",
-    phone: "48 509 682 700",
-    certifications: ["Cargo Surveyor", "Agricultural Certified"],
-    imageUrl: "/team/dominik.png",
-  },
-  {
-    name: "Tomasz Gołaszewski",
-    role: "Captain & Marine Surveyor",
-    description:
-      "M.Sc. in Engineering with ASOMWS certification. Experienced maritime surveyor conducting vessel inspections and cargo surveys throughout Poland and Europe.",
-    email: "tom@jg-marine.com",
-    phone: "48 880 385 884",
-    certifications: ["Captain", "M.Sc. Engineering", "ASOMWS Certified"],
-    imageUrl: "/team/tomasz.png",
-  },
-  {
-    name: "Bartłomiej Bączek",
-    role: "Cargo Surveyor",
-    description:
-      "Maritime Academy graduate specializing in general commodities and container cargo surveys. AutoCAD proficient.",
-    email: "baczek@jg-marine.com",
-    phone: "48 509 682 701",
-    certifications: ["Maritime Academy", "AutoCAD"],
-    imageUrl: "/team/bartlomiej.png",
-  },
-  {
-    name: "Bartłomiej Jaworski",
-    role: "Warsaw Office Manager",
-    description:
-      "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
-    email: "bartek@jg-marine.com",
-    phone: "48 602 752 200",
-    certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
-  },
-];
+// <-- FIX: We cast the result to TeamMember[]
+// This overrides TypeScript's incorrect 'never[]' inference
+const teamMembers = Object.values(CONTACTS.personnel) as TeamMember[];
 
 export default function TeamSectionWhiteUniform() {
   return (
@@ -108,16 +32,12 @@ export default function TeamSectionWhiteUniform() {
       <div className="absolute inset-0">
         {/* Primary Blue - Top Right */}
         <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-primary/15 rounded-full blur-[160px]" />
-
         {/* Secondary - Bottom Left */}
         <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-secondary/20 rounded-full blur-[150px]" />
-
         {/* Primary - Center */}
         <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] bg-primary/12 rounded-full blur-[140px]" />
-
         {/* Accent - Bottom Right */}
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[130px]" />
-
         {/* Subtle Wave Pattern Overlay */}
         <div className="absolute inset-0 opacity-[0.03]">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -183,6 +103,7 @@ export default function TeamSectionWhiteUniform() {
 
         {/* UNIFORM GRID - All Same Size */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* We are now mapping over the array from our config */}
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
@@ -196,9 +117,7 @@ export default function TeamSectionWhiteUniform() {
               <div className="relative h-full bg-card border-2 border-border hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 overflow-hidden flex flex-col">
                 {/* BIG Profile Image Area */}
                 <div className="relative h-80 overflow-hidden bg-gradient-to-br from-primary/15 via-secondary/10 to-primary/5">
-                  {/* TODO: Replace with actual image */}
                   {member.imageUrl ? (
-                    // IF IT EXISTS (true), render the Image
                     <Image
                       src={member.imageUrl}
                       alt={member.name}
@@ -207,7 +126,6 @@ export default function TeamSectionWhiteUniform() {
                       style={{ objectPosition: "50% 16%" }}
                     />
                   ) : (
-                    // OTHERWISE (false), render the placeholder with initials
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-8xl font-bold text-primary/20">
                         {member.name
@@ -258,7 +176,7 @@ export default function TeamSectionWhiteUniform() {
                   {(member.email || member.phone) && (
                     <div className="space-y-2 pt-4 border-t border-border">
                       {member.email && (
-                        <a // <--- FIX: Added missing <a> tag here
+                        <a
                           href={`mailto:${member.email}`}
                           className="flex items-center gap-2 text-xs text-foreground/60 hover:text-primary transition-colors group/link"
                         >
@@ -269,13 +187,14 @@ export default function TeamSectionWhiteUniform() {
                         </a>
                       )}
                       {member.phone && (
-                        <a // <--- FIX: Added missing <a> tag here
-                          href={`tel:+${member.phone.replace(/\s/g, "")}`}
+                        <a
+                          // This logic handles phone numbers with spaces, +, etc.
+                          href={`tel:+${member.phone.replace(/\D/g, "")}`}
                           className="flex items-center gap-2 text-xs text-foreground/60 hover:text-primary transition-colors group/link"
                         >
                           <Phone className="h-3.5 w-3.5" />
                           <span className="group-hover/link:underline">
-                            +{member.phone}
+                            {member.phone}
                           </span>
                         </a>
                       )}

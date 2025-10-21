@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { CONTACTS } from "@/config";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -47,7 +48,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="/services/marine-surveys"
+                  href="/#services"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Marine Surveys
@@ -55,7 +56,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/cargo-inland"
+                  href="/#services"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Cargo & Inland
@@ -63,7 +64,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/technical-consulting"
+                  href="/#services"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Technical Consulting
@@ -71,7 +72,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/claims-insurance"
+                  href="/#services"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Claims & Insurance
@@ -79,7 +80,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/casualty-response"
+                  href="/#services"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Casualty Response
@@ -102,18 +103,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/team"
+                  href="/#team"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Our Team
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/case-studies"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Case Studies
                 </Link>
               </li>
               <li>
@@ -144,10 +137,10 @@ export function Footer() {
                   Emergency 24/7
                 </div>
                 <a
-                  href="tel:+48XXXXXXXXX"
+                  href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
                   className="text-primary hover:underline"
                 >
-                  +48 XXX XXX XXX
+                  {CONTACTS.main.phone}{" "}
                 </a>
               </li>
               <li>

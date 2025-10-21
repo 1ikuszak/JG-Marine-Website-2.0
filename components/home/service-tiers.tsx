@@ -1,10 +1,10 @@
+// components/home/service-tiers.tsx
 "use client";
 
 import * as React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 interface Service {
   title: string;
@@ -83,34 +83,34 @@ const gradients = [
 
 export default function ServiceTiersUltimate() {
   return (
-    <section className="relative py-24 md:py-32 bg-[#04080F] overflow-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-[#04080F] overflow-hidden">
       {/* Premium Background Gradients */}
       <div className="absolute inset-0">
         {/* Radial gradient spots */}
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-accent/3 rounded-full blur-[150px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/40 rounded-full blur-[200px]" />
+        <div className="absolute top-0 left-1/4 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-accent/5 rounded-full blur-[100px] sm:blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-accent/3 rounded-full blur-[120px] sm:blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] sm:w-[1000px] h-[800px] sm:h-[1000px] bg-primary/40 rounded-full blur-[150px] sm:blur-[200px]" />
 
         {/* Noise texture overlay */}
         <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
       </div>
 
-      <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
+      <div className="container relative mx-auto max-w-screen-xl px-4 sm:px-6 md:px-6">
         {/* Premium Header */}
-        <div className="mb-20 text-center md:text-left">
+        <div className="mb-12 sm:mb-16 md:mb-20 text-center md:text-left">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-3 mb-6"
+              className="flex items-center justify-center md:justify-start gap-2 sm:gap-3 mb-4 sm:mb-6"
             >
               {/* Wave decorations */}
-              <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-accent" />
-              <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
+              <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
+              <p className="font-mono text-[10px] sm:text-xs font-bold text-accent tracking-[0.3em] uppercase">
                 COMPLETE MARITIME SOLUTIONS
               </p>
-              <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-accent" />
+              <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-l from-transparent to-accent" />
             </motion.div>
           </div>
           <motion.h2
@@ -118,7 +118,7 @@ export default function ServiceTiersUltimate() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none mb-4 sm:mb-6"
           >
             Expert Services
           </motion.h2>
@@ -127,7 +127,7 @@ export default function ServiceTiersUltimate() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-white/60 max-w-2xl"
+            className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl"
           >
             From routine inspections to emergency casualty response, we provide
             specialized expertise for every maritime challenge.
@@ -135,7 +135,7 @@ export default function ServiceTiersUltimate() {
         </div>
 
         {/* Service Cards */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {services.map((service, index) => (
             <motion.div
               key={service.slug}
@@ -147,7 +147,7 @@ export default function ServiceTiersUltimate() {
             >
               <div
                 className={`
-                  relative overflow-hidden
+                  relative overflow-hidden rounded-lg
                   ${gradients[index]}
                   hover:shadow-2xl hover:shadow-accent/10
                   transition-all duration-700
@@ -159,95 +159,99 @@ export default function ServiceTiersUltimate() {
                 {/* Accent line top */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-                {/* Background Image - BRIGHTER */}
+                {/* Background Image */}
                 <div className="absolute inset-0">
                   <Image
                     src={service.imageUrl}
                     alt={service.title}
                     fill
-                    className="object-cover opacity-30 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105"
+                    className="object-cover opacity-20 sm:opacity-25 md:opacity-30 group-hover:opacity-35 md:group-hover:opacity-40 transition-all duration-700 group-hover:scale-105"
                   />
                   {/* Gradient overlay on image */}
                   <div className="absolute inset-0 bg-gradient-to-r from-[#04080F] via-transparent to-[#04080F]" />
                 </div>
 
-                {/* Content Container */}
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 lg:p-16 min-h-[400px] items-center">
+                {/* Content Container - Improved Layout */}
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 min-h-[350px] sm:min-h-[400px] items-center">
                   {/* Left: Title & Info */}
-                  <div className="lg:col-span-5 space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     {/* Number */}
-                    <div className="inline-flex items-center gap-4">
-                      <span className="font-mono text-sm md:text-base font-bold text-white/40 tracking-[0.3em]">
+                    <div className="inline-flex items-center gap-3 sm:gap-4">
+                      <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white/40 tracking-[0.3em]">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <div className="h-[1px] w-12 bg-accent/50" />
+                      <div className="h-[1px] w-8 sm:w-12 bg-accent/50" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none group-hover:text-accent transition-colors duration-500">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-none group-hover:text-accent transition-colors duration-500">
                       {service.title}
                     </h3>
 
                     {/* Best For Badge */}
-                    <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 group-hover:border-accent/30 transition-colors">
-                      <span className="font-mono text-[10px] font-bold text-accent tracking-widest uppercase">
+                    <div className="inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 group-hover:border-accent/30 transition-colors rounded">
+                      <span className="font-mono text-[10px] sm:text-xs font-bold text-accent tracking-widest uppercase">
                         BEST FOR
                       </span>
-                      <span className="text-xs text-white/70">
+                      <span className="text-xs sm:text-sm text-white/70 leading-relaxed">
                         {service.bestFor}
                       </span>
                     </div>
                   </div>
 
-                  {/* Middle: Deliverables */}
-                  <div className="lg:col-span-5 space-y-4">
-                    <p className="font-mono text-xs font-bold text-white/60 tracking-widest uppercase mb-4">
-                      CORE SERVICES
-                    </p>
-                    {/* Glassmorphism background box for better readability */}
-                    <div className="bg-black/40 backdrop-blur-md border border-white/10 p-6 rounded-sm">
-                      <ul className="space-y-4">
+                  {/* Right: Core Services - Enhanced */}
+                  <div className="space-y-4 sm:space-y-5">
+                    {/* Header */}
+                    <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+                      <div className="h-1 w-1 rounded-full bg-accent" />
+                      <p className="font-mono text-[10px] sm:text-xs font-bold text-white/60 tracking-widest uppercase">
+                        CORE SERVICES
+                      </p>
+                    </div>
+
+                    {/* Services List - Improved Readability */}
+                    <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-5 sm:p-6 md:p-7">
+                      <ul className="space-y-3 sm:space-y-4">
                         {service.deliverables.map((item, i) => (
                           <motion.li
                             key={i}
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 + i * 0.1 }}
+                            transition={{ delay: index * 0.05 + i * 0.1 }}
                             className="flex items-start gap-3 group/item"
                           >
-                            <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1 group-hover/item:scale-110 transition-transform" />
-                            <span className="text-base md:text-lg text-white font-medium leading-relaxed group-hover:text-accent transition-colors">
+                            {/* Icon */}
+                            <div className="flex-shrink-0 mt-0.5 sm:mt-1">
+                              <div className="relative">
+                                {/* Glow effect */}
+                                <div className="absolute inset-0 bg-accent/20 rounded-full blur-sm group-hover/item:bg-accent/30 transition-colors" />
+                                <CheckCircle
+                                  className="relative h-4 w-4 sm:h-5 sm:w-5 text-accent group-hover/item:scale-110 transition-transform"
+                                  strokeWidth={2}
+                                />
+                              </div>
+                            </div>
+
+                            {/* Text */}
+                            <span className="text-sm sm:text-base md:text-lg text-white/90 font-medium leading-relaxed group-hover/item:text-white transition-colors">
                               {item}
                             </span>
                           </motion.li>
                         ))}
                       </ul>
                     </div>
-                  </div>
 
-                  {/* Right: CTA */}
-                  <div className="lg:col-span-2 flex items-center justify-start lg:justify-end">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="group/btn relative overflow-hidden bg-white/10 hover:bg-accent backdrop-blur-sm border border-white/20 hover:border-accent transition-all duration-500"
-                    >
-                      <a
-                        href={`/services/${service.slug}`}
-                        className="flex items-center gap-3"
-                      >
-                        <span className="relative z-10 text-white font-semibold">
-                          Details
-                        </span>
-                        <ArrowRight className="relative z-10 h-5 w-5 text-white transition-transform group-hover/btn:translate-x-1" />
-
-                        {/* Hover background effect */}
-                        <div className="absolute inset-0 bg-accent/20 translate-x-[-100%] group-hover/btn:translate-x-0 transition-transform duration-500" />
-                      </a>
-                    </Button>
+                    {/* Bottom Accent Line */}
+                    <div className="flex items-center gap-2 pt-2">
+                      <div className="h-px flex-1 bg-gradient-to-r from-accent/50 to-transparent" />
+                      <div className="h-1 w-1 rounded-full bg-accent/50" />
+                    </div>
                   </div>
                 </div>
+
+                {/* Bottom Accent Line (Card) */}
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
             </motion.div>
           ))}
