@@ -8,12 +8,11 @@ import { Shield, Globe, Anchor, Clock } from "lucide-react";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* HERO - Editorial Split Layout */}
       {/* HERO - Editorial Split Layout with Golden Ratio */}
-      <section className="relative h-screen overflow-hidden bg-background">
+      <section className="relative min-h-screen overflow-hidden bg-background">
         <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-[61.8%_38.2%]">
           {/* LEFT: Heritage Image - Golden Ratio Width (61.8%) */}
-          <div className="relative h-1/2 lg:h-full order-2 lg:order-1">
+          <div className="relative h-[50vh] sm:h-[60vh] lg:h-full order-2 lg:order-1">
             <Image
               src="/about/A.jpg"
               alt="JG Marine heritage - Three generations of Master Mariners"
@@ -22,20 +21,13 @@ export default function AboutPage() {
               priority
               quality={100}
             />
-            {/* Minimal overlay - just a subtle gradient at the edge */}
+            {/* Minimal overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 lg:to-background/40" />
-
-            {/* Subtle photo credit/caption */}
-            {/* <div className="absolute bottom-8 left-8 right-8">
-              <p className="text-xs text-white/60 tracking-[0.3em] uppercase">
-                Circa 1968 — Baltic Sea
-              </p>
-            </div> */}
           </div>
 
-          {/* RIGHT: Text Content - Golden Ratio Width (38.2%) */}
-          <div className="relative h-1/2 lg:h-full bg-background order-1 lg:order-2 flex items-center justify-center">
-            <div className="w-full max-w-xl px-8 md:px-12 lg:px-14 xl:px-16">
+          {/* RIGHT: Text Content */}
+          <div className="relative h-[50vh] sm:h-[60vh] lg:h-full bg-background order-1 lg:order-2 flex items-center justify-center py-12 sm:py-16 lg:py-0">
+            <div className="w-full max-w-xl px-6 sm:px-8 md:px-12 lg:px-14 xl:px-16">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -50,11 +42,11 @@ export default function AboutPage() {
                     delay: 0.3,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="mb-12"
+                  className="mb-8 sm:mb-12"
                 >
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="h-px w-12 bg-accent/30" />
-                    <span className="text-xs md:text-sm tracking-[0.4em] text-foreground/60 uppercase font-light">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="h-px w-8 sm:w-12 bg-accent/30" />
+                    <span className="text-[10px] sm:text-xs md:text-sm tracking-[0.4em] text-foreground/60 uppercase font-light">
                       Est. 1968
                     </span>
                   </div>
@@ -69,12 +61,12 @@ export default function AboutPage() {
                     delay: 0.5,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="mb-8"
+                  className="mb-6 sm:mb-8"
                 >
-                  <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95] mb-3">
+                  <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95] mb-2 sm:mb-3">
                     Three
                   </span>
-                  <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95]">
+                  <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95]">
                     Generations
                   </span>
                 </motion.h1>
@@ -88,7 +80,7 @@ export default function AboutPage() {
                     delay: 1.2,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="h-[1px] w-20 bg-secondary mb-10 origin-left"
+                  className="h-[1px] w-16 sm:w-20 bg-secondary mb-8 sm:mb-10 origin-left"
                 />
 
                 {/* Subtitle & Description */}
@@ -100,26 +92,26 @@ export default function AboutPage() {
                     delay: 1,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="space-y-6"
+                  className="space-y-4 sm:space-y-6"
                 >
-                  <p className="text-xl md:text-2xl lg:text-3xl font-light text-foreground/90 tracking-wide">
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-foreground/90 tracking-wide">
                     Master Mariners
                   </p>
-                  <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+                  <p className="text-xs sm:text-sm md:text-base text-foreground/60 leading-relaxed">
                     64 years of Baltic maritime heritage combined with modern
                     DNV certifications and international standards
                   </p>
                 </motion.div>
 
-                {/* Subtle CTA or scroll hint */}
+                {/* Scroll hint */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1.5 }}
-                  className="mt-12 flex items-center gap-4"
+                  className="mt-8 sm:mt-12 flex items-center gap-4"
                 >
                   <div className="h-px flex-1 bg-border" />
-                  <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">
+                  <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/40 uppercase">
                     Our Story
                   </span>
                   <motion.div
@@ -137,29 +129,28 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            {/* Decorative corner detail */}
-            <div className="absolute top-8 right-8 w-8 h-8 border-r border-t border-foreground/10" />
-            <div className="absolute bottom-8 right-8 w-8 h-8 border-r border-b border-foreground/10" />
+            {/* Decorative corner details - hidden on mobile */}
+            <div className="hidden sm:block absolute top-4 sm:top-8 right-4 sm:right-8 w-6 h-6 sm:w-8 sm:h-8 border-r border-t border-foreground/10" />
+            <div className="hidden sm:block absolute bottom-4 sm:bottom-8 right-4 sm:right-8 w-6 h-6 sm:w-8 sm:h-8 border-r border-b border-foreground/10" />
           </div>
         </div>
 
-        {/* Optional: Golden ratio indicator line (subtle vertical divider) */}
+        {/* Golden ratio indicator line */}
         <motion.div
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ duration: 1.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden lg:block absolute left-[61.8%] top-1/2 -translate-y-1/2 w-[1px] h-24 bg-gradient-to-b from-transparent via-secondary to-transparent origin-center"
+          className="hidden lg:block absolute left-[61.8%] top-1/2 -translate-y-1/2 w-[1px] h-16 sm:h-24 bg-gradient-to-b from-transparent via-secondary to-transparent origin-center"
         />
       </section>
 
-      {/* STORY - Editorial with More Text */}
       {/* OUR STORY - Cinematic Image-Rich Narrative */}
       <section className="relative">
-        {/* Story Introduction - Text with Side Image */}
-        <div className="grid lg:grid-cols-2 min-h-screen">
+        {/* Story Introduction */}
+        <div className="grid lg:grid-cols-2">
           {/* Left: Story Text */}
-          <div className="bg-background flex items-center py-20 lg:py-32">
-            <div className="container mx-auto max-w-2xl px-8 lg:px-16">
+          <div className="bg-background flex items-center py-12 sm:py-16 md:py-20 lg:py-32">
+            <div className="container mx-auto max-w-2xl px-4 sm:px-6 md:px-8 lg:px-16">
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -167,25 +158,25 @@ export default function AboutPage() {
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Overline */}
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="h-px w-12 bg-accent/30" />
-                  <span className="text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
+                <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                  <div className="h-px w-8 sm:w-12 bg-accent/30" />
+                  <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
                     Our Heritage
                   </span>
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-[1.1] mb-8">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-[1.1] mb-6 sm:mb-8">
                   Born from the sea,
                   <br />
                   built on trust
                 </h2>
 
                 {/* Accent Line */}
-                <div className="w-20 h-[1px] bg-secondary mb-12" />
+                <div className="w-16 sm:w-20 h-[1px] bg-secondary mb-8 sm:mb-12" />
 
                 {/* Body Text */}
-                <div className="space-y-6 text-base md:text-lg text-foreground/70 leading-relaxed">
+                <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed">
                   <p>
                     In 1968, when maritime surveying was still an emerging
                     profession in Poland, the first generation of JG Marine
@@ -201,20 +192,22 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                {/* Stats - Integrated */}
-                <div className="mt-12 pt-12 border-t border-border/30">
-                  <div className="grid grid-cols-2 gap-8">
+                {/* Stats */}
+                <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-border/30">
+                  <div className="grid grid-cols-2 gap-6 sm:gap-8">
                     <div>
-                      <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                      <p className="text-[10px] sm:text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
                         Founded
                       </p>
-                      <p className="text-3xl text-primary">1968</p>
+                      <p className="text-2xl sm:text-3xl text-primary">1968</p>
                     </div>
                     <div>
-                      <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                      <p className="text-[10px] sm:text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
                         Location
                       </p>
-                      <p className="text-3xl text-primary">Gdańsk</p>
+                      <p className="text-2xl sm:text-3xl text-primary">
+                        Gdańsk
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -228,9 +221,8 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            className="relative min-h-[50vh] lg:min-h-full"
+            className="relative min-h-[40vh] sm:min-h-[50vh] lg:min-h-full"
           >
-            {/* TODO: Replace with 1968 founding era photo - vessel, maritime scene, or founders */}
             <Image
               src="/about/B.jpg"
               alt="JG Marine founding in 1968 - Baltic maritime heritage"
@@ -239,25 +231,17 @@ export default function AboutPage() {
               quality={100}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-
-            {/* Image Caption */}
-            {/* <div className="absolute bottom-8 left-8 right-8">
-              <p className="text-xs text-white/70 tracking-[0.3em] uppercase">
-                Gdańsk Port, 1968
-              </p>
-            </div> */}
           </motion.div>
         </div>
 
-        {/* Full-Width Image Break - First Generation */}
+        {/* Full-Width Image Break */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-200px" }}
           transition={{ duration: 1.2 }}
-          className="relative h-[70vh] lg:h-screen"
+          className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen"
         >
-          {/* TODO: Powerful wide shot - Master Mariner at sea, on bridge, or with vessel */}
           <Image
             src="/about/C.jpg"
             alt="First generation Master Mariners - JG Marine founders"
@@ -268,18 +252,18 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/60" />
 
           {/* Overlay Text */}
-          <div className="absolute inset-0 flex items-end justify-center pb-16 lg:pb-24">
-            <div className="text-center px-6">
+          <div className="absolute inset-0 flex items-end justify-center pb-8 sm:pb-12 md:pb-16 lg:pb-24">
+            <div className="text-center px-4 sm:px-6">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                <p className="text-sm tracking-[0.4em] text-white/60 uppercase mb-4">
+                <p className="text-xs sm:text-sm tracking-[0.4em] text-white/60 uppercase mb-3 sm:mb-4">
                   First Generation
                 </p>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-light text-white">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white">
                   Masters of the Baltic
                 </h3>
               </motion.div>
@@ -287,18 +271,17 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Evolution Story - Asymmetric Grid */}
-        <div className="container mx-auto max-w-7xl px-6 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Image Grid - 2 stacked images */}
+        {/* Evolution Story */}
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-32">
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
+            {/* Image Grid */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="lg:col-span-7 space-y-8"
+              className="lg:col-span-7 space-y-6 sm:space-y-8"
             >
-              {/* TODO: Image 1 - Maritime operations, surveying work */}
               <div className="relative aspect-[4/3]">
                 <Image
                   src="/about/D.jpg"
@@ -310,8 +293,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
 
-              {/* TODO: Image 2 - Team at work, vessel inspection */}
-              <div className="relative aspect-[16/9] lg:ml-12">
+              <div className="relative aspect-[16/9] sm:ml-0 lg:ml-12">
                 <Image
                   src="/about/E.jpg"
                   alt="Survey team conducting vessel inspection"
@@ -329,9 +311,9 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="lg:col-span-5 space-y-8"
+              className="lg:col-span-5 space-y-6 sm:space-y-8"
             >
-              <div className="space-y-6 text-base md:text-lg text-foreground/70 leading-relaxed">
+              <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed">
                 <p>
                   What began as a small surveying firm focused on Baltic
                   maritime transport has evolved into a recognized authority
@@ -346,26 +328,30 @@ export default function AboutPage() {
               </div>
 
               {/* Stats */}
-              <div className="pt-8 space-y-6">
-                <div className="flex items-baseline gap-4">
-                  <span className="text-5xl font-light text-primary">
+              <div className="pt-6 sm:pt-8 space-y-4 sm:space-y-6">
+                <div className="flex items-baseline gap-3 sm:gap-4">
+                  <span className="text-4xl sm:text-5xl font-light text-primary">
                     Three
                   </span>
                   <div>
-                    <p className="text-sm text-foreground/60">Generations of</p>
-                    <p className="text-sm font-medium text-foreground/80">
+                    <p className="text-xs sm:text-sm text-foreground/60">
+                      Generations of
+                    </p>
+                    <p className="text-xs sm:text-sm font-medium text-foreground/80">
                       Master Mariners
                     </p>
                   </div>
                 </div>
                 <div className="h-px bg-border/30" />
-                <div className="flex items-baseline gap-4">
-                  <span className="text-5xl font-light text-primary">11+</span>
+                <div className="flex items-baseline gap-3 sm:gap-4">
+                  <span className="text-4xl sm:text-5xl font-light text-primary">
+                    11+
+                  </span>
                   <div>
-                    <p className="text-sm text-foreground/60">
+                    <p className="text-xs sm:text-sm text-foreground/60">
                       Operational presence
                     </p>
-                    <p className="text-sm font-medium text-foreground/80">
+                    <p className="text-xs sm:text-sm font-medium text-foreground/80">
                       European Countries
                     </p>
                   </div>
@@ -378,34 +364,36 @@ export default function AboutPage() {
         {/* Modern Era - Split Layout */}
         <div className="grid lg:grid-cols-5">
           {/* Text Column */}
-          <div className="lg:col-span-2 bg-muted flex items-center py-16 lg:py-24">
-            <div className="container mx-auto max-w-xl px-8 lg:px-12">
+          <div className="lg:col-span-2 bg-muted flex items-center py-12 sm:py-16 lg:py-24">
+            <div className="container mx-auto max-w-xl px-4 sm:px-6 md:px-8 lg:px-12">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
-                className="space-y-6"
+                className="space-y-4 sm:space-y-6"
               >
-                <div className="w-12 h-[1px] bg-secondary" />
-                <h3 className="text-3xl md:text-4xl text-primary leading-tight">
+                <div className="w-10 sm:w-12 h-[1px] bg-secondary" />
+                <h3 className="text-2xl sm:text-3xl md:text-4xl text-primary leading-tight">
                   Today's Standard,
                   <br />
                   Tomorrow's Legacy
                 </h3>
-                <p className="text-foreground/70 leading-relaxed">
+                <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">
                   Today, the company operates in 11+ countries, conducts 120+
                   projects annually, and maintains the same commitment to
                   independence and precision that defined us from day one.
                 </p>
 
                 {/* Final Stat */}
-                <div className="pt-6 border-t border-border/30">
-                  <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                <div className="pt-4 sm:pt-6 border-t border-border/30">
+                  <p className="text-[10px] sm:text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
                     Annual Projects
                   </p>
-                  <p className="text-5xl font-medium text-primary">120+</p>
-                  <p className="text-sm text-foreground/60 mt-2">
+                  <p className="text-4xl sm:text-5xl font-medium text-primary">
+                    120+
+                  </p>
+                  <p className="text-xs sm:text-sm text-foreground/60 mt-2">
                     Surveys & Inspections
                   </p>
                 </div>
@@ -419,11 +407,8 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            className="lg:col-span-3 grid grid-cols-2 gap-4 p-4 lg:p-8"
+            className="lg:col-span-3 grid grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-4 lg:p-8"
           >
-            {/* TODO: 4 modern images showing current operations */}
-
-            {/* Image 1 - Top Left */}
             <div className="relative aspect-square">
               <Image
                 src="/about/4.jpg"
@@ -434,7 +419,6 @@ export default function AboutPage() {
               />
             </div>
 
-            {/* Image 2 - Top Right */}
             <div className="relative aspect-square">
               <Image
                 src="/about/5.jpg"
@@ -445,7 +429,6 @@ export default function AboutPage() {
               />
             </div>
 
-            {/* Image 3 - Bottom Left */}
             <div className="relative aspect-square">
               <Image
                 src="/about/group.jpg"
@@ -457,7 +440,6 @@ export default function AboutPage() {
               />
             </div>
 
-            {/* Image 4 - Bottom Right */}
             <div className="relative aspect-square">
               <Image
                 src="/about/sunset.jpeg"
@@ -470,9 +452,8 @@ export default function AboutPage() {
           </motion.div>
         </div>
 
-        {/* Closing Statement - Full Width with Image */}
-        <div className="relative h-[60vh] lg:h-[80vh] flex items-center justify-center">
-          {/* Image with darker overlay */}
+        {/* Closing Statement */}
+        <div className="relative h-[50vh] sm:h-[60vh] lg:h-[80vh] flex items-center justify-center">
           <Image
             src="/about/F.jpg"
             alt="JG Marine - Three generations of maritime excellence"
@@ -480,25 +461,21 @@ export default function AboutPage() {
             className="object-cover"
             quality={100}
           />
-          {/* Stronger dark gradient for contrast */}
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/75 to-foreground/85" />
-
-          {/* Vignette effect for extra depth */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
 
-          {/* Text with premium treatment */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            className="relative z-10 text-center px-6 max-w-4xl"
+            className="relative z-10 text-center px-4 sm:px-6 max-w-4xl"
           >
-            <div className="space-y-8">
-              <div className="h-px w-16 bg-primary mx-auto" />
-              <blockquote className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-[1.4] tracking-tight">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="h-px w-12 sm:w-16 bg-primary mx-auto" />
+              <blockquote className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-[1.4] tracking-tight">
                 Three generations of maritime expertise,
-                <br className="hidden md:block" />
+                <br className="hidden sm:block" />
                 one unwavering mission
               </blockquote>
             </div>
@@ -513,9 +490,8 @@ export default function AboutPage() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1.4 }}
-          className="relative h-[70vh] lg:h-screen"
+          className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen"
         >
-          {/* TODO: Replace with authentic founding generation photo */}
           <Image
             src="/about/G.jpg"
             alt="JG Marine founding generation, Gdańsk 1968"
@@ -525,14 +501,13 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
-          {/* Minimal caption */}
-          <div className="absolute bottom-12 left-8 lg:left-16">
+          <div className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-4 sm:left-6 md:left-8 lg:left-16">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-xs md:text-sm text-white/60 tracking-[0.3em] uppercase"
+              className="text-[10px] sm:text-xs md:text-sm text-white/60 tracking-[0.3em] uppercase"
             >
               Gdańsk, 1968
             </motion.p>
@@ -541,23 +516,23 @@ export default function AboutPage() {
       </section>
 
       {/* TIMELINE - Refined & Minimal */}
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-6 lg:px-8">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-32">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="mb-20 lg:mb-32"
+            className="mb-12 sm:mb-16 md:mb-20 lg:mb-32"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-12 bg-accent/30" />
-              <span className="text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
+            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <div className="h-px w-8 sm:w-12 bg-accent/30" />
+              <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
                 Evolution
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
               Six Decades
               <br />
               of Maritime Heritage
@@ -565,14 +540,14 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Timeline Items */}
-          <div className="space-y-32 lg:space-y-40">
+          <div className="space-y-16 sm:space-y-24 md:space-y-32 lg:space-y-40">
             {/* 1968 - The Beginning */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-12 items-center"
+              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
             >
               {/* Image */}
               <div className="lg:col-span-6 order-2 lg:order-1">
@@ -588,17 +563,17 @@ export default function AboutPage() {
               </div>
 
               {/* Content */}
-              <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-                <div className="space-y-4">
-                  <p className="text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
+              <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
                     1968
                   </p>
-                  <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font text-primary">
+                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font text-primary">
                     The Beginning
                   </h3>
                 </div>
-                <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
+                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
                   First generation of Master Mariners establish JG Marine in
                   Gdańsk, focusing on maritime transport and Baltic shipping
                   operations.
@@ -612,20 +587,20 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-12 items-center"
+              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
             >
               {/* Content */}
-              <div className="lg:col-span-6 space-y-6">
-                <div className="space-y-4">
-                  <p className="text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
+              <div className="lg:col-span-6 space-y-4 sm:space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
                     1985
                   </p>
-                  <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl text-primary">
+                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-xl sm:text-2xl md:text-3xl text-primary">
                     Expansion
                   </h3>
                 </div>
-                <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
+                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
                   Broadening into cargo surveys and heavy lift operations.
                   Second generation begins learning the craft.
                 </p>
@@ -651,7 +626,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-12 items-center"
+              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
             >
               {/* Image */}
               <div className="lg:col-span-6 order-2 lg:order-1">
@@ -667,17 +642,17 @@ export default function AboutPage() {
               </div>
 
               {/* Content */}
-              <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-                <div className="space-y-4">
-                  <p className="text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
+              <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
                     2004
                   </p>
-                  <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font text-primary">
+                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font text-primary">
                     European Integration
                   </h3>
                 </div>
-                <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
+                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
                   DNV certifications earned. Operations expand to 11+ countries.
                   Recognition from major P&I Clubs.
                 </p>
@@ -690,20 +665,20 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-12 items-center"
+              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
             >
               {/* Content */}
-              <div className="lg:col-span-6 space-y-6">
-                <div className="space-y-4">
-                  <p className="text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
+              <div className="lg:col-span-6 space-y-4 sm:space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
                     2024
                   </p>
-                  <div className="w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-2xl md:text-3xl font text-primary">
+                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font text-primary">
                     Three Generations
                   </h3>
                 </div>
-                <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
+                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
                   Third generation continues the legacy with modern technology
                   and offshore wind expertise—while preserving our independence.
                 </p>
@@ -727,17 +702,17 @@ export default function AboutPage() {
       </section>
 
       {/* MISSION - Minimal Statement */}
-      <section className="py-24 lg:py-32 bg-muted/30">
-        <div className="container mx-auto max-w-4xl px-6 lg:px-8">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/30">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-center space-y-8"
+            className="text-center space-y-6 sm:space-y-8"
           >
-            <div className="h-px w-16 bg-accent/30 mx-auto" />
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-primary leading-relaxed max-w-3xl mx-auto">
+            <div className="h-px w-12 sm:w-16 bg-accent/30 mx-auto" />
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-primary leading-relaxed max-w-3xl mx-auto px-4">
               Independent, precise, and trustworthy marine surveys—protecting
               client interests through three generations of maritime expertise
             </h2>
@@ -746,7 +721,7 @@ export default function AboutPage() {
       </section>
 
       {/* INDEPENDENCE - Clean Statement */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -759,30 +734,30 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
         </div>
 
-        <div className="container relative mx-auto max-w-5xl px-6 lg:px-8">
+        <div className="container relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="grid lg:grid-cols-12 gap-12 items-center"
+            className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
           >
             {/* Icon & Headline */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="space-y-6">
+            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+              <div className="space-y-4 sm:space-y-6">
                 <Shield
-                  className="h-12 w-12 text-primary/60"
+                  className="h-10 w-10 sm:h-12 sm:w-12 text-primary/60"
                   strokeWidth={1.5}
                 />
-                <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
                   Independence guaranteed
                   <br />
                   by family ownership
                 </h2>
-                <div className="w-20 h-[1px] bg-secondary" />
+                <div className="w-16 sm:w-20 h-[1px] bg-secondary" />
               </div>
 
-              <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl">
                 Not tied to insurers. Not beholden to P&I Clubs. Not pressured
                 by shipowner groups. We answer only to the facts we observe and
                 the clients who trust us.
@@ -790,20 +765,20 @@ export default function AboutPage() {
             </div>
 
             {/* Stats/Features */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="border border-border/50 bg-card p-6">
-                <h3 className="text-lg font-medium text-primary mb-2">
+            <div className="lg:col-span-5 space-y-3 sm:space-y-4">
+              <div className="border border-border/50 bg-card p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-medium text-primary mb-2">
                   No Conflicts
                 </h3>
-                <p className="text-sm text-foreground/60 leading-relaxed">
+                <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed">
                   No external shareholders demanding different conclusions
                 </p>
               </div>
-              <div className="border border-border/50 bg-card p-6">
-                <h3 className="text-lg text-primary mb-2">
+              <div className="border border-border/50 bg-card p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg text-primary mb-2">
                   Objective Reporting
                 </h3>
-                <p className="text-sm text-foreground/60 leading-relaxed">
+                <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed">
                   Reports accepted by arbitrators and major insurers
                 </p>
               </div>
@@ -813,23 +788,23 @@ export default function AboutPage() {
       </section>
 
       {/* SERVICES - Grid Overview */}
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-6 lg:px-8">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-32">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="mb-16 lg:mb-20"
+            className="mb-12 sm:mb-16 lg:mb-20"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-12 bg-accent/30" />
-              <span className="text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
+            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <div className="h-px w-8 sm:w-12 bg-accent/30" />
+              <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
                 What We Do
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary">
               Comprehensive Maritime
               <br />
               Survey Services
@@ -837,7 +812,7 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {[
               {
                 icon: Anchor,
@@ -866,16 +841,16 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="group border-l-2 border-border/30 hover:border-secondary transition-colors duration-500 pl-6 lg:pl-8 py-4"
+                className="group border-l-2 border-border/30 hover:border-secondary transition-colors duration-500 pl-4 sm:pl-6 lg:pl-8 py-3 sm:py-4"
               >
                 <service.icon
-                  className="h-8 w-8 text-foreground/40 group-hover:text-secondary transition-colors duration-500 mb-6"
+                  className="h-6 w-6 sm:h-8 sm:w-8 text-foreground/40 group-hover:text-secondary transition-colors duration-500 mb-4 sm:mb-6"
                   strokeWidth={1.5}
                 />
-                <h3 className="text-xl md:text-2xl font-light text-primary mb-3">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-light text-primary mb-2 sm:mb-3">
                   {service.title}
                 </h3>
-                <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-foreground/60 leading-relaxed">
                   {service.desc}
                 </p>
               </motion.div>
@@ -885,42 +860,44 @@ export default function AboutPage() {
       </section>
 
       {/* GEOGRAPHIC PRESENCE - Clean Layout */}
-      <section className="py-24 lg:py-32 bg-muted/20">
-        <div className="container mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/20">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
             {/* Left: Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
+              <div className="space-y-4 sm:space-y-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
                   Local Presence,
                   <br />
                   International Reach
                 </h2>
-                <div className="w-20 h-[1px] bg-secondary" />
-                <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
+                <div className="w-16 sm:w-20 h-[1px] bg-secondary" />
+                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed">
                   Three strategic offices in key Baltic ports. Operational
                   presence across 11+ European countries.
                 </p>
               </div>
 
               {/* Office Locations */}
-              <div className="space-y-4 pt-4">
+              <div className="space-y-3 sm:space-y-4 pt-4">
                 {[
                   { city: "Sopot HQ", desc: "Baltic operations center" },
                   { city: "Szczecin", desc: "Western Baltic coverage" },
                   { city: "Warsaw", desc: "Central European hub" },
                 ].map((office, i) => (
-                  <div key={i} className="flex items-start gap-4">
+                  <div key={i} className="flex items-start gap-3 sm:gap-4">
                     <div className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-primary">{office.city}</p>
-                      <p className="text-sm text-foreground/60">
+                      <p className="text-sm sm:text-base font-medium text-primary">
+                        {office.city}
+                      </p>
+                      <p className="text-xs sm:text-sm text-foreground/60">
                         {office.desc}
                       </p>
                     </div>
@@ -935,15 +912,15 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="bg-card border border-border/50 p-8 lg:p-10"
+              className="bg-card border border-border/50 p-6 sm:p-8 lg:p-10"
             >
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 {/* Countries List */}
                 <div>
-                  <p className="text-xs tracking-[0.3em] text-foreground/50 uppercase mb-6">
+                  <p className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/50 uppercase mb-4 sm:mb-6">
                     Operational Coverage
                   </p>
-                  <div className="grid grid-cols-2 gap-3 text-sm text-foreground/70">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm text-foreground/70">
                     <p>Poland</p>
                     <p>Germany</p>
                     <p>Sweden</p>
@@ -962,17 +939,17 @@ export default function AboutPage() {
                 </div>
 
                 {/* Response Times */}
-                <div className="pt-6 border-t border-border/30 space-y-4">
+                <div className="pt-4 sm:pt-6 border-t border-border/30 space-y-3 sm:space-y-4">
                   {[
                     { label: "Baltic Response", value: "<24h" },
                     { label: "Central Europe", value: "<48h" },
                     { label: "Emergency", value: "24/7" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between">
-                      <span className="text-sm text-foreground/60">
+                      <span className="text-xs sm:text-sm text-foreground/60">
                         {item.label}
                       </span>
-                      <span className="text-xl font-light text-primary">
+                      <span className="text-lg sm:text-xl font-light text-primary">
                         {item.value}
                       </span>
                     </div>
@@ -985,27 +962,27 @@ export default function AboutPage() {
       </section>
 
       {/* CERTIFICATIONS - Minimal Grid */}
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-6 lg:px-8">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-32">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-center mb-16 lg:mb-20"
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <div className="h-px w-16 bg-accent/30 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary mb-6">
+            <div className="h-px w-12 sm:w-16 bg-accent/30 mx-auto mb-4 sm:mb-6" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary mb-4 sm:mb-6">
               We are Certified
             </h2>
-            <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-foreground/60 max-w-2xl mx-auto px-4">
               Decades of trust earned, not just certifications purchased
             </p>
           </motion.div>
 
           {/* Certification Cards */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
             {[
               {
                 title: "Allianz Global & Specialty",
@@ -1030,18 +1007,20 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="border border-border/50 hover:border-secondary/50 transition-colors duration-500 p-6 lg:p-8"
+                className="border border-border/50 hover:border-secondary/50 transition-colors duration-500 p-4 sm:p-6 lg:p-8"
               >
-                <h3 className="text-lg md:text-xl font-medium text-primary mb-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-medium text-primary mb-2">
                   {cert.title}
                 </h3>
-                <p className="text-sm text-foreground/60">{cert.desc}</p>
+                <p className="text-xs sm:text-sm text-foreground/60">
+                  {cert.desc}
+                </p>
               </motion.div>
             ))}
           </div>
 
           {/* Badge Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {[
               { title: "DNV", desc: "Certified" },
               { title: "ITIC", desc: "Member" },
@@ -1054,10 +1033,14 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center border border-border/30 p-4 lg:p-6"
+                className="text-center border border-border/30 p-3 sm:p-4 lg:p-6"
               >
-                <p className="font-medium text-primary mb-1">{badge.title}</p>
-                <p className="text-xs text-foreground/50">{badge.desc}</p>
+                <p className="text-sm sm:text-base font-medium text-primary mb-1">
+                  {badge.title}
+                </p>
+                <p className="text-[10px] sm:text-xs text-foreground/50">
+                  {badge.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -1065,36 +1048,40 @@ export default function AboutPage() {
       </section>
 
       {/* CTA - Clean & Direct */}
-      <section className="relative py-24 lg:py-32 border-t border-border/30">
-        <div className="container mx-auto max-w-4xl px-6 lg:px-8">
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 border-t border-border/30">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-center space-y-12"
+            className="text-center space-y-8 sm:space-y-12"
           >
             {/* Headline */}
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
+            <div className="space-y-4 sm:space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
                 Ready to work together?
               </h2>
-              <div className="h-px w-16 bg-secondary mx-auto" />
-              <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+              <div className="h-px w-12 sm:w-16 bg-secondary mx-auto" />
+              <p className="text-sm sm:text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed px-4">
                 Emergency response or routine surveying—our team of Master
                 Mariners is ready
               </p>
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8 py-6 text-base" asChild>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Button
+                size="lg"
+                className="px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base"
+                asChild
+              >
                 <a href="/contact">Request Survey</a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 text-base border-2"
+                className="px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base border-2"
                 asChild
               >
                 <a href="tel:+48XXXXXXXXX">Emergency: +48 XXX XXX XXX</a>
@@ -1102,7 +1089,7 @@ export default function AboutPage() {
             </div>
 
             {/* Footer Note */}
-            <p className="text-xs md:text-sm text-foreground/40 tracking-wide">
+            <p className="text-[10px] sm:text-xs md:text-sm text-foreground/40 tracking-wide">
               Response within 2 hours • Surveyor on-site &lt;24h Baltic region
             </p>
           </motion.div>

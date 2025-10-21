@@ -112,28 +112,32 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
 
       {/* Hero Content */}
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
-        <div className="min-h-[68vh] md:min-h-[100vh] flex items-center py-12 md:py-20">
+        {/* 
+          Mobile: Add pt-28 (112px) to account for emergency banner (36px) + header (~64px) + extra space
+          Desktop: Use pt-20 for standard spacing
+        */}
+        <div className="min-h-[100vh] flex items-center pt-28 pb-16 md:pt-20 md:pb-20">
           <div className="max-w-2xl text-white">
             {/* Main Headline */}
-            <h1 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
               Protect Maritime Assets from Million-Euro Losses with Independent
               DNV Marine Surveys
             </h1>
 
             {/* Subheadline */}
-            <p className="mt-3 text-base md:text-lg text-white/90 max-w-prose">
+            <p className="mt-4 text-sm sm:text-base md:text-lg text-white/90 max-w-prose leading-relaxed">
               Independent hull, cargo, and offshore project surveys for
               insurers, shipowners, and logistics operators across the Baltic
               Sea and Central Europe
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <Button
                 size="lg"
                 variant="default"
                 asChild
-                className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto"
               >
                 <a href="/contact" aria-label="Request an urgent survey">
                   Request Survey
@@ -141,25 +145,32 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
               </Button>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-white/20">
-              <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10">
+            {/* Metrics & Certifications */}
+            <div className="mt-8 pt-6 border-t border-white/20">
+              <div className="flex flex-col gap-6">
                 {/* High-Impact Metrics */}
-                <div className="grid grid-cols-3 gap-6 text-center md:text-left">
-                  <div className="flex flex-col items-center md:items-start">
-                    <span className="text-2xl font-semibold">120+</span>
-                    <span className="text-xs font-light text-white/70 tracking-wider">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                      120+
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mt-1">
                       PROJECTS
                     </span>
                   </div>
-                  <div className="flex flex-col items-center md:items-start">
-                    <span className="text-2xl font-semibold">64</span>
-                    <span className="text-xs font-light text-white/70 tracking-wider">
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                      64
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mt-1">
                       YEARS
                     </span>
                   </div>
-                  <div className="flex flex-col items-center md:items-start">
-                    <span className="text-2xl font-semibold">11+</span>
-                    <span className="text-xs font-light text-white/70 tracking-wider">
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                      11+
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mt-1">
                       COUNTRIES
                     </span>
                   </div>
@@ -167,10 +178,10 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
 
                 {/* Certifications */}
                 <div className="flex flex-col items-center md:items-start">
-                  <span className="text-xs font-light text-white/70 tracking-wider mb-2">
+                  <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mb-2">
                     CERTIFICATIONS
                   </span>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     <Badge
                       variant="secondary"
                       className="bg-white/20 text-white border-none text-xs"
@@ -193,39 +204,39 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
                 </div>
               </div>
             </div>
-
-            {/* Carousel Indicators */}
-            {!reduced && (
-              <div className="absolute bottom-6 left-4 md:left-6">
-                <div className="container mx-auto max-w-screen-xl px-0">
-                  <div className="flex items-center gap-2">
-                    {slides.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setIndex(i)}
-                        aria-label={`Go to slide ${i + 1}`}
-                        className={`h-1.5 rounded-full transition-all ${
-                          i === index
-                            ? "w-6 bg-white"
-                            : "w-3 bg-white/50 hover:bg-white/70"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
 
-      {/* Premium Scroll Indicator */}
+      {/* Carousel Indicators - Hidden on mobile for cleaner look */}
+      {!reduced && (
+        <div className="hidden md:block absolute bottom-6 left-4 md:left-6">
+          <div className="container mx-auto max-w-screen-xl px-0">
+            <div className="flex items-center gap-2">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setIndex(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === index
+                      ? "w-6 bg-white"
+                      : "w-3 bg-white/50 hover:bg-white/70"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Premium Scroll Indicator - Hidden on mobile */}
       <motion.button
         onClick={handleScrollDown}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 cursor-pointer group"
         aria-label="Scroll down to explore"
       >
         {/* Text Label */}
