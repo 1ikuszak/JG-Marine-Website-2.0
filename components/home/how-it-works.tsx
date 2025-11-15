@@ -20,25 +20,25 @@ const TEL = CONTACTS.main.phone;
 const steps: ProcessStep[] = [
   {
     number: "01",
-    title: "Emergency Request",
+    title: "Survey Request",
     description:
-      "Call our 24/7 hotline. DNV-certified surveyor assigned within 2 hours.",
+      "Contact our office or call 24/7 hotline. Surveyor assigned within 2 hours.",
     icon: Phone,
     timing: "Within 2h",
   },
   {
     number: "02",
-    title: "Expert On-Site",
+    title: "On-Site Inspection",
     description:
-      "Surveyor arrives in under 24 hours. Detailed inspection begins immediately.",
+      "Surveyor arrives within 24 hours (Baltic region). Inspection conducted according to DNV standards and client requirements.",
     icon: UserCheck,
     timing: "Under 24h",
   },
   {
     number: "03",
-    title: "Report Delivered",
+    title: "Report Delivery",
     description:
-      "Preliminary report in 24-48h. Final documentation in 5-7 days.",
+      "Preliminary findings in 24-48 hours. Complete documentation delivered within 5-7 days.",
     icon: FileCheck,
     timing: "24h-7d",
   },
@@ -70,20 +70,20 @@ export default function HowItWorksPremium() {
                   {/* Wave decorations */}
                   <div className="h-[2px] w-6 md:w-8 bg-gradient-to-r from-transparent to-primary" />
                   <p className="font-mono text-[10px] md:text-xs font-bold text-primary tracking-[0.3em] uppercase">
-                    OUR PROCESS
+                    SURVEY PROCESS
                   </p>
                   <div className="h-[2px] w-6 md:w-8 bg-gradient-to-l from-transparent to-primary" />
                 </motion.div>
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] mb-4 md:mb-6">
-                From Incident
+                Request to Report
                 <br />
-                to Resolution
+                Delivery
               </h2>
 
               <p className="text-sm sm:text-base md:text-lg text-foreground/60 leading-relaxed">
-                A clear path designed for speed and precision
+                Standard process for marine and cargo surveys
               </p>
             </motion.div>
 

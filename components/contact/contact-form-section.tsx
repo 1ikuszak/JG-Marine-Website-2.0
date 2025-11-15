@@ -24,10 +24,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Shield, CheckCircle, Loader2, Send } from "lucide-react";
+import { CheckCircle, Loader2, Send } from "lucide-react";
 import { toast } from "sonner";
 
-// EXACT SAME SCHEMA AS HOME PAGE
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name required"),
   email: z.string().email("Valid email required"),
@@ -57,7 +56,6 @@ export default function ContactFormSection() {
     },
   });
 
-  // EXACT SAME onSubmit FUNCTION AS HOME PAGE
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
     setSubmitSuccess(false);
@@ -77,13 +75,11 @@ export default function ContactFormSection() {
         throw new Error(result.error || "Failed to send message");
       }
 
-      // Success!
       setSubmitSuccess(true);
       toast.success("Request Sent Successfully!", {
         description: "We'll respond within 24-48 hours.",
       });
 
-      // Reset form after 3 seconds
       setTimeout(() => {
         form.reset();
         setSubmitSuccess(false);
@@ -104,23 +100,23 @@ export default function ContactFormSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-card border border-border rounded-lg p-6 sm:p-8 md:p-10"
+      className="bg-card border border-border rounded-lg p-8 md:p-10"
     >
-      {/* Form Header */}
+      {/* Form Header - GP: Cut "Fill out" redundancy */}
       <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-          Request Survey Quote
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+          Request Survey
         </h2>
-        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-          Fill out the form below and we'll respond within 2 hours during
-          business hours. For emergencies, call our 24/7 hotline.
+        <p className="text-base text-muted-foreground leading-relaxed">
+          Complete the form below. We respond within 2 hours during business
+          hours. For emergencies, call our 24/7 hotline.
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Name & Email Row */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             <FormField
               control={form.control}
               name="name"
@@ -131,7 +127,7 @@ export default function ContactFormSection() {
                     <Input
                       placeholder="John Smith"
                       {...field}
-                      className="h-11 sm:h-12"
+                      className="h-12"
                     />
                   </FormControl>
                   <FormMessage />
@@ -151,7 +147,7 @@ export default function ContactFormSection() {
                       type="email"
                       placeholder="john@company.com"
                       {...field}
-                      className="h-11 sm:h-12"
+                      className="h-12"
                     />
                   </FormControl>
                   <FormMessage />
@@ -161,7 +157,7 @@ export default function ContactFormSection() {
           </div>
 
           {/* Company & Phone Row */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             <FormField
               control={form.control}
               name="company"
@@ -172,7 +168,7 @@ export default function ContactFormSection() {
                     <Input
                       placeholder="Baltic Shipping Ltd"
                       {...field}
-                      className="h-11 sm:h-12"
+                      className="h-12"
                     />
                   </FormControl>
                   <FormMessage />
@@ -192,7 +188,7 @@ export default function ContactFormSection() {
                       type="tel"
                       placeholder="+48 XXX XXX XXX"
                       {...field}
-                      className="h-11 sm:h-12"
+                      className="h-12"
                     />
                   </FormControl>
                   <FormMessage />
@@ -215,7 +211,7 @@ export default function ContactFormSection() {
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger className="h-11 sm:h-12">
+                    <SelectTrigger className="h-12">
                       <SelectValue placeholder="Select the service you need..." />
                     </SelectTrigger>
                   </FormControl>
@@ -255,7 +251,7 @@ export default function ContactFormSection() {
                 <FormControl>
                   <Textarea
                     placeholder="Please provide details about your vessel, cargo, or situation..."
-                    className="min-h-[120px] sm:min-h-[140px]"
+                    className="min-h-[140px]"
                     {...field}
                   />
                 </FormControl>
@@ -264,11 +260,11 @@ export default function ContactFormSection() {
             )}
           />
 
-          {/* Submit Button */}
+          {/* Submit Button - REMOVED "Secure" */}
           <Button
             type="submit"
             size="lg"
-            className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-base sm:text-lg h-12 sm:h-14"
+            className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg h-14"
             disabled={isSubmitting || submitSuccess}
           >
             {isSubmitting ? (
@@ -283,7 +279,7 @@ export default function ContactFormSection() {
               </>
             ) : (
               <>
-                Send Secure Request
+                Submit Request
                 <Send className="ml-2 h-5 w-5" />
               </>
             )}
@@ -305,13 +301,10 @@ export default function ContactFormSection() {
             </motion.div>
           )}
 
-          {/* Trust Message */}
-          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-muted-foreground pt-4">
-            <Shield className="h-4 w-4" />
-            <span>
-              Your information is encrypted and never shared. Response within 2
-              hours.
-            </span>
+          {/* Trust Message - NO SECURITY THEATER */}
+          <div className="text-center text-sm text-muted-foreground pt-4">
+            Response within 2 hours during business hours (Monday-Friday
+            08:00-17:00 CET)
           </div>
         </form>
       </Form>

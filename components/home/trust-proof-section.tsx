@@ -125,24 +125,24 @@ interface Advantage {
 const advantages: Advantage[] = [
   {
     icon: Clock,
-    title: "24h Baltic Response",
-    description: "The fastest mobilization in the region",
+    title: "24-Hour Baltic Response",
+    description: "On-site within 24 hours throughout the Baltic region",
     details:
-      "While global networks take 5-7 days to mobilize, we are on-site within 24 hours. Our local presence in key Baltic ports eliminates costly delays.",
+      "Local presence in Gdańsk, Szczecin, and Warsaw enables rapid mobilization. Surveyors deploy from regional offices rather than international hubs.",
   },
   {
     icon: Anchor,
-    title: "3-Generation Heritage",
-    description: "A tradition of Master Mariners",
+    title: "Three-Generation Maritime Heritage",
+    description: "64 years of Baltic operations",
     details:
-      "64 years of continuous operation. Knowledge passed down through three generations provides a depth of expertise corporations cannot replicate.",
+      "Established in 1959. Three generations of Master Mariners have built specialized knowledge of regional ports, vessel types, and maritime conditions.",
   },
   {
     icon: Shield,
-    title: "Guaranteed Independence",
-    description: "Zero conflicts of interest",
+    title: "Family-Owned Independence",
+    description: "Independent ownership structure",
     details:
-      "Our independent, family-owned structure means we are not tied to insurers or shipowners. Your interests are our only priority, ensuring unbiased reports.",
+      "Family-owned company with no insurer or shipowner affiliations. Survey reports serve client interests without external influence.",
   },
 ];
 
@@ -173,7 +173,7 @@ export default function TrustAndDifferentiationSection() {
             {/* Wave decorations */}
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
             <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
-              THE JG MARINE ADVANTAGE
+              OPERATIONAL ADVANTAGES
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
@@ -184,11 +184,10 @@ export default function TrustAndDifferentiationSection() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-6 leading-[1.1]">
-              Why Companies Choose JG Marine Over Global Networks
+              Regional Expertise and Response Capabilities
             </h2>
             <p className="text-lg md:text-xl text-foreground/60 leading-relaxed">
-              Our results are built on three key advantages that our competition
-              cannot offer.
+              Three differentiators of Baltic-based maritime surveying.
             </p>
           </motion.div>
         </div>

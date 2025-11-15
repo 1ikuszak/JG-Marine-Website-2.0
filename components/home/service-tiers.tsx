@@ -19,8 +19,11 @@ const services: Service[] = [
     title: "Marine Surveys",
     bestFor: "Shipowners, Fleet Operators, P&I Clubs",
     deliverables: [
-      "Vessel, P&I, and H&M Condition Surveys",
+      "Hull & Machinery (H&M) Surveys",
+      "Protection & Indemnity (P&I) Condition Surveys",
       "Marine Warranty Surveys (MWS)",
+      "On/Off Hire Surveys",
+      "Pre-Purchase Inspections",
       "Flag State and Classification Inspections",
     ],
     slug: "marine-surveys",
@@ -30,9 +33,12 @@ const services: Service[] = [
     title: "Cargo & Inland Services",
     bestFor: "Logistics Providers, Freight Forwarders, Cargo Insurers",
     deliverables: [
-      "Cargo and Inland Transport Surveys",
+      "Cargo Damage Assessment and Surveys",
+      "Draft Surveys and Loading Supervision",
+      "Inland Transport (CMR) Surveys",
       "Towage and Bunker Approval Surveys",
-      "Liquid Cargo and Specialist Inspections",
+      "Liquid Cargo and Bulk Commodity Inspections",
+      "Container Inspections",
     ],
     slug: "cargo-inland-services",
     imageUrl: "/services/2.jpg",
@@ -41,18 +47,23 @@ const services: Service[] = [
     title: "Technical Consulting & Engineering",
     bestFor: "Shipyards, Port Authorities, Fleet Managers",
     deliverables: [
-      "Technical Audits (ISM, ISPS, MLC)",
+      "Technical Audits (ISM, ISPS, MLC, CMID)",
+      "Vetting Inspections and Compliance Assessments",
       "Newbuild and Conversion Supervision",
-      "Heavy Lift Engineering and Loss Prevention Advisory",
+      "Heavy Lift Engineering and Load-Out Planning",
+      "Offshore Wind Farm Project Support",
+      "Loss Prevention and Risk Advisory",
     ],
     slug: "technical-consulting-engineering",
     imageUrl: "/services/3.jpg",
   },
   {
     title: "Claims, Legal & Insurance Services",
-    bestFor: "Insurers, P&I Clubs, Maritime Law Firms",
+    bestFor: "Marine Insurers, P&I Clubs, Maritime Law Firms",
     deliverables: [
-      "P&I, H&M, and Cargo Claims Handling",
+      "P&I and H&M Claims Handling",
+      "Cargo Claims and Loss Assessment",
+      "Average Adjusting Services",
       "Risk Assessment and Pre-Entry Surveys",
       "Expert Witness and Litigation Support",
     ],
@@ -61,11 +72,12 @@ const services: Service[] = [
   },
   {
     title: "Casualty Response & Investigation",
-    bestFor: "Emergency Response Teams, Owners, Insurers",
+    bestFor: "Emergency Response Teams, Shipowners, Insurers",
     deliverables: [
       "Marine Casualty Management",
       "Salvage and Wreck Removal Consultancy",
-      "Accident Investigation and Crew Care",
+      "Accident Investigation and Root Cause Analysis",
+      "Emergency Survey Response (24/7)",
     ],
     slug: "casualty-response-investigation",
     imageUrl: "/services/6.jpg",
@@ -108,7 +120,7 @@ export default function ServiceTiersUltimate() {
               {/* Wave decorations */}
               <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
               <p className="font-mono text-[10px] sm:text-xs font-bold text-accent tracking-[0.3em] uppercase">
-                COMPLETE MARITIME SOLUTIONS
+                MARITIME SURVEY SERVICES{" "}
               </p>
               <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-l from-transparent to-accent" />
             </motion.div>
@@ -120,7 +132,7 @@ export default function ServiceTiersUltimate() {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none mb-4 sm:mb-6"
           >
-            Expert Services
+            Professional Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -129,8 +141,9 @@ export default function ServiceTiersUltimate() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl"
           >
-            From routine inspections to emergency casualty response, we provide
-            specialized expertise for every maritime challenge.
+            Marine surveys, cargo inspections, and casualty response across the
+            Baltic region. Hull and machinery assessments, technical audits, and
+            offshore project support.
           </motion.p>
         </div>
 

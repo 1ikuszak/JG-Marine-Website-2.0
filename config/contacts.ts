@@ -93,6 +93,16 @@ export const CONTACTS = {
       certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
       imageUrl: undefined, // Will show placeholder
     },
+    antek: {
+      name: "Bartłomiej",
+      email: "bartek@jg-marine.com",
+      phone: "+48 602 752 200",
+      role: "Warsaw Office Manager",
+      description:
+        "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
+      certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
+      imageUrl: "/team/antek.png", // Will show placeholder
+    },
   },
 
   // Social Media

@@ -5,17 +5,20 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Shield, Globe, Anchor, Clock } from "lucide-react";
 import HeritageCtaSection from "@/components/about/heritage-cta";
+import { Card, CardContent } from "@/components/ui/card";
+import TeamSectionWhiteUniform from "@/components/home/team-section";
+import OfficeLocationsSection from "@/components/about/office-coverage";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* HERO - Editorial Split Layout with Golden Ratio */}
+      {/* HERO - Editorial Split Layout with Golden Ratio */}a
       <section className="relative min-h-screen overflow-hidden bg-background">
         <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-[61.8%_38.2%]">
           {/* LEFT: Heritage Image - Golden Ratio Width (61.8%) */}
           <div className="relative h-[50vh] sm:h-[60vh] lg:h-full order-2 lg:order-1">
             <Image
-              src="/about/A.jpg"
+              src="/about/C.jpg"
               alt="JG Marine heritage - Three generations of Master Mariners"
               fill
               className="object-cover grayscale"
@@ -144,71 +147,73 @@ export default function AboutPage() {
           className="hidden lg:block absolute left-[61.8%] top-1/2 -translate-y-1/2 w-[1px] h-16 sm:h-24 bg-gradient-to-b from-transparent via-secondary to-transparent origin-center"
         />
       </section>
-
-      {/* OUR STORY - Cinematic Image-Rich Narrative */}
+      {/* OUR STORY - Single Definitive Heritage Narrative */}
       <section className="relative">
-        {/* Story Introduction */}
         <div className="grid lg:grid-cols-2">
           {/* Left: Story Text */}
-          <div className="bg-background flex items-center py-12 sm:py-16 md:py-20 lg:py-32">
-            <div className="container mx-auto max-w-2xl px-4 sm:px-6 md:px-8 lg:px-16">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              >
+          <div className="bg-background flex items-center py-20 lg:py-32">
+            <div className="container mx-auto max-w-2xl px-8 lg:px-16">
+              <motion.div>
                 {/* Overline */}
-                <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-                  <div className="h-px w-8 sm:w-12 bg-accent/30" />
-                  <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="h-px w-12 bg-accent/30" />
+                  <span className="text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
                     Our Heritage
                   </span>
                 </div>
 
-                {/* Headline */}
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-[1.1] mb-6 sm:mb-8">
+                {/* Headline - GP: Short punch */}
+                <h2 className="text-5xl lg:text-6xl font-medium text-primary leading-[1.1] mb-8">
                   Born from the sea,
                   <br />
                   built on trust
                 </h2>
 
-                {/* Accent Line */}
-                <div className="w-16 sm:w-20 h-[1px] bg-secondary mb-8 sm:mb-12" />
+                <div className="w-20 h-[1px] bg-secondary mb-12" />
 
-                {/* Body Text */}
-                <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed">
+                {/* Body - GP: Vary sentence length */}
+                <div className="space-y-6 text-lg text-foreground/70 leading-relaxed">
+                  {/* SHORT opener */}
+                  <p>In 1968, the first generation made a choice.</p>
+
+                  {/* MEDIUM expansion */}
                   <p>
-                    In 1968, when maritime surveying was still an emerging
-                    profession in Poland, the first generation of JG Marine
-                    Master Mariners made a decisive choice: leave the bridge of
-                    commercial vessels to build something more enduring.
+                    They left the bridge of commercial vessels to establish JG
+                    Marine in Gdańsk. Maritime surveying was emerging in Poland.
+                    The industry needed more than inspectors.
                   </p>
+
+                  {/* LONG - builds to importance */}
                   <p>
-                    They understood that the industry needed more than
-                    inspectors it needed allies who spoke the language of the
-                    sea, who had felt the weight of command, who knew that every
-                    survey report could mean the difference between a resolved
-                    claim and a devastating loss.
+                    They understood that shipowners, insurers, and cargo
+                    interests required allies who spoke the language of the sea,
+                    who had commanded vessels through Baltic storms, who knew
+                    that every survey report could mean the difference between a
+                    resolved claim and a devastating loss.
+                  </p>
+
+                  {/* MEDIUM resolution */}
+                  <p>
+                    Sixty-four years later, three generations of Master Mariners
+                    continue that mission. The sea demands respect. Expertise
+                    demands humility. Trust demands independence.
                   </p>
                 </div>
 
                 {/* Stats */}
-                <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-border/30">
-                  <div className="grid grid-cols-2 gap-6 sm:gap-8">
+                <div className="mt-12 pt-12 border-t border-border/30">
+                  <div className="grid grid-cols-2 gap-8">
                     <div>
-                      <p className="text-[10px] sm:text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
-                        Founded
+                      <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                        Established
                       </p>
-                      <p className="text-2xl sm:text-3xl text-primary">1968</p>
+                      <p className="text-3xl text-primary">1968</p>
                     </div>
                     <div>
-                      <p className="text-[10px] sm:text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
-                        Location
+                      <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                        Generations
                       </p>
-                      <p className="text-2xl sm:text-3xl text-primary">
-                        Gdańsk
-                      </p>
+                      <p className="text-3xl text-primary">Three</p>
                     </div>
                   </div>
                 </div>
@@ -217,16 +222,10 @@ export default function AboutPage() {
           </div>
 
           {/* Right: Heritage Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            className="relative min-h-[40vh] sm:min-h-[50vh] lg:min-h-full"
-          >
+          <motion.div className="relative min-h-[50vh] lg:min-h-full">
             <Image
               src="/about/B.jpg"
-              alt="JG Marine founding in 1968 - Baltic maritime heritage"
+              alt="JG Marine founding generation, Gdańsk 1968"
               fill
               className="object-cover grayscale"
               quality={100}
@@ -234,328 +233,34 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </motion.div>
         </div>
-
-        {/* Full-Width Image Break */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-200px" }}
-          transition={{ duration: 1.2 }}
-          className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen"
-        >
-          <Image
-            src="/about/C.jpg"
-            alt="First generation Master Mariners - JG Marine founders"
-            fill
-            className="object-cover grayscale"
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/60" />
-
-          {/* Overlay Text */}
-          <div className="absolute inset-0 flex items-end justify-center pb-8 sm:pb-12 md:pb-16 lg:pb-24">
-            <div className="text-center px-4 sm:px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.3 }}
-              >
-                <p className="text-xs sm:text-sm tracking-[0.4em] text-white/60 uppercase mb-3 sm:mb-4">
-                  First Generation
-                </p>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white">
-                  Masters of the Baltic
-                </h3>
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Evolution Story */}
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-32">
-          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
-            {/* Image Grid */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="lg:col-span-7 space-y-6 sm:space-y-8"
-            >
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/about/D.jpg"
-                  alt="JG Marine maritime survey operations"
-                  fill
-                  className="object-cover grayscale"
-                  quality={100}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              </div>
-
-              <div className="relative aspect-[16/9] sm:ml-0 lg:ml-12">
-                <Image
-                  src="/about/E.jpg"
-                  alt="Survey team conducting vessel inspection"
-                  fill
-                  className="object-cover grayscale"
-                  quality={100}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              </div>
-            </motion.div>
-
-            {/* Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="lg:col-span-5 space-y-6 sm:space-y-8"
-            >
-              <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed">
-                <p>
-                  What began as a small surveying firm focused on Baltic
-                  maritime transport has evolved into a recognized authority
-                  across hull & machinery, P&I matters, heavy lift projects, and
-                  comprehensive loss adjusting.
-                </p>
-                <p>
-                  Yet we've never forgotten where we came from. The sea demands
-                  respect, expertise demands humility, and trust demands
-                  unwavering independence.
-                </p>
-              </div>
-
-              {/* Stats */}
-              <div className="pt-6 sm:pt-8 space-y-4 sm:space-y-6">
-                <div className="flex items-baseline gap-3 sm:gap-4">
-                  <span className="text-4xl sm:text-5xl font-light text-primary">
-                    Three
-                  </span>
-                  <div>
-                    <p className="text-xs sm:text-sm text-foreground/60">
-                      Generations of
-                    </p>
-                    <p className="text-xs sm:text-sm font-medium text-foreground/80">
-                      Master Mariners
-                    </p>
-                  </div>
-                </div>
-                <div className="h-px bg-border/30" />
-                <div className="flex items-baseline gap-3 sm:gap-4">
-                  <span className="text-4xl sm:text-5xl font-light text-primary">
-                    11+
-                  </span>
-                  <div>
-                    <p className="text-xs sm:text-sm text-foreground/60">
-                      Operational presence
-                    </p>
-                    <p className="text-xs sm:text-sm font-medium text-foreground/80">
-                      European Countries
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Modern Era - Split Layout */}
-        <div className="grid lg:grid-cols-5">
-          {/* Text Column */}
-          <div className="lg:col-span-2 bg-muted flex items-center py-12 sm:py-16 lg:py-24">
-            <div className="container mx-auto max-w-xl px-4 sm:px-6 md:px-8 lg:px-12">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1 }}
-                className="space-y-4 sm:space-y-6"
-              >
-                <div className="w-10 sm:w-12 h-[1px] bg-secondary" />
-                <h3 className="text-2xl sm:text-3xl md:text-4xl text-primary leading-tight">
-                  Today's Standard,
-                  <br />
-                  Tomorrow's Legacy
-                </h3>
-                <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">
-                  Today, the company operates in 11+ countries, conducts 120+
-                  projects annually, and maintains the same commitment to
-                  independence and precision that defined us from day one.
-                </p>
-
-                {/* Final Stat */}
-                <div className="pt-4 sm:pt-6 border-t border-border/30">
-                  <p className="text-[10px] sm:text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
-                    Annual Projects
-                  </p>
-                  <p className="text-4xl sm:text-5xl font-medium text-primary">
-                    120+
-                  </p>
-                  <p className="text-xs sm:text-sm text-foreground/60 mt-2">
-                    Surveys & Inspections
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Image Grid - Modern Operations */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="lg:col-span-3 grid grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-4 lg:p-8"
-          >
-            <div className="relative aspect-square">
-              <Image
-                src="/about/4.jpg"
-                alt="Modern maritime survey operations"
-                fill
-                className="object-cover"
-                quality={100}
-              />
-            </div>
-
-            <div className="relative aspect-square">
-              <Image
-                src="/about/5.jpg"
-                alt="DNV certified surveyor at work"
-                fill
-                className="object-cover"
-                quality={100}
-              />
-            </div>
-
-            <div className="relative aspect-square">
-              <Image
-                src="/about/group.jpg"
-                alt="Offshore wind project supervision"
-                fill
-                className="object-cover"
-                quality={100}
-                style={{ objectPosition: "66% 50%" }}
-              />
-            </div>
-
-            <div className="relative aspect-square">
-              <Image
-                src="/about/sunset.jpeg"
-                alt="Heavy lift survey operations"
-                fill
-                className="object-cover"
-                quality={100}
-              />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Closing Statement */}
-        <div className="relative h-[50vh] sm:h-[60vh] lg:h-[80vh] flex items-center justify-center">
-          <Image
-            src="/about/F.jpg"
-            alt="JG Marine - Three generations of maritime excellence"
-            fill
-            className="object-cover"
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/75 to-foreground/85" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="relative z-10 text-center px-4 sm:px-6 max-w-4xl"
-          >
-            <div className="space-y-6 sm:space-y-8">
-              <div className="h-px w-12 sm:w-16 bg-primary mx-auto" />
-              <blockquote className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-[1.4] tracking-tight">
-                Three generations of maritime expertise,
-                <br className="hidden sm:block" />
-                one unwavering mission
-              </blockquote>
-            </div>
-          </motion.div>
-        </div>
       </section>
-
-      {/* PHOTO - Large Vintage Image */}
-      <section className="relative">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.4 }}
-          className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen"
-        >
-          <Image
-            src="/about/G.jpg"
-            alt="JG Marine founding generation, Gdańsk 1968"
-            fill
-            className="object-cover grayscale"
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-          <div className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-4 sm:left-6 md:left-8 lg:left-16">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-[10px] sm:text-xs md:text-sm text-white/60 tracking-[0.3em] uppercase"
-            >
-              Gdańsk, 1968
-            </motion.p>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* TIMELINE - Refined & Minimal */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Timeline - Single Definitive Heritage Narrative */}
+      <section className="py-32">
+        <div className="container mx-auto max-w-6xl px-8">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="mb-12 sm:mb-16 md:mb-20 lg:mb-32"
-          >
-            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <div className="h-px w-8 sm:w-12 bg-accent/30" />
-              <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
+          <motion.div className="mb-32">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px w-12 bg-accent/30" />
+              <span className="text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
                 Evolution
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
-              Six Decades
+            <h2 className="text-5xl lg:text-6xl font-medium text-primary leading-tight">
+              Three Generations,
               <br />
-              of Maritime Heritage
+              Three Milestones
             </h2>
           </motion.div>
 
-          {/* Timeline Items */}
-          <div className="space-y-16 sm:space-y-24 md:space-y-32 lg:space-y-40">
-            {/* 1968 - The Beginning */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
-            >
-              {/* Image */}
+          {/* Timeline Items - REDUCED TO 3 */}
+          <div className="space-y-40">
+            {/* 1968 - Founding */}
+            <motion.div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/about/H.jpg"
-                    alt="1968 - The Beginning"
+                    alt="1968 - Founding generation"
                     fill
                     className="object-cover grayscale"
                     quality={100}
@@ -563,405 +268,232 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-6">
-                <div className="space-y-3 sm:space-y-4">
-                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
+              <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+                <div className="space-y-4">
+                  <p className="text-9xl font-light text-foreground/10 leading-none">
                     1968
                   </p>
-                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font text-primary">
-                    The Beginning
-                  </h3>
+                  <div className="w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-3xl text-primary">Founding</h3>
                 </div>
-                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
+                <p className="text-lg text-foreground/70 leading-relaxed max-w-lg">
                   First generation of Master Mariners establish JG Marine in
-                  Gdańsk, focusing on maritime transport and Baltic shipping
-                  operations.
+                  Gdańsk. Baltic maritime surveying begins with hull inspections
+                  and cargo assessments.
                 </p>
               </div>
             </motion.div>
 
-            {/* 1985 - Expansion */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
-            >
-              {/* Content */}
-              <div className="lg:col-span-6 space-y-4 sm:space-y-6">
-                <div className="space-y-3 sm:space-y-4">
-                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
-                    1985
-                  </p>
-                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl text-primary">
-                    Expansion
-                  </h3>
-                </div>
-                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
-                  Broadening into cargo surveys and heavy lift operations.
-                  Second generation begins learning the craft.
-                </p>
-              </div>
-
-              {/* Image */}
-              <div className="lg:col-span-6">
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src="/about/J.jpg"
-                    alt="1985 - Expansion Era"
-                    fill
-                    className="object-cover grayscale"
-                    quality={100}
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* 2004 - Integration */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
-            >
-              {/* Image */}
-              <div className="lg:col-span-6 order-2 lg:order-1">
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src="/about/9.jpg"
-                    alt="2004 - European Integration"
-                    fill
-                    className="object-cover"
-                    quality={100}
-                  />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-6">
-                <div className="space-y-3 sm:space-y-4">
-                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
+            {/* 2004 - European Integration */}
+            <motion.div className="grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-6 space-y-6">
+                <div className="space-y-4">
+                  <p className="text-9xl font-light text-foreground/10 leading-none">
                     2004
                   </p>
-                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font text-primary">
+                  <div className="w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-3xl text-primary">
                     European Integration
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
-                  DNV certifications earned. Operations expand to 11+ countries.
-                  Recognition from major P&I Clubs.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* 2024 - Today */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1 }}
-              className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
-            >
-              {/* Content */}
-              <div className="lg:col-span-6 space-y-4 sm:space-y-6">
-                <div className="space-y-3 sm:space-y-4">
-                  <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground/10 leading-none">
-                    2024
-                  </p>
-                  <div className="w-12 sm:w-16 h-[1px] bg-secondary" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font text-primary">
-                    Three Generations
-                  </h3>
-                </div>
-                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-lg">
-                  Third generation continues the legacy with modern technology
-                  and offshore wind expertise—while preserving our independence.
+                <p className="text-lg text-foreground/70 leading-relaxed max-w-lg">
+                  DNV certifications earned. Operations expand across 11+
+                  European countries. Recognition from major P&I Clubs and
+                  classification societies.
                 </p>
               </div>
 
-              {/* Image */}
               <div className="lg:col-span-6">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/about/news-3.jpg"
-                    alt="2024 - Modern Operations"
+                    src="/about/9.jpg"
+                    alt="2004 - DNV certification and expansion"
                     fill
                     className="object-cover"
                     quality={100}
                   />
                 </div>
+              </div>
+            </motion.div>
+
+            {/* Today - Third Generation */}
+            <motion.div className="grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-6 order-2 lg:order-1">
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src="/about/news-3.jpg"
+                    alt="Today - Third generation operations"
+                    fill
+                    className="object-cover"
+                    quality={100}
+                  />
+                </div>
+              </div>
+
+              <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+                <div className="space-y-4">
+                  <p className="text-9xl font-light text-foreground/10 leading-none">
+                    Today
+                  </p>
+                  <div className="w-16 h-[1px] bg-secondary" />
+                  <h3 className="text-3xl text-primary">Three Generations</h3>
+                </div>
+                <p className="text-lg text-foreground/70 leading-relaxed max-w-lg">
+                  120+ projects annually across offshore wind, heavy lift, and
+                  traditional maritime operations. Third generation continues
+                  the legacy with modern technology and unwavering independence.
+                </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* MISSION - Minimal Statement */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/30">
-        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-center space-y-6 sm:space-y-8"
-          >
-            <div className="h-px w-12 sm:w-16 bg-accent/30 mx-auto" />
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-primary leading-relaxed max-w-3xl mx-auto px-4">
-              Independent, precise, and trustworthy marine surveys—protecting
-              client interests through three generations of maritime expertise
-            </h2>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* INDEPENDENCE - Clean Statement */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/about/I.jpg"
-            alt="Independence guaranteed"
-            fill
-            className="object-cover grayscale opacity-20"
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-        </div>
-
-        <div className="container relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="grid lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 items-center"
-          >
-            {/* Icon & Headline */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-              <div className="space-y-4 sm:space-y-6">
-                <Shield
-                  className="h-10 w-10 sm:h-12 sm:w-12 text-primary/60"
-                  strokeWidth={1.5}
-                />
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
-                  Independence guaranteed
-                  <br />
-                  by family ownership
-                </h2>
-                <div className="w-16 sm:w-20 h-[1px] bg-secondary" />
-              </div>
-
-              <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl">
-                Not tied to insurers. Not beholden to P&I Clubs. Not pressured
-                by shipowner groups. We answer only to the facts we observe and
-                the clients who trust us.
+      {/* OPERATIONAL ADVANTAGES - Migrated from Homepage */}
+      <section className="py-32 bg-muted/20">
+        <div className="container mx-auto max-w-screen-xl px-6">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <motion.div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
+              <p className="text-xs font-bold text-primary tracking-[0.3em] uppercase">
+                OPERATIONAL ADVANTAGES
               </p>
-            </div>
+              <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
+            </motion.div>
 
-            {/* Stats/Features */}
-            <div className="lg:col-span-5 space-y-3 sm:space-y-4">
-              <div className="border border-border/50 bg-card p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-medium text-primary mb-2">
-                  No Conflicts
-                </h3>
-                <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed">
-                  No external shareholders demanding different conclusions
-                </p>
-              </div>
-              <div className="border border-border/50 bg-card p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg text-primary mb-2">
-                  Objective Reporting
-                </h3>
-                <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed">
-                  Reports accepted by arbitrators and major insurers
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            <motion.h2 className="text-5xl font-bold text-foreground mb-6 leading-tight">
+              Regional Expertise and Response Capabilities
+            </motion.h2>
+            <p className="text-xl text-foreground/60">
+              Three differentiators of Baltic-based maritime surveying.
+            </p>
+          </div>
 
-      {/* SERVICES - Grid Overview */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="mb-12 sm:mb-16 lg:mb-20"
-          >
-            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <div className="h-px w-8 sm:w-12 bg-accent/30" />
-              <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
-                What We Do
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary">
-              Comprehensive Maritime
-              <br />
-              Survey Services
-            </h2>
-          </motion.div>
-
-          {/* Services Grid */}
-          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+          {/* Stats Bar */}
+          <div className="grid md:grid-cols-3 gap-12 mb-24">
             {[
               {
-                icon: Anchor,
-                title: "Maritime Surveys",
-                desc: "Hull & machinery, P&I matters, on/off-hire inspections, pre-purchase surveys",
+                value: 120,
+                label: "Projects Annually",
+                desc: "Consistent quality and precision in every survey",
               },
               {
-                icon: Globe,
-                title: "Heavy Lift & Projects",
-                desc: "Marine warranty surveys, loadout operations, offshore wind installations",
+                value: 64,
+                label: "Years of Experience",
+                desc: "Three generations of captains and engineers",
               },
               {
-                icon: Shield,
-                title: "Loss Adjusting",
-                desc: "Cargo surveys, claims handling, expert reports for arbitration",
+                value: 11,
+                label: "Countries in Europe",
+                desc: "Local presence, international standards",
               },
-              {
-                icon: Clock,
-                title: "Technical Audits",
-                desc: "ISO/ISM/ISPS compliance, Flag State inspections, risk assessments",
-              },
-            ].map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="group border-l-2 border-border/30 hover:border-secondary transition-colors duration-500 pl-4 sm:pl-6 lg:pl-8 py-3 sm:py-4"
-              >
-                <service.icon
-                  className="h-6 w-6 sm:h-8 sm:w-8 text-foreground/40 group-hover:text-secondary transition-colors duration-500 mb-4 sm:mb-6"
-                  strokeWidth={1.5}
-                />
-                <h3 className="text-lg sm:text-xl md:text-2xl font-light text-primary mb-2 sm:mb-3">
-                  {service.title}
+            ].map((metric, index) => (
+              <motion.div key={index} className="text-center">
+                <p className="text-7xl font-bold text-primary mb-4">
+                  {metric.value}+
+                </p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  {metric.label}
                 </h3>
-                <p className="text-xs sm:text-sm md:text-base text-foreground/60 leading-relaxed">
-                  {service.desc}
+                <p className="text-sm text-foreground/60 max-w-xs mx-auto">
+                  {metric.desc}
                 </p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* GEOGRAPHIC PRESENCE - Clean Layout */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/20">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
-            {/* Left: Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="space-y-6 sm:space-y-8"
-            >
-              <div className="space-y-4 sm:space-y-6">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary leading-tight">
-                  Local Presence,
-                  <br />
-                  International Reach
-                </h2>
-                <div className="w-16 sm:w-20 h-[1px] bg-secondary" />
-                <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed">
-                  Three strategic offices in key Baltic ports. Operational
-                  presence across 11+ European countries.
+          {/* Advantage Cards */}
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Card 1: 24-Hour Response */}
+            <Card className="h-full bg-card border border-border hover:border-primary/30 transition-all duration-500">
+              <CardContent className="p-10">
+                <Clock
+                  className="h-8 w-8 text-primary mb-6"
+                  strokeWidth={1.5}
+                />
+
+                <h3 className="text-2xl font-bold text-foreground mb-3">
+                  24-Hour Baltic Response
+                </h3>
+                <p className="font-medium text-foreground/70 mb-4">
+                  On-site within 24 hours throughout the Baltic region
                 </p>
-              </div>
+                <p className="text-sm text-foreground/60 leading-relaxed">
+                  Local presence in Gdańsk, Szczecin, and Warsaw enables rapid
+                  mobilization. Surveyors deploy from regional offices rather
+                  than international hubs.
+                </p>
+              </CardContent>
+            </Card>
 
-              {/* Office Locations */}
-              <div className="space-y-3 sm:space-y-4 pt-4">
-                {[
-                  { city: "Sopot HQ", desc: "Baltic operations center" },
-                  { city: "Szczecin", desc: "Western Baltic coverage" },
-                  { city: "Warsaw", desc: "Central European hub" },
-                ].map((office, i) => (
-                  <div key={i} className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm sm:text-base font-medium text-primary">
-                        {office.city}
-                      </p>
-                      <p className="text-xs sm:text-sm text-foreground/60">
-                        {office.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            {/* Card 2: Three-Generation Heritage */}
+            <Card className="h-full bg-card border border-border hover:border-primary/30 transition-all duration-500">
+              <CardContent className="p-10">
+                <Anchor
+                  className="h-8 w-8 text-primary mb-6"
+                  strokeWidth={1.5}
+                />
 
-            {/* Right: Coverage Map */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="bg-card border border-border/50 p-6 sm:p-8 lg:p-10"
-            >
-              <div className="space-y-6 sm:space-y-8">
-                {/* Countries List */}
-                <div>
-                  <p className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/50 uppercase mb-4 sm:mb-6">
-                    Operational Coverage
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm text-foreground/70">
-                    <p>Poland</p>
-                    <p>Germany</p>
-                    <p>Sweden</p>
-                    <p>Denmark</p>
-                    <p>Norway</p>
-                    <p>Finland</p>
-                    <p>Lithuania</p>
-                    <p>Latvia</p>
-                    <p>Estonia</p>
-                    <p>Netherlands</p>
-                    <p>Belgium</p>
-                    <p className="col-span-2 text-primary font-medium pt-2">
-                      + Global partner network
-                    </p>
-                  </div>
-                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">
+                  Three-Generation Maritime Heritage
+                </h3>
+                <p className="font-medium text-foreground/70 mb-4">
+                  64 years of Baltic operations
+                </p>
+                <p className="text-sm text-foreground/60 leading-relaxed">
+                  Established in 1968. Three generations of Master Mariners have
+                  built specialized knowledge of regional ports, vessel types,
+                  and maritime conditions.
+                </p>
+              </CardContent>
+            </Card>
 
-                {/* Response Times */}
-                <div className="pt-4 sm:pt-6 border-t border-border/30 space-y-3 sm:space-y-4">
-                  {[
-                    { label: "Baltic Response", value: "<24h" },
-                    { label: "Central Europe", value: "<48h" },
-                    { label: "Emergency", value: "24/7" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between">
-                      <span className="text-xs sm:text-sm text-foreground/60">
-                        {item.label}
-                      </span>
-                      <span className="text-lg sm:text-xl font-light text-primary">
-                        {item.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+            {/* Card 3: Family-Owned Independence */}
+            <Card className="h-full bg-card border border-border hover:border-primary/30 transition-all duration-500">
+              <CardContent className="p-10">
+                <Shield
+                  className="h-8 w-8 text-primary mb-6"
+                  strokeWidth={1.5}
+                />
+
+                <h3 className="text-2xl font-bold text-foreground mb-3">
+                  Family-Owned Independence
+                </h3>
+                <p className="font-medium text-foreground/70 mb-4">
+                  Independent ownership structure
+                </p>
+                <p className="text-sm text-foreground/60 leading-relaxed">
+                  Family-owned company with no insurer or shipowner
+                  affiliations. Survey reports serve client interests without
+                  external influence.
+                </p>
+              </CardContent>
+            </Card>
           </div>
+
+          {/* Simple Trust Message - REPLACES LogoScroller */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-center mt-16 pt-12 border-t border-border/30"
+          >
+            <p className="text-sm text-foreground/50 max-w-2xl mx-auto">
+              DNV-certified surveyors. Reports accepted by P&I Clubs and
+              classification societies worldwide.
+            </p>
+          </motion.div>
         </div>
       </section>
-
+      {/*  Team Section ✅ (MIGRATED from homepage, 8 profiles) */}
+      <section>
+        <TeamSectionWhiteUniform />
+      </section>
+      {/* Office Coverage - Full Details ✅ (EXPANDED from homepage condensed version)*/}
+      <section>
+        <OfficeLocationsSection />
+      </section>
       {/* CERTIFICATIONS - Minimal Grid */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-32">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -975,10 +507,11 @@ export default function AboutPage() {
           >
             <div className="h-px w-12 sm:w-16 bg-accent/30 mx-auto mb-4 sm:mb-6" />
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary mb-4 sm:mb-6">
-              We are Certified
+              Certifications and Memberships
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-foreground/60 max-w-2xl mx-auto px-4">
-              Decades of trust earned, not just certifications purchased
+              Accredited by leading maritime authorities and professional
+              organizations
             </p>
           </motion.div>
 
@@ -1048,7 +581,6 @@ export default function AboutPage() {
         </div>
       </section>
       <HeritageCtaSection />
-
       <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
     </div>
   );

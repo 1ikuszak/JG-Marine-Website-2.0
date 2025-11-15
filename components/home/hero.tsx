@@ -120,15 +120,14 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
           <div className="max-w-2xl text-white">
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
-              Protect Maritime Assets from Million-Euro Losses with Independent
-              DNV Marine Surveys
+              Independent Marine Surveys for Baltic Maritime Operations
             </h1>
 
             {/* Subheadline */}
             <p className="mt-4 text-sm sm:text-base md:text-lg text-white/90 max-w-prose leading-relaxed">
-              Independent hull, cargo, and offshore project surveys for
-              insurers, shipowners, and logistics operators across the Baltic
-              Sea and Central Europe
+              DNV-certified surveys for hull and machinery, cargo damage
+              assessment, and offshore projects. Serving insurers, shipowners,
+              and logistics operators across Poland and the Baltic region.
             </p>
 
             {/* CTA Buttons */}

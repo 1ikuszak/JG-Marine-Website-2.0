@@ -35,7 +35,7 @@ import {
 import { toast } from "sonner";
 import { CONTACTS, OFFICES } from "@/config";
 
-// Form Schema - NO urgency field
+// Form Schema
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name required"),
   email: z.string().email("Valid email required"),
@@ -125,10 +125,6 @@ export default function PremiumCtaSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 space-y-8"
           >
-            {/* FIX 1: The opening <motion.div> tag was missing its closing '>'.
-              The comment below was moved from inside the tag to outside.
-            */}
-
             {/* Header */}
             <div>
               <motion.div
@@ -140,16 +136,17 @@ export default function PremiumCtaSection() {
                 {/* Wave decorations */}
                 <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-accent" />
                 <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
-                  PROTECT YOUR ASSETS
+                  24/7 EMERGENCY RESPONSE
                 </p>
                 <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-accent" />
               </motion.div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                Don't Let Delays Cost You Millions
+                Request Immediate Survey
               </h2>
               <p className="text-xl text-white/70 leading-relaxed">
-                DNV-certified surveyors on-site in 24 hours. Every minute counts
-                when your vessel is at risk.
+                DNV-certified surveyors available 24 hours daily. Rapid response
+                for vessel casualties, cargo damage, and critical maritime
+                incidents.
               </p>
             </div>
 
@@ -159,7 +156,7 @@ export default function PremiumCtaSection() {
                 <div className="flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/50 rounded">
                   <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
                   <span className="text-xs font-mono font-bold text-accent tracking-wider">
-                    LIVE 24/7
+                    AVAILABLE 24/7
                   </span>
                 </div>
               </div>
@@ -169,21 +166,24 @@ export default function PremiumCtaSection() {
                 strokeWidth={1.5}
               />
               <h3 className="text-2xl font-bold text-white mb-3">
-                Emergency Response
+                Emergency Hotline
               </h3>
               <p className="text-white/70 mb-6">
-                Vessel casualty, cargo damage, or critical breakdown? Get
-                immediate assistance.
+                Vessel casualty, cargo damage, or breakdown requiring immediate
+                survey.
               </p>
 
               <div className="space-y-4">
-                <a href="tel:+48XXXXXXXXX" className="block">
+                <a
+                  href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
+                  className="block"
+                >
                   <Button
                     size="lg"
                     className="w-full bg-accent hover:bg-accent/90 text-white font-semibold text-lg h-14 group"
                   >
                     <Phone className="h-5 w-5 mr-3 group-hover:animate-pulse" />
-                    Call Emergency Hotline
+                    Call {CONTACTS.main.phone}
                   </Button>
                 </a>
 
@@ -223,8 +223,6 @@ export default function PremiumCtaSection() {
                 Other Contacts
               </p>
 
-              {/* FIX 2: Added the opening <a> tag here.
-               */}
               <a
                 href={`mailto:${CONTACTS.main.email}`}
                 className="flex items-center gap-3 text-white/70 hover:text-primary transition-colors group"
@@ -250,11 +248,11 @@ export default function PremiumCtaSection() {
               {/* Form Header */}
               <div className="mb-8">
                 <h3 className="text-3xl font-bold text-white mb-3">
-                  Request Survey Quote
+                  Request Survey
                 </h3>
                 <p className="text-white/70">
-                  Fill out the form below and we'll respond within 2 hours
-                  during business hours.
+                  Complete the form below for survey inquiries and quote
+                  requests.
                 </p>
               </div>
 
@@ -431,7 +429,7 @@ export default function PremiumCtaSection() {
                       </>
                     ) : (
                       <>
-                        Send Secure Request
+                        Submit Request
                         <CheckCircle className="ml-2 h-5 w-5" />
                       </>
                     )}
@@ -455,9 +453,8 @@ export default function PremiumCtaSection() {
 
                   {/* Trust Message */}
                   <p className="text-xs text-center text-white/50">
-                    <Shield className="h-3 w-3 inline mr-1" />
-                    Your information is encrypted and never shared. Response
-                    within 2 hours.
+                    Response within 2 hours during business hours (Monday-Friday
+                    08:00-17:00 CET).
                   </p>
                 </form>
               </Form>
