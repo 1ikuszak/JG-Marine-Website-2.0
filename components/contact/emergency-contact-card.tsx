@@ -63,6 +63,21 @@ export default function EmergencyContactCard() {
           {CONTACTS.main.phone}
         </a>
       </Button>
+      <Button
+        size="lg"
+        className="w-full font-semibold text-lg h-14 mb-4 group"
+        variant={"outline"}
+        asChild
+      >
+        {/* FIX: Added the opening <a> tag here */}
+        <a
+          href={`tel:${CONTACTS.main.phone2.replace(/\s/g, "")}`}
+          className="flex items-center justify-center gap-2"
+        >
+          <Phone className="h-5 w-5 group-hover:animate-pulse" />
+          {CONTACTS.main.phone2}
+        </a>
+      </Button>
 
       {/* Response Times */}
       <div className="space-y-3 pt-4 border-t border-border">

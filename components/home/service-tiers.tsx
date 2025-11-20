@@ -35,13 +35,31 @@ const services: Service[] = [
     deliverables: [
       "Cargo Damage Assessment and Surveys",
       "Draft Surveys and Loading Supervision",
+      "Steel Cargo Surveys and Industrial Site Inspections",
+      "Agricultural and Bulk Commodity Inspections",
+      "Inland Waterway Vessel and Barge Surveys",
       "Inland Transport (CMR) Surveys",
-      "Towage and Bunker Approval Surveys",
-      "Liquid Cargo and Bulk Commodity Inspections",
+      "Towage Approval Surveys with Weather Routing",
+      "Bunker Surveys",
+      "Liquid Cargo Inspections",
       "Container Inspections",
     ],
     slug: "cargo-inland-services",
     imageUrl: "/services/2.jpg",
+  },
+  {
+    title: "Heavy Lifts & Project Cargo",
+    bestFor: "EPC Contractors, Project Forwarders, Port Operators",
+    deliverables: [
+      "Pre-Planning and Feasibility Studies",
+      "Lashing and Securing Calculations",
+      "Method Statement Preparation",
+      "Loading and Transshipment Supervision",
+      "Heavy Lift Engineering and Load-Out Planning",
+      "Offshore Wind Farm Project Support",
+    ],
+    slug: "heavy-lifts-project-cargo",
+    imageUrl: "/services/4.jpg",
   },
   {
     title: "Technical Consulting & Engineering",
@@ -50,8 +68,6 @@ const services: Service[] = [
       "Technical Audits (ISM, ISPS, MLC, CMID)",
       "Vetting Inspections and Compliance Assessments",
       "Newbuild and Conversion Supervision",
-      "Heavy Lift Engineering and Load-Out Planning",
-      "Offshore Wind Farm Project Support",
       "Loss Prevention and Risk Advisory",
     ],
     slug: "technical-consulting-engineering",
@@ -132,7 +148,7 @@ export default function ServiceTiersUltimate() {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none mb-4 sm:mb-6"
           >
-            Professional Services
+            Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

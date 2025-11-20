@@ -3,6 +3,8 @@ import ServiceTiers from "@/components/home/service-tiers";
 import HowItWorks from "@/components/home/how-it-works";
 import OfficeLocationsSection from "@/components/home/office-locations";
 import FinalCTA from "@/components/home/final-cta";
+import TeamSectionWhiteUniform from "@/components/home/team-section";
+import { CONTACTS } from "@/config";
 
 export default function HomePage() {
   return (
@@ -27,7 +29,6 @@ export default function HomePage() {
             alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
           },
         ]}
-        emergencyTel="+48 58 760 11 20"
       />
 
       {/* Main Content Sections */}
@@ -38,7 +39,8 @@ export default function HomePage() {
         </div>
 
         {/* Process Section - How It Works */}
-        <HowItWorks />
+        {/* <HowItWorks /> */}
+        <TeamSectionWhiteUniform />
 
         {/* Office Locations - Condensed Version */}
         <OfficeLocationsSection />

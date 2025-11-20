@@ -97,7 +97,7 @@ export default function TeamSectionWhiteUniform() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-foreground/60 leading-relaxed"
           >
-            Decades of maritime expertise, certified to international standards.
+            Certified to international standards.
           </motion.p>
         </div>
 

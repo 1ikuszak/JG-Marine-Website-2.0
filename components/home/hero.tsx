@@ -11,10 +11,9 @@ type Slide = { src: string; alt: string };
 
 interface HeroProps {
   slides: Slide[];
-  emergencyTel: string;
 }
 
-export function Hero({ slides, emergencyTel }: HeroProps) {
+export function Hero({ slides }: HeroProps) {
   const [index, setIndex] = React.useState(0);
   const [reduced, setReduced] = React.useState(false);
   const timer = React.useRef<NodeJS.Timeout | null>(null);
@@ -142,6 +141,16 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
                   Request Survey
                 </a>
               </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="bg-white/10 hover:bg-white/20 text-white border-white/30 hover:border-white/50 w-full sm:w-auto"
+              >
+                <a href="#services" aria-label="View our services">
+                  Services
+                </a>
+              </Button>
             </div>
 
             {/* Metrics & Certifications */}
@@ -240,7 +249,7 @@ export function Hero({ slides, emergencyTel }: HeroProps) {
       >
         {/* Text Label */}
         <span className="text-xs text-white/60 tracking-[0.2em] uppercase font-medium group-hover:text-white/80 transition-colors">
-          Scroll
+          Services
         </span>
 
         {/* Animated Icon Container */}

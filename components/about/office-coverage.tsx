@@ -6,10 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Ship, Anchor, Building2 } from "lucide-react";
 
-// <-- CHANGED: Import the OFFICES data from your config
-// (Adjust the path if your component is in a different folder)
-import { OFFICES } from "@/config";
-
 interface Office {
   name: string;
   tagline: string;
@@ -23,32 +19,64 @@ interface Office {
   mapPosition: { top: string; left: string };
 }
 
-// <-- CHANGED: Create a mapping from office type to the correct icon
-const officeIcons = {
-  headquarters: Anchor,
-  branch: Ship,
-  office: Building2,
-};
-
-// <-- CHANGED: We now dynamically create the 'offices' array by
-// mapping over the imported 'OFFICES' data.
-const offices: Office[] = OFFICES.map((office) => ({
-  // Data from config:
-  name: office.name,
-  tagline: office.tagline,
-  location: office.address.city,
-  address: `${office.address.postalCode} ${office.address.street}`, // Combine fields
-  coverage: office.coverage, // Use all coverage items from config
-  services: office.services, // Use all services from config
-  email: office.contact.email,
-  phone: office.contact.phone,
-  icon: officeIcons[office.type], // Assign icon based on type
-  mapPosition: office.mapPosition!, // Use the position from config
-  // We use '!' because the component requires mapPosition,
-  // and we trust our config to provide it.
-}));
-
-// <-- DELETED: The old, hard-coded 'offices' array is gone.
+const offices: Office[] = [
+  {
+    name: "Sopot",
+    tagline: "Headquarters - Between Gdynia & Gdańsk",
+    location: "Sopot",
+    address: "Located between the ports of Gdynia and Gdańsk",
+    coverage: ["Gdynia", "Gdańsk", "Elbląg", "Baltic Sea"],
+    services: [
+      "Marine surveys",
+      "Heavy lift projects",
+      "Warranty surveys",
+      "Towage approvals",
+    ],
+    email: "sopot@jgmarine.pl",
+    phone: "+48 58 551 12 33",
+    icon: Anchor,
+    mapPosition: { top: "15%", left: "78%" },
+  },
+  {
+    name: "Szczecin",
+    tagline: "Western Poland Operations",
+    location: "Szczecin",
+    address: "Western Poland",
+    coverage: ["Szczecin", "Świnoujście", "Police", "Western Baltic"],
+    services: [
+      "Cargo surveys",
+      "CMR surveys",
+      "Inland waterway inspections",
+      "Container surveys",
+    ],
+    email: "szczecin@jgmarine.pl",
+    phone: "+48 91 812 34 56",
+    icon: Ship,
+    mapPosition: { top: "18%", left: "22%" },
+  },
+  {
+    name: "Warsaw",
+    tagline: "Inland Survey Coordination",
+    location: "Warsaw",
+    address: "Capital of Poland",
+    coverage: [
+      "Central Poland",
+      "Inland routes",
+      "Rail terminals",
+      "Warehouses",
+    ],
+    services: [
+      "Loss adjusting",
+      "Cargo damage assessment",
+      "Risk assessment",
+      "Accident investigation",
+    ],
+    email: "warsaw@jgmarine.pl",
+    phone: "+48 22 123 45 67",
+    icon: Building2,
+    mapPosition: { top: "42%", left: "68%" },
+  },
+];
 
 export default function OfficeLocationsSection() {
   return (
@@ -70,7 +98,7 @@ export default function OfficeLocationsSection() {
           >
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
             <p className="text-xs font-medium text-primary tracking-[0.3em] uppercase">
-              Strategic Presence
+              Locations
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
@@ -82,7 +110,7 @@ export default function OfficeLocationsSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight"
           >
-            Baltic Coverage You Can Trust
+            Three Offices Across Poland
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -91,12 +119,11 @@ export default function OfficeLocationsSection() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-white/70 leading-relaxed"
           >
-            Three strategically positioned offices providing complete coverage
-            across Poland's major ports and inland routes
+            Positioned for coverage of major ports and inland routes.
           </motion.p>
         </div>
 
-        {/* Visual Map Section - Real Poland Outline */}
+        {/* Visual Map Section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -104,17 +131,15 @@ export default function OfficeLocationsSection() {
           transition={{ duration: 0.8 }}
           className="relative h-[400px] md:h-[500px] mb-20 hidden lg:block"
         >
-          {/* Real Poland Map Background */}
+          {/* Poland Map Background */}
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.08]">
             <div className="relative w-full h-full max-w-2xl">
-              {/* Accurate Poland SVG outline */}
               <svg
                 viewBox="0 0 600 700"
                 className="w-full h-full"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Poland border - based on real geographic outline */}
                 <path
                   d="M 120 140 L 140 120 L 180 110 L 220 105 L 260 108 L 300 115 L 340 125 L 380 135 L 420 145 L 460 155 L 490 170 L 510 180 L 520 195 L 522 210 L 518 230 L 510 250 L 505 270 L 502 290 L 500 310 L 498 340 L 495 370 L 490 400 L 485 430 L 478 460 L 470 485 L 458 510 L 445 530 L 428 548 L 408 562 L 385 572 L 360 578 L 335 580 L 310 578 L 285 572 L 260 562 L 238 548 L 218 530 L 200 510 L 185 488 L 172 465 L 162 440 L 155 415 L 150 390 L 148 365 L 148 340 L 150 315 L 154 290 L 160 265 L 168 240 L 178 218 L 190 198 L 205 180 L 220 165 L 238 152 L 258 142 L 280 135 L 255 125 L 230 118 L 205 112 L 180 108 L 155 106 L 130 108 L 110 115 L 95 125 L 85 138 L 80 152 L 78 168 L 80 185 L 85 200 L 92 213 L 100 225 L 110 235 L 105 248 L 98 260 L 90 270 L 82 278 L 75 285 L 70 290 L 68 293 L 70 310 L 75 328 L 82 345 L 90 360 L 100 373 L 112 385 L 125 395 L 140 402 L 155 407 L 170 410 L 180 408 L 188 402 L 195 395 L 200 387 L 203 378 L 205 368 L 208 400 L 212 430 L 218 458 L 225 485 L 233 510 L 242 533 L 252 554 L 263 572 L 275 588 L 288 601 L 302 611 L 317 619 L 333 624 L 350 627 L 368 627 L 385 624 L 400 618 L 413 610 L 425 600 L 435 588 L 443 575 L 450 560 L 455 544 L 458 527 L 460 510 L 462 492 L 465 473 L 468 453 L 472 432 L 477 410 L 483 387 L 490 363 L 498 338 L 507 312 L 517 285 L 528 257 L 540 228 L 553 198 L 565 170 L 575 145 L 583 122 L 588 102 L 590 85 L 588 70 L 582 58 L 572 48 L 558 40 L 540 35 L 520 32 L 498 31 L 475 32 L 450 35 L 425 40 L 400 47 L 375 56 L 350 67 L 325 80 L 300 95 L 275 112 L 250 130 L 228 148 L 208 165 L 190 182 L 175 198 L 162 213 L 152 227 L 145 240 L 140 252 L 137 263 L 135 273 L 130 260 L 125 245 L 120 228 L 117 210 L 116 190 L 118 170 L 120 152 Z"
                   className="text-primary"
@@ -122,8 +147,6 @@ export default function OfficeLocationsSection() {
                   stroke="rgba(255,255,255,0.12)"
                   strokeWidth="2"
                 />
-
-                {/* Baltic Sea indication (northern border) */}
                 <line
                   x1="100"
                   y1="80"
@@ -151,17 +174,13 @@ export default function OfficeLocationsSection() {
                 left: office.mapPosition.left,
               }}
             >
-              {/* Pulsing Pin */}
               <div className="relative">
-                {/* Pulse rings */}
                 <div className="absolute inset-0 -m-4">
                   <div className="w-16 h-16 rounded-full bg-primary/20 animate-ping" />
                 </div>
-                {/* Pin itself */}
                 <div className="relative w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg flex items-center justify-center group cursor-pointer hover:scale-110 transition-transform">
                   <office.icon className="h-4 w-4 text-white" strokeWidth={2} />
                 </div>
-                {/* Location Label */}
                 <div className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
                   <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded shadow-lg border border-primary/20">
                     <p className="text-xs font-semibold text-foreground">
@@ -173,9 +192,8 @@ export default function OfficeLocationsSection() {
             </motion.div>
           ))}
 
-          {/* Connection Lines - Updated positions */}
+          {/* Connection Lines */}
           <svg className="absolute inset-0 pointer-events-none opacity-20">
-            {/* Szczecin to Sopot */}
             <line
               x1="22%"
               y1="18%"
@@ -186,7 +204,6 @@ export default function OfficeLocationsSection() {
               strokeDasharray="4 4"
               className="text-primary"
             />
-            {/* Sopot to Warsaw */}
             <line
               x1="78%"
               y1="15%"
@@ -197,7 +214,6 @@ export default function OfficeLocationsSection() {
               strokeDasharray="4 4"
               className="text-primary"
             />
-            {/* Szczecin to Warsaw */}
             <line
               x1="22%"
               y1="18%"
@@ -222,7 +238,6 @@ export default function OfficeLocationsSection() {
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
               <Card className="h-full bg-white/5 backdrop-blur-sm border-2 border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all duration-500 group overflow-hidden">
-                {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <CardContent className="relative p-8">
@@ -296,7 +311,6 @@ export default function OfficeLocationsSection() {
 
                   {/* Contact */}
                   <div className="pt-4 border-t border-white/10 space-y-2">
-                    {/* --- FIX 1: Added <a> tag --- */}
                     <a
                       href={`mailto:${office.email}`}
                       className="flex items-center gap-2 text-xs text-white/70 hover:text-primary transition-colors group/link"
@@ -307,7 +321,6 @@ export default function OfficeLocationsSection() {
                       </span>
                     </a>
 
-                    {/* --- FIX 2: Added <a> tag --- */}
                     <a
                       href={`tel:${office.phone.replace(/\s/g, "")}`}
                       className="flex items-center gap-2 text-xs text-white/70 hover:text-primary transition-colors group/link"
@@ -339,42 +352,6 @@ export default function OfficeLocationsSection() {
           <Button size="lg" variant="accent" asChild>
             <a href="/contact">Contact Us</a>
           </Button>
-        </motion.div>
-
-        {/* Stats Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-20 pt-12 border-t border-white/10"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-3xl font-bold text-primary mb-2">3</p>
-              <p className="text-xs text-white/60 uppercase tracking-wider">
-                Strategic Offices
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary mb-2">6+</p>
-              <p className="text-xs text-white/60 uppercase tracking-wider">
-                Major Ports
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary mb-2">24h</p>
-              <p className="text-xs text-white/60 uppercase tracking-wider">
-                Response Time
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary mb-2">100%</p>
-              <p className="text-xs text-white/60 uppercase tracking-wider">
-                Poland Coverage
-              </p>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

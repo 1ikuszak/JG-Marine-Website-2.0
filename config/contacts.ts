@@ -4,7 +4,8 @@ export const CONTACTS = {
   // Primary Contacts
   main: {
     email: "info@jg-marine.com",
-    phone: "+48 58 760 11 20",
+    phone: "+48 602 222 477",
+    phone2: "+48 501 505 797",
   },
 
   // Key Personnel (Now with all details included)
@@ -71,7 +72,7 @@ export const CONTACTS = {
       description:
         "M.Sc. in Engineering with ASOMWS certification. Experienced maritime surveyor conducting vessel inspections and cargo surveys throughout Poland and Europe.",
       certifications: ["Captain", "M.Sc. Engineering", "ASOMWS Certified"],
-      imageUrl: "/team/tomasz.png",
+      imageUrl: "/team/antek.png",
     },
     bartekB: {
       name: "Bartłomiej Bączek",
@@ -91,17 +92,7 @@ export const CONTACTS = {
       description:
         "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
       certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
-      imageUrl: undefined, // Will show placeholder
-    },
-    antek: {
-      name: "Bartłomiej",
-      email: "bartek@jg-marine.com",
-      phone: "+48 602 752 200",
-      role: "Warsaw Office Manager",
-      description:
-        "ISO 9001:2008 Lead Auditor with HAZMAT certification. Oversees Warsaw office operations and container projects.",
-      certifications: ["ISO 9001 Lead Auditor", "HAZMAT Certified"],
-      imageUrl: "/team/antek.png", // Will show placeholder
+      imageUrl: "/team/tomasz.png",
     },
   },
 

@@ -33,7 +33,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { toast } from "sonner";
-import { CONTACTS, OFFICES } from "@/config";
+import { CONTACTS } from "@/config";
 
 // Form Schema
 const contactFormSchema = z.object({
@@ -150,7 +150,7 @@ export default function PremiumCtaSection() {
               </p>
             </div>
 
-            {/* Emergency CTA - Accent Theme */}
+            {/* Emergency CTA - Two Numbers */}
             <div className="relative bg-gradient-to-br from-accent/10 via-accent/5 to-transparent border-2 border-accent/30 p-8 rounded-lg">
               <div className="absolute top-4 right-4">
                 <div className="flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/50 rounded">
@@ -166,28 +166,45 @@ export default function PremiumCtaSection() {
                 strokeWidth={1.5}
               />
               <h3 className="text-2xl font-bold text-white mb-3">
-                Emergency Hotline
+                Emergency Hotlines
               </h3>
               <p className="text-white/70 mb-6">
                 Vessel casualty, cargo damage, or breakdown requiring immediate
                 survey.
               </p>
 
-              <div className="space-y-4">
-                <a
-                  href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
-                  className="block"
+              <div className="space-y-3">
+                <Button
+                  size="lg"
+                  className="w-full bg-destructive hover:bg-destructive/90 text-white font-semibold text-lg h-14 mb-4 group"
+                  asChild
                 >
-                  <Button
-                    size="lg"
-                    className="w-full bg-accent hover:bg-accent/90 text-white font-semibold text-lg h-14 group"
+                  {/* FIX: Added the opening <a> tag here */}
+                  <a
+                    href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
+                    className="flex items-center justify-center gap-2"
                   >
-                    <Phone className="h-5 w-5 mr-3 group-hover:animate-pulse" />
-                    Call {CONTACTS.main.phone}
-                  </Button>
-                </a>
+                    <Phone className="h-5 w-5 group-hover:animate-pulse" />
+                    {CONTACTS.main.phone}
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  className="w-full font-semibold text-lg h-14 mb-4 group"
+                  variant={"secondary"}
+                  asChild
+                >
+                  {/* FIX: Added the opening <a> tag here */}
+                  <a
+                    href={`tel:${CONTACTS.main.phone2.replace(/\s/g, "")}`}
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Phone className="h-5 w-5 group-hover:animate-pulse" />
+                    {CONTACTS.main.phone2}
+                  </a>
+                </Button>
 
-                <p className="text-xs text-white/50 text-center">
+                <p className="text-xs text-white/50 text-center pt-2">
                   <Clock className="h-3 w-3 inline mr-1" />
                   Surveyor assigned within 2 hours
                 </p>
@@ -211,7 +228,9 @@ export default function PremiumCtaSection() {
                     className="h-5 w-5 text-primary"
                     strokeWidth={1.5}
                   />
-                  <span className="text-sm font-bold text-white">64 Years</span>
+                  <span className="text-sm font-bold text-white">
+                    60+ Years
+                  </span>
                 </div>
                 <p className="text-xs text-white/60">Maritime heritage</p>
               </div>
@@ -484,7 +503,7 @@ export default function PremiumCtaSection() {
               <p className="text-xs text-white/60">Annual Projects</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-primary mb-1">64</p>
+              <p className="text-2xl font-bold text-primary mb-1">60+</p>
               <p className="text-xs text-white/60">Years Experience</p>
             </div>
           </div>
