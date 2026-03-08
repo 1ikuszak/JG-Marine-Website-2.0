@@ -2,7 +2,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -13,12 +12,10 @@ import {
   Scale,
   AlertTriangle,
   Container,
-  ArrowRight,
 } from "lucide-react";
 
 interface Service {
   title: string;
-  bestFor: string;
   deliverables: string[];
   slug: string;
   imageUrl: string;
@@ -29,7 +26,6 @@ const services: Service[] = [
   {
     title: "Marine Surveys",
     icon: Anchor,
-    bestFor: "Shipowners, Fleet Operators, P&I Clubs",
     deliverables: [
       "Hull & Machinery (H&M) Surveys",
       "Protection & Indemnity (P&I) Condition Surveys",
@@ -44,7 +40,6 @@ const services: Service[] = [
   {
     title: "Cargo & Inland Services",
     icon: Package,
-    bestFor: "Logistics Providers, Freight Forwarders, Cargo Insurers",
     deliverables: [
       "Cargo Damage Assessment and Surveys",
       "Draft Surveys and Loading Supervision",
@@ -63,7 +58,6 @@ const services: Service[] = [
   {
     title: "Heavy Lifts & Project Cargo",
     icon: Container,
-    bestFor: "EPC Contractors, Project Forwarders, Port Operators",
     deliverables: [
       "Pre-Planning and Feasibility Studies",
       "Lashing and Securing Calculations",
@@ -78,7 +72,6 @@ const services: Service[] = [
   {
     title: "Technical Consulting & Engineering",
     icon: Wrench,
-    bestFor: "Shipyards, Port Authorities, Fleet Managers",
     deliverables: [
       "Technical Audits (ISM, ISPS, MLC, CMID)",
       "Vetting Inspections and Compliance Assessments",
@@ -91,7 +84,6 @@ const services: Service[] = [
   {
     title: "Claims, Legal & Insurance Services",
     icon: Scale,
-    bestFor: "Marine Insurers, P&I Clubs, Maritime Law Firms",
     deliverables: [
       "P&I and H&M Claims Handling",
       "Cargo Claims and Loss Assessment",
@@ -105,7 +97,6 @@ const services: Service[] = [
   {
     title: "Casualty Response & Investigation",
     icon: AlertTriangle,
-    bestFor: "Emergency Response Teams, Shipowners, Insurers",
     deliverables: [
       "Marine Casualty Management",
       "Salvage and Wreck Removal Consultancy",
@@ -193,57 +184,29 @@ export default function ServiceTiersUltimate() {
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 min-h-[350px] sm:min-h-[400px] items-center">
 
                   {/* Left: Title & Info */}
-                  <div className="space-y-4 sm:space-y-6">
+                  <div className="space-y-6 sm:space-y-8">
 
-                    {/* Icon + Number Row */}
-                    <div className="flex items-center gap-4 sm:gap-5">
-                      {/* Unique service icon */}
-                      <div className="relative inline-flex flex-shrink-0">
-                        <div className="absolute inset-0 w-full h-full bg-accent/15 rounded-full blur-md" />
-                        {React.createElement(service.icon, {
-                          className: "relative h-10 w-10 sm:h-12 sm:w-12 text-accent",
-                          strokeWidth: 1.5,
-                        })}
-                      </div>
-                      {/* Number */}
-                      <div className="inline-flex items-center gap-2 sm:gap-3">
-                        <span className="font-mono text-xs font-bold text-muted-foreground/70 tracking-[0.3em]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="h-[1px] w-6 sm:w-10 bg-accent/50" />
-                      </div>
+                    {/* Number */}
+                    <div className="inline-flex items-center gap-3">
+                      <span className="font-mono text-xs font-bold text-muted-foreground/70 tracking-[0.3em]">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div className="h-[1px] w-8 sm:w-12 bg-accent/50" />
+                    </div>
+
+                    {/* Icon */}
+                    <div className="relative inline-flex flex-shrink-0">
+                      <div className="absolute inset-0 w-full h-full bg-accent/15 rounded-full blur-md" />
+                      {React.createElement(service.icon, {
+                        className: "relative h-12 w-12 sm:h-14 sm:w-14 text-accent",
+                        strokeWidth: 1.5,
+                      })}
                     </div>
 
                     {/* Title */}
                     <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-serif text-foreground leading-none group-hover:text-accent transition-colors duration-500">
                       {service.title}
                     </h3>
-
-                    {/* Best For Badge — navy pill, prominent */}
-                    <div className="inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 px-4 py-3 bg-foreground rounded">
-                      <span className="font-mono text-xs font-bold text-accent tracking-widest uppercase">
-                        BEST FOR
-                      </span>
-                      <span className="text-xs sm:text-sm text-background leading-relaxed">
-                        {service.bestFor}
-                      </span>
-                    </div>
-
-                    {/* CTAs */}
-                    <div className="flex flex-wrap gap-3 pt-1">
-                      <Link
-                        href={`/contact?service=${encodeURIComponent(service.slug)}`}
-                        className="inline-flex items-center gap-2 px-4 py-2.5 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-sm rounded-lg transition-colors duration-200 cursor-pointer"
-                      >
-                        Request Quote <ArrowRight className="h-4 w-4" />
-                      </Link>
-                      <Link
-                        href={`/contact`}
-                        className="inline-flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-foreground font-medium text-sm transition-colors duration-200 cursor-pointer"
-                      >
-                        View Details <ArrowRight className="h-4 w-4 opacity-60" />
-                      </Link>
-                    </div>
                   </div>
 
                   {/* Right: Core Services List */}
