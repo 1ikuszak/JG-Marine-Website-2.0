@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site.config";
 
 export function StickyEmergencyBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-between gap-2 border-t border-white/10 bg-[#0A0F14]/95 px-4 py-3 shadow-sm sm:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-between gap-2 border-t border-white/10 bg-foreground/95 px-4 py-3 shadow-sm sm:hidden">
       <a
         href="#request"
         className="flex-1 rounded-md border border-white/10 px-4 py-3 text-center text-sm font-medium text-white"
