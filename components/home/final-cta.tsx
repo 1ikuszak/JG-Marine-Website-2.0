@@ -1,513 +1,153 @@
 "use client";
 
-import * as React from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Phone,
-  Mail,
-  Clock,
-  Shield,
-  CheckCircle,
-  Loader2,
-  AlertCircle,
-} from "lucide-react";
-import { toast } from "sonner";
+import { Phone, MapPin, Award, Anchor, BarChart2 } from "lucide-react";
 import { CONTACTS } from "@/config";
 
-// Form Schema
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name required"),
-  email: z.string().email("Valid email required"),
-  company: z.string().optional(),
-  phone: z.string().min(8, "Phone required"),
-  service: z.string().min(1, "Please select a service"),
-  message: z
-    .string()
-    .min(10, "Please describe your situation (min 10 characters)"),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+const trustPoints = [
+  {
+    icon: Anchor,
+    text: "120+ years of maritime experience",
+  },
+  {
+    icon: BarChart2,
+    text: "900+ annual projects completed",
+  },
+  {
+    icon: MapPin,
+    text: "Sopot · Szczecin · Warsaw coverage",
+  },
+  {
+    icon: Award,
+    text: "IIMS Member since 1968 · CESAM certified",
+  },
+];
 
 export default function PremiumCtaSection() {
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitSuccess, setSubmitSuccess] = React.useState(false);
-
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      service: "",
-      message: "",
-    },
-  });
-
-  async function onSubmit(data: ContactFormValues) {
-    setIsSubmitting(true);
-    setSubmitSuccess(false);
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Failed to send message");
-      }
-
-      // Success!
-      setSubmitSuccess(true);
-      toast.success("Request Sent Successfully!", {
-        description: "We'll respond within 24-48 hours.",
-      });
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        form.reset();
-        setSubmitSuccess(false);
-      }, 3000);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      toast.error("Failed to Send Request", {
-        description: "Please try again or call our emergency hotline.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
   return (
-    <section className="relative py-24 md:py-32 bg-foreground overflow-hidden">
-      {/* Premium Gradients - Theme Colors */}
+    <section className="relative py-24 md:py-32 bg-primary overflow-hidden">
+      {/* Background: maritime image with dark overlay */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-accent/10 rounded-full blur-[140px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-primary/8 rounded-full blur-[160px]" />
+        <Image
+          src="/hero/2.jpg"
+          alt="Marine survey operations at sea"
+          fill
+          className="object-cover opacity-10"
+          sizes="100vw"
+        />
+        {/* Layered gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/75" />
+        {/* Subtle accent glow */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[120px]" />
       </div>
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
-        {/* Two-Path Strategy: Emergency vs Planned */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* LEFT: Emergency Path - Urgent Action */}
+        <div className="grid lg:grid-cols-[55%_45%] gap-12 lg:gap-16 items-center">
+
+          {/* ── Left column: compelling copy ── */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 space-y-8"
           >
-            {/* Header */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3 mb-6"
-              >
-                {/* Wave decorations */}
-                <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-accent" />
-                <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
-                  24/7 EMERGENCY RESPONSE
-                </p>
-                <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-accent" />
-              </motion.div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                Request Immediate Survey
-              </h2>
-              <p className="text-xl text-white/70 leading-relaxed">
-                DNV-certified surveyors available 24 hours daily. Rapid response
-                for vessel casualties, cargo damage, and critical maritime
-                incidents.
+            {/* Section label */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[2px] w-8 bg-accent" />
+              <p className="text-xs font-mono font-bold text-accent tracking-[0.3em] uppercase">
+                EMERGENCY RESPONSE
               </p>
             </div>
 
-            {/* Emergency CTA - Two Numbers */}
-            <div className="relative bg-gradient-to-br from-accent/10 via-accent/5 to-transparent border-2 border-accent/30 p-8 rounded-lg">
-              <div className="absolute top-4 right-4">
-                <div className="flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/50 rounded">
-                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                  <span className="text-xs font-mono font-bold text-accent tracking-wider">
-                    AVAILABLE 24/7
-                  </span>
-                </div>
+            {/* Headline */}
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-10">
+              <span className="text-white">Request a Survey</span>
+              <br />
+              <span className="text-accent">Available 24/7.</span>
+            </h2>
+
+            {/* Trust bullets */}
+            <ul className="space-y-4">
+              {trustPoints.map(({ icon: Icon, text }) => (
+                <li key={text} className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-accent/15 border border-accent/20 flex items-center justify-center">
+                    <Icon className="h-4 w-4 text-accent" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-white/90 text-base">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* ── Right column: CTA card ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className="rounded-2xl border border-accent/40 bg-white/[0.08] backdrop-blur-sm p-8 md:p-10 shadow-2xl">
+              {/* Card header */}
+              <div className="text-center mb-8">
+                <p className="text-xs font-mono font-bold text-accent tracking-[0.25em] uppercase mb-2">
+                  CALL NOW — AVAILABLE 24/7
+                </p>
+                <p className="text-white/70 text-sm">
+                  Direct line to our survey operations team
+                </p>
               </div>
 
-              <AlertCircle
-                className="h-12 w-12 text-accent mb-4"
-                strokeWidth={1.5}
-              />
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Emergency Hotlines
-              </h3>
-              <p className="text-white/70 mb-6">
-                Vessel casualty, cargo damage, or breakdown requiring immediate
-                survey.
-              </p>
-
+              {/* Phone buttons */}
               <div className="space-y-3">
                 <Button
                   size="lg"
-                  className="w-full bg-destructive hover:bg-destructive/90 text-white font-semibold text-lg h-14 mb-4 group"
+                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-base h-16 rounded-xl group shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all duration-200"
                   asChild
                 >
-                  {/* FIX: Added the opening <a> tag here */}
                   <a
                     href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
-                    className="flex items-center justify-center gap-2"
+                    className="flex items-center justify-center gap-3"
                   >
-                    <Phone className="h-5 w-5 group-hover:animate-pulse" />
-                    {CONTACTS.main.phone}
+                    <div className="w-8 h-8 rounded-full bg-black/15 flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-4 w-4 group-hover:animate-pulse" />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-xs opacity-70 font-normal tracking-wider uppercase leading-none mb-0.5">
+                        Main Line
+                      </div>
+                      <div>{CONTACTS.main.phone}</div>
+                    </div>
                   </a>
                 </Button>
+
                 <Button
                   size="lg"
-                  className="w-full font-semibold text-lg h-14 mb-4 group"
-                  variant={"secondary"}
+                  className="w-full border border-white/25 bg-white/8 hover:bg-white/10 text-white font-semibold text-base h-14 rounded-xl group transition-all duration-200"
                   asChild
                 >
-                  {/* FIX: Added the opening <a> tag here */}
                   <a
                     href={`tel:${CONTACTS.main.phone2.replace(/\s/g, "")}`}
-                    className="flex items-center justify-center gap-2"
+                    className="flex items-center justify-center gap-3"
                   >
-                    <Phone className="h-5 w-5 group-hover:animate-pulse" />
-                    {CONTACTS.main.phone2}
+                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-3.5 w-3.5 group-hover:animate-pulse" />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-xs opacity-50 font-normal tracking-wider uppercase leading-none mb-0.5">
+                        Alternative
+                      </div>
+                      <div>{CONTACTS.main.phone2}</div>
+                    </div>
                   </a>
                 </Button>
-
-                <p className="text-xs text-white/50 text-center pt-2">
-                  <Clock className="h-3 w-3 inline mr-1" />
-                  Surveyor assigned within 2 hours
-                </p>
               </div>
-            </div>
-
-            {/* Trust Signals - Compact */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 border border-white/10 p-4 rounded">
-                <div className="flex items-center gap-2 mb-2">
-                  <Shield className="h-5 w-5 text-primary" strokeWidth={1.5} />
-                  <span className="text-sm font-bold text-white">
-                    DNV Certified
-                  </span>
-                </div>
-                <p className="text-xs text-white/60">International standards</p>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-4 rounded">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle
-                    className="h-5 w-5 text-primary"
-                    strokeWidth={1.5}
-                  />
-                  <span className="text-sm font-bold text-white">
-                    60+ Years
-                  </span>
-                </div>
-                <p className="text-xs text-white/60">Maritime heritage</p>
-              </div>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-3 pt-6 border-t border-white/10">
-              <p className="text-xs font-mono text-white/50 tracking-wider uppercase">
-                Other Contacts
-              </p>
-
-              <a
-                href={`mailto:${CONTACTS.main.email}`}
-                className="flex items-center gap-3 text-white/70 hover:text-primary transition-colors group"
-              >
-                <Mail className="h-4 w-4" />
-                <span className="text-sm group-hover:underline">
-                  {CONTACTS.main.email}
-                </span>
-              </a>
             </div>
           </motion.div>
 
-          {/* RIGHT: Form - Planned Inquiry */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7"
-          >
-            {/* Form Container */}
-            <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md border-2 border-white/20 rounded-lg p-8 md:p-10">
-              {/* Form Header */}
-              <div className="mb-8">
-                <h3 className="text-3xl font-bold text-white mb-3">
-                  Request Survey
-                </h3>
-                <p className="text-white/70">
-                  Complete the form below for survey inquiries and quote
-                  requests.
-                </p>
-              </div>
-
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
-                >
-                  {/* Name & Email Row */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white/90">
-                            Full Name *
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="John Smith"
-                              {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
-                            />
-                          </FormControl>
-                          <FormMessage className="text-accent" />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white/90">
-                            Email Address *
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              type="email"
-                              placeholder="john@company.com"
-                              {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
-                            />
-                          </FormControl>
-                          <FormMessage className="text-accent" />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {/* Company & Phone Row */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white/90">
-                            Company
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Baltic Shipping Ltd"
-                              {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
-                            />
-                          </FormControl>
-                          <FormMessage className="text-accent" />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white/90">
-                            Phone Number *
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              type="tel"
-                              placeholder="+48 XXX XXX XXX"
-                              {...field}
-                              className="bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary h-12 rounded"
-                            />
-                          </FormControl>
-                          <FormMessage className="text-accent" />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {/* Service Select */}
-                  <FormField
-                    control={form.control}
-                    name="service"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-white/90">
-                          Service Type *
-                        </FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="bg-white/10 border-white/30 text-white focus:border-primary focus:ring-primary h-12 rounded">
-                              <SelectValue placeholder="Select the service you need..." />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="marine-surveys">
-                              Marine Surveys
-                            </SelectItem>
-                            <SelectItem value="cargo-inland">
-                              Cargo & Inland Services
-                            </SelectItem>
-                            <SelectItem value="technical-consulting">
-                              Technical Consulting
-                            </SelectItem>
-                            <SelectItem value="claims-insurance">
-                              Claims & Insurance
-                            </SelectItem>
-                            <SelectItem value="casualty-response">
-                              Casualty Response
-                            </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage className="text-accent" />
-                      </FormItem>
-                    )}
-                  />
-
-                  {/* Message */}
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-white/90">
-                          Describe Your Situation *
-                        </FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Please provide details about your vessel, cargo, or situation..."
-                            className="min-h-[120px] bg-white/10 border-white/30 text-white placeholder:text-white/40 focus:border-primary focus:ring-primary rounded"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage className="text-accent" />
-                      </FormItem>
-                    )}
-                  />
-
-                  {/* Submit Button */}
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg h-14 rounded"
-                    disabled={isSubmitting || submitSuccess}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Sending Request...
-                      </>
-                    ) : submitSuccess ? (
-                      <>
-                        <CheckCircle className="mr-2 h-5 w-5" />
-                        Request Sent!
-                      </>
-                    ) : (
-                      <>
-                        Submit Request
-                        <CheckCircle className="ml-2 h-5 w-5" />
-                      </>
-                    )}
-                  </Button>
-
-                  {/* Success Message */}
-                  {submitSuccess && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="p-4 bg-green-500/10 border border-green-500/30 rounded text-center"
-                    >
-                      <p className="text-green-400 font-semibold">
-                        ✓ Your request has been received!
-                      </p>
-                      <p className="text-white/70 text-sm mt-1">
-                        Check your email for confirmation.
-                      </p>
-                    </motion.div>
-                  )}
-
-                  {/* Trust Message */}
-                  <p className="text-xs text-center text-white/50">
-                    Response within 2 hours during business hours (Monday-Friday
-                    08:00-17:00 CET).
-                  </p>
-                </form>
-              </Form>
-            </div>
-          </motion.div>
         </div>
-
-        {/* Bottom Trust Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-white/10"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <p className="text-2xl font-bold text-primary mb-1">24/7</p>
-              <p className="text-xs text-white/60">Emergency Response</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-primary mb-1">2h</p>
-              <p className="text-xs text-white/60">Response Time</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-primary mb-1">120+</p>
-              <p className="text-xs text-white/60">Annual Projects</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-primary mb-1">60+</p>
-              <p className="text-xs text-white/60">Years Experience</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
