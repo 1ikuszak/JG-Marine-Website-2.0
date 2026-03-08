@@ -5,7 +5,8 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { AlarmClock, ShieldCheck, ArrowRight, ChevronDown } from "lucide-react";
+import { AlarmClock, ShieldCheck, ArrowRight, Phone } from "lucide-react";
+import { CONTACTS } from "@/config";
 
 type Slide = { src: string; alt: string };
 
@@ -118,37 +119,50 @@ export function Hero({ slides }: HeroProps) {
         <div className="min-h-[100vh] flex items-center pt-28 pb-16 md:pt-20 md:pb-20">
           <div className="max-w-2xl text-white">
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold font-serif leading-tight tracking-tight">
               Independent Marine Surveys for Baltic Maritime Operations
             </h1>
 
             {/* Subheadline */}
-            <p className="mt-4 text-sm sm:text-base md:text-lg text-white/90 max-w-prose leading-relaxed">
-              DNV-certified surveys for hull and machinery, cargo damage
+            <p className="mt-4 text-base md:text-lg text-white/90 max-w-prose leading-relaxed">
+              Independent surveys for hull and machinery, cargo damage
               assessment, and offshore projects. Serving insurers, shipowners,
-              and logistics operators across Poland and the Baltic region.
+              and logistics operators across Poland and Europe.
             </p>
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
+              {/* Primary: phone — captures urgent/emergency clients */}
               <Button
                 size="lg"
-                variant="default"
+                className="bg-accent hover:bg-accent/90 text-black font-bold text-base h-16 rounded-xl group shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all duration-200 w-full sm:w-auto"
                 asChild
-                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto"
               >
-                <a href="/contact" aria-label="Request an urgent survey">
-                  Request Survey
+                <a
+                  href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
+                  className="flex items-center justify-center gap-3"
+                  aria-label="Call now — available 24/7"
+                >
+                  <div className="w-8 h-8 rounded-full bg-black/15 flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-4 w-4 group-hover:animate-pulse" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs opacity-70 font-normal tracking-wider uppercase leading-none mb-0.5">
+                      Call Now — Available 24/7
+                    </div>
+                    <div>{CONTACTS.main.phone}</div>
+                  </div>
                 </a>
               </Button>
+              {/* Secondary: scroll to services — lower commitment, explore first */}
               <Button
                 size="lg"
-                variant="outline"
+                className="border border-white/30 bg-white/5 hover:bg-white/10 text-white font-semibold text-base h-14 rounded-xl transition-all duration-200 w-full sm:w-auto"
                 asChild
-                className="bg-white/10 hover:bg-white/20 text-white border-white/30 hover:border-white/50 w-full sm:w-auto"
               >
-                <a href="#services" aria-label="View our services">
-                  Services
+                <a href="#services" aria-label="Explore our services">
+                  Explore Our Services
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
@@ -160,42 +174,36 @@ export function Hero({ slides }: HeroProps) {
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className="flex flex-col items-center">
                     <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                      900+
+                    </span>
+                    <span className="text-xs font-light text-white/70 tracking-wider mt-1">
+                      ANNUAL CASES
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
                       120+
                     </span>
-                    <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mt-1">
-                      PROJECTS
+                    <span className="text-xs font-light text-white/70 tracking-wider mt-1">
+                      YEARS EXPERIENCE
                     </span>
                   </div>
                   <div className="flex flex-col items-center">
                     <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
-                      64
+                      3
                     </span>
-                    <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mt-1">
-                      YEARS
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-xl sm:text-2xl md:text-3xl font-semibold">
-                      11+
-                    </span>
-                    <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mt-1">
-                      COUNTRIES
+                    <span className="text-xs font-light text-white/70 tracking-wider mt-1">
+                      OFFICES IN POLAND
                     </span>
                   </div>
                 </div>
 
                 {/* Certifications */}
                 <div className="flex flex-col items-center md:items-start">
-                  <span className="text-[10px] sm:text-xs font-light text-white/70 tracking-wider mb-2">
+                  <span className="text-xs font-light text-white/70 tracking-wider mb-2">
                     CERTIFICATIONS
                   </span>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                    <Badge
-                      variant="secondary"
-                      className="bg-white/20 text-white border-none text-xs"
-                    >
-                      DNV
-                    </Badge>
                     <Badge
                       variant="secondary"
                       className="bg-white/20 text-white border-none text-xs"
@@ -269,32 +277,16 @@ export function Hero({ slides }: HeroProps) {
           />
         </div>
 
-        {/* Chevron Animation */}
-        <motion.div
-          animate={{
-            y: [0, 4, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ChevronDown
-            className="h-4 w-4 text-white/50 group-hover:text-white/70 transition-colors"
-            strokeWidth={1.5}
-          />
-        </motion.div>
       </motion.button>
 
       {/* Reassurance Ribbon (Desktop Only) */}
       <div className="hidden md:block absolute bottom-6 right-4 md:right-6">
         <div className="container mx-auto max-w-screen-xl px-0">
-          <div className="inline-flex items-center gap-3 rounded-full bg-success/10 px-4 py-2 text-white backdrop-blur border border-success/20">
-            <ShieldCheck className="h-4 w-4 text-success" />
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-white backdrop-blur border border-white/20">
+            <ShieldCheck className="h-4 w-4 text-white" />
             <span className="text-sm">Guaranteed report independence</span>
             <span className="text-white/40">•</span>
-            <span className="text-sm">Surveyor assigned in &lt;2 hours</span>
+            <span className="text-sm">Three offices across Poland</span>
             <ArrowRight className="h-4 w-4 opacity-80" />
           </div>
         </div>

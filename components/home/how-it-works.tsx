@@ -22,25 +22,25 @@ const steps: ProcessStep[] = [
     number: "01",
     title: "Survey Request",
     description:
-      "Contact our office or call 24/7 hotline. Surveyor assigned within 2 hours.",
+      "Contact our office by phone or email. Our team will confirm the assignment and arrange a surveyor.",
     icon: Phone,
-    timing: "Within 2h",
+    timing: "Quick response",
   },
   {
     number: "02",
     title: "On-Site Inspection",
     description:
-      "Surveyor arrives within 24 hours (Baltic region). Inspection conducted according to DNV standards and client requirements.",
+      "Surveyor arrives at the agreed location. Inspection conducted to international standards and client requirements.",
     icon: UserCheck,
-    timing: "Under 24h",
+    timing: "Agreed schedule",
   },
   {
     number: "03",
     title: "Report Delivery",
     description:
-      "Preliminary findings in 24-48 hours. Complete documentation delivered within 5-7 days.",
+      "Preliminary findings shared promptly. Complete documentation delivered within agreed timeframe.",
     icon: FileCheck,
-    timing: "24h-7d",
+    timing: "As agreed",
   },
 ];
 
@@ -69,20 +69,20 @@ export default function HowItWorksPremium() {
                 >
                   {/* Wave decorations */}
                   <div className="h-[2px] w-6 md:w-8 bg-gradient-to-r from-transparent to-primary" />
-                  <p className="font-mono text-[10px] md:text-xs font-bold text-primary tracking-[0.3em] uppercase">
+                  <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
                     SURVEY PROCESS
                   </p>
                   <div className="h-[2px] w-6 md:w-8 bg-gradient-to-l from-transparent to-primary" />
                 </motion.div>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] mb-4 md:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-serif text-foreground leading-[1.1] mb-4 md:mb-6">
                 Request to Report
                 <br />
                 Delivery
               </h2>
 
-              <p className="text-sm sm:text-base md:text-lg text-foreground/60 leading-relaxed">
+              <p className="text-base md:text-lg text-foreground/60 leading-relaxed">
                 Standard process for marine and cargo surveys
               </p>
             </motion.div>
@@ -128,13 +128,13 @@ export default function HowItWorksPremium() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-xs md:text-sm text-foreground/60 leading-relaxed">
+                    <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
                       {step.description}
                     </p>
 
                     {/* Timing Badge */}
                     <div className="inline-flex items-center gap-2 px-2.5 md:px-3 py-1 md:py-1.5 bg-primary/5 border border-primary/20 rounded">
-                      <span className="text-[10px] md:text-xs font-semibold text-primary tracking-wide">
+                      <span className="text-xs font-semibold text-primary tracking-wide">
                         {step.timing}
                       </span>
                     </div>
@@ -167,7 +167,7 @@ export default function HowItWorksPremium() {
                 </Button>
               </div>
 
-              <p className="text-[10px] md:text-xs text-foreground/40 pt-2 md:pt-4">
+              <p className="text-xs text-foreground/40 pt-2 md:pt-4">
                 Response within 2 hours • Surveyor on-site &lt;24h
               </p>
             </motion.div>
@@ -218,7 +218,7 @@ export default function HowItWorksPremium() {
                     <p className="text-xs sm:text-sm font-bold text-white leading-tight mb-0.5 sm:mb-1">
                       24/7/365
                     </p>
-                    <p className="text-[10px] sm:text-xs text-white/80 leading-relaxed">
+                    <p className="text-xs text-white/80 leading-relaxed">
                       Emergency Response
                     </p>
                   </div>
@@ -246,7 +246,7 @@ export default function HowItWorksPremium() {
                     <p className="text-xs sm:text-sm font-bold text-white leading-tight mb-0.5 sm:mb-1">
                       DNV Certified
                     </p>
-                    <p className="text-[10px] sm:text-xs text-white/80 leading-relaxed">
+                    <p className="text-xs text-white/80 leading-relaxed">
                       Surveyors
                     </p>
                   </div>
@@ -274,7 +274,7 @@ export default function HowItWorksPremium() {
                     <p className="text-xs sm:text-sm font-bold text-white leading-tight mb-0.5 sm:mb-1">
                       100% Independent
                     </p>
-                    <p className="text-[10px] sm:text-xs text-white/80 leading-relaxed">
+                    <p className="text-xs text-white/80 leading-relaxed">
                       & Objective
                     </p>
                   </div>
@@ -302,7 +302,7 @@ export default function HowItWorksPremium() {
                     <p className="text-xs sm:text-sm font-bold text-white leading-tight mb-0.5 sm:mb-1">
                       P&I Club
                     </p>
-                    <p className="text-[10px] sm:text-xs text-white/80 leading-relaxed">
+                    <p className="text-xs text-white/80 leading-relaxed">
                       Accepted Reports
                     </p>
                   </div>

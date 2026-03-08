@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import { motion, useInView, animate } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Clock, Shield, Anchor } from "lucide-react";
+
 import Image from "next/image";
 
 // Helper Component: Animated Counter
@@ -115,40 +114,8 @@ const LogoScroller = ({
   );
 };
 
-interface Advantage {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  details: string;
-}
-
-const advantages: Advantage[] = [
-  {
-    icon: Clock,
-    title: "24-Hour Baltic Response",
-    description: "On-site within 24 hours throughout the Baltic region",
-    details:
-      "Local presence in Gdańsk, Szczecin, and Warsaw enables rapid mobilization. Surveyors deploy from regional offices rather than international hubs.",
-  },
-  {
-    icon: Anchor,
-    title: "Three-Generation Maritime Heritage",
-    description: "64 years of Baltic operations",
-    details:
-      "Established in 1959. Three generations of Master Mariners have built specialized knowledge of regional ports, vessel types, and maritime conditions.",
-  },
-  {
-    icon: Shield,
-    title: "Family-Owned Independence",
-    description: "Independent ownership structure",
-    details:
-      "Family-owned company with no insurer or shipowner affiliations. Survey reports serve client interests without external influence.",
-  },
-];
-
 export default function TrustAndDifferentiationSection() {
   const certificationLogos = [
-    { src: "/logos/DNV.svg", alt: "DNV Logo" },
     { src: "/logos/cesam.svg", alt: "Cesam Logo" },
     { src: "/logos/IMS.svg", alt: "IMS Logo" },
     { src: "/logos/IGPI.svg", alt: "P&I Clubs Logo" },
@@ -183,7 +150,7 @@ export default function TrustAndDifferentiationSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-6 leading-[1.1]">
+            <h2 className="text-4xl md:text-5xl font-bold font-serif text-foreground tracking-tight mb-6 leading-[1.1]">
               Regional Expertise and Response Capabilities
             </h2>
             <p className="text-lg md:text-xl text-foreground/60 leading-relaxed">
@@ -196,14 +163,14 @@ export default function TrustAndDifferentiationSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-24">
           {[
             {
-              value: 120,
-              label: "Projects Annually",
+              value: 900,
+              label: "Annual Cases",
               desc: "Consistent quality and precision in every survey",
             },
             {
-              value: 64,
+              value: 100,
               label: "Years of Experience",
-              desc: "A heritage of three generations of captains and engineers",
+              desc: "A heritage of generations of captains and engineers",
             },
             {
               value: 11,
@@ -232,55 +199,14 @@ export default function TrustAndDifferentiationSection() {
               <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
                 {metric.label}
               </h3>
-              <p className="text-sm text-foreground/60 max-w-xs mx-auto leading-relaxed">
+              <p className="text-base text-foreground/60 max-w-xs mx-auto leading-relaxed">
                 {metric.desc}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Part 2: Premium Advantage Cards */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-24">
-          {advantages.map((advantage, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-            >
-              <Card className="relative h-full bg-card hover:bg-secondary/10 transition-all duration-500 border border-border hover:border-primary/30 group overflow-hidden">
-                {/* Subtle gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <CardContent className="relative p-8 md:p-10">
-                  {/* Icon with subtle background */}
-                  <div className="relative inline-flex mb-6">
-                    <div className="absolute inset-0 bg-primary/5 rounded-lg blur-lg group-hover:bg-primary/10 transition-colors duration-500" />
-                    <div className="relative bg-primary/10 p-3 rounded-lg group-hover:bg-primary/15 transition-colors duration-500">
-                      <advantage.icon
-                        className="h-7 w-7 text-primary"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                    {advantage.title}
-                  </h3>
-                  <p className="font-medium text-foreground/70 mb-4 text-base">
-                    {advantage.description}
-                  </p>
-                  <p className="text-sm text-foreground/60 leading-relaxed">
-                    {advantage.details}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Part 3: Premium Logo Scroller with Dark Background */}
+        {/* Part 2: Premium Logo Scroller with Dark Background */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -301,9 +227,8 @@ export default function TrustAndDifferentiationSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className="text-sm text-foreground/50 max-w-2xl mx-auto">
-            Every survey performed to DNV standards. Reports accepted by P&I
-            Clubs worldwide.
+          <p className="text-base text-foreground/50 max-w-2xl mx-auto">
+            Independent survey reports accepted by P&I Clubs worldwide.
           </p>
         </motion.div>
       </div>

@@ -27,42 +27,7 @@ const teamMembers = Object.values(CONTACTS.personnel) as TeamMember[];
 
 export default function TeamSectionWhiteUniform() {
   return (
-    <section className="relative py-24 md:py-32 bg-background overflow-hidden">
-      {/* Gradient Blobs - Using Theme Colors */}
-      <div className="absolute inset-0">
-        {/* Primary Blue - Top Right */}
-        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-primary/15 rounded-full blur-[160px]" />
-        {/* Secondary - Bottom Left */}
-        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-secondary/20 rounded-full blur-[150px]" />
-        {/* Primary - Center */}
-        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] bg-primary/12 rounded-full blur-[140px]" />
-        {/* Accent - Bottom Right */}
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[130px]" />
-        {/* Subtle Wave Pattern Overlay */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern
-                id="waves"
-                x="0"
-                y="0"
-                width="100"
-                height="50"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M0 25 Q 25 15, 50 25 T 100 25"
-                  stroke="currentColor"
-                  strokeWidth="0.5"
-                  fill="none"
-                  className="text-primary/30"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#waves)" />
-          </svg>
-        </div>
-      </div>
+    <section className="relative py-24 md:py-32 bg-secondary/30">
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Header */}
@@ -86,7 +51,7 @@ export default function TeamSectionWhiteUniform() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight tracking-tight"
+            className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-6 leading-tight tracking-tight"
           >
             Meet The Team
           </motion.h2>
@@ -97,7 +62,7 @@ export default function TeamSectionWhiteUniform() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-foreground/60 leading-relaxed"
           >
-            Certified to international standards.
+            Our experienced team of marine surveyors and consultants.
           </motion.p>
         </div>
 
@@ -114,7 +79,7 @@ export default function TeamSectionWhiteUniform() {
               className="group"
             >
               {/* Card - Uniform Size */}
-              <div className="relative h-full bg-card border-2 border-border hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 overflow-hidden flex flex-col">
+              <div className="relative h-full bg-card border border-border hover:border-primary shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden flex flex-col">
                 {/* BIG Profile Image Area */}
                 <div className="relative h-80 overflow-hidden bg-gradient-to-br from-primary/15 via-secondary/10 to-primary/5">
                   {member.imageUrl ? (
@@ -153,7 +118,7 @@ export default function TeamSectionWhiteUniform() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm text-foreground/60 leading-relaxed mb-4 flex-1">
+                  <p className="text-base text-foreground/60 leading-relaxed mb-4 flex-1">
                     {member.description}
                   </p>
 
@@ -163,7 +128,7 @@ export default function TeamSectionWhiteUniform() {
                       {member.certifications.map((cert, i) => (
                         <div
                           key={i}
-                          className="inline-flex items-center gap-1 px-2 py-1 bg-primary/5 border border-primary/20 text-[10px] font-mono text-primary"
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-primary/5 border border-primary/20 text-xs font-mono text-primary"
                         >
                           <Award className="h-3 w-3" />
                           {cert}
@@ -178,7 +143,7 @@ export default function TeamSectionWhiteUniform() {
                       {member.email && (
                         <a
                           href={`mailto:${member.email}`}
-                          className="flex items-center gap-2 text-xs text-foreground/60 hover:text-primary transition-colors group/link"
+                          className="flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors group/link"
                         >
                           <Mail className="h-3.5 w-3.5" />
                           <span className="group-hover/link:underline truncate">
@@ -190,7 +155,7 @@ export default function TeamSectionWhiteUniform() {
                         <a
                           // This logic handles phone numbers with spaces, +, etc.
                           href={`tel:+${member.phone.replace(/\D/g, "")}`}
-                          className="flex items-center gap-2 text-xs text-foreground/60 hover:text-primary transition-colors group/link"
+                          className="flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors group/link"
                         >
                           <Phone className="h-3.5 w-3.5" />
                           <span className="group-hover/link:underline">

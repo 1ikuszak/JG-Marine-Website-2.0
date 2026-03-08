@@ -16,17 +16,17 @@ interface Advantage {
 const advantages: Advantage[] = [
   {
     icon: Clock,
-    title: "24h Baltic Response",
-    description: "The fastest mobilization in the region",
+    title: "Local Presence",
+    description: "Three offices across Poland",
     details:
-      "While global networks take 5-7 days to mobilize, we are on-site within 24 hours. Our local presence in key Baltic ports eliminates costly delays.",
+      "Offices in Sopot/Gdynia, Szczecin/Świnoujście, and Warsaw enable swift mobilization. Local knowledge of Polish ports and inland routes reduces costly delays.",
   },
   {
     icon: Anchor,
-    title: "3-Generation Heritage",
+    title: "100+ Years Heritage",
     description: "A tradition of Master Mariners",
     details:
-      "64 years of continuous operation. Knowledge passed down through three generations of Master Mariners provides a depth of expertise corporations cannot replicate.",
+      "Over 100 years of combined maritime experience. Knowledge passed down through generations of Master Mariners provides a depth of expertise corporations cannot replicate.",
   },
   {
     icon: Shield,
@@ -39,14 +39,14 @@ const advantages: Advantage[] = [
 
 const comparisonPoints = {
   them: [
-    "Response time: 5-7 days",
+    "Slow mobilization",
     "Corporate structure",
     "Lack of local knowledge",
     "Standardized approach",
   ],
   us: [
-    "Response time: <24h in Baltic",
-    "64 years of family heritage",
+    "Three offices across Poland",
+    "100+ years of family heritage",
     "Deep regional expertise",
     "Tailored, individual approach",
   ],
@@ -58,7 +58,7 @@ export default function DifferentiationSectionV1() {
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold font-serif text-primary tracking-tight mb-4">
             Why Companies Choose JG Marine Over Global Networks
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -79,13 +79,13 @@ export default function DifferentiationSectionV1() {
               <Card className="h-full bg-card shadow-sm hover:shadow-xl transition-all duration-300 border hover:border-border/80 group">
                 <CardContent className="p-8">
                   <advantage.icon className="h-7 w-7 text-accent mb-5 transition-colors group-hover:text-accent/80" />
-                  <h3 className="text-xl font-bold text-primary mb-2">
+                  <h3 className="text-xl font-bold font-serif text-primary mb-2">
                     {advantage.title}
                   </h3>
                   <p className="font-semibold text-muted-foreground mb-4">
                     {advantage.description}
                   </p>
-                  <p className="text-sm text-foreground/70 leading-relaxed">
+                  <p className="text-base text-foreground/70 leading-relaxed">
                     {advantage.details}
                   </p>
                 </CardContent>
