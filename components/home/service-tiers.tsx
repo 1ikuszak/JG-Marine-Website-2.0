@@ -199,7 +199,7 @@ export default function ServiceTiersUltimate() {
                     <div className="flex items-center gap-4 sm:gap-5">
                       {/* Unique service icon */}
                       <div className="relative inline-flex flex-shrink-0">
-                        <div className="absolute inset-0 bg-accent/15 rounded-full blur-md" />
+                        <div className="absolute inset-0 w-full h-full bg-accent/15 rounded-full blur-md" />
                         {React.createElement(service.icon, {
                           className: "relative h-10 w-10 sm:h-12 sm:w-12 text-accent",
                           strokeWidth: 1.5,
@@ -238,7 +238,7 @@ export default function ServiceTiersUltimate() {
                         Request Quote <ArrowRight className="h-4 w-4" />
                       </Link>
                       <Link
-                        href={`/services/${service.slug}`}
+                        href={`/contact`}
                         className="inline-flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-foreground font-medium text-sm transition-colors duration-200 cursor-pointer"
                       >
                         View Details <ArrowRight className="h-4 w-4 opacity-60" />
@@ -278,7 +278,7 @@ export default function ServiceTiersUltimate() {
                               className="flex-shrink-0 mt-0.5 sm:mt-1 h-4 w-4 sm:h-5 sm:w-5 text-accent"
                               strokeWidth={2}
                             />
-                            <span className="text-base sm:text-base md:text-lg text-foreground font-medium leading-relaxed group-hover/item:text-foreground transition-colors">
+                            <span className="text-base sm:text-base md:text-lg text-foreground font-medium leading-relaxed group-hover/item:text-primary transition-colors">
                               {item}
                             </span>
                           </motion.li>
