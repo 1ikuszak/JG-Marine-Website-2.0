@@ -128,7 +128,7 @@ export default function HowItWorksPremium() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+                    <p className="text-base text-foreground/60 leading-relaxed">
                       {step.description}
                     </p>
 

@@ -284,9 +284,9 @@ export function Hero({ slides }: HeroProps) {
         <div className="container mx-auto max-w-screen-xl px-0">
           <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-white backdrop-blur border border-white/20">
             <ShieldCheck className="h-4 w-4 text-white" />
-            <span className="text-sm">Guaranteed report independence</span>
+            <span className="text-base">Guaranteed report independence</span>
             <span className="text-white/40">•</span>
-            <span className="text-sm">Three offices across Poland</span>
+            <span className="text-base">Three offices across Poland</span>
             <ArrowRight className="h-4 w-4 opacity-80" />
           </div>
         </div>
