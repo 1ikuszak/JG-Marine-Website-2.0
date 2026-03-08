@@ -6,7 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -50,41 +51,40 @@
 /* Infinite Scroll Animation for Logo Scroller */
 
 :root {
-  --radius: 0.65rem;
-  /* Light Theme - Optimized for your main usage */
-  --background: oklch(0.9984 0.0041 121.56);
-  --foreground: oklch(0.1327 0.0184 255.28);
-  --card: oklch(0.9984 0.0041 121.56);
-  --card-foreground: oklch(0.1327 0.0184 255.28);
-  --popover: oklch(0.9984 0.0041 121.56);
-  --popover-foreground: oklch(0.1327 0.0184 255.28);
-  --primary: oklch(0.5856 0.1094 256.98);
-  --primary-foreground: oklch(0.9984 0.0041 121.56);
-  --secondary: oklch(0.8543 0.0417 249.44);
-  --secondary-foreground: oklch(0.1327 0.0184 255.28);
-  --muted: oklch(0.8543 0.0417 249.44);
-  --muted-foreground: oklch(0.55 0.065 250);
-  --accent: oklch(0.656 0.2327 34.42);
-  --accent-foreground: oklch(0.9984 0.0041 121.56);
-  --destructive: oklch(0.5126 0.2081 26.89);
-  --destructive-foreground: oklch(0.9984 0.0041 121.56);
-  --border: oklch(0.8543 0.0417 249.44);
-  --input: oklch(0.8543 0.0417 249.44);
-  --ring: oklch(0.5856 0.1094 256.98);
-  --chart-1: oklch(0.5856 0.1094 256.98);
-  --chart-2: oklch(0.656 0.2327 34.42);
+  /* JG Marine Brand Colors */
+  --background:           oklch(0.97 0.006 230);    /* Bone #F5F7F9 - warm off-white */
+  --foreground:           oklch(0.205 0.048 234);   /* Navy #0B1F2A - primary text */
+  --card:                 oklch(1 0 0);             /* Pure white cards */
+  --card-foreground:      oklch(0.205 0.048 234);   /* Navy */
+  --popover:              oklch(1 0 0);
+  --popover-foreground:   oklch(0.205 0.048 234);
+  --primary:              oklch(0.365 0.085 225);   /* Ocean #0E4F6B - interactive/headings */
+  --primary-foreground:   oklch(0.97 0.006 230);    /* Bone on primary bg */
+  --secondary:            oklch(0.91 0.022 230);    /* Fog #DDE7EE - muted backgrounds */
+  --secondary-foreground: oklch(0.205 0.048 234);   /* Navy on fog */
+  --muted:                oklch(0.91 0.022 230);    /* Fog */
+  --muted-foreground:     oklch(0.46 0.038 234);    /* Mid-navy, readable */
+  --accent:               oklch(0.73 0.095 68);     /* Gold #CDAA6A - CTA accent */
+  --accent-foreground:    oklch(0.205 0.048 234);   /* Navy on gold */
+  --destructive:          oklch(0.5126 0.2081 26.89);
+  --destructive-foreground: oklch(0.97 0.006 230);
+  --border:               oklch(0.88 0.018 230);    /* Slightly darker than fog */
+  --input:                oklch(0.88 0.018 230);
+  --ring:                 oklch(0.73 0.095 68);     /* Gold focus ring */
+  --radius:               0.5rem;                   /* Slightly less round = more professional */
+  --chart-1: oklch(0.365 0.085 225);
+  --chart-2: oklch(0.73 0.095 68);
   --chart-3: oklch(0.5126 0.2081 26.89);
-  --chart-4: oklch(0.8543 0.0417 249.44);
-  --chart-5: oklch(0.1327 0.0184 255.28);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.9984 0.0041 121.56);
-  --sidebar-foreground: oklch(0.1327 0.0184 255.28);
-  --sidebar-primary: oklch(0.5856 0.1094 256.98);
-  --sidebar-primary-foreground: oklch(0.9984 0.0041 121.56);
-  --sidebar-accent: oklch(0.8543 0.0417 249.44);
-  --sidebar-accent-foreground: oklch(0.1327 0.0184 255.28);
-  --sidebar-border: oklch(0.8543 0.0417 249.44);
-  --sidebar-ring: oklch(0.5856 0.1094 256.98);
+  --chart-4: oklch(0.91 0.022 230);
+  --chart-5: oklch(0.205 0.048 234);
+  --sidebar: oklch(0.97 0.006 230);
+  --sidebar-foreground: oklch(0.205 0.048 234);
+  --sidebar-primary: oklch(0.365 0.085 225);
+  --sidebar-primary-foreground: oklch(0.97 0.006 230);
+  --sidebar-accent: oklch(0.91 0.022 230);
+  --sidebar-accent-foreground: oklch(0.205 0.048 234);
+  --sidebar-border: oklch(0.88 0.018 230);
+  --sidebar-ring: oklch(0.73 0.095 68);
 }
 
 .dark {
@@ -140,5 +140,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
   }
 }
