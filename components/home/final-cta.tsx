@@ -27,7 +27,7 @@ const trustPoints = [
 
 export default function PremiumCtaSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-primary overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-secondary overflow-hidden">
       {/* Background: maritime image with dark overlay */}
       <div className="absolute inset-0">
         <Image
@@ -38,10 +38,10 @@ export default function PremiumCtaSection() {
           sizes="100vw"
         />
         {/* Layered gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/90 via-secondary/85 to-secondary/75" />
         {/* Subtle accent glow */}
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[130px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[120px]" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/25 rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
@@ -56,8 +56,8 @@ export default function PremiumCtaSection() {
           >
             {/* Section label */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-[2px] w-8 bg-accent" />
-              <p className="text-xs font-mono font-bold text-accent tracking-[0.3em] uppercase">
+              <div className="h-[2px] w-8 bg-white/60" />
+              <p className="text-xs font-mono font-bold text-white/80 tracking-[0.3em] uppercase">
                 EMERGENCY RESPONSE
               </p>
             </div>
@@ -66,15 +66,15 @@ export default function PremiumCtaSection() {
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-10">
               <span className="text-white">Request a Survey</span>
               <br />
-              <span className="text-accent">Available 24/7.</span>
+              <span className="text-white">Available 24/7.</span>
             </h2>
 
             {/* Trust bullets */}
             <ul className="space-y-4">
               {trustPoints.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-accent/15 border border-accent/20 flex items-center justify-center">
-                    <Icon className="h-4 w-4 text-accent" strokeWidth={1.5} />
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+                    <Icon className="h-4 w-4 text-white" strokeWidth={1.5} />
                   </div>
                   <span className="text-white/90 text-base">{text}</span>
                 </li>
@@ -89,10 +89,10 @@ export default function PremiumCtaSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <div className="rounded-2xl border border-accent/40 bg-white/[0.08] backdrop-blur-sm p-8 md:p-10 shadow-2xl">
+            <div className="rounded-2xl border border-white/20 bg-white/[0.08] backdrop-blur-sm p-8 md:p-10 shadow-2xl">
               {/* Card header */}
               <div className="text-center mb-8">
-                <p className="text-xs font-mono font-bold text-accent tracking-[0.25em] uppercase mb-2">
+                <p className="text-xs font-mono font-bold text-white/80 tracking-[0.25em] uppercase mb-2">
                   CALL NOW — AVAILABLE 24/7
                 </p>
                 <p className="text-white/70 text-sm">
