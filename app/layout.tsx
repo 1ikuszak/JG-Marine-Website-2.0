@@ -6,13 +6,13 @@ import { Footer } from "@/components/layout/footer";
 import { Toaster } from "sonner";
 
 const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-serif",
+  variable: "--font-cormorant-garamond",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
