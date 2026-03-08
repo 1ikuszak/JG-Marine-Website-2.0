@@ -159,7 +159,7 @@ export function CertificateLightbox({
               {certificate.date}
             </p>
             {certificate.certificateNumber && (
-              <p className="text-[10px] sm:text-xs font-mono text-white/50 mt-1 sm:mt-2">
+              <p className="text-xs font-mono text-white/50 mt-1 sm:mt-2">
                 Certificate No: {certificate.certificateNumber}
               </p>
             )}

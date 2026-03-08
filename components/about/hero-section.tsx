@@ -42,7 +42,7 @@ export default function AboutHeroSection() {
               >
                 <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div className="h-px w-8 sm:w-12 bg-accent/30" />
-                  <span className="text-[10px] sm:text-xs md:text-sm tracking-[0.4em] text-foreground/60 uppercase font-light">
+                  <span className="text-xs md:text-sm tracking-[0.4em] text-foreground/60 uppercase font-light">
                     Est. 1961
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export default function AboutHeroSection() {
                 className="mt-8 sm:mt-12 flex items-center gap-4"
               >
                 <div className="h-px flex-1 bg-border" />
-                <span className="text-[10px] sm:text-xs tracking-[0.3em] text-foreground/40 uppercase">
+                <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">
                   Our Story
                 </span>
                 <motion.div

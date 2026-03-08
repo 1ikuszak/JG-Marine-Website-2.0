@@ -151,7 +151,7 @@ export function CaseShowcase() {
   return (
     <section id="cases" className="relative border-b bg-white">
       {/* subtle premium backdrop (navy tint) */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/2 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/2 via-transparent to-transparent" />
 
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-16 md:py-24">
         {/* Heading */}
@@ -159,7 +159,7 @@ export function CaseShowcase() {
           <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
             Case Studies
           </div>
-          <h2 className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-[#0b1b31]">
+          <h2 className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-foreground">
             Proven Results in Critical Situations
           </h2>
           <p className="mt-3 max-w-3xl text-gray-600">
@@ -293,7 +293,7 @@ function CaseCard({ cs }: { cs: CaseItem }) {
                 <ul className="grid gap-2">
                   {cs.solution.map((s) => (
                     <li key={s} className="flex items-start gap-2">
-                      <ShieldCheck className="mt-0.5 h-4 w-4 text-amber-400" />
+                      <ShieldCheck className="mt-0.5 h-4 w-4 text-accent" />
                       <span className="text-sm">{s}</span>
                     </li>
                   ))}
@@ -303,7 +303,7 @@ function CaseCard({ cs }: { cs: CaseItem }) {
                 <ul className="grid gap-2">
                   {cs.impact.map((s) => (
                     <li key={s} className="flex items-start gap-2">
-                      <ShieldCheck className="mt-0.5 h-4 w-4 text-amber-400" />
+                      <ShieldCheck className="mt-0.5 h-4 w-4 text-accent" />
                       <span className="text-sm">{s}</span>
                     </li>
                   ))}
@@ -351,7 +351,7 @@ function Block({
 }) {
   return (
     <div>
-      <div className="text-[13px] font-medium uppercase tracking-wide text-[#0b1b31]">
+      <div className="text-[13px] font-medium uppercase tracking-wide text-foreground">
         {title}
       </div>
       <div className="mt-2">{children}</div>

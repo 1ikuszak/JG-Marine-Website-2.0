@@ -29,10 +29,6 @@ import {
   Anchor,
 } from "lucide-react";
 
-// JG-Marine brand accents (navy + subtle gold)
-const navy = "text-foreground";
-const gold = "text-accent";
-
 type Cert = {
   key: string;
   label: string;
@@ -92,7 +88,7 @@ export function Trust() {
             Verified by Maritime Authorities
           </div>
           <h2
-            className={`mt-2 text-2xl md:text-4xl font-semibold tracking-tight ${navy}`}
+            className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-foreground"
           >
             Credentials & Client Proof
           </h2>
@@ -135,7 +131,7 @@ export function Trust() {
             >
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-base md:text-lg">
-                  <ShieldCheck className={`h-5 w-5 ${gold}`} />
+                  <ShieldCheck className={`h-5 w-5 text-accent`} />
                   {c.label}
                   <TooltipProvider>
                     <Tooltip>
@@ -155,7 +151,7 @@ export function Trust() {
                 <ul className="grid gap-2 text-sm text-muted-foreground">
                   {c.details.map((d) => (
                     <li key={d} className="flex items-start gap-2">
-                      <CheckCircle2 className={`mt-0.5 h-4 w-4 ${gold}`} />
+                      <CheckCircle2 className={`mt-0.5 h-4 w-4 text-accent`} />
                       <span>{d}</span>
                     </li>
                   ))}

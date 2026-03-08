@@ -41,7 +41,7 @@ export function GlobalReach() {
   return (
     <section id="global-reach" className="relative border-b bg-white">
       {/* premium backdrop */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/3 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/3 via-transparent to-transparent" />
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-16 md:py-24">
         {/* Header */}
         <div className="mb-8 md:mb-12">
@@ -49,7 +49,7 @@ export function GlobalReach() {
             <Globe2 className="h-3.5 w-3.5" />
             Global Reach
           </div>
-          <h2 className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-[#0b1b31]">
+          <h2 className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-foreground">
             Baltic Expertise · International Operations
           </h2>
           <p className="mt-3 max-w-3xl text-gray-600">
@@ -62,7 +62,7 @@ export function GlobalReach() {
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Map / Visualization */}
-          <Card className="overflow-hidden border-[#0b1b31]/10">
+          <Card className="overflow-hidden border-foreground/10">
             <div className="relative h-[360px] w-full bg-muted">
               {/* Replace with an actual interactive map component when ready */}
               <Image
@@ -103,9 +103,9 @@ export function GlobalReach() {
 
           {/* Ports ETA + Timezones */}
           <div className="grid gap-6">
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base md:text-lg text-[#0b1b31]">
+                <CardTitle className="text-base md:text-lg text-foreground">
                   Typical Dispatch Times to Key Ports
                 </CardTitle>
               </CardHeader>
@@ -117,7 +117,7 @@ export function GlobalReach() {
                       className="flex items-center justify-between rounded-lg border p-3"
                     >
                       <div className="flex items-center gap-2">
-                        <MapPin className="h-4 w-4 text-amber-400" />
+                        <MapPin className="h-4 w-4 text-accent" />
                         <span className="text-sm">
                           {p.name}, {p.country}
                         </span>
@@ -136,9 +136,9 @@ export function GlobalReach() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base md:text-lg text-[#0b1b31]">
+                <CardTitle className="text-base md:text-lg text-foreground">
                   Offices & Time Zones
                 </CardTitle>
               </CardHeader>
@@ -158,8 +158,8 @@ export function GlobalReach() {
                   We coordinate across EU time zones; urgent requests are
                   handled 24/7 by on-call surveyors.
                 </p>
-                <div className="flex items-center justify-between rounded-xl border bg-[#0b1b31]/5 px-3 py-3">
-                  <div className="text-sm text-[#0b1b31]">
+                <div className="flex items-center justify-between rounded-xl border bg-foreground/5 px-3 py-3">
+                  <div className="text-sm text-foreground">
                     <Anchor className="mr-2 inline h-4 w-4" />
                     Need availability now? Speak to a surveyor.
                   </div>
@@ -173,8 +173,8 @@ export function GlobalReach() {
               </CardContent>
             </Card>
 
-            <div className="flex items-center justify-between gap-2 rounded-xl border border-[#0b1b31]/10 bg-white px-4 py-3">
-              <span className="text-sm text-[#0b1b31]">
+            <div className="flex items-center justify-between gap-2 rounded-xl border border-foreground/10 bg-white px-4 py-3">
+              <span className="text-sm text-foreground">
                 Planning a project outside the Baltic? We coordinate globally
                 with retained partners.
               </span>

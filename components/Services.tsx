@@ -62,10 +62,6 @@ type Category = {
 
 const EMERGENCY_TEL = "+48 123 123 123";
 
-const brandAccent = "from-foreground via-foreground to-foreground";
-const brandRing = "ring-1 ring-foreground/15";
-const goldAccentClass = "text-accent";
-
 const CATEGORIES: Category[] = [
   {
     key: "marine",
@@ -357,12 +353,12 @@ function SolutionCard({ s }: { s: Solution }) {
   const Icon = s.icon; // 👈 NOWE
 
   return (
-    <Card className={`group flex h-full flex-col justify-between ${brandRing}`}>
+    <Card className="group flex h-full flex-col justify-between ring-1 ring-foreground/15">
       <CardHeader className="space-y-2">
         <CardTitle className="flex items-start gap-3 text-base md:text-lg leading-tight">
           {Icon && (
             <Icon
-              className={`mt-0.5 h-5 w-5 flex-shrink-0 ${goldAccentClass}`}
+              className={`mt-0.5 h-5 w-5 flex-shrink-0 text-accent`}
             />
           )}
           <span>{s.title}</span>
@@ -388,7 +384,7 @@ function SolutionCard({ s }: { s: Solution }) {
             {s.bullets.map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <ShieldCheck
-                  className={`mt-0.5 h-4 w-4 flex-shrink-0 ${goldAccentClass}`}
+                  className={`mt-0.5 h-4 w-4 flex-shrink-0 text-accent`}
                 />
                 <span>{item}</span>
               </li>
@@ -445,7 +441,7 @@ export function Solutions() {
   return (
     <section id="services" className="relative">
       <div
-        className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b ${brandAccent} opacity-[0.02]`}
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground via-foreground to-foreground opacity-[0.02]"
       />
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-12 md:py-20">
         <div className="mb-8 md:mb-12">
@@ -501,15 +497,15 @@ export function Solutions() {
 
         <div className="mt-10 grid gap-3 sm:grid-cols-3 text-sm">
           <div className="flex items-center gap-2">
-            <Activity className={`h-4 w-4 ${goldAccentClass}`} />
+            <Activity className={`h-4 w-4 text-accent`} />
             <span>Independent & unbiased reporting</span>
           </div>
           <div className="flex items-center gap-2">
-            <Wrench className={`h-4 w-4 ${goldAccentClass}`} />
+            <Wrench className={`h-4 w-4 text-accent`} />
             <span>Coverage: All Polish ports & inland</span>
           </div>
           <div className="flex items-center gap-2">
-            <ShieldCheck className={`h-4 w-4 ${goldAccentClass}`} />
+            <ShieldCheck className={`h-4 w-4 text-accent`} />
             <span>Certified: DNV-GL · IIMS · CESAM</span>
           </div>
         </div>

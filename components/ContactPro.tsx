@@ -31,11 +31,11 @@ export function ContactGateway() {
   return (
     <section id="contact" className="relative bg-white border-t">
       {/* subtle navy backdrop tint */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/3 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/3 via-transparent to-transparent" />
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-16 md:py-24">
         {/* Heading */}
         <div className="mb-10 md:mb-14">
-          <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-[#0b1b31]">
+          <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-foreground">
             Contact & Emergency
           </h2>
           <p className="mt-3 max-w-3xl text-gray-600">
@@ -47,9 +47,9 @@ export function ContactGateway() {
 
         <div className="grid gap-6 md:grid-cols-5">
           {/* Smart Contact Form */}
-          <Card className="md:col-span-3 border-[#0b1b31]/10">
+          <Card className="md:col-span-3 border-foreground/10">
             <CardHeader className="pb-4">
-              <CardTitle className="text-base md:text-lg text-[#0b1b31]">
+              <CardTitle className="text-base md:text-lg text-foreground">
                 Request Survey / Consultation
               </CardTitle>
             </CardHeader>
@@ -198,9 +198,9 @@ export function ContactGateway() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-[#0b1b31]">
+                <CardTitle className="flex items-center gap-2 text-foreground">
                   <Building2 className="h-5 w-5" />
                   Offices
                 </CardTitle>
@@ -245,10 +245,10 @@ export function ContactGateway() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardContent className="pt-6">
                 <div className="flex flex-wrap items-center gap-3 text-sm">
-                  <ShieldCheck className="h-4 w-4 text-amber-400" />
+                  <ShieldCheck className="h-4 w-4 text-accent" />
                   <span className="text-muted-foreground">
                     Latest project: €45M offshore survey completed this week
                   </span>
@@ -257,8 +257,8 @@ export function ContactGateway() {
             </Card>
 
             {/* Secondary CTA */}
-            <div className="flex items-center justify-between gap-2 rounded-xl border border-[#0b1b31]/10 bg-[#0b1b31]/5 px-4 py-3">
-              <span className="text-sm text-[#0b1b31]">
+            <div className="flex items-center justify-between gap-2 rounded-xl border border-foreground/10 bg-foreground/5 px-4 py-3">
+              <span className="text-sm text-foreground">
                 Prefer email? Send specs and documents directly.
               </span>
               <Button variant="outline" asChild>

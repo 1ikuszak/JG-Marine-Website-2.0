@@ -39,9 +39,6 @@ type Resource = {
   restricted?: boolean; // gated by NDA
 };
 
-const navyText = "text-[#0b1b31]";
-const gold = "text-amber-400";
-
 const RESOURCES: Resource[] = [
   {
     id: "mws-spec",
@@ -136,7 +133,7 @@ export function ResourcesHub() {
 
   return (
     <section id="resources" className="relative border-t bg-white">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/3 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/3 via-transparent to-transparent" />
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-16 md:py-24">
         {/* Heading */}
         <div className="mb-8 md:mb-12">
@@ -145,7 +142,7 @@ export function ResourcesHub() {
             Resources & Downloads
           </div>
           <h2
-            className={`mt-2 text-2xl md:text-4xl font-semibold tracking-tight ${navyText}`}
+            className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-foreground"
           >
             Technical Guides, Checklists & Documentation
           </h2>
@@ -196,10 +193,10 @@ export function ResourcesHub() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-10 rounded-xl border border-[#0b1b31]/10 bg-[#0b1b31]/5 p-4 sm:p-6">
+        <div className="mt-10 rounded-xl border border-foreground/10 bg-foreground/5 p-4 sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div className={`text-base font-medium ${navyText}`}>
+              <div className="text-base font-medium text-foreground">
                 Need a document tailored to your tender?
               </div>
               <p className="text-sm text-muted-foreground">
@@ -221,7 +218,7 @@ export function ResourcesHub() {
 
 function ResourceCard({ r }: { r: Resource }) {
   return (
-    <Card className="group flex h-full flex-col justify-between border-[#0b1b31]/10 transition hover:shadow-md">
+    <Card className="group flex h-full flex-col justify-between border-foreground/10 transition hover:shadow-md">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <Badge variant="secondary" className="rounded-full">
@@ -253,7 +250,7 @@ function ResourceCard({ r }: { r: Resource }) {
           {r.restricted ? (
             <Lock className="h-3.5 w-3.5" />
           ) : (
-            <ShieldCheck className={`h-3.5 w-3.5 ${gold}`} />
+            <ShieldCheck className="h-3.5 w-3.5 text-accent" />
           )}
           <span>{r.size}</span>
         </div>

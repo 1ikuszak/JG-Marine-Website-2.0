@@ -38,7 +38,7 @@ export default function CredentialsCtaSection() {
             <div>
               <div className="flex items-center gap-3 mb-4 sm:mb-6">
                 <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
-                <p className="font-mono text-[10px] sm:text-xs font-bold text-accent tracking-[0.3em] uppercase">
+                <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
                   VERIFIED EXPERTISE
                 </p>
               </div>
@@ -160,7 +160,7 @@ export default function CredentialsCtaSection() {
                   <p className="text-2xl sm:text-3xl font-bold text-accent mb-1">
                     2h
                   </p>
-                  <p className="text-[10px] sm:text-xs text-white/60">
+                  <p className="text-xs text-white/60">
                     Assignment
                   </p>
                 </div>
@@ -168,7 +168,7 @@ export default function CredentialsCtaSection() {
                   <p className="text-2xl sm:text-3xl font-bold text-accent mb-1">
                     24h
                   </p>
-                  <p className="text-[10px] sm:text-xs text-white/60">
+                  <p className="text-xs text-white/60">
                     On-site
                   </p>
                 </div>
@@ -176,7 +176,7 @@ export default function CredentialsCtaSection() {
                   <p className="text-2xl sm:text-3xl font-bold text-accent mb-1">
                     100%
                   </p>
-                  <p className="text-[10px] sm:text-xs text-white/60">
+                  <p className="text-xs text-white/60">
                     Accepted
                   </p>
                 </div>

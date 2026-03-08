@@ -44,7 +44,7 @@ export function CertificateCard({
         <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10">
           <Badge
             variant="secondary"
-            className="bg-primary/90 text-primary-foreground backdrop-blur-sm border-none text-[10px] sm:text-xs px-2 py-0.5 sm:px-2.5 sm:py-1"
+            className="bg-primary/90 text-primary-foreground backdrop-blur-sm border-none text-xs px-2 py-0.5 sm:px-2.5 sm:py-1"
           >
             {category}
           </Badge>
@@ -93,7 +93,7 @@ export function CertificateCard({
           {/* Certificate Number (if provided) */}
           {certificateNumber && (
             <div className="pt-2 sm:pt-3 border-t border-border">
-              <p className="text-[10px] sm:text-xs font-mono text-muted-foreground">
+              <p className="text-xs font-mono text-muted-foreground">
                 Certificate No: {certificateNumber}
               </p>
             </div>

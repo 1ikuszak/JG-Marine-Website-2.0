@@ -56,8 +56,6 @@ export type ServiceDetailProps = {
   emergency?: boolean;
 };
 
-const NAVY = "#0b1b31";
-const GOLD = "text-amber-400";
 const EMERGENCY_TEL = "+48 123 123 123"; // replace
 
 export function ServiceDetail(props: ServiceDetailProps) {
@@ -82,7 +80,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
   return (
     <section className="relative">
       {/* Subtle premium backdrop */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/3 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/3 via-transparent to-transparent" />
 
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-10 md:py-16">
         {/* Breadcrumb */}
@@ -109,7 +107,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
         {/* Header */}
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           <div className="md:col-span-2">
-            <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-[#0b1b31]">
+            <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-foreground">
               {title}
             </h1>
             <p className="mt-2 text-lg text-gray-700">{benefitHeadline}</p>
@@ -128,7 +126,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
             </div>
           </div>
 
-          <Card className="border-[#0b1b31]/10">
+          <Card className="border-foreground/10">
             <CardHeader className="pb-3">
               <CardTitle className="text-base">Project Snapshot</CardTitle>
             </CardHeader>
@@ -184,7 +182,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
 
         {/* What we do */}
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          <Card className="md:col-span-2 border-[#0b1b31]/10">
+          <Card className="md:col-span-2 border-foreground/10">
             <CardHeader className="pb-3">
               <CardTitle className="text-base md:text-lg">What We Do</CardTitle>
             </CardHeader>
@@ -193,7 +191,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
               <ul className="grid gap-2 text-sm">
                 {bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2">
-                    <ShieldCheck className={`mt-0.5 h-4 w-4 ${GOLD}`} />
+                    <ShieldCheck className={`mt-0.5 h-4 w-4 text-accent`} />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -201,7 +199,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
             </CardContent>
           </Card>
 
-          <Card className="border-[#0b1b31]/10">
+          <Card className="border-foreground/10">
             <CardHeader className="pb-3">
               <CardTitle className="text-base md:text-lg">
                 Why JG-MARINE
@@ -210,7 +208,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
             <CardContent className="grid gap-2 text-sm">
               {differentiators.map((d) => (
                 <div key={d} className="flex items-start gap-2">
-                  <Ship className={`mt-0.5 h-4 w-4 ${GOLD}`} />
+                  <Ship className={`mt-0.5 h-4 w-4 text-accent`} />
                   <span>{d}</span>
                 </div>
               ))}
@@ -220,16 +218,16 @@ export function ServiceDetail(props: ServiceDetailProps) {
 
         {/* Process */}
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-[#0b1b31]">
+          <h3 className="text-lg font-semibold text-foreground">
             Process Overview
           </h3>
           <Separator className="my-3" />
           <div className="grid gap-4 md:grid-cols-4">
             {steps.map((s, idx) => (
-              <Card key={s.label} className="border-[#0b1b31]/10">
+              <Card key={s.label} className="border-foreground/10">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-semibold">
-                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#0b1b31]/20 text-[#0b1b31]">
+                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-foreground/20 text-foreground">
                       {idx + 1}
                     </span>
                     {s.label}
@@ -246,7 +244,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
         {/* Case Preview + CTA */}
         {casePreview && (
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <Card className="md:col-span-2 overflow-hidden border-[#0b1b31]/10">
+            <Card className="md:col-span-2 overflow-hidden border-foreground/10">
               <div className="relative h-44 w-full bg-muted">
                 {casePreview.cover && (
                   <Image
@@ -275,7 +273,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
                 <ul className="grid gap-2 text-sm">
                   {casePreview.impact.map((i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <ClipboardList className={`mt-0.5 h-4 w-4 ${GOLD}`} />
+                      <ClipboardList className={`mt-0.5 h-4 w-4 text-accent`} />
                       <span>{i}</span>
                     </li>
                   ))}
@@ -289,7 +287,7 @@ export function ServiceDetail(props: ServiceDetailProps) {
             </Card>
 
             {/* Inline lead form (quick) */}
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-2">
                 <CardTitle className="text-base">
                   Request Custom Proposal
