@@ -11,7 +11,7 @@ const OfficeMap = dynamic(() => import("@/components/home/office-map"), {
   ssr: false,
   loading: () => (
     <div className="w-full rounded-xl border border-border bg-secondary/20 animate-pulse flex items-center justify-center" style={{ height: "420px" }}>
-      <span className="text-sm text-foreground/40">Loading map…</span>
+      <span className="text-base text-foreground/40">Loading map…</span>
     </div>
   ),
 });
@@ -22,21 +22,21 @@ const officeDisplayData = [
     ports: "Gdynia · Gdańsk",
     dotColor: "bg-primary",
     labelStyle: "text-primary font-bold",
-    cardClass: "border-l-4 border-l-primary border border-border bg-card shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300",
+    cardClass: "border-l-4 border-l-primary border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300",
   },
   {
     label: "Branch Office",
     ports: "Szczecin · Świnoujście",
     dotColor: "bg-primary/60",
     labelStyle: "text-primary/70 font-semibold",
-    cardClass: "border-l-4 border-l-primary/50 border border-border bg-card shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300",
+    cardClass: "border-l-4 border-l-primary/50 border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300",
   },
   {
     label: "Inland Office",
     ports: "Central Poland · CMR",
     dotColor: "bg-primary/60",
     labelStyle: "text-primary/70 font-semibold",
-    cardClass: "border-l-4 border-l-primary/50 border border-border bg-card shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300",
+    cardClass: "border-l-4 border-l-primary/50 border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function OfficeLocationsSection() {
                     </div>
 
                     {/* Office city */}
-                    <h3 className="text-xl font-bold text-foreground mb-1">
+                    <h3 className="text-xl font-bold font-serif text-foreground mb-1">
                       {office.address.city}
                     </h3>
 

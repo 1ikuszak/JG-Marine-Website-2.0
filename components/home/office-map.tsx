@@ -14,6 +14,8 @@ export default function OfficeMap() {
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
+    let style: HTMLStyleElement | null = null;
+
     // Lazy-import leaflet to avoid SSR issues
     import("leaflet").then((L) => {
       if (!mapRef.current || mapInstanceRef.current) return;
@@ -90,7 +92,7 @@ export default function OfficeMap() {
       OFFICES.forEach((office) => {
         const isHQ = office.type === "headquarters";
         const marker = L.marker([office.coordinates.lat, office.coordinates.lng], {
-          icon: createMarkerIcon(office.type as "headquarters" | "branch" | "office"),
+          icon: createMarkerIcon(office.type),
         });
 
         const popupContent = `
@@ -127,7 +129,7 @@ export default function OfficeMap() {
       });
 
       // Custom popup styles injected once
-      const style = document.createElement("style");
+      style = document.createElement("style");
       style.textContent = `
         .jg-marine-popup .leaflet-popup-content-wrapper {
           border-radius: 10px;
@@ -152,6 +154,10 @@ export default function OfficeMap() {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
+      }
+      if (style) {
+        style.remove();
+        style = null;
       }
     };
   }, []);
