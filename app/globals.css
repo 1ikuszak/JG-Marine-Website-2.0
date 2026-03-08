@@ -51,74 +51,40 @@
 /* Infinite Scroll Animation for Logo Scroller */
 
 :root {
-  /* JG Marine Brand Colors */
-  --background:           oklch(0.97 0.006 230);    /* Bone #F5F7F9 - warm off-white */
-  --foreground:           oklch(0.205 0.048 234);   /* Navy #0B1F2A - primary text */
-  --card:                 oklch(1 0 0);             /* Pure white cards */
-  --card-foreground:      oklch(0.205 0.048 234);   /* Navy */
-  --popover:              oklch(1 0 0);
-  --popover-foreground:   oklch(0.205 0.048 234);
-  --primary:              oklch(0.365 0.085 225);   /* Ocean #0E4F6B - interactive/headings */
-  --primary-foreground:   oklch(0.97 0.006 230);    /* Bone on primary bg */
-  --secondary:            oklch(0.91 0.022 230);    /* Fog #DDE7EE - muted backgrounds */
-  --secondary-foreground: oklch(0.205 0.048 234);   /* Navy on fog */
-  --muted:                oklch(0.91 0.022 230);    /* Fog */
-  --muted-foreground:     oklch(0.46 0.038 234);    /* Mid-navy, readable */
-  --accent:               oklch(0.73 0.095 68);     /* Gold #CDAA6A - CTA accent */
-  --accent-foreground:    oklch(0.205 0.048 234);   /* Navy on gold */
-  --destructive:          oklch(0.5126 0.2081 26.89);
-  --destructive-foreground: oklch(0.97 0.006 230);
-  --border:               oklch(0.88 0.018 230);    /* Slightly darker than fog */
-  --input:                oklch(0.88 0.018 230);
-  --ring:                 oklch(0.73 0.095 68);     /* Gold focus ring */
-  --radius:               0.5rem;                   /* Slightly less round = more professional */
-  --chart-1: oklch(0.365 0.085 225);
-  --chart-2: oklch(0.73 0.095 68);
+  /* JG Marine 4-Color Palette */
+  --background:           oklch(0.975 0.009 160);    /* #F4F9F6 - light mint */
+  --foreground:           oklch(0.08 0 0);            /* #0D0D0D - near black */
+  --card:                 oklch(0.975 0.009 160);     /* #F4F9F6 - same as bg, separated by border */
+  --card-foreground:      oklch(0.08 0 0);            /* #0D0D0D */
+  --popover:              oklch(0.975 0.009 160);
+  --popover-foreground:   oklch(0.08 0 0);
+  --primary:              oklch(0.39 0.085 222);      /* #005E8E - ocean blue */
+  --primary-foreground:   oklch(0.975 0.009 160);     /* #F4F9F6 on blue: 6.8:1 */
+  --secondary:            oklch(0.22 0.028 193);      /* #21383D - dark teal */
+  --secondary-foreground: oklch(0.975 0.009 160);     /* #F4F9F6 on dark teal: 11.6:1 */
+  --muted:                oklch(0.22 0.028 193 / 0.08); /* #21383D very faint */
+  --muted-foreground:     oklch(0.08 0 0 / 0.55);    /* #0D0D0D 55% */
+  --accent:               oklch(0.39 0.085 222);      /* #005E8E - same as primary */
+  --accent-foreground:    oklch(0.975 0.009 160);     /* #F4F9F6 */
+  --destructive:          oklch(0.5126 0.2081 26.89); /* keep red for emergency */
+  --destructive-foreground: oklch(0.975 0.009 160);
+  --border:               oklch(0.22 0.028 193 / 0.15); /* #21383D 15% */
+  --input:                oklch(0.22 0.028 193 / 0.15);
+  --ring:                 oklch(0.39 0.085 222);      /* #005E8E */
+  --radius:               0.5rem;
+  --chart-1: oklch(0.39 0.085 222);
+  --chart-2: oklch(0.22 0.028 193);
   --chart-3: oklch(0.5126 0.2081 26.89);
-  --chart-4: oklch(0.91 0.022 230);
-  --chart-5: oklch(0.205 0.048 234);
-  --sidebar: oklch(0.97 0.006 230);
-  --sidebar-foreground: oklch(0.205 0.048 234);
-  --sidebar-primary: oklch(0.365 0.085 225);
-  --sidebar-primary-foreground: oklch(0.97 0.006 230);
-  --sidebar-accent: oklch(0.91 0.022 230);
-  --sidebar-accent-foreground: oklch(0.205 0.048 234);
-  --sidebar-border: oklch(0.88 0.018 230);
-  --sidebar-ring: oklch(0.73 0.095 68);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --chart-4: oklch(0.975 0.009 160);
+  --chart-5: oklch(0.08 0 0);
+  --sidebar: oklch(0.975 0.009 160);
+  --sidebar-foreground: oklch(0.08 0 0);
+  --sidebar-primary: oklch(0.39 0.085 222);
+  --sidebar-primary-foreground: oklch(0.975 0.009 160);
+  --sidebar-accent: oklch(0.22 0.028 193 / 0.08);
+  --sidebar-accent-foreground: oklch(0.08 0 0);
+  --sidebar-border: oklch(0.22 0.028 193 / 0.15);
+  --sidebar-ring: oklch(0.39 0.085 222);
 }
 
 /* ============================================
