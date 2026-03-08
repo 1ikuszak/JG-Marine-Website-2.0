@@ -107,7 +107,7 @@ export function Hero({ slides }: HeroProps) {
             />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary/85 to-secondary/20" />
       </div>
 
       {/* Hero Content */}
@@ -135,7 +135,7 @@ export function Hero({ slides }: HeroProps) {
               {/* Primary: phone — captures urgent/emergency clients */}
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-black font-bold text-base h-16 rounded-xl group shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all duration-200 w-full sm:w-auto"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-base h-16 rounded-xl group shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all duration-200 w-full sm:w-auto"
                 asChild
               >
                 <a
