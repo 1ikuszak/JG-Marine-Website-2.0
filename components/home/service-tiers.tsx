@@ -220,7 +220,7 @@ export default function ServiceTiersUltimate() {
                     </div>
 
                     {/* Services List */}
-                    <div className="bg-secondary border border-border rounded-lg p-5 sm:p-6 md:p-7">
+                    <div className="bg-background border border-border rounded-lg p-5 sm:p-6 md:p-7">
                       <ul className="space-y-3.5 sm:space-y-5">
                         {service.deliverables.map((item, i) => (
                           <motion.li
