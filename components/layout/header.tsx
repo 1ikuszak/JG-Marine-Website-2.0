@@ -241,7 +241,7 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`rounded-md px-3 py-2 text-[15px] transition-colors ${
+                      className={`rounded-md px-3 py-2 text-base transition-colors ${
                         pathname === item.href
                           ? "bg-muted font-medium text-foreground"
                           : "hover:bg-muted focus-visible:bg-muted text-muted-foreground"
@@ -264,7 +264,7 @@ export function Header() {
 
                 <div className="px-4 pb-5 mt-auto">
                   <Separator className="mb-4" />
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <Badge variant="secondary">IIMS</Badge>
                     <Badge variant="secondary">CESAM</Badge>
                     <span className="ml-auto">
