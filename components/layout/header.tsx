@@ -85,13 +85,13 @@ export function Header() {
         style={{
           top: `${topPosition}px`,
           backgroundColor: isTransparent
-            ? `rgba(255, 255, 255, ${bgOpacity})`
-            : "rgba(255, 255, 255, 0.95)",
+            ? `rgba(244, 249, 246, ${bgOpacity})`
+            : "rgba(244, 249, 246, 0.97)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           borderBottomColor: isTransparent
-            ? "rgba(255, 255, 255, 0.1)"
-            : "rgba(0, 0, 0, 0.1)",
+            ? "rgba(244, 249, 246, 0.15)"
+            : "rgba(33, 56, 61, 0.15)",
         }}
         role="banner"
       >
