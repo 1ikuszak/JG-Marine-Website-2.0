@@ -45,7 +45,7 @@ export default function OfficeMap() {
       // Custom branded marker SVG (navy circle with white anchor)
       const createMarkerIcon = (type: "headquarters" | "branch" | "office") => {
         const isHQ = type === "headquarters";
-        const bg = isHQ ? "#0E4F6B" : "#6B8FA3";
+        const bg = isHQ ? "#005E8E" : "#6B8FA3";
         const size = isHQ ? 44 : 36;
         const svgSize = isHQ ? 20 : 16;
         return L.divIcon({
@@ -97,10 +97,10 @@ export default function OfficeMap() {
 
         const popupContent = `
           <div style="font-family: system-ui, sans-serif; min-width: 200px; padding: 4px;">
-            <div style="font-size: 11px; font-weight: 700; color: #0E4F6B; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+            <div style="font-size: 11px; font-weight: 700; color: #005E8E; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
               ${isHQ ? "HEAD OFFICE" : office.type.toUpperCase()}
             </div>
-            <div style="font-size: 15px; font-weight: 700; color: #0B1F2A; margin-bottom: 6px; line-height: 1.2;">
+            <div style="font-size: 15px; font-weight: 700; color: #0D0D0D; margin-bottom: 6px; line-height: 1.2;">
               ${office.tagline}
             </div>
             <div style="font-size: 12px; color: #475569; margin-bottom: 8px; line-height: 1.5;">
@@ -113,7 +113,7 @@ export default function OfficeMap() {
                 gap: 6px;
                 font-size: 13px;
                 font-weight: 600;
-                color: #0E4F6B;
+                color: #005E8E;
                 text-decoration: none;
               ">${office.contact.phone}</a>
             </div>
