@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-white">
+    <footer className="border-t border-primary/20 bg-foreground">
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Main Footer Content */}
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 py-16 md:py-20">
@@ -19,37 +19,38 @@ export function Footer() {
                   height={32}
                   alt="logo"
                   src={"/logo.svg"}
-                  className="text-foreground"
+                  className="brightness-0 invert"
                 />
               </span>
               <div>
-                <div className="text-lg font-semibold text-primary">
+                <div className="text-lg font-semibold text-white">
                   JG-Marine
                 </div>
-                <div className="text-sm text-muted-foreground">Co. Ltd.</div>
+                <div className="text-sm text-white/60">Co. Ltd.</div>
               </div>
             </div>
 
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              Independent marine surveyors since 1959. 64 years of expertise
-              across the Baltic region.
+            <p className="text-sm text-white/60 leading-relaxed mb-4">
+              Independent Marine Service.
+              <br />
+              120+ years of maritime experience.
             </p>
 
-            <div className="text-xs text-muted-foreground">
-              DNV • IIMS • CESAM • P&I Approved
+            <div className="text-xs text-white/60">
+              IIMS • CESAM • P&I Approved
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold text-primary mb-4">
+            <h3 className="text-sm font-semibold text-accent mb-4">
               Services
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="/#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Marine Surveys
                 </Link>
@@ -57,7 +58,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Cargo & Inland
                 </Link>
@@ -65,7 +66,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Technical Consulting
                 </Link>
@@ -73,7 +74,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Claims & Insurance
                 </Link>
@@ -81,7 +82,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Casualty Response
                 </Link>
@@ -91,36 +92,20 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold text-primary mb-4">Company</h3>
+            <h3 className="text-sm font-semibold text-accent mb-4">Company</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/#team"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Our Team
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/certifications"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Certifications
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   Contact
                 </Link>
@@ -130,33 +115,33 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-primary mb-4">Contact</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
+            <h3 className="text-sm font-semibold text-accent mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm text-white/60">
               <li>
-                <div className="text-xs text-muted-foreground mb-1">
-                  Emergency 24/7
+                <div className="text-xs text-white/60 mb-1">
+                  Phone
                 </div>
                 <a
                   href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
-                  className="text-primary hover:underline"
+                  className="text-white hover:text-accent transition-colors hover:underline"
                 >
                   {CONTACTS.main.phone}{" "}
                 </a>
               </li>
               <li>
-                <div className="text-xs text-muted-foreground mb-1">Email</div>
+                <div className="text-xs text-white/60 mb-1">Email</div>
                 <a
                   href="mailto:info@jg-marine.com"
-                  className="hover:text-primary transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                 >
                   info@jg-marine.com
                 </a>
               </li>
               <li>
-                <div className="text-xs text-muted-foreground mb-1">
+                <div className="text-xs text-white/60 mb-1">
                   Offices
                 </div>
-                <div>
+                <div className="text-white/60">
                   Sopot, Poland
                   <br />
                   <span className="text-xs">Szczecin • Warsaw</span>
@@ -167,18 +152,18 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+        <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
           <div>© {currentYear} JG-Marine Co. Ltd. All rights reserved.</div>
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="hover:text-primary transition-colors"
+              className="hover:text-accent transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="hover:text-primary transition-colors"
+              className="hover:text-accent transition-colors"
             >
               Terms of Service
             </Link>

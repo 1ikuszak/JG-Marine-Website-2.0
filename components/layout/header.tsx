@@ -16,9 +16,8 @@ import { CONTACTS } from "@/config";
 type NavItem = { href: string; label: string };
 
 const NAV: NavItem[] = [
+  { href: "/", label: "Home" },
   { href: "/#services", label: "Services" },
-  { href: "/about", label: "About Us" },
-  { href: "/certifications", label: "Certifications" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -64,13 +63,11 @@ export function Header() {
           style={{ height: `${BANNER_HEIGHT_PX}px` }}
         >
           <div className="mx-auto max-w-screen-2xl px-4 h-full flex items-center justify-center">
-            <div className="flex items-center justify-center gap-2 text-sm md:text-[15px]">
-              <AlarmClock aria-hidden className="h-4 w-4 shrink-0" />
+            <div className="flex items-center justify-center gap-2 text-sm md:text-base">
               <span className="font-medium tracking-tight">
-                URGENT SURVEY? 24/7 Hotline:
+                24/7 Emergency Survey Response:
               </span>
 
-              {/* THIS IS THE FIXED LINE */}
               <a
                 href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}
                 className="inline-flex items-center underline-offset-2 hover:underline focus-visible:underline"
@@ -132,7 +129,7 @@ export function Header() {
                   JG-Marine
                 </div>
                 <div
-                  className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${
+                  className={`text-xs uppercase tracking-widest transition-colors duration-300 ${
                     isTransparent ? "text-white/70" : "text-muted-foreground"
                   }`}
                 >
@@ -170,20 +167,16 @@ export function Header() {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-2">
-              <Button asChild size="sm" variant="accent">
-                <Link href="/contact">Request Survey</Link>
-              </Button>
-
               <Button
                 variant="ghost"
                 size="sm"
                 asChild
-                aria-label="Emergency hotline"
+                aria-label="Call us"
                 className={isTransparent ? "text-white hover:bg-white/10" : ""}
               >
                 <a href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}>
                   <Phone className="mr-2 h-4 w-4" />
-                  Urgent 24/7
+                  {EMERGENCY_TEL}
                 </a>
               </Button>
             </div>
@@ -227,19 +220,16 @@ export function Header() {
 
                 <div className="px-4 py-4">
                   <Button
-                    variant="destructive"
+                    variant="default"
                     className="w-full"
                     asChild
-                    aria-label="Call the emergency hotline"
+                    aria-label="Call us"
                   >
                     <a href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}>
                       <Phone className="mr-2 h-4 w-4" />
-                      Urgent 24/7: {EMERGENCY_TEL}
+                      {EMERGENCY_TEL}
                     </a>
                   </Button>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    Response commitment: Surveyor assigned in &lt;2 hours.
-                  </p>
                 </div>
                 <Separator />
 
@@ -268,14 +258,13 @@ export function Header() {
                     asChild
                     className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                   >
-                    <Link href="/contact">Request Survey</Link>
+                    <Link href="/contact">Contact Us</Link>
                   </Button>
                 </div>
 
                 <div className="px-4 pb-5 mt-auto">
                   <Separator className="mb-4" />
                   <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-                    <Badge variant="secondary">DNV</Badge>
                     <Badge variant="secondary">IIMS</Badge>
                     <Badge variant="secondary">CESAM</Badge>
                     <span className="ml-auto">
