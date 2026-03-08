@@ -43,14 +43,14 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold text-accent mb-4">
+            <h3 className="text-sm font-semibold text-white mb-4">
               Services
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="/#services"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Marine Surveys
                 </Link>
@@ -58,7 +58,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Cargo & Inland
                 </Link>
@@ -66,7 +66,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Technical Consulting
                 </Link>
@@ -74,7 +74,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Claims & Insurance
                 </Link>
@@ -82,7 +82,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#services"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Casualty Response
                 </Link>
@@ -92,12 +92,12 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold text-accent mb-4">Company</h3>
+            <h3 className="text-sm font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="/#team"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Our Team
                 </Link>
@@ -105,7 +105,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   Contact
                 </Link>
@@ -115,7 +115,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-accent mb-4">Contact</h3>
+            <h3 className="text-sm font-semibold text-white mb-4">Contact</h3>
             <ul className="space-y-3 text-sm text-white/60">
               <li>
                 <div className="text-xs text-white/60 mb-1">
@@ -123,7 +123,7 @@ export function Footer() {
                 </div>
                 <a
                   href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
-                  className="text-white hover:text-accent transition-colors hover:underline"
+                  className="text-white hover:text-white/80 transition-colors hover:underline"
                 >
                   {CONTACTS.main.phone}{" "}
                 </a>
@@ -132,7 +132,7 @@ export function Footer() {
                 <div className="text-xs text-white/60 mb-1">Email</div>
                 <a
                   href="mailto:info@jg-marine.com"
-                  className="text-white/60 hover:text-accent transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   info@jg-marine.com
                 </a>
@@ -157,13 +157,13 @@ export function Footer() {
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="hover:text-accent transition-colors"
+              className="hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="hover:text-accent transition-colors"
+              className="hover:text-white transition-colors"
             >
               Terms of Service
             </Link>
