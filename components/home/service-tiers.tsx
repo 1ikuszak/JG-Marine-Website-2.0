@@ -2,9 +2,19 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle } from "lucide-react";
+import {
+  CheckCircle,
+  Anchor,
+  Package,
+  Wrench,
+  Scale,
+  AlertTriangle,
+  Container,
+  ArrowRight,
+} from "lucide-react";
 
 interface Service {
   title: string;
@@ -12,11 +22,13 @@ interface Service {
   deliverables: string[];
   slug: string;
   imageUrl: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
 }
 
 const services: Service[] = [
   {
     title: "Marine Surveys",
+    icon: Anchor,
     bestFor: "Shipowners, Fleet Operators, P&I Clubs",
     deliverables: [
       "Hull & Machinery (H&M) Surveys",
@@ -31,6 +43,7 @@ const services: Service[] = [
   },
   {
     title: "Cargo & Inland Services",
+    icon: Package,
     bestFor: "Logistics Providers, Freight Forwarders, Cargo Insurers",
     deliverables: [
       "Cargo Damage Assessment and Surveys",
@@ -49,6 +62,7 @@ const services: Service[] = [
   },
   {
     title: "Heavy Lifts & Project Cargo",
+    icon: Container,
     bestFor: "EPC Contractors, Project Forwarders, Port Operators",
     deliverables: [
       "Pre-Planning and Feasibility Studies",
@@ -63,6 +77,7 @@ const services: Service[] = [
   },
   {
     title: "Technical Consulting & Engineering",
+    icon: Wrench,
     bestFor: "Shipyards, Port Authorities, Fleet Managers",
     deliverables: [
       "Technical Audits (ISM, ISPS, MLC, CMID)",
@@ -75,6 +90,7 @@ const services: Service[] = [
   },
   {
     title: "Claims, Legal & Insurance Services",
+    icon: Scale,
     bestFor: "Marine Insurers, P&I Clubs, Maritime Law Firms",
     deliverables: [
       "P&I and H&M Claims Handling",
@@ -88,6 +104,7 @@ const services: Service[] = [
   },
   {
     title: "Casualty Response & Investigation",
+    icon: AlertTriangle,
     bestFor: "Emergency Response Teams, Shipowners, Insurers",
     deliverables: [
       "Marine Casualty Management",
@@ -100,62 +117,41 @@ const services: Service[] = [
   },
 ];
 
-// Gradient patterns for each card
-const gradients = [
-  "bg-gradient-to-br from-[#04080F] via-[#1a2332] to-[#04080F]",
-  "bg-gradient-to-bl from-[#04080F] via-[#0f1f2e] to-[#04080F]",
-  "bg-gradient-to-tr from-[#04080F] via-[#162233] to-[#04080F]",
-  "bg-gradient-to-tl from-[#04080F] via-[#0d1b2a] to-[#04080F]",
-  "bg-gradient-to-r from-[#04080F] via-[#18232f] to-[#04080F]",
-];
-
 export default function ServiceTiersUltimate() {
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-[#04080F] overflow-hidden">
-      {/* Premium Background Gradients */}
-      <div className="absolute inset-0">
-        {/* Radial gradient spots */}
-        <div className="absolute top-0 left-1/4 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-accent/5 rounded-full blur-[100px] sm:blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-accent/3 rounded-full blur-[120px] sm:blur-[150px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] sm:w-[1000px] h-[800px] sm:h-[1000px] bg-primary/40 rounded-full blur-[150px] sm:blur-[200px]" />
-
-        {/* Noise texture overlay */}
-        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
-      </div>
-
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-background overflow-hidden">
       <div className="container relative mx-auto max-w-screen-xl px-4 sm:px-6 md:px-6">
-        {/* Premium Header */}
+        {/* Section Header */}
         <div className="mb-12 sm:mb-16 md:mb-20 text-center md:text-left">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center justify-center md:justify-start gap-2 sm:gap-3 mb-4 sm:mb-6"
-            >
-              {/* Wave decorations */}
-              <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
-              <p className="font-mono text-[10px] sm:text-xs font-bold text-accent tracking-[0.3em] uppercase">
-                MARITIME SURVEY SERVICES{" "}
-              </p>
-              <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-l from-transparent to-accent" />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center md:justify-start gap-2 sm:gap-3 mb-4 sm:mb-6"
+          >
+            <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
+            <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
+              MARITIME SURVEY SERVICES
+            </p>
+            <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-l from-transparent to-accent" />
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none mb-4 sm:mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-serif text-foreground leading-none mb-4 sm:mb-6"
           >
             Services
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl"
           >
             Marine surveys, cargo inspections, and casualty response across the
             Baltic region. Hull and machinery assessments, technical audits, and
@@ -171,99 +167,118 @@ export default function ServiceTiersUltimate() {
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.08 }}
               className="group"
             >
-              <div
-                className={`
-                  relative overflow-hidden rounded-lg
-                  ${gradients[index]}
-                  hover:shadow-2xl hover:shadow-accent/10
-                  transition-all duration-700
-                `}
-              >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative overflow-hidden rounded-xl bg-card border border-border hover:shadow-xl hover:shadow-border/80 transition-all duration-500">
+                {/* Hover gold tint overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
 
-                {/* Accent line top */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Top accent line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
 
-                {/* Background Image */}
+                {/* Background Image — visible on right side */}
                 <div className="absolute inset-0">
                   <Image
                     src={service.imageUrl}
                     alt={service.title}
                     fill
-                    className="object-cover opacity-20 sm:opacity-25 md:opacity-30 group-hover:opacity-35 md:group-hover:opacity-40 transition-all duration-700 group-hover:scale-105"
+                    className="object-cover opacity-50 sm:opacity-55 md:opacity-60 group-hover:opacity-65 md:group-hover:opacity-70 transition-all duration-700 group-hover:scale-105"
                   />
-                  {/* Gradient overlay on image */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#04080F] via-transparent to-[#04080F]" />
+                  {/* Gradient: card bg on left (content readable), photo visible on right */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/15" />
                 </div>
 
-                {/* Content Container - Improved Layout */}
+                {/* Content Grid */}
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 min-h-[350px] sm:min-h-[400px] items-center">
+
                   {/* Left: Title & Info */}
                   <div className="space-y-4 sm:space-y-6">
-                    {/* Number */}
-                    <div className="inline-flex items-center gap-3 sm:gap-4">
-                      <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white/40 tracking-[0.3em]">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="h-[1px] w-8 sm:w-12 bg-accent/50" />
+
+                    {/* Icon + Number Row */}
+                    <div className="flex items-center gap-4 sm:gap-5">
+                      {/* Unique service icon */}
+                      <div className="relative inline-flex flex-shrink-0">
+                        <div className="absolute inset-0 bg-accent/15 rounded-full blur-md" />
+                        {React.createElement(service.icon, {
+                          className: "relative h-10 w-10 sm:h-12 sm:w-12 text-accent",
+                          strokeWidth: 1.5,
+                        })}
+                      </div>
+                      {/* Number */}
+                      <div className="inline-flex items-center gap-2 sm:gap-3">
+                        <span className="font-mono text-xs font-bold text-muted-foreground/70 tracking-[0.3em]">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div className="h-[1px] w-6 sm:w-10 bg-accent/50" />
+                      </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-none group-hover:text-accent transition-colors duration-500">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-serif text-foreground leading-none group-hover:text-accent transition-colors duration-500">
                       {service.title}
                     </h3>
 
-                    {/* Best For Badge */}
-                    <div className="inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 group-hover:border-accent/30 transition-colors rounded">
-                      <span className="font-mono text-[10px] sm:text-xs font-bold text-accent tracking-widest uppercase">
+                    {/* Best For Badge — navy pill, prominent */}
+                    <div className="inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 px-4 py-3 bg-foreground rounded">
+                      <span className="font-mono text-xs font-bold text-accent tracking-widest uppercase">
                         BEST FOR
                       </span>
-                      <span className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                      <span className="text-xs sm:text-sm text-background leading-relaxed">
                         {service.bestFor}
                       </span>
                     </div>
+
+                    {/* CTAs */}
+                    <div className="flex flex-wrap gap-3 pt-1">
+                      <Link
+                        href={`/contact?service=${encodeURIComponent(service.slug)}`}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-sm rounded-lg transition-colors duration-200 cursor-pointer"
+                      >
+                        Request Quote <ArrowRight className="h-4 w-4" />
+                      </Link>
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-foreground font-medium text-sm transition-colors duration-200 cursor-pointer"
+                      >
+                        View Details <ArrowRight className="h-4 w-4 opacity-60" />
+                      </Link>
+                    </div>
                   </div>
 
-                  {/* Right: Core Services - Enhanced */}
+                  {/* Right: Core Services List */}
                   <div className="space-y-4 sm:space-y-5">
                     {/* Header */}
-                    <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+                    <div className="flex items-center gap-3 pb-3 border-b border-border">
                       <div className="h-1 w-1 rounded-full bg-accent" />
-                      <p className="font-mono text-[10px] sm:text-xs font-bold text-white/60 tracking-widest uppercase">
+                      <p className="font-mono text-xs font-bold text-muted-foreground/70 tracking-widest uppercase">
                         CORE SERVICES
                       </p>
                     </div>
 
-                    {/* Services List - Improved Readability */}
-                    <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-5 sm:p-6 md:p-7">
-                      <ul className="space-y-3 sm:space-y-4">
+                    {/* Services List */}
+                    <div className="bg-secondary border border-border rounded-lg p-5 sm:p-6 md:p-7">
+                      <ul className="space-y-3.5 sm:space-y-5">
                         {service.deliverables.map((item, i) => (
                           <motion.li
                             key={i}
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 + i * 0.1 }}
-                            className="flex items-start gap-3 group/item"
+                            transition={{ delay: index * 0.04 + i * 0.06 }}
+                            className={`flex items-start gap-3 group/item${
+                              service.deliverables.length > 4 &&
+                              (i + 1) % 4 === 0 &&
+                              i !== service.deliverables.length - 1
+                                ? " pb-3.5 sm:pb-5 border-b border-border"
+                                : ""
+                            }`}
                           >
-                            {/* Icon */}
-                            <div className="flex-shrink-0 mt-0.5 sm:mt-1">
-                              <div className="relative">
-                                {/* Glow effect */}
-                                <div className="absolute inset-0 bg-accent/20 rounded-full blur-sm group-hover/item:bg-accent/30 transition-colors" />
-                                <CheckCircle
-                                  className="relative h-4 w-4 sm:h-5 sm:w-5 text-accent group-hover/item:scale-110 transition-transform"
-                                  strokeWidth={2}
-                                />
-                              </div>
-                            </div>
-
-                            {/* Text */}
-                            <span className="text-sm sm:text-base md:text-lg text-white/90 font-medium leading-relaxed group-hover/item:text-white transition-colors">
+                            <CheckCircle
+                              className="flex-shrink-0 mt-0.5 sm:mt-1 h-4 w-4 sm:h-5 sm:w-5 text-accent"
+                              strokeWidth={2}
+                            />
+                            <span className="text-base sm:text-base md:text-lg text-foreground font-medium leading-relaxed group-hover/item:text-foreground transition-colors">
                               {item}
                             </span>
                           </motion.li>
@@ -273,14 +288,14 @@ export default function ServiceTiersUltimate() {
 
                     {/* Bottom Accent Line */}
                     <div className="flex items-center gap-2 pt-2">
-                      <div className="h-px flex-1 bg-gradient-to-r from-accent/50 to-transparent" />
-                      <div className="h-1 w-1 rounded-full bg-accent/50" />
+                      <div className="h-px flex-1 bg-gradient-to-r from-accent/40 to-transparent" />
+                      <div className="h-1 w-1 rounded-full bg-accent/40" />
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Accent Line (Card) */}
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Bottom accent line on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
             </motion.div>
           ))}
