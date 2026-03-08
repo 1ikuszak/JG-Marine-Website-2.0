@@ -313,7 +313,7 @@ export default function OfficeLocationsSection() {
                   <div className="pt-4 border-t border-white/10 space-y-2">
                     <a
                       href={`mailto:${office.email}`}
-                      className="flex items-center gap-2 text-xs text-white/70 hover:text-primary transition-colors group/link"
+                      className="flex items-center gap-2 text-xs text-white/70 hover:text-white transition-colors group/link"
                     >
                       <Mail className="h-3.5 w-3.5" strokeWidth={1.5} />
                       <span className="group-hover/link:underline">
@@ -323,7 +323,7 @@ export default function OfficeLocationsSection() {
 
                     <a
                       href={`tel:${office.phone.replace(/\s/g, "")}`}
-                      className="flex items-center gap-2 text-xs text-white/70 hover:text-primary transition-colors group/link"
+                      className="flex items-center gap-2 text-xs text-white/70 hover:text-white transition-colors group/link"
                     >
                       <Phone className="h-3.5 w-3.5" strokeWidth={1.5} />
                       <span className="group-hover/link:underline">
