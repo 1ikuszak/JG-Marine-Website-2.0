@@ -30,8 +30,8 @@ import {
 } from "lucide-react";
 
 // JG-Marine brand accents (navy + subtle gold)
-const navy = "text-[#0b1b31]";
-const gold = "text-amber-400";
+const navy = "text-foreground";
+const gold = "text-accent";
 
 type Cert = {
   key: string;
@@ -42,17 +42,6 @@ type Cert = {
 };
 
 const CERTS: Cert[] = [
-  {
-    key: "dnv",
-    label: "DNV-GL Risk Assessment",
-    short: "Independent risk methodologies accepted by insurers and operators.",
-    details: [
-      "Method statements & lift plans review for marine operations",
-      "Sea-fastening verification & loadout supervision acceptance",
-      "Documentation aligned with international standards",
-    ],
-    link: "https://www.dnv.com/",
-  },
   {
     key: "iims",
     label: "IIMS Member",
@@ -94,7 +83,7 @@ export function Trust() {
   return (
     <section id="trust" className="relative border-b bg-white">
       {/* Subtle premium backdrop */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/2 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/2 via-transparent to-transparent" />
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-16 md:py-24">
         {/* Heading */}
         <div className="mb-10 md:mb-14">
@@ -142,7 +131,7 @@ export function Trust() {
           {CERTS.map((c) => (
             <Card
               key={c.key}
-              className="border-[#0b1b31]/10 hover:shadow-md transition"
+              className="border-foreground/10 hover:shadow-md transition"
             >
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-base md:text-lg">
@@ -188,7 +177,7 @@ export function Trust() {
                       <div className="mt-4 space-y-2 text-sm">
                         {c.details.map((d) => (
                           <div key={d} className="flex items-start gap-2">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 text-green-600" />
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 text-accent" />
                             <span>{d}</span>
                           </div>
                         ))}
@@ -226,7 +215,7 @@ export function Trust() {
           </p>
           <Button
             asChild
-            className="bg-[#0b1b31] hover:bg-[#0d2341] text-white"
+            className="bg-foreground hover:bg-foreground/90 text-white"
           >
             <a href="/contact">Request Certification Confirmation</a>
           </Button>

@@ -153,12 +153,6 @@ export function Hero({
                 variant="secondary"
                 className="bg-white/10 border-white/20 text-white"
               >
-                DNV-GL
-              </Badge>
-              <Badge
-                variant="secondary"
-                className="bg-white/10 border-white/20 text-white"
-              >
                 IIMS
               </Badge>
               <Badge

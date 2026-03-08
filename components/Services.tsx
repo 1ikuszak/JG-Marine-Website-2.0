@@ -62,9 +62,9 @@ type Category = {
 
 const EMERGENCY_TEL = "+48 123 123 123";
 
-const brandAccent = "from-[#0b1b31] via-[#0b1b31] to-[#0b1b31]";
-const brandRing = "ring-1 ring-[#0b1b31]/15";
-const goldAccentClass = "text-amber-400";
+const brandAccent = "from-foreground via-foreground to-foreground";
+const brandRing = "ring-1 ring-foreground/15";
+const goldAccentClass = "text-accent";
 
 const CATEGORIES: Category[] = [
   {
@@ -88,7 +88,7 @@ const CATEGORIES: Category[] = [
         typicalRange: "€2,000–€10,000",
         response: "≤ 24 h",
         emergency: true,
-        badges: ["DNV-GL", "IIMS"],
+        badges: ["IIMS"],
       },
       {
         title: "Marine Warranty Surveys",
@@ -104,7 +104,7 @@ const CATEGORIES: Category[] = [
         typicalRange: "€10,000–€50,000",
         response: "≤ 24 h",
         emergency: true,
-        badges: ["DNV-GL", "Flag State"],
+        badges: ["Flag State"],
       },
       {
         title: "P&I Investigations",
@@ -151,7 +151,7 @@ const CATEGORIES: Category[] = [
         ],
         typicalRange: "€1,200–€4,000",
         response: "≤ 48 h",
-        badges: ["DNV-GL"],
+        badges: [],
       },
       {
         title: "Yacht & Boat Surveys",
@@ -223,7 +223,7 @@ const CATEGORIES: Category[] = [
         typicalRange: "€15,000–€100,000",
         response: "≤ 24 h",
         emergency: true,
-        badges: ["DNV-GL"],
+        badges: [],
       },
       {
         title: "Draft Surveys",
@@ -310,7 +310,7 @@ const CATEGORIES: Category[] = [
         ],
         typicalRange: "Scope-based",
         response: "Planned",
-        badges: ["Flag State", "DNV-GL"],
+        badges: ["Flag State", ],
       },
       {
         title: "Risk Assessment & Accident Investigation",
@@ -459,7 +459,7 @@ export function Solutions() {
           <p className="mt-2 max-w-3xl text-muted-foreground">
             Complete coverage across all Polish ports and inland territories.
             Emergency-capable services marked with{" "}
-            <span className="rounded-full bg-red-600 px-1.5 py-0.5 text-[11px] leading-none text-white align-middle">
+            <span className="rounded-full bg-red-600 px-1.5 py-0.5 text-xs leading-none text-white align-middle">
               Emergency
             </span>
             .

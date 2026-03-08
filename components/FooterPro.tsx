@@ -26,7 +26,7 @@ export function SiteFooter() {
     url: "http://www.jg-marine.com",
     logo: "http://www.jg-marine.com/logo.png",
     description:
-      "Independent, DNV-certified marine and cargo surveyors providing loss adjusting, marine warranty, audits and risk assessment since 1959.",
+      "Independent marine and cargo surveyors providing loss adjusting, marine warranty, audits and risk assessment. Three offices covering Poland's major ports and locations inland.",
     telephone: EMERGENCY_TEL,
     sameAs: [
       "https://www.linkedin.com/company/jg-marine", // TODO: replace if different
@@ -69,7 +69,7 @@ export function SiteFooter() {
   return (
     <footer className="relative mt-16 border-t bg-white">
       {/* Top CTA strip */}
-      <div className="border-b bg-[#0b1b31] text-white">
+      <div className="border-b bg-foreground text-white">
         <div className="mx-auto flex max-w-screen-xl flex-col gap-3 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6">
           <div className="flex items-center gap-2">
             <Anchor className="h-5 w-5" />
@@ -98,7 +98,7 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-4">
           {/* Company */}
           <div>
-            <div className="text-lg font-semibold tracking-tight text-[#0b1b31]">
+            <div className="text-lg font-semibold tracking-tight text-foreground">
               JG-MARINE Co. Ltd.
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -106,9 +106,6 @@ export function SiteFooter() {
               with international reach since 1959.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <Badge variant="secondary" className="rounded-full">
-                DNV-GL
-              </Badge>
               <Badge variant="secondary" className="rounded-full">
                 IIMS
               </Badge>
@@ -135,7 +132,7 @@ export function SiteFooter() {
 
           {/* Services */}
           <div>
-            <div className="text-sm font-semibold uppercase tracking-wide text-[#0b1b31]">
+            <div className="text-sm font-semibold uppercase tracking-wide text-foreground">
               Services
             </div>
             <ul className="mt-3 space-y-2 text-sm">
@@ -192,7 +189,7 @@ export function SiteFooter() {
 
           {/* Resources */}
           <div>
-            <div className="text-sm font-semibold uppercase tracking-wide text-[#0b1b31]">
+            <div className="text-sm font-semibold uppercase tracking-wide text-foreground">
               Resources
             </div>
             <ul className="mt-3 space-y-2 text-sm">
@@ -231,7 +228,7 @@ export function SiteFooter() {
                 </Link>
               </li>
             </ul>
-            <div className="mt-5 rounded-xl border border-[#0b1b31]/10 bg-[#0b1b31]/5 p-3">
+            <div className="mt-5 rounded-xl border border-foreground/10 bg-foreground/5 p-3">
               <div className="text-sm">Need vendor onboarding pack?</div>
               <Link
                 href="/resources/vendor-onboarding-pack.zip"
@@ -244,7 +241,7 @@ export function SiteFooter() {
 
           {/* Offices */}
           <div>
-            <div className="text-sm font-semibold uppercase tracking-wide text-[#0b1b31]">
+            <div className="text-sm font-semibold uppercase tracking-wide text-foreground">
               Offices
             </div>
             <ul className="mt-3 space-y-3 text-sm">
@@ -273,7 +270,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-start justify-between gap-3 text-xs text-muted-foreground md:flex-row md:items-center">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-amber-400" />
+            <ShieldCheck className="h-4 w-4 text-accent" />
             <span>
               Independent reporting guarantee • Multilingual documentation
             </span>

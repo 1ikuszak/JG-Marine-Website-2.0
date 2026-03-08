@@ -86,7 +86,6 @@ export function Differentiation() {
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">
-                <Badge variant="secondary">DNV-GL</Badge>
                 <Badge variant="secondary">IIMS</Badge>
                 <Badge variant="secondary">CESAM</Badge>
                 <Badge variant="secondary">Flag State Inspector</Badge>

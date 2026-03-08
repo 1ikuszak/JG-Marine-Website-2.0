@@ -25,14 +25,14 @@ import {
   ClipboardList,
 } from "lucide-react";
 
-const navy = "text-[#0b1b31]";
-const gold = "text-amber-400";
+const navy = "text-foreground";
+const gold = "text-accent";
 
 export function FAQCompliance() {
   return (
     <section id="faq" className="relative border-t bg-white">
       {/* subtle premium backdrop */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/3 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/3 via-transparent to-transparent" />
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-16 md:py-24">
         {/* Heading */}
         <div className="mb-10 md:mb-14">
@@ -54,7 +54,7 @@ export function FAQCompliance() {
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Left rail: proof & resources */}
           <div className="space-y-6 lg:col-span-1">
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-3">
                 <CardTitle className="text-base md:text-lg">
                   Accepted by Major Insurers
@@ -62,9 +62,6 @@ export function FAQCompliance() {
               </CardHeader>
               <CardContent className="grid gap-3 text-sm">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="rounded-full">
-                    DNV-GL
-                  </Badge>
                   <Badge variant="secondary" className="rounded-full">
                     IIMS
                   </Badge>
@@ -100,7 +97,7 @@ export function FAQCompliance() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-3">
                 <CardTitle className="text-base md:text-lg">
                   Resources
@@ -128,7 +125,7 @@ export function FAQCompliance() {
               </CardContent>
             </Card>
 
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardContent className="pt-6">
                 <div className="grid gap-2 text-sm">
                   <div className="flex items-center gap-2">
@@ -136,11 +133,11 @@ export function FAQCompliance() {
                     <span>Emergency dispatch ≤ 4 h</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Languages className="h-4 w-4 text-[#0b1b31]" />
+                    <Languages className="h-4 w-4 text-foreground" />
                     <span>Multilingual documentation</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Globe2 className="h-4 w-4 text-[#0b1b31]" />
+                    <Globe2 className="h-4 w-4 text-foreground" />
                     <span>Operations in 11+ countries</span>
                   </div>
                 </div>
@@ -263,7 +260,7 @@ export function FAQCompliance() {
             </Accordion>
 
             {/* Bottom CTA */}
-            <div className="mt-8 flex flex-col items-start gap-3 rounded-xl border border-[#0b1b31]/10 bg-[#0b1b31]/5 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-8 flex flex-col items-start gap-3 rounded-xl border border-foreground/10 bg-foreground/5 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="text-sm">
                 Need a formal compliance letter or vendor onboarding pack?
               </div>

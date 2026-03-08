@@ -68,8 +68,7 @@ export type ServiceTemplateProps = {
   emergencyTel?: string;
 };
 
-const NAVY = "#0b1b31";
-const GOLD_CLASS = "text-amber-400";
+const GOLD_CLASS = "text-accent";
 
 export function ServiceTemplate({
   slug,
@@ -82,14 +81,14 @@ export function ServiceTemplate({
   steps,
   leadMagnet,
   casePreview,
-  certifications = ["DNV-GL", "IIMS", "CESAM", "Flag State"],
+  certifications = ["IIMS", "CESAM", "Flag State"],
   emergency = true,
   emergencyTel = "+48 123 123 123",
 }: ServiceTemplateProps) {
   return (
     <section className="relative">
       {/* premium tint tła */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1b31]/3 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-foreground/3 via-transparent to-transparent" />
 
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6 py-10 md:py-16">
         {/* Breadcrumb */}
@@ -117,8 +116,7 @@ export function ServiceTemplate({
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           <div className="md:col-span-2">
             <h1
-              className="text-2xl md:text-4xl font-semibold tracking-tight"
-              style={{ color: NAVY }}
+              className="text-2xl md:text-4xl font-semibold tracking-tight text-foreground"
             >
               {title}
             </h1>
@@ -139,7 +137,7 @@ export function ServiceTemplate({
           </div>
 
           {/* Snapshot */}
-          <Card className="border-[#0b1b31]/10">
+          <Card className="border-foreground/10">
             <CardHeader className="pb-3">
               <CardTitle className="text-base">Project Snapshot</CardTitle>
             </CardHeader>
@@ -200,7 +198,7 @@ export function ServiceTemplate({
 
         {/* What we do + Why us */}
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          <Card className="md:col-span-2 border-[#0b1b31]/10">
+          <Card className="md:col-span-2 border-foreground/10">
             <CardHeader className="pb-3">
               <CardTitle className="text-base md:text-lg">What We Do</CardTitle>
             </CardHeader>
@@ -217,7 +215,7 @@ export function ServiceTemplate({
             </CardContent>
           </Card>
 
-          <Card className="border-[#0b1b31]/10">
+          <Card className="border-foreground/10">
             <CardHeader className="pb-3">
               <CardTitle className="text-base md:text-lg">
                 Why JG-MARINE
@@ -236,16 +234,16 @@ export function ServiceTemplate({
 
         {/* Process */}
         <div className="mt-8">
-          <h3 className="text-lg font-semibold" style={{ color: NAVY }}>
+          <h3 className="text-lg font-semibold text-foreground">
             Process Overview
           </h3>
           <Separator className="my-3" />
           <div className="grid gap-4 md:grid-cols-4">
             {steps.map((s, idx) => (
-              <Card key={`${idx}-${s.label}`} className="border-[#0b1b31]/10">
+              <Card key={`${idx}-${s.label}`} className="border-foreground/10">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-semibold">
-                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#0b1b31]/20 text-[#0b1b31]">
+                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-foreground/20 text-foreground">
                       {idx + 1}
                     </span>
                     {s.label}
@@ -262,7 +260,7 @@ export function ServiceTemplate({
         {/* Case Preview + Inline Lead (opcjonalnie) */}
         {casePreview && (
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <Card className="md:col-span-2 overflow-hidden border-[#0b1b31]/10">
+            <Card className="md:col-span-2 overflow-hidden border-foreground/10">
               <div className="relative h-44 w-full bg-muted">
                 {casePreview.cover && (
                   <Image
@@ -306,7 +304,7 @@ export function ServiceTemplate({
               </CardContent>
             </Card>
 
-            <Card className="border-[#0b1b31]/10">
+            <Card className="border-foreground/10">
               <CardHeader className="pb-2">
                 <CardTitle className="text-base">
                   Request Custom Proposal
