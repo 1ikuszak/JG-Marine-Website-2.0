@@ -9,7 +9,7 @@ import { CONTACTS } from "@/config";
 
 export default function HeritageCtaSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section className="relative py-24 lg:py-32 overflow-hidden bg-secondary">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
