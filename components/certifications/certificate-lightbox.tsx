@@ -18,11 +18,15 @@ export function CertificateLightbox({
   onClose,
 }: CertificateLightboxProps) {
   const [zoom, setZoom] = React.useState(1);
+  const dialogRef = React.useRef<HTMLDivElement>(null);
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
     if (certificate) {
       document.body.style.overflow = "hidden";
       setZoom(1);
+      // Focus the close button when modal opens
+      setTimeout(() => closeButtonRef.current?.focus(), 50);
     } else {
       document.body.style.overflow = "unset";
     }
@@ -31,6 +35,38 @@ export function CertificateLightbox({
       document.body.style.overflow = "unset";
     };
   }, [certificate]);
+
+  // Focus trap
+  React.useEffect(() => {
+    if (!certificate) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [certificate, onClose]);
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 0.25, 3));
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 0.25, 0.5));
@@ -44,7 +80,11 @@ export function CertificateLightbox({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+        ref={dialogRef}
         onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-label={certificate.title}
       >
         {/* Top Controls Bar */}
         <div className="absolute top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent p-3 sm:p-4">
@@ -59,6 +99,7 @@ export function CertificateLightbox({
                   e.stopPropagation();
                   handleZoomOut();
                 }}
+                aria-label="Zoom out"
               >
                 <ZoomOut className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -73,6 +114,7 @@ export function CertificateLightbox({
                   e.stopPropagation();
                   handleZoomIn();
                 }}
+                aria-label="Zoom in"
               >
                 <ZoomIn className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -89,6 +131,7 @@ export function CertificateLightbox({
                   e.stopPropagation();
                   window.open(certificate.imageUrl, "_blank");
                 }}
+                aria-label="Download certificate"
               >
                 <Download className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -98,7 +141,9 @@ export function CertificateLightbox({
                 variant="ghost"
                 size="icon"
                 className="h-8 w-8 sm:h-10 sm:w-10 text-white hover:bg-white/10"
+                ref={closeButtonRef}
                 onClick={onClose}
+                aria-label="Close"
               >
                 <X className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -159,7 +204,7 @@ export function CertificateLightbox({
               {certificate.date}
             </p>
             {certificate.certificateNumber && (
-              <p className="text-xs font-mono text-white/50 mt-1 sm:mt-2">
+              <p className="text-xs label-caps text-white/50 mt-1 sm:mt-2">
                 Certificate No: {certificate.certificateNumber}
               </p>
             )}

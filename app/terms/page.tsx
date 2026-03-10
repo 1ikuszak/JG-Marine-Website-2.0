@@ -5,21 +5,16 @@ import { Mail } from "lucide-react";
 export default function TermsOfServicePage() {
   return (
     // FIX 1: Added 'pt-16' to offset the entire page from the fixed main header
-    <div className="min-h-screen bg-background pt-16">
+    <main id="main-content" className="min-h-screen bg-background pt-16">
       {/* Simple Header */}
       <div className="border-b border-border bg-muted/30">
         {/* FIX 2: Increased padding for more breathing room */}
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 py-16 sm:py-20">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="font-serif text-display-sm md:text-display font-bold text-foreground mb-4">
             Terms of Service
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
+            Last updated: March 8, 2026
           </p>
         </div>
       </div>
@@ -40,7 +35,7 @@ export default function TermsOfServicePage() {
 
           {/* 1. Services */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               1. Services Description
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -59,7 +54,7 @@ export default function TermsOfServicePage() {
 
           {/* 2. Acceptance of Terms */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               2. Acceptance of Terms
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -74,10 +69,10 @@ export default function TermsOfServicePage() {
 
           {/* 3. Use of Website */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               3. Use of Website
             </h2>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               3.1 Permitted Use
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -86,7 +81,7 @@ export default function TermsOfServicePage() {
               regulations.
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               3.2 Prohibited Activities
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -116,10 +111,10 @@ export default function TermsOfServicePage() {
 
           {/* 4. Service Engagement */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               4. Service Engagement
             </h2>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               4.1 Quotes and Estimates
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -128,7 +123,7 @@ export default function TermsOfServicePage() {
               actual scope of work required.
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               4.2 Service Agreement
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -137,7 +132,7 @@ export default function TermsOfServicePage() {
               will be outlined in the service agreement.
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               4.3 Payment Terms
             </h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -150,7 +145,7 @@ export default function TermsOfServicePage() {
 
           {/* 5. Professional Standards */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               5. Professional Standards
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -171,10 +166,10 @@ export default function TermsOfServicePage() {
 
           {/* 6. Intellectual Property */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               6. Intellectual Property
             </h2>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               6.1 Website Content
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -184,7 +179,7 @@ export default function TermsOfServicePage() {
               property laws.
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               6.2 Survey Reports
             </h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -198,10 +193,10 @@ export default function TermsOfServicePage() {
 
           {/* 7. Limitations of Liability */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               7. Limitations of Liability
             </h2>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               7.1 Website Use
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -210,7 +205,7 @@ export default function TermsOfServicePage() {
               or free of viruses or other harmful components.
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               7.2 Professional Services
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -227,7 +222,7 @@ export default function TermsOfServicePage() {
 
           {/* 8. Indemnification */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               8. Indemnification
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -241,7 +236,7 @@ export default function TermsOfServicePage() {
 
           {/* 9. Confidentiality */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               9. Confidentiality
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -255,7 +250,7 @@ export default function TermsOfServicePage() {
 
           {/* 10. Force Majeure */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               10. Force Majeure
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -268,7 +263,7 @@ export default function TermsOfServicePage() {
 
           {/* 11. Dispute Resolution */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               11. Dispute Resolution
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -289,7 +284,7 @@ export default function TermsOfServicePage() {
 
           {/* 12. Governing Law */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               12. Governing Law
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -302,7 +297,7 @@ export default function TermsOfServicePage() {
 
           {/* 13. Severability */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               13. Severability
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -314,7 +309,7 @@ export default function TermsOfServicePage() {
 
           {/* 14. Changes to Terms */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               14. Changes to Terms
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -327,7 +322,7 @@ export default function TermsOfServicePage() {
 
           {/* 15. Entire Agreement */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               15. Entire Agreement
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -339,7 +334,7 @@ export default function TermsOfServicePage() {
 
           {/* Contact */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               16. Contact Information
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -360,13 +355,13 @@ export default function TermsOfServicePage() {
                   <Mail className="h-4 w-4" />
                   info@jg-marine.com
                 </a>
-                <p className="mt-4">Phone: +48 58 760 11 20</p>
+                <p className="mt-4">Phone: +48 602 222 477</p>
               </div>
             </div>
           </section>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

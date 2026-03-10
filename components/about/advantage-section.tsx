@@ -80,7 +80,7 @@ export default function AdvantagesSection() {
             className="flex items-center justify-center gap-3 mb-6"
           >
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="text-xs font-medium text-primary tracking-[0.3em] uppercase">
+            <p className="label-caps text-primary">
               Operational Advantages
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
@@ -91,7 +91,7 @@ export default function AdvantagesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight tracking-tight"
+            className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6 leading-tight tracking-tight"
           >
             Regional Presence and Capabilities
           </motion.h2>
@@ -100,7 +100,7 @@ export default function AdvantagesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base md:text-lg text-foreground/60 leading-relaxed"
+            className="text-body-sm md:text-body text-foreground/60 leading-relaxed"
           >
             What a Baltic-based maritime surveying company can offer.
           </motion.p>
@@ -138,12 +138,12 @@ export default function AdvantagesSection() {
             >
               <div className="relative inline-block mb-4">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-xl scale-150 group-hover:scale-[1.6] transition-transform duration-500" />
-                <p className="relative text-5xl md:text-6xl font-bold text-primary tracking-tight">
+                <p className="relative stat-number text-primary tracking-tight">
                   <AnimatedCounter to={metric.value} />
                   {metric.suffix}
                 </p>
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">
+              <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-2">
                 {metric.label}
               </h3>
               <p className="text-sm text-foreground/60 max-w-xs mx-auto leading-relaxed">
@@ -178,7 +178,7 @@ export default function AdvantagesSection() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                     {advantage.title}
                   </h3>
                   <p className="font-medium text-foreground/70 mb-3 text-sm">

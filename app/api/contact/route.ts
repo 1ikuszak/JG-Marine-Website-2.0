@@ -4,7 +4,33 @@ import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Validate incoming data - Fixed deprecation warnings
+// XSS prevention helper
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
+// In-memory rate limiter
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+// Validate incoming data
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
@@ -12,20 +38,38 @@ const contactSchema = z.object({
   phone: z.string().min(8, "Phone must be at least 8 characters"),
   service: z.string().min(1, "Please select a service"),
   message: z.string().min(10, "Message must be at least 10 characters"),
+  website: z.string().optional(), // honeypot field — should be empty
 });
 
 export async function POST(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for");
+  const ip = forwarded?.split(",")[0]?.trim() ?? "unknown";
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+  }
+
   try {
-    const body = await request.json();
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+    }
 
     // Validate data
     const validatedData = contactSchema.parse(body);
+
+    // Honeypot check — bots fill hidden fields
+    if (validatedData.website) {
+      // Return success to not alert bots, but don't send email
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
 
     // Send email to your team
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: process.env.RESEND_TO_EMAIL || "lukasz.glica07@gmail.com",
-      subject: `New Survey Request from ${validatedData.name}`,
+      subject: `New Survey Request from ${escapeHtml(validatedData.name)}`,
       replyTo: validatedData.email,
       html: `
         <!DOCTYPE html>
@@ -49,29 +93,29 @@ export async function POST(request: Request) {
                 <h1 style="margin: 0; font-size: 24px;">New Survey Request</h1>
                 <p style="margin: 10px 0 0 0; opacity: 0.9;">JG Marine Contact Form</p>
               </div>
-              
+
               <div class="content">
                 <div class="field">
                   <div class="label">Contact Information</div>
                   <div class="value">
-                    <strong>${validatedData.name}</strong><br>
-                    ${validatedData.company ? `${validatedData.company}<br>` : ""}
-                    📧 <a href="mailto:${validatedData.email}">${validatedData.email}</a><br>
-                    📞 <a href="tel:${validatedData.phone}">${validatedData.phone}</a>
+                    <strong>${escapeHtml(validatedData.name)}</strong><br>
+                    ${validatedData.company ? `${escapeHtml(validatedData.company)}<br>` : ""}
+                    📧 <a href="mailto:${escapeHtml(validatedData.email)}">${escapeHtml(validatedData.email)}</a><br>
+                    📞 <a href="tel:${escapeHtml(validatedData.phone)}">${escapeHtml(validatedData.phone)}</a>
                   </div>
                 </div>
 
                 <div class="field">
                   <div class="label">Service Requested</div>
-                  <div class="value">${validatedData.service.replace(/-/g, " ").toUpperCase()}</div>
+                  <div class="value">${escapeHtml(validatedData.service).replace(/-/g, " ").toUpperCase()}</div>
                 </div>
 
                 <div class="field">
                   <div class="label">Message</div>
-                  <div class="value">${validatedData.message.replace(/\n/g, "<br>")}</div>
+                  <div class="value">${escapeHtml(validatedData.message).replace(/\n/g, "<br>")}</div>
                 </div>
 
-                <a href="mailto:${validatedData.email}" class="cta">Reply to ${validatedData.name}</a>
+                <a href="mailto:${escapeHtml(validatedData.email)}" class="cta">Reply to ${escapeHtml(validatedData.name)}</a>
               </div>
 
               <div class="footer">
@@ -87,7 +131,7 @@ export async function POST(request: Request) {
     if (error) {
       console.error("Resend error:", error);
       return NextResponse.json(
-        { error: "Failed to send email", details: error },
+        { error: "Failed to send email" },
         { status: 500 }
       );
     }
@@ -102,20 +146,20 @@ export async function POST(request: Request) {
         <html>
           <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #1e3a8a;">Thank You for Your Request, ${validatedData.name}</h2>
+              <h2 style="color: #1e3a8a;">Thank You for Your Request, ${escapeHtml(validatedData.name)}</h2>
               <p>We've received your survey request and our team will respond within <strong>24-48 hours</strong>.</p>
-              
+
               <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <h3 style="margin-top: 0;">Your Request Details:</h3>
                 <ul>
-                  <li><strong>Service:</strong> ${validatedData.service}</li>
-                  <li><strong>Company:</strong> ${validatedData.company || "Not provided"}</li>
+                  <li><strong>Service:</strong> ${escapeHtml(validatedData.service)}</li>
+                  <li><strong>Company:</strong> ${escapeHtml(validatedData.company || "Not provided")}</li>
                 </ul>
               </div>
 
               <p>If you need immediate assistance, please don't hesitate to contact us:</p>
               <ul>
-                <li>📞 Emergency Hotline (24/7): +48 XXX XXX XXX</li>
+                <li>📞 Emergency Hotline (24/7): +48 602 222 477</li>
                 <li>📧 Email: info@jg-marine.com</li>
               </ul>
 

@@ -38,18 +38,18 @@ export default function CredentialsCtaSection() {
             <div>
               <div className="flex items-center gap-3 mb-4 sm:mb-6">
                 <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
-                <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
+                <p className="label-caps text-white/70">
                   VERIFIED EXPERTISE
                 </p>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4 sm:mb-6">
+              <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-white mb-4 sm:mb-6">
                 Credentials Verified.
                 <br />
-                <span className="text-accent">Assets Protected.</span>
+                <span className="text-white">Assets Protected.</span>
               </h2>
 
-              <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed">
+              <p className="text-body-sm md:text-body text-white/70">
                 You've seen our certifications. Now let our proven expertise
                 protect your maritime investments with reports accepted by P&I
                 clubs worldwide.
@@ -61,7 +61,7 @@ export default function CredentialsCtaSection() {
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="bg-accent/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
                   <CheckCircle
-                    className="h-5 w-5 sm:h-6 sm:w-6 text-accent"
+                    className="h-5 w-5 sm:h-6 sm:w-6 text-white"
                     strokeWidth={1.5}
                   />
                 </div>
@@ -78,7 +78,7 @@ export default function CredentialsCtaSection() {
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="bg-accent/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
                   <Clock
-                    className="h-5 w-5 sm:h-6 sm:w-6 text-accent"
+                    className="h-5 w-5 sm:h-6 sm:w-6 text-white"
                     strokeWidth={1.5}
                   />
                 </div>
@@ -95,7 +95,7 @@ export default function CredentialsCtaSection() {
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="bg-accent/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
                   <FileCheck
-                    className="h-5 w-5 sm:h-6 sm:w-6 text-accent"
+                    className="h-5 w-5 sm:h-6 sm:w-6 text-white"
                     strokeWidth={1.5}
                   />
                 </div>
@@ -112,7 +112,7 @@ export default function CredentialsCtaSection() {
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="bg-accent/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
                   <Award
-                    className="h-5 w-5 sm:h-6 sm:w-6 text-accent"
+                    className="h-5 w-5 sm:h-6 sm:w-6 text-white"
                     strokeWidth={1.5}
                   />
                 </div>
@@ -138,14 +138,14 @@ export default function CredentialsCtaSection() {
             <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md border-2 border-white/20 rounded-lg p-6 sm:p-8 md:p-10">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/20 border border-accent/40 rounded-full mb-6 sm:mb-8">
-                <Shield className="h-4 w-4 text-accent" strokeWidth={2} />
-                <span className="text-xs sm:text-sm font-bold text-accent">
+                <Shield className="h-4 w-4 text-white" strokeWidth={2} />
+                <span className="text-xs sm:text-sm font-bold text-white">
                   CERTIFIED & READY
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-white mb-4 sm:mb-6">
                 Don't Let Certification Delays Cost You
               </h3>
 
@@ -157,7 +157,7 @@ export default function CredentialsCtaSection() {
               {/* Stats Row */}
               <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-white/10">
                 <div className="text-center">
-                  <p className="text-2xl sm:text-3xl font-bold text-accent mb-1">
+                  <p className="text-2xl sm:text-3xl font-bold text-white mb-1">
                     2h
                   </p>
                   <p className="text-xs text-white/60">
@@ -165,7 +165,7 @@ export default function CredentialsCtaSection() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl sm:text-3xl font-bold text-accent mb-1">
+                  <p className="text-2xl sm:text-3xl font-bold text-white mb-1">
                     24h
                   </p>
                   <p className="text-xs text-white/60">
@@ -173,7 +173,7 @@ export default function CredentialsCtaSection() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl sm:text-3xl font-bold text-accent mb-1">
+                  <p className="text-2xl sm:text-3xl font-bold text-white mb-1">
                     100%
                   </p>
                   <p className="text-xs text-white/60">
@@ -200,11 +200,11 @@ export default function CredentialsCtaSection() {
 
                 <Button size="lg" variant="secondary" asChild>
                   <a
-                    href="tel:+48XXXXXXXXX"
+                    href="tel:+48602222477"
                     className="flex items-center justify-center gap-2"
                   >
                     <Phone className="h-5 w-5" />
-                    Emergency Hotline
+                    +48 602 222 477
                   </a>
                 </Button>
               </div>

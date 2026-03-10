@@ -16,7 +16,8 @@ export default function AboutHeroSection() {
             fill
             className="object-cover grayscale"
             priority
-            quality={100}
+            quality={85}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 lg:to-background/40" />
         </div>
@@ -42,7 +43,7 @@ export default function AboutHeroSection() {
               >
                 <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div className="h-px w-8 sm:w-12 bg-accent/30" />
-                  <span className="text-xs md:text-sm tracking-[0.4em] text-foreground/60 uppercase font-light">
+                  <span className="label-caps text-foreground/60 font-light">
                     Est. 1961
                   </span>
                 </div>
@@ -59,10 +60,10 @@ export default function AboutHeroSection() {
                 }}
                 className="mb-6 sm:mb-8"
               >
-                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95] mb-2 sm:mb-3">
+                <span className="block text-display-sm md:text-display font-medium tracking-tight text-primary leading-[0.95] mb-2 sm:mb-3">
                   Three
                 </span>
-                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight text-primary leading-[0.95]">
+                <span className="block text-display-sm md:text-display font-medium tracking-tight text-primary leading-[0.95]">
                   Generations
                 </span>
               </motion.h1>
@@ -90,7 +91,7 @@ export default function AboutHeroSection() {
                 }}
                 className="space-y-4 sm:space-y-6"
               >
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-foreground/90 tracking-wide">
+                <p className="text-body md:text-body-lg font-light text-foreground/90 tracking-wide">
                   Master Mariners
                 </p>
                 <p className="text-xs sm:text-sm md:text-base text-foreground/60 leading-relaxed">
@@ -107,7 +108,7 @@ export default function AboutHeroSection() {
                 className="mt-8 sm:mt-12 flex items-center gap-4"
               >
                 <div className="h-px flex-1 bg-border" />
-                <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">
+                <span className="label-caps text-foreground/40">
                   Our Story
                 </span>
                 <motion.div

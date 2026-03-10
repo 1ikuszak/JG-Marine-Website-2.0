@@ -1,61 +1,68 @@
 import { Hero } from "@/components/home/hero";
 import ServiceTiers from "@/components/home/service-tiers";
-import HowItWorks from "@/components/home/how-it-works";
+import TeamSectionWhiteUniform from "@/components/home/team-section";
 import OfficeLocationsSection from "@/components/home/office-locations";
 import FinalCTA from "@/components/home/final-cta";
-import TeamSectionWhiteUniform from "@/components/home/team-section";
-import { CONTACTS } from "@/config";
 
 export default function HomePage() {
   return (
-    <>
+    <main id="main-content">
       {/* Hero Section with Carousel */}
       <Hero
         slides={[
           {
             src: "/hero/h1.png",
-            alt: "Surveyor JG-Marine podczas inspekcji na moście kapitańskim",
+            alt: "JG Marine surveyor conducting bridge inspection",
           },
           {
             src: "/hero/h4.png",
-            alt: "Ekspertyza kadłuba w suchym doku",
+            alt: "Hull inspection in dry dock",
           },
           {
             src: "/hero/h2.png",
-            alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
+            alt: "Wind farm component assessment at port",
           },
           {
             src: "/hero/h3.png",
-            alt: "Ocena komponentów farm wiatrowych na nabrzeżu",
+            alt: "Cargo assessment at port facility",
           },
         ]}
       />
 
-      {/* Main Content Sections */}
-      <main className="min-h-screen">
-        {/* Services Section - MOVED TO #2 POSITION (Client Priority) */}
-        <div id="services">
-          <ServiceTiers />
-        </div>
+      {/* Services Section */}
+      <div id="services">
+        <ServiceTiers />
+      </div>
 
-        {/* Process Section - How It Works */}
-        {/* <HowItWorks /> */}
-        <TeamSectionWhiteUniform />
+      {/* Team Section */}
+      <TeamSectionWhiteUniform />
 
-        {/* Office Locations - Condensed Version */}
-        <OfficeLocationsSection />
+      {/* Office Locations */}
+      <OfficeLocationsSection />
 
-        {/* Final CTA & Contact Form */}
-        <FinalCTA />
-      </main>
-    </>
+      {/* Final CTA & Contact */}
+      <FinalCTA />
+    </main>
   );
 }
 
 export const metadata = {
-  title: "JG Marine - Independent Marine Surveys | Baltic Region 24/7",
+  title: "JG Marine - Independent Marine Surveys | Poland",
   description:
-    "DNV-certified marine surveys for hull, cargo, and offshore projects. 64 years of Baltic maritime expertise. 24-hour response across Poland.",
+    "Independent marine surveys for hull, cargo, and offshore projects. 120+ years of maritime expertise. Three offices covering Poland's major ports and locations inland.",
   keywords:
-    "marine survey Poland, cargo inspection Baltic, DNV certified surveyor, marine warranty survey, offshore wind, hull machinery survey",
+    "marine survey Poland, cargo inspection Poland, independent marine surveyor, marine warranty survey, offshore wind, hull machinery survey",
+  openGraph: {
+    title: "JG Marine - Independent Marine Surveys | Poland",
+    description:
+      "Independent marine surveys for hull, cargo, and offshore projects. 120+ years of maritime expertise.",
+    type: "website",
+    url: "https://www.jg-marine.com",
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "JG Marine - Independent Marine Surveys | Poland",
+    description:
+      "Independent marine surveys for hull, cargo, and offshore projects. 120+ years of maritime expertise.",
+  },
 };

@@ -5,21 +5,16 @@ import { Mail } from "lucide-react";
 export default function PrivacyPolicyPage() {
   return (
     // FIX 1: Added 'pt-16' to offset the entire page from the fixed main header
-    <div className="min-h-screen bg-background pt-16">
+    <main id="main-content" className="min-h-screen bg-background pt-16">
       {/* Simple Header */}
       <div className="border-b border-border bg-muted/30">
         {/* FIX 2: Increased padding for more breathing room */}
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 py-16 sm:py-20">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="font-serif text-display-sm md:text-display font-bold text-foreground mb-4">
             Privacy Policy
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
+            Last updated: March 8, 2026
           </p>
         </div>
       </div>
@@ -32,19 +27,71 @@ export default function PrivacyPolicyPage() {
           <section className="mb-12">
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               JG-Marine Co. Ltd. ("we," "us," or "our") is committed to
-              protecting your privacy. This Privacy Policy explains how we
-              collect, use, disclose, and safeguard your information when you
-              visit our website or use our services.
+              protecting your privacy in accordance with Regulation (EU) 2016/679
+              (General Data Protection Regulation — GDPR) and the Polish Act on
+              the Protection of Personal Data (RODO). This Privacy Policy explains
+              how we collect, use, disclose, and safeguard your information when
+              you visit our website or use our services.
             </p>
+          </section>
+
+          {/* Data Controller */}
+          <section className="mb-12">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
+              Data Controller
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              The controller of your personal data is:
+            </p>
+            <div className="bg-muted/50 border border-border rounded-lg p-6 text-muted-foreground">
+              <p className="font-semibold text-foreground mb-2">JG-Marine Co. Ltd.</p>
+              <p>ul. Armii Krajowej 116/2</p>
+              <p>81-824 Sopot, Poland</p>
+              <p className="mt-2">NIP: 5861028094 | KRS: 0000104270 | REGON: 190555043</p>
+              <p className="mt-2">Email: info@jg-marine.com</p>
+            </div>
+          </section>
+
+          {/* Legal Basis for Processing */}
+          <section className="mb-12">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
+              Legal Basis for Processing
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              We process your personal data on the following legal bases under
+              Article 6 of the GDPR:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+              <li>
+                <strong>Legitimate interest (Art. 6(1)(f)):</strong> Processing
+                necessary for responding to business inquiries, providing
+                maritime survey services, and maintaining client relationships.
+              </li>
+              <li>
+                <strong>Contract performance (Art. 6(1)(b)):</strong> Processing
+                necessary for the performance of a service agreement to which
+                you are a party.
+              </li>
+              <li>
+                <strong>Consent (Art. 6(1)(a)):</strong> Where you have given
+                explicit consent, such as for marketing communications. You may
+                withdraw consent at any time.
+              </li>
+              <li>
+                <strong>Legal obligation (Art. 6(1)(c)):</strong> Processing
+                required to comply with applicable laws, including maritime
+                regulations and tax obligations.
+              </li>
+            </ul>
           </section>
 
           {/* 1. Information We Collect */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               1. Information We Collect
             </h2>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               1.1 Personal Information
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -62,7 +109,7 @@ export default function PrivacyPolicyPage() {
               job title, and any other information you choose to provide.
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
+            <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-4">
               1.2 Automatically Collected Information
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -80,7 +127,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 2. How We Use Your Information */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               2. How We Use Your Information
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -99,7 +146,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 3. Information Sharing */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               3. How We Share Your Information
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -133,7 +180,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 4. Data Security */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               4. Data Security
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -147,7 +194,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 5. Data Retention */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               5. Data Retention
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -162,7 +209,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 6. Your Rights */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               6. Your Rights
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -198,11 +245,17 @@ export default function PrivacyPolicyPage() {
               To exercise these rights, please contact us using the information
               provided below.
             </p>
+            <p className="text-muted-foreground leading-relaxed mt-4">
+              You also have the right to lodge a complaint with the Polish
+              supervisory authority: <strong>Urząd Ochrony Danych Osobowych
+              (UODO)</strong>, ul. Stawki 2, 00-193 Warszawa, Poland
+              (website: <a href="https://uodo.gov.pl" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">uodo.gov.pl</a>).
+            </p>
           </section>
 
           {/* 7. Cookies */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               7. Cookies and Tracking Technologies
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -216,7 +269,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 8. Third-Party Links */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               8. Third-Party Websites
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -229,7 +282,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 9. Children's Privacy */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               9. Children's Privacy
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -242,7 +295,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 10. International Transfers */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               10. International Data Transfers
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -256,7 +309,7 @@ export default function PrivacyPolicyPage() {
 
           {/* 11. Changes */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               11. Changes to This Privacy Policy
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -269,7 +322,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Contact */}
           <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-6">
               12. Contact Us
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -290,13 +343,13 @@ export default function PrivacyPolicyPage() {
                   <Mail className="h-4 w-4" />
                   info@jg-marine.com
                 </a>
-                <p className="mt-4">Phone: +48 58 760 11 20</p>
+                <p className="mt-4">Phone: +48 602 222 477</p>
               </div>
             </div>
           </section>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

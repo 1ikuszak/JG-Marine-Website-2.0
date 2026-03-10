@@ -27,7 +27,7 @@ const teamMembers = Object.values(CONTACTS.personnel) as TeamMember[];
 
 export default function TeamSectionWhiteUniform() {
   return (
-    <section className="relative py-24 md:py-32 bg-secondary/30">
+    <section className="relative py-24 md:py-32 bg-secondary">
 
       <div className="container relative mx-auto max-w-screen-xl px-4 md:px-6">
         {/* Header */}
@@ -39,11 +39,11 @@ export default function TeamSectionWhiteUniform() {
             className="flex items-center justify-center gap-3 mb-6"
           >
             {/* Wave decorations */}
-            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
+            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-white/30" />
+            <p className="label-caps text-white/60">
               THE MARITIME EXPERTS
             </p>
-            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
+            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-white/30" />
           </motion.div>
 
           <motion.h2
@@ -51,19 +51,10 @@ export default function TeamSectionWhiteUniform() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-6 leading-tight tracking-tight"
+            className="font-serif text-h2-sm md:text-h2 font-bold text-white mb-6 leading-tight tracking-tight"
           >
             Meet The Team
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-foreground/60 leading-relaxed"
-          >
-            Our experienced team of marine surveyors and consultants.
-          </motion.p>
         </div>
 
         {/* UNIFORM GRID - All Same Size */}
@@ -109,16 +100,16 @@ export default function TeamSectionWhiteUniform() {
                 <div className="flex-1 p-6 flex flex-col">
                   {/* Name & Role */}
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
+                    <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
                       {member.name}
                     </h3>
-                    <p className="text-base font-semibold text-primary">
+                    <p className="text-body-sm font-semibold text-primary">
                       {member.role}
                     </p>
                   </div>
 
                   {/* Description */}
-                  <p className="text-base text-foreground/60 leading-relaxed mb-4 flex-1">
+                  <p className="text-body-sm text-foreground/60 leading-relaxed mb-4 flex-1">
                     {member.description}
                   </p>
 
@@ -128,7 +119,7 @@ export default function TeamSectionWhiteUniform() {
                       {member.certifications.map((cert, i) => (
                         <div
                           key={i}
-                          className="inline-flex items-center gap-1 px-2 py-1 bg-primary/5 border border-primary/20 text-xs font-mono text-primary"
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-primary/5 border border-primary/20 text-xs label-caps text-primary"
                         >
                           <Award className="h-3 w-3" />
                           {cert}

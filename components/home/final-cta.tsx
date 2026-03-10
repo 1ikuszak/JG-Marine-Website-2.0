@@ -32,10 +32,12 @@ export default function PremiumCtaSection() {
       <div className="absolute inset-0">
         <Image
           src="/hero/2.jpg"
-          alt="Marine survey operations at sea"
+          alt=""
+          role="presentation"
           fill
           className="object-cover opacity-10"
           sizes="100vw"
+          quality={40}
         />
         {/* Layered gradient overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/90 via-secondary/85 to-secondary/75" />
@@ -57,13 +59,13 @@ export default function PremiumCtaSection() {
             {/* Section label */}
             <div className="flex items-center gap-3 mb-6">
               <div className="h-[2px] w-8 bg-white/60" />
-              <p className="text-xs font-mono font-bold text-white/80 tracking-[0.3em] uppercase">
+              <p className="label-caps text-white/80">
                 EMERGENCY RESPONSE
               </p>
             </div>
 
             {/* Headline */}
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-10">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold leading-[1.05] mb-10">
               <span className="text-white">Request a Survey</span>
               <br />
               <span className="text-white">Available 24/7.</span>
@@ -76,7 +78,7 @@ export default function PremiumCtaSection() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
                     <Icon className="h-4 w-4 text-white" strokeWidth={1.5} />
                   </div>
-                  <span className="text-white/90 text-base">{text}</span>
+                  <span className="text-white/90 text-body-sm">{text}</span>
                 </li>
               ))}
             </ul>
@@ -89,10 +91,14 @@ export default function PremiumCtaSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <div className="rounded-2xl border border-white/20 bg-white/[0.08] backdrop-blur-sm p-8 md:p-10 shadow-2xl">
+            {/* Gradient border wrapper */}
+            <div className="relative rounded-2xl p-px bg-gradient-to-br from-white/25 via-primary/40 to-white/5 shadow-2xl">
+            <div className="relative rounded-2xl bg-white/[0.06] backdrop-blur-md p-8 md:p-10">
+              {/* Glare highlight */}
+              <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
               {/* Card header */}
               <div className="text-center mb-8">
-                <p className="text-xs font-mono font-bold text-white/80 tracking-[0.25em] uppercase mb-2">
+                <p className="label-caps text-white/80 mb-2">
                   CALL NOW — AVAILABLE 24/7
                 </p>
                 <p className="text-white/70 text-sm">
@@ -144,6 +150,7 @@ export default function PremiumCtaSection() {
                   </a>
                 </Button>
               </div>
+            </div>
             </div>
           </motion.div>
 

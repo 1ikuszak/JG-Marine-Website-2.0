@@ -39,7 +39,7 @@ export default function HeritageCtaSection() {
             {/* Overline */}
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-white/50" />
-              <p className="text-xs font-medium text-white/70 tracking-[0.3em] uppercase">
+              <p className="label-caps text-white/70">
                 Request Survey
               </p>
               <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-white/50" />
@@ -47,7 +47,7 @@ export default function HeritageCtaSection() {
 
             {/* Main Headline - factual, understated */}
             <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1]">
+              <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-white leading-[1.1]">
                 Need a Marine Survey?
               </h2>
             </div>

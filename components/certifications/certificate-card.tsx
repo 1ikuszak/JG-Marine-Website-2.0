@@ -38,6 +38,15 @@ export function CertificateCard({
       transition={{ duration: 0.3 }}
       className="group cursor-pointer"
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      aria-label={`View certificate: ${title}`}
     >
       <div className="relative h-full bg-card border-2 border-border hover:border-primary hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 overflow-hidden">
         {/* Category Badge - Top Right */}
@@ -74,7 +83,7 @@ export function CertificateCard({
         {/* Certificate Info */}
         <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
           {/* Title */}
-          <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors line-clamp-2">
+          <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-foreground leading-tight group-hover:text-primary transition-colors line-clamp-2">
             {title}
           </h3>
 
@@ -93,7 +102,7 @@ export function CertificateCard({
           {/* Certificate Number (if provided) */}
           {certificateNumber && (
             <div className="pt-2 sm:pt-3 border-t border-border">
-              <p className="text-xs font-mono text-muted-foreground">
+              <p className="text-xs label-caps text-muted-foreground">
                 Certificate No: {certificateNumber}
               </p>
             </div>

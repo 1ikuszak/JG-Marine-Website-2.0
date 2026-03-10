@@ -23,7 +23,7 @@ function AnimatedCounter({ to }: { to: number }) {
     }
   }, [inView, to]);
 
-  return <span ref={ref}>0</span>;
+  return <span ref={ref} aria-label={String(to)}>0</span>;
 }
 
 // Premium Logo Scroller with Dark Background (Luxury Brand Style)
@@ -34,9 +34,18 @@ const LogoScroller = ({
   logos: { src: string; alt: string }[];
   title: string;
 }) => {
+  const [reducedMotion, setReducedMotion] = React.useState(false);
+  React.useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <div className="py-12">
-      <h3 className="text-center text-xs font-medium text-foreground/50 tracking-[0.3em] uppercase mb-12">
+      <h3 className="text-center label-caps text-foreground/50 mb-12">
         {title}
       </h3>
 
@@ -51,17 +60,21 @@ const LogoScroller = ({
           {/* First set of logos - animated */}
           <motion.ul
             className="flex items-center justify-center md:justify-start flex-shrink-0"
-            animate={{
-              x: ["0%", "-100%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
+            animate={
+              reducedMotion ? { x: "0%" } : { x: ["0%", "-100%"] }
+            }
+            transition={
+              reducedMotion
+                ? undefined
+                : {
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 30,
+                      ease: "linear",
+                    },
+                  }
+            }
           >
             {logos.map((logo, index) => (
               <li key={index} className="flex-shrink-0 mx-12">
@@ -81,17 +94,21 @@ const LogoScroller = ({
           {/* Second set of logos - duplicate for seamless loop */}
           <motion.ul
             className="flex items-center justify-center md:justify-start flex-shrink-0"
-            animate={{
-              x: ["0%", "-100%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
+            animate={
+              reducedMotion ? { x: "0%" } : { x: ["0%", "-100%"] }
+            }
+            transition={
+              reducedMotion
+                ? undefined
+                : {
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 30,
+                      ease: "linear",
+                    },
+                  }
+            }
             aria-hidden="true"
           >
             {logos.map((logo, index) => (
@@ -139,7 +156,7 @@ export default function TrustAndDifferentiationSection() {
           >
             {/* Wave decorations */}
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
+            <p className="label-caps text-primary">
               OPERATIONAL ADVANTAGES
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
@@ -150,10 +167,10 @@ export default function TrustAndDifferentiationSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-serif text-foreground tracking-tight mb-6 leading-[1.1]">
+            <h2 className="font-serif text-h2-sm md:text-h2 font-bold text-foreground tracking-tight mb-6">
               Regional Expertise and Response Capabilities
             </h2>
-            <p className="text-lg md:text-xl text-foreground/60 leading-relaxed">
+            <p className="text-body-sm md:text-body text-foreground/60">
               Three differentiators of Baltic-based maritime surveying.
             </p>
           </motion.div>
@@ -190,16 +207,16 @@ export default function TrustAndDifferentiationSection() {
                 {/* Subtle gradient background circle */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-xl scale-150 group-hover:scale-[1.6] transition-transform duration-500" />
 
-                <p className="relative text-6xl md:text-7xl font-bold text-primary tracking-tight">
+                <p className="relative stat-number text-primary">
                   <AnimatedCounter to={metric.value} />
                   {index === 0 && "+"}
                 </p>
               </div>
 
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+              <h3 className="font-serif text-h4-sm md:text-h4 font-semibold text-foreground mb-2">
                 {metric.label}
               </h3>
-              <p className="text-base text-foreground/60 max-w-xs mx-auto leading-relaxed">
+              <p className="text-body-sm md:text-body text-foreground/60 max-w-xs mx-auto">
                 {metric.desc}
               </p>
             </motion.div>

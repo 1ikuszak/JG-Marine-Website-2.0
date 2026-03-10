@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Menu, Anchor, AlarmClock, X } from "lucide-react";
+import { Phone, Menu, Anchor, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -23,7 +23,7 @@ const NAV: NavItem[] = [
 
 const EMERGENCY_TEL = CONTACTS.main.phone;
 const BANNER_HEIGHT_PX = 36;
-const HEADER_HEIGHT_PX = 64;
+
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,13 +43,6 @@ export function Header() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
-
-  // Calculate opacity progression (0-200px scroll range)
-  const scrollProgress = Math.min(scrollY / 200, 1);
-  const bgOpacity = 0.1 + scrollProgress * 0.9; // 10% -> 100%
-
-  // Only transparent on home page at top
-  const isTransparent = isHomePage && scrollY < 50;
 
   // Calculate top position: only offset for banner on home page
   const topPosition = isHomePage ? Math.max(0, BANNER_HEIGHT_PX - scrollY) : 0;
@@ -81,26 +74,15 @@ export function Header() {
 
       {/* Main Header - Fixed with dynamic styling based on page */}
       <header
-        className="fixed z-50 w-full border-b transition-all duration-300"
+        className="fixed z-50 w-full border-b border-border bg-background/[0.97] backdrop-blur-[12px] transition-all duration-300"
         style={{
           top: `${topPosition}px`,
-          backgroundColor: isTransparent
-            ? `rgba(244, 249, 246, ${bgOpacity})`
-            : "rgba(244, 249, 246, 0.97)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          borderBottomColor: isTransparent
-            ? "rgba(244, 249, 246, 0.15)"
-            : "rgba(33, 56, 61, 0.15)",
         }}
         role="banner"
       >
         <div
-          className={[
-            "mx-auto max-w-screen-2xl px-4 transition-all duration-300",
-            isTransparent ? "py-4" : "py-3",
-          ].join(" ")}
-          style={{ height: isTransparent ? `${HEADER_HEIGHT_PX}px` : `56px` }}
+          className="mx-auto max-w-screen-2xl px-4 py-3"
+          style={{ height: "56px" }}
         >
           <div className="flex items-center justify-between gap-3 h-full">
             {/* Logo / Brand */}
@@ -113,26 +95,16 @@ export function Header() {
                 <Image
                   width={32}
                   height={32}
-                  alt="logo"
+                  alt=""
                   src={"/logo.svg"}
-                  className={`transition-all duration-300 ${
-                    isTransparent ? "brightness-0 invert" : ""
-                  }`}
+                  className="transition-all duration-300"
                 />
               </span>
               <div className="leading-tight">
-                <div
-                  className={`text-lg font-semibold tracking-tight transition-colors duration-300 ${
-                    isTransparent ? "text-white" : "text-foreground"
-                  }`}
-                >
+                <div className="text-lg font-semibold tracking-tight text-foreground">
                   JG-Marine
                 </div>
-                <div
-                  className={`text-xs uppercase tracking-widest transition-colors duration-300 ${
-                    isTransparent ? "text-white/70" : "text-muted-foreground"
-                  }`}
-                >
+                <div className="label-caps text-muted-foreground">
                   Co. Ltd.
                 </div>
               </div>
@@ -149,14 +121,10 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-sm transition-colors duration-300 inline-flex items-center gap-1 ${
-                      isTransparent
-                        ? isActive
-                          ? "text-white font-medium"
-                          : "text-white/80 hover:text-white"
-                        : isActive
-                          ? "text-foreground font-medium"
-                          : "text-muted-foreground hover:text-accent"
+                    className={`text-nav inline-flex items-center gap-1 ${
+                      isActive
+                        ? "text-foreground font-medium"
+                        : "text-muted-foreground hover:text-accent"
                     }`}
                   >
                     {item.label}
@@ -166,13 +134,12 @@ export function Header() {
             </nav>
 
             {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-3">
               <Button
-                variant="ghost"
                 size="sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-all duration-200"
                 asChild
                 aria-label="Call us"
-                className={isTransparent ? "text-white hover:bg-white/10" : ""}
               >
                 <a href={`tel:${EMERGENCY_TEL.replace(/\s/g, "")}`}>
                   <Phone className="mr-2 h-4 w-4" />
@@ -188,9 +155,7 @@ export function Header() {
                   variant="ghost"
                   size="icon"
                   aria-label="Open menu"
-                  className={
-                    isTransparent ? "text-white hover:bg-white/10" : ""
-                  }
+
                 >
                   <Menu className="h-5 w-5" />
                 </Button>

@@ -1,107 +1,135 @@
 "use client";
 
-import * as React from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Phone, Mail, Award, ShieldCheck, Clock } from "lucide-react";
 import { CONTACTS } from "@/config";
 
-export default function ContactPageHero() {
+export default function ContactHero() {
   return (
-    <section className="relative pt-24 pb-12 md:py-24 bg-secondary overflow-hidden">
-      {/* Premium Gradients */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px]" />
-      </div>
+    <section className="relative py-24 md:py-32 bg-secondary overflow-hidden">
+      {/* Gradient blobs */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px]" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
 
       <div className="container relative mx-auto max-w-screen-xl px-6">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
           {/* Overline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-center gap-2 mb-4"
+            transition={{ duration: 0.6 }}
+            className="flex items-center justify-center gap-3 mb-6"
           >
-            <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-white/50" />
-            <p className="font-mono text-xs font-bold text-white/70 tracking-[0.3em] uppercase">
-              CONTACT
+            <div className="h-[2px] w-8 bg-white/60" />
+            <p className="label-caps text-white/80">
+              CONTACT US
             </p>
-            <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-white/50" />
+            <div className="h-[2px] w-8 bg-white/60" />
           </motion.div>
 
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.15]"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-serif text-display-sm md:text-display font-bold text-white leading-tight mb-6"
           >
-            Need Marine Surveyors?
+            Need Marine Surveyors? Call Now.
           </motion.h1>
 
           {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-body md:text-body-lg text-white/70 max-w-2xl mx-auto mb-10"
+          >
+            Three offices covering Poland&apos;s major ports and inland
+            locations. Our phones are answered during business hours.
+          </motion.p>
+
+          {/* Primary CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-3 text-lg md:text-xl text-white/70 mb-8 leading-relaxed max-w-2xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="max-w-sm mx-auto"
           >
-            <p>Three offices covering Poland's major ports and locations inland.</p>
-
-            <p>
-              Sopot/Gdynia · Szczecin/Świnoujście · Warsaw
-            </p>
-
-            <p>Our office telephones are regularly answered during business hours.</p>
+            <Button
+              size="lg"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base h-16 rounded-xl group shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-200 cursor-pointer"
+              asChild
+            >
+              <a
+                href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
+                className="flex items-center justify-center gap-3"
+              >
+                <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+                  <Phone className="h-4 w-4 group-hover:animate-pulse" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs opacity-70 font-normal tracking-wider uppercase leading-none mb-0.5">
+                    Call Now
+                  </div>
+                  <div>{CONTACTS.main.phone}</div>
+                </div>
+              </a>
+            </Button>
           </motion.div>
 
-          {/* Quick Contact Grid */}
+          {/* Secondary row */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex justify-center gap-3 max-w-sm mx-auto mt-3"
           >
-            {/* Phone */}
-            {/* FIX: Added opening <a> tag */}
-            <a
-              href={`tel:${CONTACTS.main.phone.replace(/\s/g, "")}`}
-              className="flex flex-col items-center justify-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 rounded-lg p-4 transition-all duration-300 group min-h-[90px]"
+            <Button
+              className="flex-1 border border-white/25 bg-white/8 hover:bg-white/10 text-white font-semibold text-base h-14 rounded-xl cursor-pointer"
+              asChild
             >
-              <Phone className="h-5 w-5 text-white/70 group-hover:scale-110 transition-transform" />
-              <div className="text-center">
-                <p className="text-xs text-white/50 mb-0.5">Call</p>
-                <p className="text-sm font-semibold text-white group-hover:text-white/80 transition-colors">
-                  {CONTACTS.main.phone}
-                </p>
-              </div>
-            </a>
+              <a
+                href={`tel:${CONTACTS.main.phone2.replace(/\s/g, "")}`}
+                className="flex items-center justify-center gap-2"
+              >
+                <Phone className="h-4 w-4" />
+                <span>{CONTACTS.main.phone2}</span>
+              </a>
+            </Button>
 
-            {/* Email */}
-            {/* FIX: Added opening <a> tag */}
-            <a
-              href={`mailto:${CONTACTS.main.email}`}
-              className="flex flex-col items-center justify-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 rounded-lg p-4 transition-all duration-300 group min-h-[90px]"
+            <Button
+              className="flex-1 border border-white/25 bg-white/8 hover:bg-white/10 text-white font-semibold text-base h-14 rounded-xl cursor-pointer"
+              asChild
             >
-              <Mail className="h-5 w-5 text-white/70 group-hover:scale-110 transition-transform" />
-              <div className="text-center">
-                <p className="text-xs text-white/50 mb-0.5">Email</p>
-                <p className="text-sm font-semibold text-white group-hover:text-white/80 transition-colors break-all">
-                  {CONTACTS.main.email}
-                </p>
-              </div>
-            </a>
+              <a
+                href={`mailto:${CONTACTS.main.email}`}
+                className="flex items-center justify-center gap-2"
+              >
+                <Mail className="h-4 w-4" />
+                <span>{CONTACTS.main.email}</span>
+              </a>
+            </Button>
+          </motion.div>
 
-            {/* Hours */}
-            <div className="flex flex-col items-center justify-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 min-h-[90px]">
-              <Clock className="h-5 w-5 text-white/70" />
-              <div className="text-center">
-                <p className="text-xs text-white/50 mb-0.5">Hours</p>
-                <p className="text-sm font-semibold text-white">
-                  Mon–Fri Business Hours
-                </p>
-              </div>
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-wrap justify-center gap-2 mt-8"
+          >
+            <div className="bg-white/10 border border-white/20 rounded-full px-3 py-1.5 label-caps text-white/80 flex items-center gap-1.5">
+              <Award className="h-3 w-3" />
+              IIMS Member
+            </div>
+            <div className="bg-white/10 border border-white/20 rounded-full px-3 py-1.5 label-caps text-white/80 flex items-center gap-1.5">
+              <ShieldCheck className="h-3 w-3" />
+              CESAM Certified
+            </div>
+            <div className="bg-white/10 border border-white/20 rounded-full px-3 py-1.5 label-caps text-white/80 flex items-center gap-1.5">
+              <Clock className="h-3 w-3" />
+              Mon–Fri Business Hours
             </div>
           </motion.div>
         </div>

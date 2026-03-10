@@ -38,7 +38,7 @@ const services: Service[] = [
     imageUrl: "/services/1.jpg",
   },
   {
-    title: "Cargo & Inland Services",
+    title: "Cargo and Inland Services",
     icon: Package,
     deliverables: [
       "Cargo Damage Assessment and Surveys",
@@ -56,7 +56,7 @@ const services: Service[] = [
     imageUrl: "/services/2.jpg",
   },
   {
-    title: "Heavy Lifts & Project Cargo",
+    title: "Heavy Lifts and Project Cargo",
     icon: Container,
     deliverables: [
       "Pre-Planning and Feasibility Studies",
@@ -70,7 +70,7 @@ const services: Service[] = [
     imageUrl: "/services/4.jpg",
   },
   {
-    title: "Technical Consulting & Engineering",
+    title: "Technical Consulting and Engineering",
     icon: Wrench,
     deliverables: [
       "Technical Audits (ISM, ISPS, MLC, CMID)",
@@ -82,7 +82,7 @@ const services: Service[] = [
     imageUrl: "/services/3.jpg",
   },
   {
-    title: "Claims, Legal & Insurance Services",
+    title: "Claims, Legal and Insurance Services",
     icon: Scale,
     deliverables: [
       "P&I and H&M Claims Handling",
@@ -95,7 +95,7 @@ const services: Service[] = [
     imageUrl: "/services/5.jpg",
   },
   {
-    title: "Casualty Response & Investigation",
+    title: "Casualty Response and Investigation",
     icon: AlertTriangle,
     deliverables: [
       "Marine Casualty Management",
@@ -121,7 +121,7 @@ export default function ServiceTiersUltimate() {
             className="flex items-center justify-center md:justify-start gap-2 sm:gap-3 mb-4 sm:mb-6"
           >
             <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-transparent to-accent" />
-            <p className="font-mono text-xs font-bold text-accent tracking-[0.3em] uppercase">
+            <p className="label-caps text-accent">
               MARITIME SURVEY SERVICES
             </p>
             <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-l from-transparent to-accent" />
@@ -132,7 +132,7 @@ export default function ServiceTiersUltimate() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-serif text-foreground leading-none mb-4 sm:mb-6"
+            className="font-serif text-h2-sm md:text-h2 font-bold text-foreground leading-none mb-4 sm:mb-6"
           >
             Services
           </motion.h2>
@@ -142,7 +142,7 @@ export default function ServiceTiersUltimate() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl"
+            className="text-body-sm md:text-body-lg text-muted-foreground max-w-2xl"
           >
             Marine surveys, cargo inspections, and casualty response across the
             Baltic region. Hull and machinery assessments, technical audits, and
@@ -174,21 +174,22 @@ export default function ServiceTiersUltimate() {
                     src={service.imageUrl}
                     alt={service.title}
                     fill
-                    className="object-cover opacity-50 sm:opacity-55 md:opacity-60 group-hover:opacity-65 md:group-hover:opacity-70 transition-all duration-700 group-hover:scale-105"
+                    sizes="100vw"
+                    className="object-cover transition-all duration-700 group-hover:scale-105"
                   />
-                  {/* Gradient: card bg on left (content readable), photo visible on right */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-card via-card/85 to-card/15" />
+                  {/* Dark gradient overlay — left side keeps text readable */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10 pointer-events-none" />
                 </div>
 
                 {/* Content Grid */}
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 min-h-[350px] sm:min-h-[400px] items-center">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 p-5 sm:p-6 md:p-8 lg:p-10 min-h-[350px] sm:min-h-[400px] items-center">
 
                   {/* Left: Title & Info */}
                   <div className="space-y-6 sm:space-y-8">
 
                     {/* Number */}
                     <div className="inline-flex items-center gap-3">
-                      <span className="font-mono text-xs font-bold text-muted-foreground/70 tracking-[0.3em]">
+                      <span className="label-caps text-white/50">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div className="h-[1px] w-8 sm:w-12 bg-accent/50" />
@@ -196,15 +197,15 @@ export default function ServiceTiersUltimate() {
 
                     {/* Icon */}
                     <div className="relative inline-flex flex-shrink-0">
-                      <div className="absolute inset-0 w-full h-full bg-accent/15 rounded-full blur-md" />
+                      <div className="absolute inset-0 w-full h-full bg-white/15 rounded-full blur-md" />
                       {React.createElement(service.icon, {
-                        className: "relative h-12 w-12 sm:h-14 sm:w-14 text-accent",
+                        className: "relative h-12 w-12 sm:h-14 sm:w-14 text-white",
                         strokeWidth: 1.5,
                       })}
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-serif text-foreground leading-none group-hover:text-accent transition-colors duration-500">
+                    <h3 className="font-serif text-h3-sm md:text-h3 font-bold text-white leading-none group-hover:text-white/80 transition-colors duration-500">
                       {service.title}
                     </h3>
                   </div>
@@ -212,9 +213,9 @@ export default function ServiceTiersUltimate() {
                   {/* Right: Core Services List */}
                   <div className="space-y-4 sm:space-y-5">
                     {/* Header */}
-                    <div className="flex items-center gap-3 pb-3 border-b border-border">
-                      <div className="h-1 w-1 rounded-full bg-accent" />
-                      <p className="font-mono text-xs font-bold text-muted-foreground/70 tracking-widest uppercase">
+                    <div className="flex items-center gap-3 pb-3 border-b border-white/20">
+                      <div className="h-1 w-1 rounded-full bg-white/60" />
+                      <p className="label-caps text-white/60">
                         CORE SERVICES
                       </p>
                     </div>
@@ -241,7 +242,7 @@ export default function ServiceTiersUltimate() {
                               className="flex-shrink-0 mt-0.5 sm:mt-1 h-4 w-4 sm:h-5 sm:w-5 text-accent"
                               strokeWidth={2}
                             />
-                            <span className="text-base sm:text-base md:text-lg text-foreground font-medium leading-relaxed group-hover/item:text-primary transition-colors">
+                            <span className="text-body-sm md:text-body text-foreground font-medium leading-relaxed group-hover/item:text-primary transition-colors">
                               {item}
                             </span>
                           </motion.li>
@@ -249,11 +250,6 @@ export default function ServiceTiersUltimate() {
                       </ul>
                     </div>
 
-                    {/* Bottom Accent Line */}
-                    <div className="flex items-center gap-2 pt-2">
-                      <div className="h-px flex-1 bg-gradient-to-r from-accent/40 to-transparent" />
-                      <div className="h-1 w-1 rounded-full bg-accent/40" />
-                    </div>
                   </div>
                 </div>
 

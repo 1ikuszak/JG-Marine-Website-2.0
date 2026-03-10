@@ -10,7 +10,7 @@ import { OFFICES } from "@/config";
 const OfficeMap = dynamic(() => import("@/components/home/office-map"), {
   ssr: false,
   loading: () => (
-    <div className="w-full rounded-xl border border-border bg-secondary/20 animate-pulse flex items-center justify-center" style={{ height: "420px" }}>
+    <div className="w-full rounded-xl border border-border bg-secondary/20 animate-pulse flex items-center justify-center h-full min-h-[420px]">
       <span className="text-base text-foreground/40">Loading map…</span>
     </div>
   ),
@@ -56,7 +56,7 @@ export default function OfficeLocationsSection() {
             className="flex items-center justify-center gap-3 mb-4"
           >
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="text-xs font-medium text-primary tracking-[0.3em] uppercase font-mono">
+            <p className="label-caps text-primary">
               OFFICE LOCATIONS
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
@@ -67,14 +67,14 @@ export default function OfficeLocationsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold font-serif text-foreground leading-tight"
+            className="font-serif text-h2-sm md:text-h2 font-bold text-foreground leading-tight"
           >
             Three Offices Serving Poland&apos;s Major Ports and Locations Inland
           </motion.h2>
         </div>
 
         {/* Two-column: cards left, map right */}
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
           {/* Left: Office Cards stacked */}
           <div className="flex flex-col gap-4">
@@ -94,18 +94,18 @@ export default function OfficeLocationsSection() {
                     {/* Office type badge */}
                     <div className="flex items-center gap-2 mb-3">
                       <span className={`w-2 h-2 rounded-full ${display.dotColor} flex-shrink-0`} />
-                      <span className={`text-xs font-mono tracking-widest uppercase ${display.labelStyle}`}>
+                      <span className={`label-caps ${display.labelStyle}`}>
                         {display.label}
                       </span>
                     </div>
 
                     {/* Office city */}
-                    <h3 className="text-xl font-bold font-serif text-foreground mb-1">
+                    <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-foreground mb-1">
                       {office.address.city}
                     </h3>
 
                     {/* Port coverage */}
-                    <p className="text-base text-foreground/60 mb-4 font-medium">
+                    <p className="text-body-sm text-foreground/60 mb-4 font-medium">
                       {display.ports}
                     </p>
 
@@ -138,8 +138,7 @@ export default function OfficeLocationsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="lg:sticky lg:top-24 rounded-xl overflow-hidden"
-            style={{ minHeight: "420px" }}
+            className="relative z-0 rounded-xl overflow-hidden h-full"
           >
             <OfficeMap />
           </motion.div>

@@ -12,9 +12,9 @@ interface Advantage {
 
 const advantages: Advantage[] = [
   {
-    title: "24-Hour Baltic Response",
+    title: "Three Offices Across Poland",
     icon: Clock,
-    solution: "Surveyors on-site within 24h throughout the Baltic region.",
+    solution: "Offices in Sopot/Gdynia, Szczecin/Świnoujście, and Warsaw — covering major ports and inland routes.",
   },
   {
     title: "Guaranteed Independence",
@@ -25,7 +25,7 @@ const advantages: Advantage[] = [
     title: "Local Maritime Expertise",
     icon: Users,
     solution:
-      "64 years of Baltic maritime heritage and unmatched local knowledge.",
+      "100+ years of maritime heritage and deep local knowledge of Polish ports.",
   },
   {
     title: "Multilingual Operations",
@@ -33,9 +33,9 @@ const advantages: Advantage[] = [
     solution: "Multilingual team and documentation (PL, EN, DE) as standard.",
   },
   {
-    title: "DNV Certified Standards",
+    title: "Internationally Recognized",
     icon: ShieldCheck,
-    solution: "DNV certified with continuous training on the latest standards.",
+    solution: "IIMS and CESAM certified. Reports accepted by P&I Clubs worldwide.",
   },
 ];
 
@@ -53,8 +53,8 @@ export default function AdvantagesSectionClean() {
           >
             {/* Wave decorations */}
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="font-mono text-xs font-bold text-primary tracking-[0.3em] uppercase">
-              YOUR OPERATIONAL ADVANTAGE
+            <p className="label-caps text-primary">
+              YOUR COMPETITIVE ADVANTAGE
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
@@ -62,18 +62,19 @@ export default function AdvantagesSectionClean() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight"
+            className="font-serif text-h2-sm md:text-h2 font-bold text-foreground mb-4"
           >
-            The Advantage You Get
+            Why Companies Trust JG Marine Over Global Networks
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-muted-foreground"
+            className="text-body md:text-body-lg text-muted-foreground"
           >
-            Speed, independence, and local expertise you need.
+            Five reasons Baltic operators choose a regional specialist over an
+            international conglomerate.
           </motion.p>
         </div>
 
@@ -99,12 +100,12 @@ export default function AdvantagesSectionClean() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-card-foreground mb-4 leading-tight">
+                <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-card-foreground mb-4">
                   {advantage.title}
                 </h3>
 
                 {/* Solution - Simple */}
-                <p className="text-base text-muted-foreground leading-relaxed">
+                <p className="text-body-sm text-muted-foreground">
                   {advantage.solution}
                 </p>
               </div>

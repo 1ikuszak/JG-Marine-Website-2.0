@@ -5,6 +5,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function LogoScrollerSection() {
+  const [reducedMotion, setReducedMotion] = React.useState(false);
+  React.useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const logos = [
     { src: "/logos/DNV.svg", alt: "DNV Logo" },
     { src: "/logos/cesam.svg", alt: "Cesam Logo" },
@@ -16,7 +25,7 @@ export default function LogoScrollerSection() {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4 md:px-6">
-        <h3 className="text-center text-xs font-medium text-foreground/50 tracking-[0.3em] uppercase mb-12">
+        <h3 className="label-caps text-foreground/50 text-center mb-12">
           Recognized By
         </h3>
 
@@ -31,17 +40,21 @@ export default function LogoScrollerSection() {
             {/* First set of logos */}
             <motion.ul
               className="flex items-center justify-center md:justify-start flex-shrink-0"
-              animate={{
-                x: ["0%", "-100%"],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
+              animate={
+                reducedMotion ? { x: "0%" } : { x: ["0%", "-100%"] }
+              }
+              transition={
+                reducedMotion
+                  ? undefined
+                  : {
+                      x: {
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        duration: 30,
+                        ease: "linear",
+                      },
+                    }
+              }
             >
               {logos.map((logo, index) => (
                 <li key={index} className="flex-shrink-0 mx-12">
@@ -61,17 +74,21 @@ export default function LogoScrollerSection() {
             {/* Duplicate for seamless loop */}
             <motion.ul
               className="flex items-center justify-center md:justify-start flex-shrink-0"
-              animate={{
-                x: ["0%", "-100%"],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
+              animate={
+                reducedMotion ? { x: "0%" } : { x: ["0%", "-100%"] }
+              }
+              transition={
+                reducedMotion
+                  ? undefined
+                  : {
+                      x: {
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        duration: 30,
+                        ease: "linear",
+                      },
+                    }
+              }
               aria-hidden="true"
             >
               {logos.map((logo, index) => (

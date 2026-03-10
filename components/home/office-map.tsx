@@ -20,6 +20,10 @@ export default function OfficeMap() {
     import("leaflet").then((L) => {
       if (!mapRef.current || mapInstanceRef.current) return;
 
+      // Prevent broken default PNG icons in Next.js (webpack can't resolve relative paths in leaflet.css)
+      delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;
+      L.Icon.Default.mergeOptions({ iconUrl: "", iconRetinaUrl: "", shadowUrl: "" });
+
       // Initialize map centered on Poland
       const map = L.map(mapRef.current, {
         center: [52.4, 18.5],
@@ -31,9 +35,9 @@ export default function OfficeMap() {
 
       mapInstanceRef.current = map;
 
-      // CartoDB Positron — clean light tiles with no API key required
+      // CartoDB Dark Matter — dark tiles, no API key required
       L.tileLayer(
-        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -97,23 +101,23 @@ export default function OfficeMap() {
 
         const popupContent = `
           <div style="font-family: system-ui, sans-serif; min-width: 200px; padding: 4px;">
-            <div style="font-size: 11px; font-weight: 700; color: #005E8E; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+            <div style="font-size: 11px; font-weight: 700; color: #6BADD4; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
               ${isHQ ? "HEAD OFFICE" : office.type.toUpperCase()}
             </div>
-            <div style="font-size: 15px; font-weight: 700; color: #0D0D0D; margin-bottom: 6px; line-height: 1.2;">
+            <div style="font-size: 15px; font-weight: 700; color: #F4F9F6; margin-bottom: 6px; line-height: 1.2;">
               ${office.tagline}
             </div>
-            <div style="font-size: 12px; color: #475569; margin-bottom: 8px; line-height: 1.5;">
+            <div style="font-size: 12px; color: rgba(244,249,246,0.55); margin-bottom: 8px; line-height: 1.5;">
               ${office.address.fullAddress}
             </div>
-            <div style="border-top: 1px solid #e2e8f0; padding-top: 8px;">
+            <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 8px;">
               <a href="tel:${office.contact.phone.replace(/\s/g, "")}" style="
                 display: inline-flex;
                 align-items: center;
                 gap: 6px;
                 font-size: 13px;
                 font-weight: 600;
-                color: #005E8E;
+                color: #6BADD4;
                 text-decoration: none;
               ">${office.contact.phone}</a>
             </div>
@@ -131,20 +135,54 @@ export default function OfficeMap() {
       // Custom popup styles injected once
       style = document.createElement("style");
       style.textContent = `
+        .leaflet-container {
+          font-family: system-ui, sans-serif;
+          background: #0D1E2C;
+        }
+        .leaflet-tile-pane {
+          filter: hue-rotate(185deg) saturate(1.3) brightness(1.05);
+        }
         .jg-marine-popup .leaflet-popup-content-wrapper {
+          background: #0D1F22;
           border-radius: 10px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-          border: 1px solid #e2e8f0;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+          border: 1px solid rgba(255,255,255,0.12);
           padding: 0;
+        }
+        .jg-marine-popup .leaflet-popup-tip {
+          background: #0D1F22;
         }
         .jg-marine-popup .leaflet-popup-content {
           margin: 14px 16px;
+          color: #F4F9F6;
         }
         .jg-marine-popup .leaflet-popup-tip-container {
           margin-top: -1px;
         }
-        .leaflet-container {
-          font-family: system-ui, sans-serif;
+        .jg-marine-popup .leaflet-popup-close-button {
+          color: rgba(244,249,246,0.5) !important;
+        }
+        .jg-marine-popup .leaflet-popup-close-button:hover {
+          color: #F4F9F6 !important;
+        }
+        .leaflet-control-zoom a {
+          background: #21383D !important;
+          color: #F4F9F6 !important;
+          border-color: rgba(255,255,255,0.15) !important;
+        }
+        .leaflet-control-zoom a:hover {
+          background: #2d4f56 !important;
+        }
+        .leaflet-control-attribution {
+          background: rgba(13,31,34,0.8) !important;
+          color: rgba(244,249,246,0.4) !important;
+        }
+        .leaflet-control-attribution a {
+          color: rgba(244,249,246,0.5) !important;
+        }
+        .leaflet-interactive:focus {
+          outline: 2px solid #005E8E;
+          outline-offset: 1px;
         }
       `;
       document.head.appendChild(style);
@@ -165,8 +203,8 @@ export default function OfficeMap() {
   return (
     <div
       ref={mapRef}
-      className="w-full rounded-xl border border-border overflow-hidden"
-      style={{ height: "420px" }}
+      className="w-full rounded-xl border border-border overflow-hidden min-h-[420px]"
+      style={{ height: "100%" }}
       aria-label="Interactive map showing JG Marine office locations in Poland"
     />
   );

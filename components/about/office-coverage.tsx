@@ -97,7 +97,7 @@ export default function OfficeLocationsSection() {
             className="flex items-center justify-center gap-3 mb-6"
           >
             <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="text-xs font-medium text-primary tracking-[0.3em] uppercase">
+            <p className="label-caps text-white/70">
               Locations
             </p>
             <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-primary" />
@@ -108,7 +108,7 @@ export default function OfficeLocationsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight"
+            className="font-serif text-h2-sm md:text-h2 font-bold text-white mb-6 leading-tight tracking-tight"
           >
             Three Offices Across Poland
           </motion.h2>
@@ -117,7 +117,7 @@ export default function OfficeLocationsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-white/70 leading-relaxed"
+            className="text-body-sm md:text-body text-white/70 leading-relaxed"
           >
             Positioned for coverage of major ports and inland routes.
           </motion.p>
@@ -176,7 +176,7 @@ export default function OfficeLocationsSection() {
             >
               <div className="relative">
                 <div className="absolute inset-0 -m-4">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 animate-ping" />
+                  <div className="w-16 h-16 rounded-full bg-primary/20 motion-safe:animate-ping" />
                 </div>
                 <div className="relative w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg flex items-center justify-center group cursor-pointer hover:scale-110 transition-transform">
                   <office.icon className="h-4 w-4 text-white" strokeWidth={2} />
@@ -246,17 +246,17 @@ export default function OfficeLocationsSection() {
                     <div className="absolute inset-0 bg-primary/20 rounded-lg blur-lg" />
                     <div className="relative bg-primary/20 p-4 rounded-lg group-hover:bg-primary/30 transition-colors">
                       <office.icon
-                        className="h-8 w-8 text-primary"
+                        className="h-8 w-8 text-white"
                         strokeWidth={1.5}
                       />
                     </div>
                   </div>
 
                   {/* Office Name */}
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="font-serif text-h4-sm md:text-h4 font-bold text-white mb-2">
                     {office.name}
                   </h3>
-                  <p className="text-sm font-medium text-primary mb-4">
+                  <p className="text-sm font-medium text-white mb-4">
                     {office.tagline}
                   </p>
 
@@ -283,7 +283,7 @@ export default function OfficeLocationsSection() {
                       {office.coverage.map((area, i) => (
                         <span
                           key={i}
-                          className="text-xs px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20"
+                          className="text-xs px-2 py-1 bg-white/10 text-white rounded border border-white/20"
                         >
                           {area}
                         </span>
@@ -302,7 +302,7 @@ export default function OfficeLocationsSection() {
                           key={i}
                           className="text-xs text-white/70 flex items-start gap-2"
                         >
-                          <span className="text-primary mt-1">•</span>
+                          <span className="text-white/50 mt-1">•</span>
                           {service}
                         </li>
                       ))}

@@ -17,7 +17,7 @@ export function Footer() {
                 <Image
                   width={32}
                   height={32}
-                  alt="logo"
+                  alt="JG-Marine"
                   src={"/logo.svg"}
                   className="brightness-0 invert"
                 />
@@ -43,7 +43,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">
+            <h3 className="text-label font-semibold text-white mb-4">
               Services
             </h3>
             <ul className="space-y-2.5 text-sm">
@@ -92,14 +92,30 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Company</h3>
+            <h3 className="text-label font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link
+                  href="/about"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/#team"
                   className="text-white/60 hover:text-white transition-colors"
                 >
                   Our Team
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/certifications"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Certifications
                 </Link>
               </li>
               <li>
@@ -115,7 +131,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Contact</h3>
+            <h3 className="text-label font-semibold text-white mb-4">Contact</h3>
             <ul className="space-y-3 text-sm text-white/60">
               <li>
                 <div className="text-xs text-white/60 mb-1">
@@ -153,7 +169,12 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-          <div>© {currentYear} JG-Marine Co. Ltd. All rights reserved.</div>
+          <div>
+            <p>© {currentYear} JG-Marine Co. Ltd. All rights reserved.</p>
+            <p className="text-xs text-white/40 mt-1">
+              NIP: 5861028094 | KRS: 0000104270 | REGON: 190555043
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link
               href="/privacy"

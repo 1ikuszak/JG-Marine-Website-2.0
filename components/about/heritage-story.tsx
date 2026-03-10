@@ -20,13 +20,13 @@ export default function HeritageStorySection() {
               {/* Overline */}
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-accent/30" />
-                <span className="text-xs tracking-[0.3em] text-foreground/60 uppercase font-light">
+                <span className="label-caps text-foreground/60 font-light">
                   Our Heritage
                 </span>
               </div>
 
               {/* Headline */}
-              <h2 className="text-4xl lg:text-5xl font-medium text-primary leading-[1.1] mb-8">
+              <h2 className="font-serif text-h2-sm md:text-h2 font-medium text-primary leading-[1.1] mb-8">
                 Built on the bridge,
                 <br />
                 not the boardroom
@@ -35,7 +35,7 @@ export default function HeritageStorySection() {
               <div className="w-20 h-[1px] bg-secondary mb-12" />
 
               {/* Body - Gary Provost rhythm: SHORT, MEDIUM, LONG, SHORT */}
-              <div className="space-y-6 text-base lg:text-lg text-foreground/70 leading-relaxed">
+              <div className="space-y-6 text-body-sm md:text-body text-foreground/70 leading-relaxed">
                 {/* SHORT - punchy opener */}
                 <p>
                   The company started with a choice. Leave the bridge. Stay in
@@ -68,16 +68,16 @@ export default function HeritageStorySection() {
               <div className="mt-12 pt-12 border-t border-border/30">
                 <div className="grid grid-cols-2 gap-8">
                   <div>
-                    <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                    <p className="label-caps text-foreground/50 mb-2">
                       Established
                     </p>
-                    <p className="text-3xl text-primary">1961</p>
+                    <p className="stat-number text-primary">1961</p>
                   </div>
                   <div>
-                    <p className="text-xs tracking-[0.2em] text-foreground/50 uppercase mb-2">
+                    <p className="label-caps text-foreground/50 mb-2">
                       Generations
                     </p>
-                    <p className="text-3xl text-primary">Three</p>
+                    <p className="stat-number text-primary">Three</p>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,8 @@ export default function HeritageStorySection() {
             alt="JG Marine founding generation"
             fill
             className="object-cover grayscale"
-            quality={100}
+            quality={85}
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         </motion.div>
