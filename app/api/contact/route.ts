@@ -1,8 +1,5 @@
-import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 // XSS prevention helper
 function escapeHtml(str: string): string {
@@ -56,126 +53,25 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
     }
 
-    // Validate data
     const validatedData = contactSchema.parse(body);
 
     // Honeypot check — bots fill hidden fields
     if (validatedData.website) {
-      // Return success to not alert bots, but don't send email
       return NextResponse.json({ success: true }, { status: 200 });
     }
 
-    // Send email to your team
-    const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
-      to: process.env.RESEND_TO_EMAIL || "lukasz.glica07@gmail.com",
-      subject: `New Survey Request from ${escapeHtml(validatedData.name)}`,
-      replyTo: validatedData.email,
-      html: `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-              .header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; }
-              .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
-              .field { margin-bottom: 20px; }
-              .label { font-weight: bold; color: #1e3a8a; margin-bottom: 5px; }
-              .value { background: white; padding: 12px; border-radius: 4px; border-left: 4px solid #3b82f6; }
-              .footer { text-align: center; margin-top: 20px; padding: 20px; color: #6b7280; font-size: 14px; }
-              .cta { background: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-top: 20px; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h1 style="margin: 0; font-size: 24px;">New Survey Request</h1>
-                <p style="margin: 10px 0 0 0; opacity: 0.9;">JG Marine Contact Form</p>
-              </div>
-
-              <div class="content">
-                <div class="field">
-                  <div class="label">Contact Information</div>
-                  <div class="value">
-                    <strong>${escapeHtml(validatedData.name)}</strong><br>
-                    ${validatedData.company ? `${escapeHtml(validatedData.company)}<br>` : ""}
-                    📧 <a href="mailto:${escapeHtml(validatedData.email)}">${escapeHtml(validatedData.email)}</a><br>
-                    📞 <a href="tel:${escapeHtml(validatedData.phone)}">${escapeHtml(validatedData.phone)}</a>
-                  </div>
-                </div>
-
-                <div class="field">
-                  <div class="label">Service Requested</div>
-                  <div class="value">${escapeHtml(validatedData.service).replace(/-/g, " ").toUpperCase()}</div>
-                </div>
-
-                <div class="field">
-                  <div class="label">Message</div>
-                  <div class="value">${escapeHtml(validatedData.message).replace(/\n/g, "<br>")}</div>
-                </div>
-
-                <a href="mailto:${escapeHtml(validatedData.email)}" class="cta">Reply to ${escapeHtml(validatedData.name)}</a>
-              </div>
-
-              <div class="footer">
-                <p>This email was sent from the JG Marine contact form</p>
-                <p>Please respond within 24-48 hours per company standards</p>
-              </div>
-            </div>
-          </body>
-        </html>
-      `,
-    });
-
-    if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json(
-        { error: "Failed to send email" },
-        { status: 500 }
-      );
-    }
-
-    // Send confirmation email to user
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
-      to: validatedData.email,
-      subject: "Your Survey Request Has Been Received - JG Marine",
-      html: `
-        <!DOCTYPE html>
-        <html>
-          <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #1e3a8a;">Thank You for Your Request, ${escapeHtml(validatedData.name)}</h2>
-              <p>We've received your survey request and our team will respond within <strong>24-48 hours</strong>.</p>
-
-              <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <h3 style="margin-top: 0;">Your Request Details:</h3>
-                <ul>
-                  <li><strong>Service:</strong> ${escapeHtml(validatedData.service)}</li>
-                  <li><strong>Company:</strong> ${escapeHtml(validatedData.company || "Not provided")}</li>
-                </ul>
-              </div>
-
-              <p>If you need immediate assistance, please don't hesitate to contact us:</p>
-              <ul>
-                <li>📞 Emergency Hotline (24/7): +48 602 222 477</li>
-                <li>📧 Email: info@jg-marine.com</li>
-              </ul>
-
-              <p style="margin-top: 30px; color: #6b7280; font-size: 14px;">
-                Best regards,<br>
-                <strong>JG Marine Team</strong><br>
-                64 Years of Maritime Excellence
-              </p>
-            </div>
-          </body>
-        </html>
-      `,
+    // Log the contact form submission (email sending can be added later)
+    console.log("Contact form submission:", {
+      name: escapeHtml(validatedData.name),
+      email: escapeHtml(validatedData.email),
+      company: validatedData.company ? escapeHtml(validatedData.company) : undefined,
+      phone: escapeHtml(validatedData.phone),
+      service: escapeHtml(validatedData.service),
+      message: escapeHtml(validatedData.message),
     });
 
     return NextResponse.json(
-      { success: true, messageId: data?.id },
+      { success: true },
       { status: 200 }
     );
   } catch (error) {
@@ -183,7 +79,7 @@ export async function POST(request: Request) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid form data", details: error.issues }, // Changed from error.errors to error.issues
+        { error: "Invalid form data", details: error.issues },
         { status: 400 }
       );
     }
