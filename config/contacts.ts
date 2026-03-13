@@ -120,7 +120,7 @@ export const CONTACTS = {
       phone: "+48 600 267 200",
       role: "Marine Surveyor | Marine Consultant",
       description:
-        "Marine Surveyor at JG-Marine Co. Ltd. Marine Surveyors and Loss Adjusters. Marine Consultant for Anamarine P&I Services.",
+        "Marine Surveyor at JG-Marine Co. Ltd. Marine Surveyors and Loss Adjusters.",
       certifications: ["Marine Surveyor", "P&I Consultant"],
       imageUrl: undefined,
     },
